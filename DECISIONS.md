@@ -51,6 +51,33 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Trade-offs:** Scenario names and details may change.
 - **Revisit trigger:** Paper play reveals contrivance, shallow strategy, or poor generality.
 
+## D-007 — Do not lock the umbrella escalation yet
+- **Status:** Proposed.
+- **Context:** The citywide-emergency ending has no established causal bridge from the interpersonal opening.
+- **Candidate:** Keep the premise as a probe; compare three causal architectures before selecting a route, and revise the ending if none survives scrutiny.
+- **Alternatives:** Invent a direct causal power for the umbrella or force a fixed sequence of escalating coincidences.
+- **Rationale:** Protects causal coherence and player counterplay; keeps Fate from creating unsupported facts.
+- **Cross-system effects:** Scenario schema, Fate milestone prerequisites, evidence/knowledge model, objective fairness, and authored narration all depend on the route.
+- **Revisit trigger:** A route has explicit actors, facts, evidence, timing, interventions, and a credible non-Fate branch.
+
+## D-008 — Keep truth, evidence, knowledge, belief, and disclosure separate
+- **Status:** Proposed.
+- **Context:** Hidden-information play becomes inconsistent if one flag represents whether a fact is known or revealed.
+- **Candidate:** Use distinct canonical concepts and trusted player-specific projections as outlined in INFORMATION_MODEL.md.
+- **Alternatives:** Track only whether a fact is revealed; let narration imply what characters know.
+- **Rationale:** Supports fair information play, deterministic objectives, visibility security, and causal replay.
+- **Trade-offs:** More state transitions and explicit evidence/knowledge rules.
+- **Revisit trigger:** A complete scenario chain shows that a simpler representation preserves all required distinctions.
+
+## D-009 — Do not treat the first paper simulation as playtest evidence
+- **Status:** Proposed.
+- **Context:** PAPER_SIMULATION_01.md was authored analytically, not played by independent humans.
+- **Candidate:** Use it to discover contradictions and design questions, then validate candidates through adversarial scenario tests and later human playtests.
+- **Alternatives:** Select a model from the authored trace alone.
+- **Rationale:** Prevents false confidence from self-generated examples.
+- **Trade-offs:** Slower progression to implementation.
+- **Revisit trigger:** Not applicable; human playtest results should supplement, not erase, the limitation.
+
 ## Decision template
 ### D-XXX — Title
 - Status:
