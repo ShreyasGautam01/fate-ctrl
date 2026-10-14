@@ -26,6 +26,7 @@ Validate the experience with paper simulations and small prototypes before inves
 - [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md) — module responsibilities and information exchange.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — technical options and provisional direction.
 - [DECISIONS.md](DECISIONS.md) — decisions, status, rationale, and revisit triggers.
+- [DECISION_TEMPLATE.md](DECISION_TEMPLATE.md) — template for recording design decisions.
 - [TASKS.md](TASKS.md) — staged plan and exit criteria.
 - [PLAYTEST_PLAN.md](PLAYTEST_PLAN.md) — playtest questions and revision triggers.
 - [AGENTS.md](AGENTS.md) — AI coding-agent instructions.
