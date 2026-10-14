@@ -27,6 +27,7 @@ Validate the experience with paper simulations and small prototypes before inves
 - [PAPER_SIMULATION_02.md](PAPER_SIMULATION_02.md) — provisional resolution stress test for conflicts, stale targets, deadlines, knowledge, and Fate prerequisites.
 - [DIRECT_INTENTION_TRACE.md](DIRECT_INTENTION_TRACE.md) — candidate trace for direct protagonist intentions.
 - [MODEL_COMPARISON_SCORECARD.md](MODEL_COMPARISON_SCORECARD.md) — unweighted criteria for comparing control models.
+- [MATCHED_MODEL_COMPARISON_01.md](MATCHED_MODEL_COMPARISON_01.md) — same-fixture comparison of direct intentions and environmental influence.
 - [DIRECT_INTENTION_TRACE.md](DIRECT_INTENTION_TRACE.md) — matched candidate trace for direct protagonist intentions.
 - [MODEL_COMPARISON_SCORECARD.md](MODEL_COMPARISON_SCORECARD.md) — criteria for comparing direct intentions and environmental influence without false precision.
 - [CAUSAL_ROUTE_WORKSHOP.md](CAUSAL_ROUTE_WORKSHOP.md) — skeptical review of the intended escalation and a possible revised Fate goal.
