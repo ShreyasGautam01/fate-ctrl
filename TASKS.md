@@ -8,8 +8,8 @@
 ### P0-01 — Resolve unit of play
 **Status:** In progress; first exploratory paper simulation completed, but no model selected and several rules remain unspecified.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Current artifacts:** CORE_LOOP_COMPARISON.md compares timing models; PROTAGONIST_CONTROL.md compares control units; PAPER_SIMULATION_01.md traces three rounds. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md examine whether the umbrella ending can be earned. INFORMATION_MODEL.md defines information concepts and proposed ownership.  
-**Next:** Refine the leading control candidate with explicit provisional rules; test a compatible action pair, a conflicting pair, stale target, deadline collision, and a Fate prerequisite. Separately test three causal chains skeptically.  
+**Current artifacts:** CORE_LOOP_COMPARISON.md and PROTAGONIST_CONTROL.md frame the original choices; PAPER_SIMULATION_01.md is exploratory; PAPER_SIMULATION_02.md stress-tests one provisional influence model; DIRECT_INTENTION_TRACE.md gives the direct-intention candidate; MODEL_COMPARISON_SCORECARD.md defines unweighted criteria.  
+**Next:** Check that both traces use matched assumptions, fill gaps in the protagonist preference rule, and have an independent reviewer reconstruct each outcome. Then test the criteria with humans. Neither model is selected.  
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
