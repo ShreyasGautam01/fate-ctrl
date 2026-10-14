@@ -6,9 +6,11 @@
 ## Phase 0 — Define the game worth building
 
 ### P0-01 — Resolve unit of play
-**Status:** In progress. Compare simultaneous commitment, alternating influence/response, and a justified hybrid.  
+**Status:** In progress; candidate models documented, not yet simulated over multiple rounds.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation.
+**Current artifact:** CORE_LOOP_COMPARISON.md compares simultaneous commitment, alternating influence/response, and a bounded-reaction hybrid.  
+**Next:** Simulate at least three rounds per leading candidate using the same scenario state and strategy profiles.  
+**Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
 **Status:** Not started. Define submitted intention, protagonist agency, legal action constraints, and success/failure reasons.  
