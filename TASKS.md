@@ -8,13 +8,13 @@
 ### P0-01 — Resolve unit of play
 **Status:** In progress; candidate models documented, not yet simulated over multiple rounds.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Current artifact:** CORE_LOOP_COMPARISON.md compares simultaneous commitment, alternating influence/response, and a bounded-reaction hybrid.  
-**Next:** Simulate at least three rounds per leading candidate using the same scenario state and strategy profiles.  
+**Current artifacts:** CORE_LOOP_COMPARISON.md compares timing models; PROTAGONIST_CONTROL.md compares what players actually control. These are coupled decisions.  
+**Next:** Shortlist complete combinations of control model plus timing model, then simulate at least three rounds for the strongest candidates using matched scenario state and strategy profiles.  
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
-**Status:** Not started. Define submitted intention, protagonist agency, legal action constraints, and success/failure reasons.  
-**Exit:** Actions have understandable results and meaningful costs.
+**Status:** Analysis started in PROTAGONIST_CONTROL.md; no model selected. This task is coupled to P0-01 and must be resolved jointly rather than in isolation. Define the submitted intention/action, protagonist agency, knowledge constraints, and success/failure reasons.  
+**Exit:** Actions have understandable results and meaningful costs; players can explain why an intention succeeded, changed, or failed.
 
 ### P0-03 — Define objectives and scoring
 **Status:** Not started. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
