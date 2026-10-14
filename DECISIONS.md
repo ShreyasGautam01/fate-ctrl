@@ -78,6 +78,36 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Trade-offs:** Slower progression to implementation.
 - **Revisit trigger:** Not applicable; human playtest results should supplement, not erase, the limitation.
 
+## D-010 — Treat resolution order as a global contract
+- **Status:** Proposed for testing, not accepted.
+- **Context:** Compatible effects, conflicts, stale targets, deadlines, protagonist response, information acquisition, and Fate eligibility can interact in the same round.
+- **Candidate:** Define a single documented phase order and test boundary collisions. PAPER_SIMULATION_02.md uses one provisional ordering to make edge cases concrete.
+- **Alternatives:** Resolve effects ad hoc by scene or let narration decide what happens next.
+- **Rationale:** A stable order supports deterministic outcomes, replay, fair expectations, and testable event logs.
+- **Trade-offs:** Any chosen order privileges some timing strategies and may require clear UI cues.
+- **Cross-system effects:** Round coordinator, action validator, resolution engine, deadlines, objective evaluator, Fate planner, knowledge updates, event log, narration.
+- **Revisit trigger:** Independent reviewers identify a fairness problem or a different ordering produces a clearly better play experience.
+
+## D-011 — Separate objective progress from objective success
+- **Status:** Proposed.
+- **Context:** Creating an opportunity or discovering evidence does not necessarily accomplish a player's stated goal.
+- **Candidate:** Define each objective through a human goal, progress events, terminal predicate, partial outcome, counterplay, feasibility paths, and exploit checks.
+- **Alternatives:** Award success for any progress signal or use one aggregate score without explicit semantics.
+- **Rationale:** Prevents misleading feedback and supports compatible goals, partial outcomes, and post-game explanations.
+- **Trade-offs:** More explicit scenario authoring and validation.
+- **Cross-system effects:** Objective evaluator, scenario schema, UI, event log, end states, playtest metrics.
+- **Revisit trigger:** A simpler objective representation proves equally clear in a complete scenario.
+
+## D-012 — Reconsider the literal citywide-emergency target
+- **Status:** Open.
+- **Context:** Current causal candidates do not credibly establish that the umbrella dispute causes a citywide catastrophe.
+- **Candidate:** Investigate a pre-existing public emergency with Jules becoming the wrongly blamed face of a consequential local failure.
+- **Alternatives:** Preserve the literal citywide catastrophe and find a stronger mechanism; choose a smaller public incident; replace the scenario entirely.
+- **Rationale:** Protects causality and makes Fate's goal about controllable public attribution rather than magical catastrophe generation.
+- **Trade-offs:** A smaller target may reduce spectacle; a larger target may require more worldbuilding and longer play.
+- **Cross-system effects:** Scenario premise, Fate milestones, public claims, evidence provenance, player counterplay, finale pacing.
+- **Revisit trigger:** A complete route trace demonstrates a believable causal bridge and several meaningful interventions.
+
 ## Decision template
 ### D-XXX — Title
 - Status:
