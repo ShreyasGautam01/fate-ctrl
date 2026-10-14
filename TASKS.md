@@ -9,7 +9,7 @@
 **Status:** In progress; first exploratory paper simulation completed, but no model selected and several rules remain unspecified.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
 **Current artifacts:** CORE_LOOP_COMPARISON.md and PROTAGONIST_CONTROL.md frame the original choices; PAPER_SIMULATION_01.md is exploratory; PAPER_SIMULATION_02.md stress-tests one provisional influence model; DIRECT_INTENTION_TRACE.md gives the direct-intention candidate; MATCHED_MODEL_COMPARISON_01.md aligns the fixture and strategic profiles; MODEL_COMPARISON_SCORECARD.md defines unweighted criteria.  
-**Next:** MATCHED_MODEL_COMPARISON_01.md aligns the fixture and strategy profiles, but the preference calculation and a B-favoring round are still placeholders. Fill these with explicit provisional rules, then get independent reconstruction. Neither model is selected.  
+**Next:** PROTAGONIST_RESPONSE_RULES.md compares static weights, lexicographic priorities, scenario-authored tables, and LLM selection. Specify a small scenario-authored priority table with at least one A-favoring and one B-favoring state; replay both models with that same table and have an independent reviewer reconstruct outcomes. Neither model is selected.  
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
