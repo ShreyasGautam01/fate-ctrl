@@ -1,0 +1,138 @@
+# Information Model and State Ownership — Draft 0.1
+
+**Status:** Conceptual contract; no runtime schema approved.  
+**Purpose:** Prevent different modules from treating truth, knowledge, belief, evidence, and presentation as interchangeable.
+
+## 1. Core rule
+
+There is one authoritative world state. Player screens are filtered projections of that state. Narrative text is a presentation of resolved events and never becomes the source of truth.
+
+This separation is foundational to fair hidden-information play and also reduces debugging complexity. It must be reflected in data contracts, validation, logging, and user-interface behavior.
+
+## 2. Terms that must remain distinct
+
+| Concept | Meaning | Example in the umbrella probe | May be false? |
+|---|---|---|---|
+| World fact | What is objectively true in the scenario | The umbrella had a loose rib before borrowing | No, within the canonical scenario state |
+| Event | A change or occurrence at a specific point in play | Jules worsens the tear during use | The event either occurred or did not; reports about it may be wrong |
+| Evidence item | An artifact that can support an inference | A timestamped photo in a message thread | The artifact exists or does not; its interpretation can be mistaken |
+| Accessibility | Whether an actor can currently inspect or obtain an item | The thread is accessible from a shared device | Yes, accessibility can change |
+| Character knowledge | Facts a character has actually learned | Jules knows they worsened the tear | Knowledge changes only through a defined acquisition event |
+| Player knowledge | Information intentionally disclosed to a player | Player B is privately told the photo exists | Yes, the player can misinterpret it; information access is governed by visibility rules |
+| Belief/suspicion | An actor's interpretation of evidence | Jules suspects the flatmate knew about the defect | Yes |
+| Disclosure | A defined transfer of information to an audience | Jules shows the photo to the flatmate | It can fail or reach only some intended recipients |
+| Public claim | A statement made to a defined audience | A witness says Jules caused the umbrella damage | The claim can be false |
+| Narration | Wording that explains resolved events | “The flatmate studies the torn canopy” | It may be stylistically imperfect, but must not contradict canonical events |
+
+Do not represent all these as one field such as `photoFound`, `umbrellaKnown`, or `truthRevealed`.
+
+## 3. State ownership by module
+
+| Data/responsibility | Authoritative owner | Other modules may do |
+|---|---|---|
+| Scenario definitions and initial facts | Scenario validator/loader | Read validated definitions |
+| Current world facts and mutable entities | Match state/resolution engine | Read a state snapshot; propose validated commands |
+| Action legality | Action validator under current rules/state | Request validation; display reason codes |
+| Accepted command order and round phase | Round coordinator | Read phase and submit commands |
+| Consequence application | Resolution engine | Supply candidate legal actions, not mutate state |
+| Fate goal progress/resources | Match state updated through legal Fate events | Fate planner proposes an eligible action |
+| Objective progress/terminal evaluation | Objective evaluator, derived from authoritative state/events | Read outcome; cannot independently alter state |
+| Player/character information access | Information/visibility policy applied to authoritative state | Request filtered projections |
+| Event history and causal source | Event log/replay contract | Append only through trusted resolution; read for explanation |
+| Narrative phrasing | Narration/presentation | Render authorized event summaries |
+| Persistence and network delivery | Persistence/transport | Store and deliver validated records; never reinterpret game rules |
+
+This is a logical ownership map. It does not force one class or service per row. Closely related responsibilities may share an implementation if they preserve the contracts.
+
+## 4. Knowledge acquisition contract
+
+A character's knowledge should change only through explicit, auditable events such as:
+- directly observing an event;
+- inspecting an accessible evidence item;
+- being told by another character;
+- reading a message or public report;
+- making a permitted inference, if the game models inference explicitly.
+
+A player knowing a fact must not automatically grant that fact to the protagonist. If players can spend an action to communicate or reveal information, the action must define the recipient, method, time, and failure behavior.
+
+A fact may be true but unknown to everyone. Evidence may exist but be inaccessible. An item may be accessible but undiscovered. A character may learn evidence but draw the wrong conclusion. A public claim may spread even when false. These are distinct state transitions.
+
+## 5. Visibility and privacy contract
+
+A player-facing view should be generated by a trusted projection from canonical state. Do not send all hidden state to the client and rely on the UI to conceal it.
+
+Visibility rules need to cover:
+- initial scenario information;
+- private player objectives;
+- hidden facts and evidence;
+- legal-action feedback;
+- failed-action reasons;
+- event history and causal explanations;
+- Fate progress and threat signals;
+- terminal result and post-game reveal.
+
+A reason code must not reveal the secret it is meant to protect. For example, “That message is hidden because the flatmate knows the truth” may leak a fact; a safer message could say “The target is not available to this actor.”
+
+## 6. Suggested domain-event envelope
+
+This is a conceptual shape, not a final TypeScript interface:
+
+```text
+DomainEvent
+  eventId
+  schemaVersion
+  matchId
+  round / resolutionIndex
+  eventType
+  sourceKind + sourceId
+  subjectEntityIds
+  payload
+  visibilityPolicy
+  causalParentEventIds
+```
+
+Every state-changing event should identify why it occurred. Causal parents make it possible to answer “why is this true now?” without asking narration to reconstruct history.
+
+Not every internal diagnostic belongs in a player-visible event. Separate internal diagnostics from the public event projection, and ensure diagnostic logs do not expose private objectives or hidden facts.
+
+## 7. Resolution and information update ordering
+
+The exact order is open, but the eventual rules must define it once. A candidate phase sequence to test is:
+1. validate submitted commands against the permitted snapshot and phase;
+2. determine accepted commands and any declared costs;
+3. resolve world changes in deterministic order;
+4. emit domain events with causal links;
+5. process observations and knowledge acquisition from resolved events;
+6. expire effects and advance deadlines according to a single documented boundary rule;
+7. evaluate objectives, Fate eligibility, and terminal conditions at their specified boundaries;
+8. build separate authorized views;
+9. generate presentation text from those views and events.
+
+This sequence is **not accepted**. In particular, the placement of Fate evaluation, effect expiry, and objective evaluation must be tested against same-boundary edge cases before being adopted.
+
+## 8. Required contract tests
+
+1. A hidden fact is absent from unauthorized player views, not merely visually hidden.
+2. Player knowledge does not silently become protagonist knowledge.
+3. A character cannot use inaccessible evidence.
+4. An inference or public claim can be wrong without changing objective world facts.
+5. Disclosure changes only the knowledge/visibility of eligible recipients.
+6. A failed or stale action does not leak secret state through its error.
+7. Every knowledge change has an acquisition event or a documented initial grant.
+8. Every state-changing event has a valid causal source.
+9. Replaying the same accepted inputs under the same rules yields the same canonical state and event sequence.
+10. Narration that contradicts canonical state is rejected, replaced, or flagged; it cannot correct state by fiat.
+
+## 9. Open questions
+
+- Is belief/suspicion modeled explicitly or left to player inference?
+- Are player knowledge and character knowledge both tracked, or are some player-only facts delivered as private objective briefings?
+- Can players lie directly, or only manipulate evidence and access?
+- Can a character forget, doubt, or misremember? Avoid implementing this unless it serves strategy.
+- Does post-game reveal disclose all hidden facts and causal links?
+- Are causal parent links stored directly, or derived from action/event IDs?
+- What is the smallest schema that supports one complete scenario without becoming a general narrative programming language?
+
+## 10. Acceptance gate
+
+Before implementation, model one complete evidence chain end to end: defect exists → photo exists → photo is accessible → player discovers it → Jules learns about it → Jules discloses it → flatmate responds → objective progress changes. At each step specify actor, preconditions, resulting state, event, visibility, and failure behavior.
