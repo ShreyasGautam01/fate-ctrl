@@ -131,9 +131,9 @@ Before production implementation:
 4. Give both players measurable objectives and multiple viable strategies.
 5. Give Fate limited interventions, multiple causal routes, and counterplay.
 6. Model the umbrella scenario's facts, knowledge, prerequisites, effects, and endings.
-7. Hand-simulate at least three rounds without contradictory outcomes.
+7. Hand-simulate at least three rounds without contradictory outcomes, including compatible and conflicting actions, stale targets, and deadline/effect collisions.
 8. Identify a single source of truth for state, legality, resolution, timing, and narration.
 9. Define playtest questions and revision triggers.
 10. List unknowns explicitly rather than hiding them in code.
 
-See DESIGN_REVIEW.md for the unresolved questions.
+See DESIGN_REVIEW.md for unresolved questions. INFORMATION_MODEL.md defines the proposed distinctions between facts, evidence, knowledge, belief, disclosure, and narration. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md evaluate whether the umbrella premise can support the intended escalation. These supporting documents are analyses, not accepted rules.
