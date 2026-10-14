@@ -15,7 +15,7 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 
 ## Findings from this iteration
 - PAPER_SIMULATION_02.md stress-tests one provisional influence model. It is not a matched comparison with direct intentions and is not a human playtest.
-- DIRECT_INTENTION_TRACE.md provides the alternative model trace; MATCHED_MODEL_COMPARISON_01.md aligns the starting fixture and strategy profiles. The protagonist preference calculation and a round where B's request wins remain unfilled, so this is a matched comparison framework, not a completed comparative result.
+- DIRECT_INTENTION_TRACE.md provides the alternative model trace; MATCHED_MODEL_COMPARISON_01.md aligns the starting fixture and strategy profiles. PROTAGONIST_RESPONSE_RULES.md now compares candidate deterministic response policies. The matched trace still lacks a fully specified priority table and a B-favoring round, so this is a comparison framework, not a completed comparative result.
 - MODEL_COMPARISON_SCORECARD.md defines criteria without invented weights. The models are not selected.
 - A deterministic no-op on equal conflicting actions is predictable but may feel like wasted turns and encourage blocking. It is only a test rule.
 - Stale targets, cost refunds, deadline boundaries, knowledge acquisition, and Fate eligibility require global, explicit contracts.
@@ -25,7 +25,7 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 
 ## Documents to read next
 1. PAPER_SIMULATION_02.md — provisional influence-model resolution stress test and limitations.
-2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, and MODEL_COMPARISON_SCORECARD.md — candidate trace, matched fixture, and unweighted comparison criteria.
+2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, and PROTAGONIST_RESPONSE_RULES.md — candidate traces, comparison criteria, and response-policy alternatives.
 3. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and an event-by-event trace.
 4. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — goal, progress, terminal predicate, and fairness model.
 5. PAPER_SIMULATION_01.md and PROTAGONIST_CONTROL.md — prior control-model questions.
@@ -33,7 +33,7 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 7. TASKS.md and DECISIONS.md — open gates and proposed decisions.
 
 ## Next action
-Complete the matched comparison by defining a transparent provisional protagonist-preference calculation and adding a round where B's request wins. Then ask a reviewer to reconstruct outcomes. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
+Complete the matched comparison by specifying a small scenario-authored priority table with both A-favoring and B-favoring states, then replay both models against that same table. Then ask a reviewer to reconstruct outcomes. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
 
 ## Constraints
 - Quality and cross-system trade-off analysis outrank rapid implementation.
