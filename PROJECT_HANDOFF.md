@@ -26,6 +26,7 @@ The initial premise says Jules damaged the umbrella, while Player B's draft obje
 - Make incremental, verified changes through PRs; project owner approves merges.
 
 ## Unresolved
+- PROTAGONIST_CONTROL.md compares five control models; no model selected.
 - Candidate turn models documented in CORE_LOOP_COMPARISON.md but not selected.
 - Simultaneous vs alternating/hybrid action model.
 - Meaning of player control over protagonist.
@@ -36,7 +37,7 @@ The initial premise says Jules damaged the umbrella, while Player B's draft obje
 - Scenario schema and implementation stack.
 
 ## Next action
-Run three-round paper simulations for simultaneous and alternating models with matched starting state and strategies. Track decision quality, fairness, cancellation, causal clarity, pacing, and state/UI complexity. Then record a provisional recommendation in DECISIONS.md with explicit uncertainty and revisit triggers.
+First shortlist complete combinations of protagonist-control and timing models, using CORE_LOOP_COMPARISON.md and PROTAGONIST_CONTROL.md. Then simulate at least three rounds for the strongest two candidates using matched starting state and strategies. Track decision quality, fairness, cancellation, causal clarity, pacing, and state/UI complexity. Record a provisional recommendation in DECISIONS.md with uncertainty and revisit triggers.
 
 ## Session update protocol
 Update task statuses based on evidence; record decisions and rationale; update specs/contracts when behavior changes; record tests/playtest observations and risks; update this handoff with the exact next action.
