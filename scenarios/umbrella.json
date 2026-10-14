@@ -5,7 +5,7 @@
   "status": "design-probe",
   "title": "The Red Umbrella",
   "premise": "Jules borrowed a red umbrella from a flatmate, damaged it, and must return it before the flatmate leaves. Two players want different outcomes. Fate wants Jules to become the public face of a citywide emergency during a live broadcast, holding the umbrella and being blamed for the crisis.",
-  "designWarning": "This is not yet an executable scenario. Objectives, facts, causal routes, actions, and terminal predicates are intentionally incomplete pending resolution-model decisions.",
+  "designWarning": "This is not yet an executable scenario. Critical consistency issue: the premise says Jules damaged the umbrella, while Player B's draft objective assumes it was already damaged when lent. Resolve this as two distinct damage events or revise one claim before scenario canon is set. Objectives, facts, causal routes, actions, and terminal predicates remain incomplete.",
   "protagonist": {
     "id": "jules",
     "displayName": "Jules",
@@ -30,8 +30,9 @@
         "It is damaged."
       ],
       "factsToDefine": [
-        "who damaged it and when",
-        "whether the flatmate knew it was already damaged",
+        "whether there were two damage events",
+        "who caused each event and when",
+        "whether the flatmate knew about the earlier defect",
         "how its condition can be observed or proven"
       ]
     },
