@@ -2,6 +2,8 @@
 
 **Status:** Provisional. Architecture follows validated gameplay needs.
 
+The data/visibility vocabulary in INFORMATION_MODEL.md is a required design input: canonical state and filtered player views must not be conflated. The proposed architecture remains provisional until gameplay and information rules are validated.
+
 ## 1. Candidate flow
 Player input → command validation → round coordinator → deterministic resolution → canonical state and domain events → objective evaluation → filtered player view → narration/presentation.
 

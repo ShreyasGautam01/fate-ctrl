@@ -6,10 +6,10 @@
 ## Phase 0 — Define the game worth building
 
 ### P0-01 — Resolve unit of play
-**Status:** In progress; candidate models documented, not yet simulated over multiple rounds.  
+**Status:** In progress; first exploratory paper simulation completed, but no model selected and several rules remain unspecified.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Current artifacts:** CORE_LOOP_COMPARISON.md compares timing models; PROTAGONIST_CONTROL.md compares what players actually control. These are coupled decisions.  
-**Next:** Shortlist complete combinations of control model plus timing model, then simulate at least three rounds for the strongest candidates using matched scenario state and strategy profiles.  
+**Current artifacts:** CORE_LOOP_COMPARISON.md compares timing models; PROTAGONIST_CONTROL.md compares control units; PAPER_SIMULATION_01.md traces three rounds. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md examine whether the umbrella ending can be earned. INFORMATION_MODEL.md defines information concepts and proposed ownership.  
+**Next:** Refine the leading control candidate with explicit provisional rules; test a compatible action pair, a conflicting pair, stale target, deadline collision, and a Fate prerequisite. Separately test three causal chains skeptically.  
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
@@ -29,11 +29,11 @@
 **Exit:** Three routes and two credible disruptions can be simulated without arbitrary events.
 
 ### P0-06 — Simulate umbrella scenario
-**Status:** Not started. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, endings.  
+**Status:** Premise analysis started. Three candidate causal architectures documented; none accepted. The citywide ending may need revision if no chain earns it. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
 **Exit:** Three strategy profiles yield coherent distinct trajectories and players can explain causality.
 
 ### P0-07 — Validate information/fairness
-**Status:** Not started. Audit public/private facts, objective difficulty, Fate power, and information leakage.  
+**Status:** Conceptual information model drafted in INFORMATION_MODEL.md; no runtime schema accepted. Audit public/private facts, objective difficulty, Fate power, and information leakage.  
 **Exit:** Each hidden fact has an owner, discovery path, and visibility rule.
 
 ### P0-08 — Approve contracts and architecture gate

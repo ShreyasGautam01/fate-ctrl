@@ -47,5 +47,9 @@ Compare hard-coded scenarios, JSON with a limited vocabulary of conditions/effec
 - Whether the protagonist has explicit preferences/autonomy.
 - Fixed round limit versus state-driven termination.
 
+## Evidence from the first analysis pass
+
+PAPER_SIMULATION_01.md is an authored analytical trace, not a human playtest. It exposed risks around one-action-per-round conflict, knowledge transfer, and deadline ordering. INFORMATION_MODEL.md proposes a vocabulary and ownership map; it is not an approved runtime schema. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md outline three possible escalation architectures, none selected. The next pass must add exact provisional resolution rules and test the weakest causal links rather than treating these documents as proof of fun or balance.
+
 ## First design exercise
 Construct one complete sample round for both simultaneous and alternating models using the same starting state and objectives. Include legal choices, resolution order, Fate's legal response, resulting state/event log, player-facing explanation, and why each player might choose differently. Compare strategic depth, counterplay, fairness, clarity, pacing, and implementation complexity. Then simulate at least three rounds and record the recommendation and rationale in DECISIONS.md.

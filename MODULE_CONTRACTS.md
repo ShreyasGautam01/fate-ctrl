@@ -2,6 +2,8 @@
 
 **Status:** Logical boundaries, not a commitment to particular classes, files, or framework.
 
+See INFORMATION_MODEL.md for the vocabulary and ownership rules governing facts, evidence, character/player knowledge, beliefs, disclosures, visibility, and causal events. That document is conceptual and does not yet approve a runtime schema.
+
 ## Principles
 - One authoritative owner for each mutable piece of state.
 - Explicit, validated inputs and versioned persisted contracts.
