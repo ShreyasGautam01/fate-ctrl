@@ -17,7 +17,7 @@
 **Exit:** Actions have understandable results and meaningful costs; players can explain why an intention succeeded, changed, or failed.
 
 ### P0-03 — Define objectives and scoring
-**Status:** Not started. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
+**Status:** Worksheet drafted in OBJECTIVE_AND_FAIRNESS_WORKSHEET.md; no scoring model or terminal predicates accepted. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
 **Exit:** Both players have measurable goals and multiple viable strategies.
 
 ### P0-04 — Define actions and economy
@@ -25,11 +25,11 @@
 **Exit:** Every prototype action is fully specified and common exploits are addressed.
 
 ### P0-05 — Define Fate
-**Status:** Not started. Define legal interventions, limits, signals, routes, counterplay, and alternate endings.  
+**Status:** Causal-route workshop in progress; no route or intervention model accepted. The current literal citywide-emergency target may be too large for the umbrella premise. Define legal interventions, limits, signals, routes, counterplay, and alternate endings.  
 **Exit:** Three routes and two credible disruptions can be simulated without arbitrary events.
 
 ### P0-06 — Simulate umbrella scenario
-**Status:** Premise analysis started. Three candidate causal architectures documented; none accepted. The citywide ending may need revision if no chain earns it. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
+**Status:** Premise analysis ongoing. Causal-route workshop distinguishes actual emergency causation from public blame and proposes a narrower candidate target; nothing is accepted. Three candidate mechanisms still lack a fully convincing event trace. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
 **Exit:** Three strategy profiles yield coherent distinct trajectories and players can explain causality.
 
 ### P0-07 — Validate information/fairness
