@@ -23,9 +23,14 @@ Validate the experience with paper simulations and small prototypes before inves
 - [DESIGN_REVIEW.md](DESIGN_REVIEW.md) — design risks and unresolved questions.
 - [CORE_LOOP_COMPARISON.md](CORE_LOOP_COMPARISON.md) — comparison of candidate interaction models.
 - [PROTAGONIST_CONTROL.md](PROTAGONIST_CONTROL.md) — analysis of how players influence one protagonist.
+- [PAPER_SIMULATION_01.md](PAPER_SIMULATION_01.md) — exploratory comparison of control models through three rounds.
+- [SCENARIO_CAUSALITY_REVIEW.md](SCENARIO_CAUSALITY_REVIEW.md) — tests for a credible escalation from the umbrella opening.
+- [CANDIDATE_CAUSAL_ROUTES.md](CANDIDATE_CAUSAL_ROUTES.md) — three alternative escalation architectures; none is canon.
+- [INFORMATION_MODEL.md](INFORMATION_MODEL.md) — definitions and ownership for facts, evidence, knowledge, visibility, and events.
 - [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md) — module responsibilities and information exchange.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — technical options and provisional direction.
 - [DECISIONS.md](DECISIONS.md) — decisions, status, rationale, and revisit triggers.
+- [DESIGN_DECISION_RECORD.md](DESIGN_DECISION_RECORD.md) — gate index showing evidence needed before each major choice is accepted.
 - [DECISION_TEMPLATE.md](DECISION_TEMPLATE.md) — template for recording design decisions.
 - [TASKS.md](TASKS.md) — staged plan and exit criteria.
 - [PLAYTEST_PLAN.md](PLAYTEST_PLAN.md) — playtest questions and revision triggers.
