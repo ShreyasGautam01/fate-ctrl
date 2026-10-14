@@ -25,6 +25,8 @@ Validate the experience with paper simulations and small prototypes before inves
 - [PROTAGONIST_CONTROL.md](PROTAGONIST_CONTROL.md) — analysis of how players influence one protagonist.
 - [PAPER_SIMULATION_01.md](PAPER_SIMULATION_01.md) — exploratory comparison of control models through three rounds.
 - [PAPER_SIMULATION_02.md](PAPER_SIMULATION_02.md) — provisional resolution stress test for conflicts, stale targets, deadlines, knowledge, and Fate prerequisites.
+- [DIRECT_INTENTION_TRACE.md](DIRECT_INTENTION_TRACE.md) — candidate trace for direct protagonist intentions.
+- [MODEL_COMPARISON_SCORECARD.md](MODEL_COMPARISON_SCORECARD.md) — unweighted criteria for comparing control models.
 - [DIRECT_INTENTION_TRACE.md](DIRECT_INTENTION_TRACE.md) — matched candidate trace for direct protagonist intentions.
 - [MODEL_COMPARISON_SCORECARD.md](MODEL_COMPARISON_SCORECARD.md) — criteria for comparing direct intentions and environmental influence without false precision.
 - [CAUSAL_ROUTE_WORKSHOP.md](CAUSAL_ROUTE_WORKSHOP.md) — skeptical review of the intended escalation and a possible revised Fate goal.
