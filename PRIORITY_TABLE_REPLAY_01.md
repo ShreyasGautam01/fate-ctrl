@@ -50,7 +50,7 @@ This is an ordinal table, not a numeric utility formula. Evaluate it from top to
 |---|---|---|
 | P0 — Legality | Action preconditions are false or Jules lacks required knowledge/capability | Exclude the action; player pressure cannot make it legal |
 | P1 — Imminent commitment | The flatmate leaves after this action, and an honest return is still possible now | Prefer RETURN_HONESTLY over actions that can safely wait, unless the return would require Jules to assert something Jules knows is false |
-| P2 — Deadline preparation | The flatmate leaves later, and Jules has not prepared a credible return/repair plan | Prefer PLAN_REPAIR over WAIT; this does not automatically outrank evidence inspection |
+| P2 — Deadline preparation | At least two round boundaries remain, and Jules has not prepared a credible return/repair plan | Prefer PLAN_REPAIR over INSPECT_PHOTO and WAIT, unless the evidence source or access opportunity is about to disappear |
 | P3 — Material uncertainty | A specific unresolved fact can be checked from an existing accessible source, and checking it can change a consequential next action | Prefer INSPECT_PHOTO over WAIT or repeating already-known information |
 | P4 — Honest accountability | A reachable conversation can truthfully acknowledge Jules's own damage without making unsupported accusations | Prefer RETURN_HONESTLY or ASK_KNOWLEDGE, according to whether the deadline is immediate |
 | P5 — Avoid unnecessary confrontation | If higher priorities are tied, prefer the legal action that obtains needed information or enables a private conversation over a public accusation |
@@ -83,7 +83,7 @@ For both models, apply this sequence: validate submissions; apply legal influenc
 - A reduces the effort needed to prepare a repair plan.
 - B makes the existing message thread easier to notice, without exposing the photo's contents.
 
-**Priority result:** P2 makes PLAN_REPAIR the selected action because the deadline is approaching and Jules has no credible plan. P3 is not reached as a tie-breaker because P2 already selects a preferred action.
+**Priority result:** P2 makes PLAN_REPAIR the selected action because at least two boundaries remain and Jules has no credible plan. P2 explicitly outranks evidence inspection in this state, so the result does not depend on an unstated tie-break.
 
 **Resulting state:** Jules has a repair plan. Jules still does not know what the photo shows. A gains objective progress only if the objective definition recognizes a prepared plan; this does not yet count as an honest return or preserved trust. B has not established prior knowledge.
 
@@ -141,7 +141,7 @@ The three-round trace is not enough to establish balanced strategic opportunity:
 - The flatmate is not currently reachable.
 - No imminent irreversible consequence requires a return.
 
-Then P2 no longer selects PLAN_REPAIR; P3 selects INSPECT_PHOTO. B's information-seeking route wins because the relevant uncertainty is material and the preparation task is already satisfied. This favors B's immediate strategic aim, but does not itself prove nondisclosure.
+Then P2 does not apply because a credible repair plan is already complete; P3 selects INSPECT_PHOTO. B's information-seeking route wins because the relevant uncertainty is material and the preparation task is already satisfied. This favors B's immediate strategic aim, but does not itself prove nondisclosure.
 
 ### Counterfactual B — A-favoring state
 
