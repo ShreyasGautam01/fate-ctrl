@@ -20,20 +20,20 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 - A deterministic no-op on equal conflicting actions is predictable but may feel like wasted turns and encourage blocking. It is only a test rule.
 - Stale targets, cost refunds, deadline boundaries, knowledge acquisition, and Fate eligibility require global, explicit contracts.
 - Objective progress and objective completion are distinct. Objectives need measurable terminal predicates, feasibility paths, partial outcomes, and exploit checks.
-- The umbrella scenario still lacks a credible causal route to a literal citywide catastrophe. A smaller but dramatic target—Jules wrongly blamed for a consequential local failure during a real public emergency—may be stronger, but remains unaccepted.
+- The umbrella scenario still lacks a credible causal route to a literal citywide catastrophe. A smaller but dramatic target—Jules wrongly blamed for a consequential local failure during a real public emergency—may be stronger. CAUSAL_ROUTE_TRACE_01.md traces this route and identifies the break: it does not currently justify blame for causing a citywide emergency.
 - No interaction model, objective model, causal route, runtime schema, or implementation stack has been approved.
 
 ## Documents to read next
 1. PAPER_SIMULATION_02.md — provisional influence-model resolution stress test and limitations.
 2. DIRECT_INTENTION_TRACE.md and MODEL_COMPARISON_SCORECARD.md — candidate trace and unweighted comparison criteria.
-3. CAUSAL_ROUTE_WORKSHOP.md — distinction between actual responsibility and public blame.
+3. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and an event-by-event trace.
 4. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — goal, progress, terminal predicate, and fairness model.
 5. PAPER_SIMULATION_01.md and PROTAGONIST_CONTROL.md — prior control-model questions.
 6. INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and ARCHITECTURE.md — data ownership and technical boundaries.
 7. TASKS.md and DECISIONS.md — open gates and proposed decisions.
 
 ## Next action
-Review the candidate traces and comparison scorecard; fix any unfairly unmatched assumptions or missing state transitions. Compare both models against the predeclared criteria without inventing numeric weights. Separately, write a complete causal route with actor, knowledge, evidence, timing, Fate intervention, counterplay, and alternate ending at each edge. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
+Review the candidate traces and comparison scorecard; fix any unfairly unmatched assumptions or missing state transitions. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
 
 ## Constraints
 - Quality and cross-system trade-off analysis outrank rapid implementation.
