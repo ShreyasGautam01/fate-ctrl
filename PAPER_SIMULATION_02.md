@@ -1,14 +1,14 @@
 # Paper Simulation 02 — Provisional Resolution Rules Under Stress
 
 **Status:** Analytical stress test; proposed rules are test fixtures, not accepted design.  
-**Scope:** Compare a constrained influence model against a protagonist-intention model using identical edge cases.  
+**Scope:** Stress-test one provisional influence model against edge cases; a matched comparison with direct protagonist intentions remains future work.  
 **Evidence class:** Desk simulation authored by the design process. It is not independent playtest evidence and cannot validate fun, balance, or clarity.
 
 ## Executive result
 
 The first simulation showed that discussing simultaneous turns without defining the controlled unit leaves the main game unresolved. This test adds a minimal provisional rule set so outcomes can be checked rather than improvised.
 
-A potentially useful direction is for each player to submit one influence that changes a legal opportunity or constraint; Jules then chooses from a small set of available actions using explicit character priorities. However, this may feel indirect. A direct-intention model remains a serious alternative and should not be rejected until tested with independent players.
+This stress test uses a provisional influence model: each player submits one influence that changes a legal opportunity or constraint; Jules then chooses from a small set of available actions using explicit character priorities. It does not yet compare that model against direct protagonist intentions. The influence model may feel indirect; a direct-intention model remains a serious alternative and should not be rejected until both receive matched traces and independent player testing.
 
 The main result is not to choose influence actions. It is a list of conditions any candidate loop must satisfy: no accidental knowledge transfer, no arbitrary tie-break, no silent action cancellation, a stable deadline boundary, and a visible explanation for every outcome.
 
