@@ -25,7 +25,7 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 
 ## Documents to read next
 1. PAPER_SIMULATION_02.md — provisional influence-model resolution stress test and limitations.
-2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, and PROTAGONIST_RESPONSE_RULES.md — candidate traces, comparison criteria, and response-policy alternatives.
+2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md, and PRIORITY_TABLE_REPLAY_01.md — candidate traces, shared priority-table replay, comparison criteria, and response-policy alternatives.
 3. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and an event-by-event trace.
 4. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — goal, progress, terminal predicate, and fairness model.
 5. PAPER_SIMULATION_01.md and PROTAGONIST_CONTROL.md — prior control-model questions.
@@ -33,7 +33,7 @@ PR #1 established the first design documents; PR #2 added a first paper simulati
 7. TASKS.md and DECISIONS.md — open gates and proposed decisions.
 
 ## Next action
-Complete the matched comparison by specifying a small scenario-authored priority table with both A-favoring and B-favoring states, then replay both models against that same table. Then ask a reviewer to reconstruct outcomes. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
+Ask an independent reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md using only that document. Record whether they can reproduce the selected action, decisive priority, knowledge gained, objective progress, and unresolved facts without coaching. Then run a small human test with both control models in counterbalanced order; keep observed results separate from authored desk analysis. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
 
 ## Constraints
 - Quality and cross-system trade-off analysis outrank rapid implementation.
