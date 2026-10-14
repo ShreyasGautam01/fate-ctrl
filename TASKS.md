@@ -29,7 +29,7 @@
 **Exit:** Three routes and two credible disruptions can be simulated without arbitrary events.
 
 ### P0-06 — Simulate umbrella scenario
-**Status:** Premise analysis ongoing. Causal-route workshop distinguishes actual emergency causation from public blame and proposes a narrower candidate target; nothing is accepted. Three candidate mechanisms still lack a fully convincing event trace. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
+**Status:** Premise analysis ongoing. Causal-route workshop distinguishes actual emergency causation from public blame and proposes a narrower candidate target; nothing is accepted. Three candidate mechanisms still lack a convincing event trace. Next: trace one candidate event by event and reject unsupported links. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
 **Exit:** Three strategy profiles yield coherent distinct trajectories and players can explain causality.
 
 ### P0-07 — Validate information/fairness
