@@ -108,6 +108,16 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Cross-system effects:** Scenario premise, Fate milestones, public claims, evidence provenance, player counterplay, finale pacing.
 - **Revisit trigger:** A complete route trace demonstrates a believable causal bridge and several meaningful interventions.
 
+## D-013 — Compare pure control models before proposing a hybrid
+- **Status:** Proposed.
+- **Context:** Direct intentions are immediately legible but may create a single-action bottleneck; environmental influence can let both players contribute but may feel indirect.
+- **Candidate:** Compare both models on matched traces using MODEL_COMPARISON_SCORECARD.md before selecting either or combining them.
+- **Alternatives:** Select the intuitively clearer model immediately or combine the models to inherit their apparent strengths.
+- **Rationale:** A hybrid adds action types, cognitive load, and resolution rules; it should solve a demonstrated problem, not merely look comprehensive.
+- **Trade-offs:** Slower decision-making before prototype.
+- **Cross-system effects:** Player action vocabulary, protagonist agency, UI, action economy, scenario authoring, resolution engine, and test suite.
+- **Revisit trigger:** Matched traces and independent player evidence show a specific weakness that a hybrid can address with acceptable complexity.
+
 ## Decision template
 ### D-XXX — Title
 - Status:
