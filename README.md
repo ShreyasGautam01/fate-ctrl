@@ -30,6 +30,7 @@ Validate the experience with paper simulations and small prototypes before inves
 - [DIRECT_INTENTION_TRACE.md](DIRECT_INTENTION_TRACE.md) — matched candidate trace for direct protagonist intentions.
 - [MODEL_COMPARISON_SCORECARD.md](MODEL_COMPARISON_SCORECARD.md) — criteria for comparing direct intentions and environmental influence without false precision.
 - [CAUSAL_ROUTE_WORKSHOP.md](CAUSAL_ROUTE_WORKSHOP.md) — skeptical review of the intended escalation and a possible revised Fate goal.
+- [CAUSAL_ROUTE_TRACE_01.md](CAUSAL_ROUTE_TRACE_01.md) — event-by-event route trace, causal breakpoints, and three candidate terminal targets.
 - [OBJECTIVE_AND_FAIRNESS_WORKSHEET.md](OBJECTIVE_AND_FAIRNESS_WORKSHEET.md) — objective predicates, overlap, partial outcomes, and fairness checks.
 - [SCENARIO_CAUSALITY_REVIEW.md](SCENARIO_CAUSALITY_REVIEW.md) — tests for a credible escalation from the umbrella opening.
 - [CANDIDATE_CAUSAL_ROUTES.md](CANDIDATE_CAUSAL_ROUTES.md) — three alternative escalation architectures; none is canon.
