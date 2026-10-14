@@ -1,28 +1,34 @@
-FATE/CTRL
+# FATE/CTRL
 
-A fast-paced, two-player narrative strategy game. Players compete over the direction of one ordinary person's life while a deterministic Fate engine attempts to force a predetermined ending.
+FATE/CTRL is a proposed two-player narrative strategy game about competing intentions, shared influence over one ordinary person's life, and a Fate system pursuing a dramatic outcome.
 
-Project Status
+**Current phase:** concept validation and specification. No gameplay implementation is approved yet.
 
-Design and specification phase. Implementation has not started.
+## Design goals under evaluation
+- Two players have distinct, partially conflicting objectives.
+- Both influence one protagonist and a persistent shared world.
+- Fate pursues a scenario-defined goal through legible, limited interventions.
+- Choices create strategic trade-offs, not merely different prose.
+- Rules and outcomes are deterministic; presentation is separate.
+- Core play does not require a paid LLM API.
+- Escalation grows from established causes rather than arbitrary coincidence.
 
-Core Principles
+These are goals to test, not claims that the current design already achieves them.
 
-- Two players with competing private objectives.
-- A Fate engine with its own objective and limited interventions.
-- Simultaneous decisions, delayed consequences, and irreversible actions.
-- Deterministic game rules with narrative text separated from game logic.
-- No paid LLM API required for the core gameplay.
+## Working method
+Validate the experience with paper simulations and small prototypes before investing in a larger architecture. Significant changes should include rationale, acceptance criteria, and test evidence, and should be reviewed through pull requests.
 
-Development Approach
+## Project documents
+- [SPEC.md](SPEC.md) — intended experience, candidate rules, open questions, acceptance criteria.
+- [DESIGN_REVIEW.md](DESIGN_REVIEW.md) — design risks and unresolved questions.
+- [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md) — module responsibilities and information exchange.
+- [ARCHITECTURE.md](ARCHITECTURE.md) — technical options and provisional direction.
+- [DECISIONS.md](DECISIONS.md) — decisions, status, rationale, and revisit triggers.
+- [TASKS.md](TASKS.md) — staged plan and exit criteria.
+- [PLAYTEST_PLAN.md](PLAYTEST_PLAN.md) — playtest questions and revision triggers.
+- [AGENTS.md](AGENTS.md) — AI coding-agent instructions.
+- [PROJECT_HANDOFF.md](PROJECT_HANDOFF.md) — current state and continuation protocol.
+- [scenarios/umbrella.json](scenarios/umbrella.json) — initial scenario design probe.
 
-The game specification and acceptance criteria will be reviewed before implementation. Development will proceed incrementally, with automated tests and verified changes.
-
-Project Documents
-
-- "SPEC.md" — Game rules and acceptance criteria.
-- "ARCHITECTURE.md" — Technical design.
-- "DECISIONS.md" — Architecture and design decisions.
-- "TASKS.md" — Implementation plan.
-- "AGENTS.md" — Instructions for coding agents.
-- "scenarios/umbrella.json" — Initial scenario blueprint.
+## First milestone
+Agree on the smallest playable loop that tests the central promise: two players strategically contest one protagonist's direction while Fate creates pressure without making player choices feel irrelevant. Do not start production implementation until critical design questions and module contracts are reviewed.

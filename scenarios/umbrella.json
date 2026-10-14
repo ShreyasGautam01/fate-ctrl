@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "scenarioId": "red-umbrella",
+  "scenarioVersion": "0.1.0-draft",
+  "status": "design-probe",
+  "title": "The Red Umbrella",
+  "premise": "Jules borrowed a red umbrella from a flatmate, damaged it, and must return it before the flatmate leaves. Two players want different outcomes. Fate wants Jules to become the public face of a citywide emergency during a live broadcast, holding the umbrella and being blamed for the crisis.",
+  "designWarning": "This is not yet an executable scenario. Objectives, facts, causal routes, actions, and terminal predicates are intentionally incomplete pending resolution-model decisions.",
+  "protagonist": {
+    "id": "jules",
+    "displayName": "Jules",
+    "initialKnowledge": [
+      "Jules borrowed the red umbrella.",
+      "The umbrella is damaged.",
+      "The flatmate plans to leave soon."
+    ],
+    "traitsToDefine": [
+      "relationship with the flatmate",
+      "risk tolerance",
+      "resources and practical capabilities"
+    ]
+  },
+  "entities": [
+    {
+      "id": "red-umbrella",
+      "type": "object",
+      "displayName": "Red umbrella",
+      "knownFacts": [
+        "Jules borrowed it.",
+        "It is damaged."
+      ],
+      "factsToDefine": [
+        "who damaged it and when",
+        "whether the flatmate knew it was already damaged",
+        "how its condition can be observed or proven"
+      ]
+    },
+    {
+      "id": "flatmate",
+      "type": "character",
+      "displayName": "Jules's flatmate",
+      "factsToDefine": [
+        "departure deadline",
+        "knowledge of umbrella condition",
+        "relationship and trust baseline"
+      ]
+    },
+    {
+      "id": "city-emergency",
+      "type": "event",
+      "displayName": "Citywide emergency",
+      "status": "not-established-at-start",
+      "factsToDefine": [
+        "credible origin",
+        "how the umbrella becomes relevant",
+        "what evidence causes public blame",
+        "why a live broadcast occurs"
+      ]
+    }
+  ],
+  "players": [
+    {
+      "id": "player-a",
+      "objectiveId": "return-with-trust",
+      "objectiveDraft": "Return the umbrella without losing the flatmate's trust.",
+      "successCriteriaStatus": "undefined"
+    },
+    {
+      "id": "player-b",
+      "objectiveId": "expose-responsibility",
+      "objectiveDraft": "Expose that the flatmate knowingly lent an already-damaged umbrella.",
+      "successCriteriaStatus": "undefined",
+      "fairnessRisk": "The objective relies on a fact not yet established. Decide whether this is true, false, or uncertain at the start and keep evidence and character knowledge coherent."
+    }
+  ],
+  "fate": {
+    "objectiveDraft": "Cause Jules to be blamed publicly for a citywide emergency during a live broadcast while holding the red umbrella.",
+    "interventionModel": "undefined",
+    "resourceBudget": "undefined",
+    "threatVisibility": "undefined",
+    "milestones": [],
+    "routes": [],
+    "counterplay": [],
+    "terminalPredicateStatus": "undefined"
+  },
+  "candidateDesignQuestions": [
+    "What does each player submit during a turn or round?",
+    "How do player actions affect protagonist choices without removing character agency?",
+    "Which facts are objective, privately known, public, or only suspected?",
+    "What causal chain links the umbrella to the citywide emergency?",
+    "How can Fate pursue its goal without arbitrary intervention?",
+    "What ending occurs if Fate is thwarted?",
+    "How are objectives scored if trust is preserved while responsibility is exposed?"
+  ],
+  "acceptanceCriteria": [
+    "At least three causally distinct routes can advance Fate's objective.",
+    "At least two credible actions or strategies can disrupt or delay Fate.",
+    "Both player objectives support multiple viable strategies.",
+    "Every major event has a traceable cause in state and event history.",
+    "Character knowledge is distinct from player knowledge.",
+    "A satisfying non-Fate ending has explicit terminal conditions.",
+    "The same accepted inputs produce the same resolved outcome."
+  ]
+}
