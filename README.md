@@ -21,6 +21,7 @@ Validate the experience with paper simulations and small prototypes before inves
 ## Project documents
 - [SPEC.md](SPEC.md) — intended experience, candidate rules, open questions, acceptance criteria.
 - [DESIGN_REVIEW.md](DESIGN_REVIEW.md) — design risks and unresolved questions.
+- [CORE_LOOP_COMPARISON.md](CORE_LOOP_COMPARISON.md) — comparison of candidate interaction models.
 - [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md) — module responsibilities and information exchange.
 - [ARCHITECTURE.md](ARCHITECTURE.md) — technical options and provisional direction.
 - [DECISIONS.md](DECISIONS.md) — decisions, status, rationale, and revisit triggers.
