@@ -1,73 +1,68 @@
 # Design Review — FATE/CTRL
 
-**Status:** Open review. No item is resolved until supported by reasoned analysis or playtest evidence.
+**Status:** Open review. No design choice is accepted merely because a document describes it.
 
 ## Review standard
-For every mechanic, evaluate player fantasy, decision quality, counterplay/fairness, interaction with objectives and pacing, readability, edge cases, narrative causality, implementation/testing cost, replayability, and evidence that could disprove the design claim. Remove mechanics whose strategic value does not justify cognitive and engineering cost.
 
-## Critical design questions
+For every mechanic, evaluate the intended player experience, decision quality, counterplay/fairness, effects on objectives and pacing, readability, edge cases, causal coherence, implementation/testing cost, replayability, and evidence that could disprove the design claim. Remove mechanics whose strategic value does not justify their cognitive and engineering cost.
 
-### D1 — Unit of play
-Compare simultaneous hidden commitments, alternating influence/response, and a justified hybrid. This choice affects pacing, fairness, information timing, UI, server authority, and conflict resolution. **Current stance: unresolved.** Build worked rounds and a three-round paper simulation before choosing.
+## Main unresolved design questions
 
-### D2 — Meaning of protagonist control
-Does a player issue an intention, spend influence, select from legal options, or directly control the protagonist? Too much direct control makes the protagonist a puppet; too little makes player turns feel irrelevant. Test an action where character knowledge/resources constrain plausibility.
+### What does each player control?
 
-### D3 — Resource economy
-Compare fixed actions per round, influence tokens, per-action costs, cooldowns, or a minimal combination. Prevent spam without hiding decisions behind accounting. Test whether losing players retain meaningful options without rubber-banding.
+Direct intention and environmental influence are the leading candidates. Do not conflate this with simultaneous versus alternating commitment; unit of control and timing are separate dimensions. CONTROL_MODEL.md is the consolidated working reference and is pending deep independent audit.
 
-### D4 — Fate without arbitrariness
-Compare milestone progression, limited intervention budget, threat signals, and reactive rules. Visible plans can become mechanically solvable; hidden unrestricted powers feel unfair; fixed plot makes player choices cosmetic. Require three routes to Fate's goal, two credible disruptions, and a non-Fate ending.
+### How does Jules select an action?
 
-### D5 — Information model
-Define public/private facts, protagonist knowledge, player knowledge, and suspicion separately. For every hidden fact, specify who knows it, how it can be discovered, and whether its absence makes an objective infeasible.
+The protagonist policy must respect capability, knowledge, established traits, and commitments. It must be deterministic and explainable without turning Jules into a puppet or letting a player objective masquerade as Jules's motivation. The current priority table is only a hypothesis.
 
-### D6 — Conflict resolution
-Write at least eight collision examples: protect/erase, reveal/suppress, delay/deadline, incompatible influences, stale targets, failed dependencies, and simultaneous objective completion. State the ordering and result explicitly.
+### What are the minimum action and resource rules?
 
-### D7 — Earned escalation
-Connect the umbrella, people, places, and institutions through established causes. Test three different opening strategies and ask players to reconstruct causality without coaching. Escalation must be surprising without becoming random noise.
+Compare a bounded submission per player against any resource/cooldown system only when a specific exploit or fairness problem requires it. Count meaningful options per player, especially after a proposal loses or an influence goes unused. Avoid adding bidding, reactions, or a hybrid as speculative repairs.
 
-### D8 — Defeating Fate
-Define satisfying alternate terminal states. Players must not be forced to cooperate forever or stall to avoid an ending.
+### How are conflicts, expiry, and information resolved?
 
-### D9 — Session length
-A 15–25 minute target and a 10–15 minute explosive finale may conflict. Measure decision time, round count, repeated beats, perceived agency, and whether escalation arrives too early or late.
+Specify compatibility, conflicting effects, stale targets, failed prerequisites, costs/refunds, deadline boundaries, delayed effects, duplicate submissions, and objective/Fate evaluation order. Information must distinguish objective truth, evidence, character knowledge, player knowledge, belief, and disclosure.
 
-### D10 — Scenario generality
-Compare hard-coded scenarios, JSON with a limited vocabulary of conditions/effects, and a custom narrative scripting language. Model a second tiny scenario before building a general-purpose system.
+### Can Fate create pressure without arbitrariness?
+
+Fate needs a legal intervention set, prerequisites, limits, visible signals at the appropriate level, counterplay, and alternative routes. It cannot invent facts or undo successful actions without a supported rule.
+
+### Is the umbrella escalation earned?
+
+The current trace supports investigating public blame for a consequential local failure during a real emergency, but does not justify claiming Jules caused a citywide emergency. The story should be revised or replaced if it requires forced coincidences, a contrived crowd/broadcast, or an implausible public inference.
+
+### Are objectives measurable and feasible?
+
+“Preserve trust” needs an observable predicate. Exposing prior knowledge needs an evidence source for what the flatmate knew, not merely proof of an earlier defect. Both players need plausible routes, partial outcomes where appropriate, and counterplay.
+
+### What experience and architecture should be tested first?
+
+Session length, finale pacing, online versus local play, randomness, generated narration, and scenario representation remain open. Decide them only when the core loop requires a choice. Keep the first test local and deterministic unless a question specifically requires network play.
 
 ## Other open questions
-- Online multiplayer versus local/pass-and-play for first tests.
-- Whether players see Fate's goal, next milestone, threat signals, or a combination.
-- Zero-sum, partially compatible, or independently scored objectives.
-- Whether the game is tactical puzzle, social deduction, negotiation, or a deliberate blend.
-- Authored templates, deterministic text assembly, or optional LLM narration.
-- Whether randomness creates useful uncertainty or undermines learning.
-- Whether the protagonist has explicit preferences/autonomy.
-- Fixed round limit versus state-driven termination.
 
-## Evidence from the first analysis pass
+- Does the game blend tactical strategy, social deduction, negotiation, or some combination?
+- How much of Fate's objective and next milestone should players see?
+- Should objectives be zero-sum, partially compatible, or independently scored?
+- Do hidden facts create interesting inference or impossible objectives?
+- Does deterministic character behavior feel authored and predictable, or over-scripted?
+- Does the same control model transfer cleanly to a second tiny scenario?
+- What is the smallest UI that helps players understand legal options and outcomes on a phone?
 
-PAPER_SIMULATION_01.md is an authored analytical trace, not a human playtest. It exposed risks around one-action-per-round conflict, knowledge transfer, and deadline ordering. INFORMATION_MODEL.md proposes a vocabulary and ownership map; it is not an approved runtime schema. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md outline three possible escalation architectures, none selected. The next pass must add exact provisional resolution rules and test the weakest causal links rather than treating these documents as proof of fun or balance.
+## Evidence and present assessment
 
-## Evidence from the second analysis pass
+All current model traces are authored desk analysis. No independent reconstruction or human playtest has been recorded.
 
-PAPER_SIMULATION_02.md stress-tests one provisional influence model. It does not yet provide a matched comparison against direct protagonist intentions and is not a human playtest. Its provisional ordering exposes decisions that must be global: effect validation, conflict handling, protagonist response, information acquisition, deadline expiry, and Fate/objective evaluation. CAUSAL_ROUTE_WORKSHOP.md identifies that the current target conflates causing an emergency with being blamed during one; none of the candidate chains yet justifies a literal citywide catastrophe. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md defines what an objective needs beyond an evocative sentence.
+- PAPER_SIMULATION_01.md surfaced risks around the one-action-per-round bottleneck, knowledge transfer, and deadline ordering.
+- PAPER_SIMULATION_02.md stress-tested one provisional influence model but did not define a globally accepted resolution contract.
+- DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, and PRIORITY_TABLE_REPLAY_01.md attempted to compare models. The consolidated review in CONTROL_MODEL.md identifies remaining semantic gaps: direct intentions do not clearly define the candidate-action set, and environmental “salience/friction” effects do not yet have operational values used by the protagonist policy.
+- INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and ARCHITECTURE.md describe proposed technical boundaries, not an accepted runtime schema.
+- The causal-route files challenge the citywide ending but do not establish an accepted alternative.
+- OBJECTIVE_AND_FAIRNESS_WORKSHEET.md distinguishes goals, progress signals, terminal predicates, partial outcomes, and feasibility; no scoring model is accepted.
 
-## Next design exercise
+## Next exercise
 
-Write a matched three-round trace for direct protagonist intentions using the same fixture, objective drafts, deadlines, and edge cases as PAPER_SIMULATION_02.md. Then compare it against the influence model using criteria stated before judging the outcomes. In parallel, trace one causal route event by event and reject it if any link relies on a new fact, implausible public inference, or uncounterable Fate intervention. A neutral reviewer should be able to reconstruct the outcome from the event log alone.
+Obtain a deep independent audit of CONTROL_MODEL.md before doing another self-authored simulation. Require the reviewer to separate reproducible contradictions from legitimate design trade-offs and open product decisions. Resolve critical submission semantics, influence-effect mechanics, fixture mismatches, and objective feasibility in that file; then run a corrected matched experiment.
 
-## Evidence from the second analysis pass
-
-PAPER_SIMULATION_02.md stress-tests one provisional influence model. It does not yet provide a matched comparison against direct protagonist intentions and is not a human playtest. Its provisional ordering exposes decisions that must be global: effect validation, conflict handling, protagonist response, information acquisition, deadline expiry, and Fate/objective evaluation. CAUSAL_ROUTE_WORKSHOP.md identifies that the current target conflates causing an emergency with being blamed during one; none of the candidate chains yet justifies a literal citywide catastrophe. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md defines what an objective needs beyond an evocative sentence.
-
-DIRECT_INTENTION_TRACE.md and MODEL_COMPARISON_SCORECARD.md add a direct-intention candidate and comparison criteria. The scorecard is deliberately unweighted; numerical scores would create false precision until the criteria and their relative importance are agreed. Neither model is selected.
-
-## Next design exercise
-
-Review the candidate traces and comparison scorecard; correct any unmatched assumptions or missing state transitions. Then compare both models against the criteria without invented weights. In parallel, trace one causal route event by event and reject it if any link relies on a new fact, implausible public inference, or uncounterable Fate intervention. A neutral reviewer should reconstruct the outcome from the event log alone.
-
-## First design exercise
-Construct one complete sample round for both simultaneous and alternating models using the same starting state and objectives. Include legal choices, resolution order, Fate's legal response, resulting state/event log, player-facing explanation, and why each player might choose differently. Compare strategic depth, counterplay, fairness, clarity, pacing, and implementation complexity. Then simulate at least three rounds and record the recommendation and rationale in DECISIONS.md.
+Only after a reviewer can independently reconstruct the outcomes should the project move to a tiny comparative local prototype. Keep the causal-finale decision as a separate gate; a control-model audit does not validate the umbrella premise.
