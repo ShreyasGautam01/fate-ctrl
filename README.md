@@ -12,7 +12,9 @@ These are the intended working sources of truth. Their proposals remain drafts u
 - [CONTROL_MODEL.md](CONTROL_MODEL.md) — consolidated working reference for the unresolved control-unit decision; currently prepared for deep independent audit.
 - [scenarios/umbrella.json](scenarios/umbrella.json) — scenario design probe, not executable scenario truth; deadline, objectives, evidence history, and Fate rules remain incomplete.
 - [CAUSAL_ROUTE_TRACE_01.md](CAUSAL_ROUTE_TRACE_01.md) — most concrete causal-route test; does not establish a credible route to the literal citywide-emergency ending.
-- [INFORMATION_MODEL.md](INFORMATION_MODEL.md), [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md), and [ARCHITECTURE.md](ARCHITECTURE.md) — proposed information and engineering boundaries; not yet approved runtime contracts.
+- [INFORMATION_MODEL.md](INFORMATION_MODEL.md) — the canonical vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
+- [MODULE_CONTRACTS.md](MODULE_CONTRACTS.md) — logical ownership boundaries, including model-specific submission adapters and protagonist selection.
+- [ARCHITECTURE.md](ARCHITECTURE.md) — revised plan for a local deterministic comparison enumerator before any playable app; not a production-stack commitment.
 - [DECISIONS.md](DECISIONS.md) — canonical decision log. Proposed decisions are not binding.
 - [TASKS.md](TASKS.md) — staged tasks, current blockers, and exit criteria.
 - [PLAYTEST_PLAN.md](PLAYTEST_PLAN.md) — proposed test protocol; no human playtests have been conducted.
