@@ -1,67 +1,152 @@
-# FATE/CTRL — Architecture Options
+# FATE/CTRL — Architecture Proposal
 
-**Status:** Provisional. Architecture follows validated gameplay needs.
+**Status:** Revised after the control-model audit. This defines the next experimental architecture, not the final production stack.  
+**Primary control contract:** CONTROL_MODEL.md.  
+**Detailed logical responsibilities:** MODULE_CONTRACTS.md.  
+**Implementation status:** no gameplay code or comparative enumerator exists yet.
 
-The data/visibility vocabulary in INFORMATION_MODEL.md is a required design input: canonical state and filtered player views must not be conflated. The proposed architecture remains provisional until gameplay and information rules are validated.
+## 1. Architectural decision: test the rule system before building the game
 
-## 1. Candidate flow
-Player input → command validation → round coordinator → deterministic resolution → canonical state and domain events → objective evaluation → filtered player view → narration/presentation.
+The Sonnet audit identified that the previous paper comparison could not establish that either player input caused the outcome. The next technical artifact should therefore be a **local deterministic enumerator**, not a UI or online game.
 
-Fate proposes legal interventions to the same resolution system; it has no privileged state-mutation path. Scenario data defines facts, objectives, supported conditions/effects, Fate routes, and endings. A validator checks it before a match starts.
+The enumerator is a small model-testing tool. It should enumerate states and input pairs, produce structured outcomes, and expose where one control model is irrelevant, dominant, impossible to use, or objective-breaking. It is not the playable game and should not include networking, persistence, or narration.
 
-## 2. Runtime options
-- **TypeScript/browser:** shared language for engine and UI, mature test tooling, natural path to web play.
-- **Python simulation:** rapid strategy/balance experiments, but likely requires a separate web client if browser play is selected.
-- **Game engine:** worth considering if rich animation or real-time mechanics become central.
+### Candidate comparison pipeline
 
-**Provisional direction:** simulate the rules first; tentatively use TypeScript for a thin browser prototype if the selected loop remains turn/round-based and text-forward. Do not choose a UI framework yet.
+1. Load one versioned test fixture and validate required world facts, knowledge, action definitions, objectives, and deadlines.
+2. Build canonical initial state and per-player filtered views.
+3. Enumerate legal input pairs for the chosen model: direct action proposals or environmental influences.
+4. Validate both inputs against one declared round-start snapshot.
+5. Resolve direct support marks or typed environmental effects. Resolve conflicts by the declared target-level rule, not iteration order or player identity.
+6. Generate Jules's legal actions from the resulting state.
+7. Apply the same protagonist-selection policy and retain every action's complete rank tuple.
+8. Execute one action, apply knowledge acquisition and fixture character responses, evaluate objectives, and advance the deadline using the declared fixture order.
+9. Save the state diff, events, objective status, input sensitivity, and visibility-filtered result.
+10. Repeat across reachable states and compare trajectories across models.
 
-## 3. Local versus online
-- Local/pass-and-play is fast to test but weak for hidden information and social dynamics.
-- Online play better supports rivalry but adds identity, persistence, synchronization, reconnect, cheating, and privacy work.
-- A local simulation harness can test many strategies regardless.
+This pipeline deliberately separates input interpretation from protagonist choice. Direct intentions and environmental influences have different semantics, but neither gets to bypass the same legal-action generator or authoritative state-transition boundary.
 
-**Provisional direction:** first validate rules through simulation and paper play. Then decide whether online interaction is essential to test the core fun. Do not add accounts, Supabase, or realtime networking before justified by evidence.
+## 2. Minimal software boundary
 
-## 4. Scenario representation
-- Hard-coded scenarios start quickly but mix content and engine logic.
-- Versioned JSON with a small explicit vocabulary is inspectable and testable.
-- A general-purpose narrative language is expressive but expensive to implement, debug, and validate.
+Use pure or near-pure functions for the core. A conceptual interface is:
 
-**Provisional direction:** versioned JSON for facts, objectives, simple conditions/effects, Fate routes, and endings. Add scripting only if a second scenario demonstrates a concrete need.
+- `validateFixture(fixture) -> validationResult`
+- `validateSubmission(stateSnapshot, playerId, submission, model) -> acceptedOrRejected`
+- `resolveModelInputs(stateSnapshot, validSubmissions, model) -> selectionContextAndEvents`
+- `getLegalActions(stateAfterEffects, protagonistKnowledge) -> legalActions`
+- `selectProtagonistAction(state, legalActions, selectionContext, policyVersion) -> actionAndRankDiagnostics`
+- `applyProtagonistAction(state, action) -> nextStateAndEvents`
+- `applyKnowledgeAndCharacterResponses(state, events) -> nextStateAndEvents`
+- `evaluateObjectives(state, events, objectiveDefinitions) -> objectiveResults`
+- `advanceFixtureBoundary(state) -> nextStateAndEvents`
+- `resolveFixtureRound(state, submissions, model, fixture, rulesVersion) -> structuredRoundResult`
 
-## 5. Narration
-- Templates are predictable and inexpensive but may repeat.
-- Deterministic text assembly adds flexibility while remaining testable.
-- Optional LLM narration offers variation but adds cost, latency, privacy, contradiction, and consistency risks.
+These are conceptual boundaries, not an instruction to create a large class hierarchy. The outer round function orchestrates them in one deterministic order. Every function that can alter state must return a new state or an explicit state transition; it must not silently mutate unrelated fields.
 
-**Provisional direction:** structured events and authored/assembled text first. If an LLM is explored later, it consumes resolved events and returns untrusted presentation text only.
+## 3. Language and testing approach
 
-## 6. State and persistence
-In-memory state is simplest for a prototype; snapshots plus events aid replay/debugging; full event sourcing adds complexity.
+**Recommendation:** use a small TypeScript/Node test harness if its domain types can be reused in a later browser prototype. Keep dependencies minimal and avoid choosing a UI framework now. A short Python probe would also be acceptable for a disposable enumeration, but do not maintain both implementations of the same rules.
 
-**Provisional direction:** pure or near-pure state transition/resolution functions that return events, even if the prototype stores state in memory. Add durable history when needed; do not adopt full event sourcing by default.
+The deciding criterion is not language preference. It is whether the harness is easy to audit, can enumerate all valid input pairs, and reproduces the same structured results from the same state and rules version. The selection of TypeScript here is a provisional implementation recommendation, not a decision to build the full product stack.
 
-## 7. Engine properties
-- Deterministic order and explicit tie-break rules.
-- No UI/network/text-generation calls inside the resolution engine.
-- Stable entity IDs and typed references.
-- Scenario validation before match start.
-- Versioned scenario format and rule semantics.
-- Structured errors instead of silent coercion.
-- Explicit visibility filtering.
-- Replayable fixture for every discovered bug.
+## 4. Canonical data boundaries
 
-## 8. Online requirements if approved
-The server is authoritative. Clients submit commands, never replacement state. Commands use idempotency keys and expected state/phase versions. Validate and resolve safely under concurrency. Filter player views server-side.
+The harness must distinguish:
 
-Supabase may suit authentication, storage, and realtime delivery, but is not selected. Realtime transport alone does not guarantee correct state transitions, access policies, duplicate handling, or conflict resolution.
+- objective world facts and mutable conditions;
+- evidence items and their content;
+- access to an evidence item;
+- character knowledge;
+- each player's information;
+- character belief/suspicion;
+- persistent world effects;
+- temporary decision-context signals;
+- current legal actions;
+- submitted intentions or influences;
+- protagonist decision diagnostics;
+- resolved events and objective results;
+- player-visible explanations.
 
-## 9. Security and trust boundaries
-Treat client commands and scenario uploads as untrusted. Do not trust client clocks for deadlines. Never expose hidden facts in shared responses. Keep service-role keys out of browser code. Bound scenario size and trigger depth. Narration cannot mutate state. Log enough for debugging without leaking private information.
+Do not combine these into a `photoFound` flag or a generated prose string. The authoritative record consists of state, structured events, rule/version identifiers, and explicit knowledge transitions. Player screens, diagnostic output, and narration are projections of that record.
 
-## 10. Quality strategy
-Unit tests for legality, transitions, objectives, Fate decisions, and expiry; invariant/property tests for impossible states and duplicate commands; scenario validation; seeded strategy simulations; integration tests for phase flow and visibility; usability tests for comprehension, agency, pacing, and causality.
+## 5. Resolution boundaries for the test fixture
 
-## 11. Architecture decision gates
-Do not commit to a UI framework or online backend until the round model and actions are specified, a minimal engine can simulate several rounds, module contracts are testable, and playtests show the loop is worth continuing. Optimize first for correctness, observability, and ease of changing rules, not hypothetical scale.
+CONTROL_MODEL.md defines the current fixture order. For clarity, the enumerator should implement these as explicit phases:
+
+1. start-of-round snapshot;
+2. input validation;
+3. model-adapter resolution;
+4. environmental effect composition/revalidation, where applicable;
+5. legal-action generation;
+6. protagonist selection;
+7. selected-action execution;
+8. knowledge updates and deterministic character response;
+9. objective evaluation while the flatmate is still present;
+10. temporary signal expiry;
+11. boundary decrement and departure;
+12. terminal status and filtered result projections.
+
+This order is only for the comparative fixture. Fate is absent. It does not settle the production-wide rule order for Fate, effect expiry collisions, or multiple terminal predicates; those remain a separate contract gate.
+
+## 6. What the enumerator must measure
+
+For every reachable state, and for every valid submission pair in each candidate mode, record:
+
+- null-input diagnostic baseline (clearly marked non-playable);
+- selected action with full rank tuple and decisive field;
+- legal actions before and after environmental effects;
+- effect application, cancellation, persistence, and expiry;
+- whether changing Player A's input alone changes state, action, or a policy-read variable;
+- whether changing Player B's input alone changes state, action, or a policy-read variable;
+- reachable trajectories, repeated states, action denial, and no-op inputs;
+- each player's progress and whether their terminal predicate is reachable;
+- sequences that preserve or damage trust under the test hypothesis;
+- facts known to each actor at every event;
+- deterministic state/event equality on replay;
+- dominance: an input that never helps, an input that always dominates, or a rule that collapses the two models to the same behavior.
+
+The report should separate model behavior from tie-break bias, fixture assumptions, protagonist traits, and action cost. Identical action sequences do not prove equivalence if legal options, state transitions, information, or future reachability differ.
+
+## 7. Validation gate before any playable prototype
+
+Do not proceed to a UI or full game prototype until:
+
+1. CONTROL_MODEL.md contains internally consistent submission semantics and a total selection procedure.
+2. The fixture defines an evidence source that makes Player B's objective genuinely feasible.
+3. Both objectives have explicit predicates and multiple reachable trajectories; objective progress is distinct from completion.
+4. Every environmental effect has a precise target, precondition, result, duration/expiry, composition rule, and visible or safely hidden reason.
+5. The direct and influence inputs both have non-zero sensitivity in reachable states and neither candidate is structurally null under the enumerator.
+6. The independent reviewer can reproduce the enumerator's results from the specification.
+7. Dominance, input sensitivity, trust ordering, objective reachability, and hidden-information behavior have been inspected.
+8. Remaining owner choices—especially Jules's tie-break/personality, the trust response, and Player B's evidence objective—are explicitly accepted or changed.
+
+Then conduct a small counterbalanced human teach-back test. A deterministic enumerator can prove properties of the coded rules, not that players will find the game fun or fair.
+
+## 8. Later architecture options
+
+Only after the loop survives the prior gates should the project decide whether to add:
+
+- a minimal browser UI;
+- local/pass-and-play or online multiplayer;
+- persistence and reconnect support;
+- server-authoritative command processing;
+- a richer scenario validator;
+- deterministic narration templates;
+- optional, non-authoritative LLM presentation.
+
+A browser/TypeScript path remains plausible for a short text-forward game. Supabase, authentication, realtime updates, an LLM API, and a generalized narrative scripting language are not needed to test the current control-model question.
+
+## 9. Security and observability constraints for later work
+
+Treat client input and scenario uploads as untrusted. Keep canonical state server-side if online play is ever added. Filter private information before transmission rather than in the UI. Use stable entity/action IDs, explicit phase/state versions, idempotency keys for network commands, and deterministic replay records. Store enough diagnostics to explain a result but never leak private objectives or hidden facts.
+
+## 10. Ownership and related references
+
+- CONTROL_MODEL.md owns the current test fixture, candidate semantics, protagonist rank policy, and comparison gates.
+- MODULE_CONTRACTS.md defines logical responsibilities and input/output boundaries.
+- INFORMATION_MODEL.md owns the vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
+- DECISIONS.md records accepted/proposed project decisions.
+- scenarios/umbrella.json is still a draft design probe; it is not yet the canonical source of the repaired test fixture.
+- CAUSAL_ROUTE_TRACE_01.md and related files concern the separate, unresolved escalation/Fate premise.
+
+Do not copy the control-model rules into this document. Link to their canonical source and keep this file focused on execution boundaries and validation strategy.
