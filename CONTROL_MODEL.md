@@ -1,257 +1,314 @@
-# Control Model — Consolidated Decision Draft
+# Control Model — Revised Test Contract 0.2
 
-**Status:** External-audit draft; not accepted rules.  
+**Status:** Revised specification candidate; not accepted production rules.  
 **Decision owner:** Project owner.  
-**Evidence available:** Authored desk analysis only; no independent reconstruction or human playtest has been recorded.  
-**Scope:** This file consolidates the active decision about what each player controls and how Jules chooses an action. It deliberately separates that question from turn timing and from the city's causal finale.
+**Evidence class:** Claude Sonnet 5.5 audit received; corrections below are desk/specification repairs. No independent reconstruction or human playtest is claimed.  
+**Scope:** Define a reproducible, test-only comparison between direct intention and environmental influence. This document is the single active working reference for that comparison. Older traces are historical analyses when their assumptions differ.
 
-## 1. The decision we need to make
+## 1. Decision and system boundaries
 
-FATE/CTRL is intended to let two players with competing objectives influence one protagonist without either player owning Jules outright. Fate adds pressure through bounded, causally supported interventions. The central unresolved question is:
+FATE/CTRL is intended to let two players influence one protagonist, Jules, while pursuing partly conflicting objectives. Fate is a bounded scenario opponent. The authoritative game state and outcomes must be deterministic; narration explains results but does not decide them.
 
-**What does each player submit each round, and how does that submission change what Jules actually does?**
+The decision being tested is the player's **unit of control**:
 
-Two candidates currently warrant comparison:
+- **Direct intention (I):** a player nominates an action they want Jules to take. The nomination gives that action limited support in Jules's selection policy; it is not a command.
+- **Environmental influence (W):** a player applies a bounded effect to an existing world condition or opportunity. That effect changes the state/context that Jules's selection policy reads; it does not choose Jules's action directly.
 
-- **Direct intention:** a player proposes an action they want Jules to take.
-- **Environmental influence:** a player changes a bounded world condition, opportunity, constraint, or cost; Jules then chooses an action within the resulting state.
+Do not conflate the unit of control with timing, resources, or the final protagonist policy. For this comparison, hold timing constant: each player makes one private submission per round, the submissions resolve together, and Jules takes at most one major action. This is an experimental control, not a decision that simultaneous play is the final product.
 
-Neither has been selected. A hybrid, bidding system, or separate interference action is not justified until a pure model has demonstrated a specific shortcoming that the alternative solves.
+### Comparison architecture
 
-### Not the same decision: unit of control versus timing
+The minimum conceptual pipeline is:
 
-The repository sometimes discusses simultaneous commitment, alternating turns, and hybrid reactions alongside the direct-intention/environmental-influence choice. These are related but distinct dimensions:
+1. **Scenario fixture:** validated facts, access, knowledge, objective predicates, initial state, and boundary schedule.
+2. **Player-view projection:** each player receives only authorized facts/objectives.
+3. **Mode-specific submission adapter:** validate and interpret either intentions or environmental influences.
+4. **Mode resolution:** intentions produce bounded support counts; influences apply typed world/context effects and deterministic conflict rules.
+5. **Legal-action generator:** calculate Jules's available actions from canonical state and Jules's knowledge.
+6. **Protagonist selector:** rank legal actions by one shared, deterministic decision procedure.
+7. **Action executor:** apply exactly one selected action and emit typed events.
+8. **Knowledge/character response step:** transfer information only through defined acquisition events; apply the fixture's deterministic flatmate response.
+9. **Objective evaluator:** compute progress and terminal predicates from state/events, never from submissions alone.
+10. **Deadline/effect boundary:** evaluate objectives while the flatmate is still present, expire temporary signals, decrement the boundary counter, then process departure.
+11. **View/explanation projection:** return audience-safe reason codes and outcomes.
 
-1. **Unit of control:** what a player submits.
-2. **Commitment timing:** when a player submits and whether the opponent can see it.
-3. **Resolution policy:** how submissions and protagonist priorities produce an outcome.
-4. **Action economy:** how many submissions/actions and resources each player receives.
-5. **Protagonist policy:** how Jules selects among legal actions.
+These are logical responsibilities, not necessarily separate classes or services. The first comparison should be an offline deterministic enumerator over small states and submissions, not a browser game, online service, or production architecture.
 
-For the first comparison, this document provisionally holds submission timing constant: both players submit one item privately and simultaneously. This is a comparison control, **not a decision that simultaneous timing is the final game**. Timing should be evaluated separately once the unit of control is clearer.
+## 2. Hard constraints
 
-## 2. Non-negotiable constraints for either candidate
+Both candidates must obey these conditions:
 
-These are design constraints for the experiment, not evidence that either candidate already satisfies them.
-
-- A player submission is not an unconditional command over Jules.
-- Jules cannot use knowledge they do not possess.
-- A player's private information does not automatically become Jules's knowledge.
-- No action or influence creates an unsupported fact, witness, recording, relationship, or evidence item.
-- The same canonical state and accepted inputs must produce the same authoritative outcome.
-- A visible explanation must identify the rule or condition that made an action succeed, fail, become unavailable, or remain unused.
-- Objective progress must derive from state/events, not from the submission merely being made.
-- Fate cannot use a milestone until its stated prerequisites are true.
-- Narration communicates resolved facts; it is not an outcome authority.
-- Do not add a hybrid, resource contest, or extra reaction phase just to repair a weakness that has not been demonstrated.
+- A submission is not an unconditional command over Jules.
+- Jules cannot use information not in Jules's knowledge state.
+- Player-private information never transfers to Jules automatically.
+- No effect creates an unsupported fact, witness, recording, evidence item, character, or institution.
+- The same state, rules version, and accepted submissions produce the same state/events.
+- Every selected or rejected action has an internal reason code. Player-facing explanations are filtered so they do not reveal an opponent's private objective or private evidence.
+- Objective progress comes from resolved state/events, not from making a submission.
+- Fate cannot use a milestone until its prerequisites are satisfied.
+- Temporary context effects and persistent world-state changes are distinct and have explicit expiry semantics.
+- Do not add a hybrid, bid, reaction phase, random roll, or LLM action selector to patch a weakness before the pure candidates have been tested.
 
 ## 3. Shared test fixture
 
-This is an analytical fixture for comparing the models, not canonical scenario truth. It intentionally focuses on three rounds of the umbrella problem and excludes the proposed public emergency.
+The following facts are deliberately specific so the experiment is reproducible. They are **test-fixture assumptions**, not accepted canon for the game's story.
 
-### World facts assumed for this test
+### World and timeline
 
-- Jules borrowed a red umbrella from a flatmate.
-- A loose rib existed before the loan; Jules later worsened a tear. These are two distinct condition changes.
-- A dated photo in a message thread depicts the earlier loose rib.
-- The photo establishes only what can be seen in the image. It does not by itself establish that the flatmate noticed the defect, remembered it, or deliberately failed to disclose it.
-- A corroborating message about the flatmate's knowledge is **not** assumed to exist in this fixture unless scenario data explicitly adds it.
-- A repair kit exists in the apartment.
-- For this comparison only, the flatmate leaves after the third completed resolution boundary. In round 1 the flatmate is not reachable; in rounds 2 and 3 the flatmate is reachable; the flatmate departs after Jules's action in round 3.
-- The photo's source does not expire during these three rounds.
-- No public emergency or public evidence chain exists during this test. Fate's public-blame milestone is therefore ineligible.
-- Jules wants to return the umbrella honestly, avoid an unnecessarily humiliating confrontation, and resolve material uncertainty when there is time.
-- Jules has one major protagonist action per round in both candidate models. This is a provisional comparison constraint, not an approved final action economy.
+- Jules borrowed a red umbrella from a flatmate. A loose rib existed before the loan; Jules later worsened a tear. These are two distinct condition events.
+- A shared household message thread exists and is accessible from Jules's phone. Jules knows this thread exists but has not inspected the relevant older messages. Access to the thread is not knowledge of its contents.
+- The thread contains a dated photo of the loose rib and a message sent by the flatmate before the loan: “The rib is still loose—I noticed it yesterday. Jules is borrowing the umbrella, and I haven't told them about it.” This test message is intentionally strong evidence of prior knowledge and nondisclosure. It exists in the fixture from the start; no influence can invent it.
+- Player B's private briefing says the relevant message is in the thread. Player A is not given this information. Neither player's knowledge automatically becomes Jules's knowledge.
+- A repair kit exists in the apartment but is initially stored out of immediate reach. It can be brought within reach without creating a new object.
+- The flatmate is reachable in rounds 1, 2, and 3, and leaves immediately after Jules's action at the end of round 3. The countdown at the beginning of those rounds is respectively 3, 2, and 1 boundaries remaining.
+- The flatmate is available for a one-to-one conversation in this fixture. This is not a claim that an actual public emergency, broadcast, or Fate route exists.
+- There is one major protagonist action per round. A player submission consumes that player's single submission for the round; no separate token economy is assumed in this comparison.
+- The test excludes the Fate/public-blame finale. No public emergency or public evidence channel is established, so that Fate milestone is ineligible.
 
-### Character and player knowledge
+### Initial state
 
-At the start, Jules knows they worsened the tear and knows that the flatmate is leaving soon. Jules has not inspected the photo and does not know whether the flatmate knew about the earlier loose rib.
+| Field | Initial value |
+|---|---|
+| round / boundaries remaining | 1 / 3 |
+| umbrella returned | false |
+| Jules acknowledged their later tear | false |
+| repair kit exists | true |
+| repair kit within reach | false |
+| repair plan prepared | false |
+| message thread exists and is accessible | true |
+| Jules knows the thread exists | true |
+| thread inspected by Jules | false |
+| evidence presented to flatmate | false |
+| flatmate prior knowledge established to Jules | false |
+| trust | 1 (the fixture's baseline) |
+| flatmate reachable | true |
+| flatmate departed | false |
+| temporary action-context signals | zero |
 
-Player-only knowledge must be tracked separately. If Player B's private briefing says the photo exists, that fact cannot silently become part of Jules's knowledge.
+### Test objectives
 
-### Draft player goals
+These predicates are intentionally concrete enough to test. They are not a final scoring design.
 
-- **Player A:** return the umbrella honestly and preserve trust.
-- **Player B:** establish, with supportable evidence, that the flatmate knew about the earlier defect and failed to disclose it.
+- **Player A — preserve trust through honest return:** complete when the umbrella is returned before departure, Jules acknowledges the tear Jules caused, and trust is at least the initial baseline (1).
+- **Player B — establish accountability with evidence:** complete when Jules has inspected the seeded message, presented it to the flatmate before departure, and the flatmate's prior knowledge is acknowledged from that evidence.
 
-Neither goal has an accepted terminal predicate. “Preserve trust” requires an observable rule or state change; it cannot be inferred solely from Jules's honest intention. Player B's goal requires evidence of prior knowledge and nondisclosure, not merely proof that the umbrella had an earlier defect.
+A prepared repair plan and an inspected source are progress, not terminal success by themselves. The photo alone proves only the earlier condition; the accompanying message supplies the evidence of prior knowledge and nondisclosure.
 
-### Fixture contradictions to carry forward
+### Deterministic relationship-response hypothesis
 
-- CORE_LOOP_COMPARISON.md says the flatmate leaves in two resolution cycles, while several later traces use three boundaries. This test uses three, but the fixture source has not yet been reconciled across the repository.
-- DIRECT_INTENTION_TRACE.md starts with the photo inaccessible to Jules, while MATCHED_MODEL_COMPARISON_01.md and this test make the thread searchable. This test assumes the photo can be found by Jules but remains uninspected. That assumption needs to be reflected in the canonical scenario fixture before implementation.
-- scenarios/umbrella.json still has undefined objective predicates, Fate milestones, intervention rules, and departure timing. It remains a design probe.
-- The broader public-emergency premise is not part of this three-round test and is not thereby validated.
+This test needs a rule for the trust predicate rather than an assumption about human psychology:
 
-## 4. Candidate I — Direct intention
+- Trust begins at 1.
+- If Jules presents the message as a challenge **before** acknowledging Jules's own later damage, trust falls to 0.
+- If Jules has already acknowledged the later damage before presenting the message, trust remains at 1.
+- A later honest return does not restore trust that fell to 0 in this three-round fixture.
 
-### Submission
+This is a deliberately strong ordering hypothesis to make the objective trade-off observable. It needs owner approval and later human testing before being treated as game canon. The fixture must not imply that this is a general model of real human trust.
 
-Each player submits one proposed protagonist action for Jules. The proposal includes an action identifier and only the target/parameters permitted by the scenario. It is a request or candidate, not a guaranteed command.
+## 4. Legal protagonist-action vocabulary
 
-### Candidate resolution concept
+All actions below consume Jules's one major action for the round when selected. Preconditions are evaluated after any environmental effects for that resolution, but before the action executes.
 
-1. Validate each proposal against the same round-start state and Jules's current knowledge/capability.
-2. Record each legal proposal and each ineligible proposal with a stable reason.
-3. Use a declared protagonist-selection policy to choose among the legal submitted proposals.
-4. Execute no more than one major protagonist action under this fixture.
-5. Record the selected proposal, rejected/unselected proposal, resulting state, acquired knowledge, and objective progress separately.
+| Action | Preconditions | Authoritative effect | What it does not do |
+|---|---|---|---|
+| FETCH_REPAIR_KIT | Kit exists and is not within reach | Set repair kit within reach; emit KitMovedWithinReach | Does not prepare a repair plan or return the umbrella |
+| PLAN_REPAIR | Kit within reach and no plan prepared | Set repairPlanPrepared=true; emit RepairPlanPrepared | Does not repair/return the umbrella or complete A's objective |
+| INSPECT_SHARED_THREAD | Thread exists, is accessible, Jules knows the thread exists, and it is not yet inspected | Set threadInspected=true; Jules learns the photo's visible condition and the seeded message's content; emit EvidenceInspected | Does not disclose evidence to the flatmate or complete B's objective |
+| PRESENT_EVIDENCE | Thread has been inspected; flatmate is reachable; evidence has not already been presented | Set evidencePresented=true; flatmate acknowledges what the seeded message establishes; emit EvidencePresented and PriorKnowledgeAcknowledged; apply the trust-response hypothesis in §3 | Does not return the umbrella or erase Jules's responsibility for the later tear |
+| RETURN_HONESTLY | Umbrella has not been returned; flatmate is reachable | Set umbrellaReturned=true, ownDamageAcknowledged=true, repairOfferMade=true; emit HonestReturn | Does not restore trust already lost under the test hypothesis |
+| WAIT | Always | No protagonist state change; deadline boundary still proceeds | Does not preserve the current round or stop departure |
 
-**Critical unresolved point:** the prototype contract must say whether Jules chooses only among the submitted legal proposals or may choose any legal action in the scenario. These lead to different games. If Jules can ignore both submitted proposals and select any action, direct intention may have almost no causal effect. If Jules only chooses between submissions, the players' proposals define the candidate set and a fallback is needed when no proposal is legal. Do not quietly switch between these semantics within a trace.
+The test vocabulary is finite. No generic “do what feels right” action, arbitrary state patch, or unseeded evidence discovery is allowed. A later test may add actions only with explicit preconditions, state effects, events, cost, target-change behavior, and visibility.
 
-### Potential strengths
+## 5. Candidate I — Direct-intention semantics
 
-- The player's attempted contribution is concrete and easy to phrase.
-- The game can explain why a proposal was not selected.
-- Costs and intent are easier to inspect in an event log.
+Each player submits one action identifier from the vocabulary above. A submission must be legal in the round-start state and consistent with Jules's knowledge/capability. An invalid proposal adds no support and is logged internally with a stable reason.
 
-### Risks to test
+**Chosen semantics for this comparison:** all legal actions remain candidates; a legal proposal adds one support mark to that action. The proposal does not restrict the candidate set and does not directly execute the action.
 
-- If one proposal is selected and the other has no continuing effect, the losing player may feel denied a meaningful turn.
-- If Jules's selection policy is opaque, direct requests do not guarantee perceived agency.
-- If the priority policy ignores the proposals, the control input may be cosmetic.
-- If proposal priority is based directly on player objective progress, Jules becomes a proxy for the scoring system rather than a character.
+- support(action) is 0, 1, or 2 according to how many players submitted that legal action;
+- duplicate proposals are one action candidate with support 2, not two executions;
+- incompatible proposals each contribute support to their own action;
+- an invalid/stale proposal contributes support 0;
+- if neither proposal is legal, Jules still selects from all legal actions using the same fallback ranking;
+- an unselected proposal has no mechanical effect after this resolution, though an event may record that it was rejected. Do not claim a losing proposal preserves strategic value unless a later rule supplies such value.
 
-## 5. Candidate W — Environmental influence
+This semantics keeps the submission from being an unconditional command while making its causal role testable. It is a provisional comparison contract, not a final product decision. If the owner later prefers “Jules chooses only among nominated proposals,” that is a different model and must be tested as such, including unanimous proposals that conflict with character priorities.
 
-### Submission
+## 6. Candidate W — Environmental-influence semantics
 
-Each player submits one bounded world influence. An influence must specify a target, a supported effect, its preconditions, its magnitude or discrete outcome, its duration/expiry, and any cost. The effect must operate on an established fact, resource, relationship, opportunity, or constraint.
+Each player submits one typed influence. Valid effects operate on seeded state and are applied before Jules's action is chosen. Effects can alter either a persistent world condition or a temporary, explicit action-context signal.
 
-### Candidate resolution concept
+### Minimum effect vocabulary
 
-1. Validate both influences and their targets against the same round-start snapshot.
-2. Resolve compatible effects and conflicts under one explicit rule.
-3. Record changes to state and active effects before Jules chooses an action.
-4. Derive Jules's legal action set from the changed canonical state and current knowledge.
-5. Use the same protagonist-selection policy as Candidate I.
-6. Record each applied/failed influence, its measurable consequence, Jules's selected action, and objective progress separately.
+| Influence | Preconditions | Effect consumed by the selector | Duration / failure behavior |
+|---|---|---|---|
+| SURFACE_THREAD | Thread exists, is accessible, and is not inspected | Set temporary signal for INSPECT_SHARED_THREAD to +1 | Current action selection only; source contents remain unknown until inspection |
+| OBSCURE_THREAD | Same as SURFACE_THREAD | Set temporary signal for INSPECT_SHARED_THREAD to -1 | Current action selection only; does not hide/delete source truth or prevent explicit inspection |
+| MOVE_REPAIR_KIT_WITHIN_REACH | Kit exists and is not within reach | Persistently set repairKitWithinReach=true; PLAN_REPAIR becomes legal after effects resolve | Persistent physical state change; fails if kit is absent or target condition is stale |
 
-An influence cannot simply say “make Jules care more,” “make the evidence convincing,” or “make an event happen.” Such effects have no testable semantics until expressed as named state changes with bounded consequences.
+An influence consumes the player's one submission for the round. This fixture has no additional token cost. Temporary thread signals expire after action selection, whether or not the action uses them. Moving the existing kit is persistent because it changes the physical setup; it is not automatically reset at the boundary.
 
-### Potential strengths
+### Composition and conflict rules
 
-- A player may change future options even when Jules chooses another immediate action.
-- Both players could contribute to a chain of events without both requiring the same protagonist action slot.
-- Environmental setup may support counterplay and causal planning.
+- SURFACE_THREAD and OBSCURE_THREAD target the same temporary signal. If both validly target the thread in one resolution, they cancel to 0. Both submissions are consumed; neither changes evidence or thread accessibility.
+- Repeating the same signal is capped at its defined value (+1 or -1); it does not stack.
+- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal because it targets a different state field.
+- Validate submissions against the start snapshot, then revalidate target preconditions when applying them. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
+- No influence directly selects a protagonist action. It must change a state/context value that the legal-action generator or selector actually reads.
 
-### Risks to test
+The effect set is intentionally tiny. If the team cannot explain why an influence changed the outcome from the resulting state, that effect is not sufficiently specified.
 
-- The connection between submission and outcome can become indirect or invisible.
-- Cheap, permanent setup may dominate the game or permit unlimited stacking.
-- The scenario author may introduce vague effects such as salience, friction, or opportunity without defining their mechanical consequence.
-- Two influences may conflict, compose, overwrite one another, expire, or become stale; each case requires a clear rule.
-- If the effect never changes legality, cost, duration, information, or another variable the protagonist policy uses, it may have no causal impact.
+## 7. Shared deterministic protagonist-selection procedure
 
-## 6. Protagonist policy: common candidate table
+The policy is scenario-authored. It must run the same way in both candidates; the only difference is the input channel that supplies support or context. Player objectives do not appear as character motives in the ranking function.
 
-A common policy is needed so we do not favor one model by giving Jules different priorities in each trace. The following table is a provisional test policy copied into this consolidated decision for scrutiny, not an accepted game rule.
+### Step 1 — Derive the legal action set
 
-Evaluate only legal actions and Jules's current knowledge. Apply preferences in the listed order. Do not let a player objective count as a Jules preference.
+Apply the action preconditions in §4 to the post-influence state and Jules's current knowledge. If the set is empty due to a specification defect, fail the fixture validation; do not invent a story action. WAIT is always legal, so ordinary valid states always have a fallback.
 
-| Order | Condition | Candidate preference |
+### Step 2 — Assign each legal action a rank tuple
+
+Compare actions lexicographically, highest tuple first:
+
+**(deadlineTier, actionTier, contextSignal, directSupport, tieBreakRank)**
+
+- **deadlineTier:** RETURN_HONESTLY gets 3 only when exactly one boundary remains and it is legal; every other action gets 0. At earlier boundaries all actions get 0.
+- **actionTier:** use the table below. A rank of 2 represents a meaningful current route; rank 1 is a lower-priority preparation action; WAIT is 0.
+- **contextSignal:** in W, use the temporary signal for the action (normally -1, 0, or +1). In I this field is always 0. MOVE_REPAIR_KIT_WITHIN_REACH affects legality, not contextSignal.
+- **directSupport:** in I, use the valid support count (0–2). In W this field is always 0.
+- **tieBreakRank:** use the fixed test-fixture action order below. It is intentionally a provisional character choice, not a neutral or universal rule.
+
+| Action | actionTier condition |
+|---|---|
+| PRESENT_EVIDENCE | 2 if legal |
+| INSPECT_SHARED_THREAD | 2 if legal |
+| RETURN_HONESTLY | 2 if legal before the final boundary; its deadlineTier decides on the final boundary |
+| PLAN_REPAIR | 2 if legal and at least two boundaries remain; otherwise 1 |
+| FETCH_REPAIR_KIT | 2 if legal and at least two boundaries remain; otherwise 1 |
+| WAIT | 0 |
+
+**Fixed test tie-break order, highest first:** FETCH_REPAIR_KIT, PLAN_REPAIR, INSPECT_SHARED_THREAD, PRESENT_EVIDENCE, RETURN_HONESTLY, WAIT.
+
+This order gives a reproducible result when all previous tuple fields tie. It may bias strategy; do not canonize it without a sensitivity check. To prevent a tie-break from becoming an invisible design choice, the enumerator must report whenever it decides an outcome.
+
+### Step 3 — Execute one selected action
+
+Execute the highest-ranked legal action once. The selector must retain the complete candidate list, each action's tuple, the winner, and the first differing tuple field that decided the result. If two submissions are tied, the tie-break is part of the result and is recorded.
+
+### Step 4 — Update knowledge, responses, and objectives in a fixed order
+
+Use this fixture order, from top to bottom:
+
+1. Validate both submissions against the start snapshot.
+2. Resolve valid W effects (or calculate valid I support counts).
+3. Revalidate and apply persistent environmental changes; derive the legal protagonist action set.
+4. Rank legal actions and execute exactly one.
+5. Apply action events and explicit knowledge acquisition.
+6. Apply the deterministic flatmate response/trust rule if PRESENT_EVIDENCE or RETURN_HONESTLY occurred.
+7. Evaluate objective progress and completion while the flatmate is still present.
+8. Expire temporary context signals.
+9. Decrement boundaries remaining.
+10. If the counter reaches zero, mark the flatmate departed. No further action can reach the flatmate after this point.
+11. Recompute terminal status and filtered player views; narrate only the authorized resolved events.
+
+This order is a fixture contract, not an accepted global game-resolution contract. Fate is absent from this test. Before production, the broader D-010 phase order must reconcile objective evaluation, deadlines, effects, Fate, information updates, and terminal conditions.
+
+## 8. Worked trace and sensitivity checks
+
+The table below defines a repeatable **baseline run with no submissions that affect ranking**. It is not evidence of balance. Inputs can alter the trajectory under the tuple procedure above.
+
+| Round | Baseline starting state | Baseline selected action | State/event change | Objective status after action |
+|---|---|---|---|---|
+| 1 (3 remain) | Kit out of reach; thread accessible/uninspected; no plan; flatmate reachable | FETCH_REPAIR_KIT by fixture tie-break among rank-2 actions | Kit comes within reach; no knowledge gained | Neither objective complete |
+| 2 (2 remain) | Kit within reach; thread uninspected; no plan; flatmate reachable | PLAN_REPAIR by fixture tie-break among rank-2 actions | Plan becomes ready | Neither objective complete |
+| 3 (1 remains) | Not yet returned; thread uninspected; flatmate reachable and departs after this action | RETURN_HONESTLY by deadlineTier=3 | Umbrella returned; own damage acknowledged; trust remains 1; then departure occurs | A complete; B incomplete |
+
+The baseline run deliberately makes it possible to see whether submitted inputs change anything. The following single-submission checks must also be run; their expected mechanics are specified, not claimed as empirical evidence.
+
+| State for test | Input changed from null baseline | Expected difference, and why |
 |---|---|---|
-| P0 — Legality | Required capability, access, knowledge, or target is missing | Exclude the action; a submission cannot make it legal |
-| P1 — Immediate departure | Flatmate leaves after this action and an honest return is still possible | Prefer RETURN_HONESTLY over actions that can safely wait, unless return requires a knowingly false statement |
-| P2 — Prepare before deadline | At least two boundaries remain and Jules has no credible return/repair plan | Prefer PLAN_REPAIR over INSPECT_PHOTO and WAIT unless the evidence access/source is about to disappear |
-| P3 — Material uncertainty | A consequential, unresolved fact can be checked from an accessible, existing source | Prefer INSPECT_PHOTO over WAIT or repeated inspection of already-known information |
-| P4 — Honest accountability | A reachable conversation can acknowledge Jules's own damage without unsupported accusation | Prefer a truthful return or knowledge question, according to deadline state |
-| P5 — Avoid unnecessary confrontation | Higher priorities do not distinguish the remaining legal options | Prefer needed information or a private conversation over public accusation |
-| P6 — Stable tie-break | Options remain equivalent | Use earliest deadline relevance, then a fixed scenario-authored action order |
+| Round 1, initial state | I: one player proposes INSPECT_SHARED_THREAD instead of no proposal | INSPECT gets support 1 while FETCH has support 0; both have actionTier 2, so the direct proposal changes Jules's selected action |
+| Round 1, initial state | W: one player submits SURFACE_THREAD instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
+| Round 2 state with kit within reach, thread uninspected, plan not ready | W: one player submits OBSCURE_THREAD | INSPECT gets contextSignal -1; if its prior default order would otherwise win a rank tie, the selected action changes to the next tied action |
+| Round 2 state after evidence inspected, plan not ready, flatmate reachable | I: one player proposes PRESENT_EVIDENCE rather than no proposal | PRESENT_EVIDENCE gets support 1 and can beat PLAN_REPAIR at the tied actionTier 2 |
+| Round 2 state after evidence inspected, kit out of reach, flatmate reachable | W: MOVE_REPAIR_KIT_WITHIN_REACH | PLAN_REPAIR becomes legal after effects; the selector's candidate set changes, and the state transition persists even if Jules does not select PLAN_REPAIR |
 
-### What this policy does not define
+If any row does not behave as specified, the trace or the rule contract is defective. The action ranking, not prose, determines the result. The enumerator should evaluate all valid submission pairs and verify these one-input sensitivity tests automatically.
 
-The table does not define a complete scoring function. It does not define how an environmental influence changes friction, salience, time, or action cost. It does not define how Jules selects when neither player's direct proposal is legal. It does not define the objective evaluator or a trust predicate. It may over-prioritize repair at the expense of evidence, and it may make Jules predictable. These are substantive open questions, not implementation details to fill in silently.
+### Objective-order illustration
 
-## 7. Matched three-round trace and its limits
+- **A route:** FETCH_REPAIR_KIT or another early action; later PLAN_REPAIR if useful; RETURN_HONESTLY before departure. A completes only if trust remains at baseline.
+- **B route:** INSPECT_SHARED_THREAD, then PRESENT_EVIDENCE before departure. B completes only after disclosure and acknowledgement.
+- **Both goals can be achieved:** inspect in round 1, return honestly in round 2, present the evidence in round 3. Trust remains at baseline because Jules acknowledges their own damage before the disclosure.
+- **A can be blocked:** inspect in round 1, present evidence in round 2 before acknowledging the later tear, then return honestly in round 3. B completes, but trust falls to 0 and is not restored, so A fails.
+- **B can be blocked:** use the early rounds for kit preparation/return choices and leave no action to inspect and present the evidence before departure. Discovering the message and presenting it are distinct actions.
 
-The following is a descriptive replay of the latest desk analysis. It is **not yet a valid proof that the two models have equivalent or different strategic quality**.
+These sequences establish feasibility in the fixture, not overall balance. The trust response and the strength of the message are high-impact scenario assumptions and need explicit owner approval.
 
-| Round | Shared state and legal options | Direct-intention submissions | Provisional protagonist choice | Influence submissions as currently described | What the comparison has not established |
-|---|---|---|---|---|---|
-| 1 — Three boundaries remain | Jules knows about the tear. Photo is accessible but uninspected. Repair kit is available. Flatmate is unreachable. Candidate actions include PLAN_REPAIR and INSPECT_PHOTO. | A proposes PLAN_REPAIR; B proposes INSPECT_PHOTO. | P2 selects PLAN_REPAIR because no plan exists and at least two boundaries remain. | A reduces effort/makes the repair kit salient; B makes the existing thread easier to notice without revealing contents. | “Effort” and “salience” have no defined state representation or effect on policy. The selected action may be the same even if both influences have zero effect. Direct intention semantics also depend on whether Jules chooses only between proposals. |
-| 2 — Two boundaries remain | Repair plan exists. Flatmate is reachable. Photo remains uninspected and available. | A proposes RETURN_HONESTLY; B proposes INSPECT_PHOTO. | P3 selects INSPECT_PHOTO because the repair plan exists and the source is available. Jules learns only that the earlier loose rib appears in the photo. | A preserves a private return opportunity; B reduces the effort of inspection. | The shared policy selects the photo even without a specified B influence, and the rules do not define whether A's opportunity persists, how it costs an action, or whether it changes an available action. Contribution from either influence is not yet demonstrated. |
-| 3 — Final boundary | Flatmate is reachable and departs after Jules's action. Jules knows the rib was loose earlier but does not know what the flatmate knew. | A proposes RETURN_HONESTLY; B proposes ASK_KNOWLEDGE. | P1 selects RETURN_HONESTLY. Under this fixture, that action does not include ASK_KNOWLEDGE unless the action contract is deliberately changed. | A preserves the private return opportunity; B makes a supported knowledge question easier to ask. | It is not defined how “easier to ask” changes selection. B's goal is unresolved, but its feasibility was not established from a known evidence source. Trust preservation is also not measured. |
+## 9. Explainability and information visibility
 
-### Interim conclusion from the trace
+Internal diagnostics must contain the complete rank tuple, candidate list, accepted/failed submissions, resulting events, and objective deltas. Player-visible explanations must be independently projected by audience:
 
-The trace exposes the largest unresolved comparison defect: the influence model describes qualitative changes, but neither the effect contract nor the protagonist policy gives those changes an operational value. The current outcomes therefore do not demonstrate that both influence submissions mattered. It would be misleading to call the trace a successful matched experiment until that is fixed.
+- A player can receive the visible outcome and a non-leaking reason for why their own submission did or did not affect the action.
+- Do not reveal that an opponent targeted a private source or held an undisclosed objective unless the game intentionally reveals submissions at that boundary.
+- Do not expose private facts through validation errors, stale-target errors, event identifiers, timing, or debug logs.
+- Public events can describe the effect on a visible object or opportunity. Private state changes need their own visibility rules.
+- Narration failure or contradiction never changes the result.
 
-The direct-intention model has the opposite unresolved issue: it is not explicit whether Jules chooses only among the two proposals or from all scenario-legal actions. If it is the latter, the proposals may be ignored by the protagonist policy; if it is the former, a policy and fallback for illegal or duplicate proposals are required.
+## 10. What the comparison is and is not testing
 
-A fair test may conclude that these models are not fully reducible to one shared decision policy because they provide different control units. The requirement is not identical mechanics; it is matched scenario facts, action budget, timing, protagonist traits, objective predicates, and a transparent explanation of each model's distinctive causal contribution.
+### Held constant
 
-## 8. Comparison criteria
+Scenario facts, player objectives, player information boundaries, legal protagonist action vocabulary, action costs, one-action-per-round limit, submission timing, deadline boundary, protagonist preference tiers, flatmate response, objective predicates, and explanation policy.
 
-Do not compute a weighted score from the desk trace. Use these criteria to guide an independent audit and later a human comparison.
+### Different by design
 
-| Criterion | Question | Minimum evidence |
-|---|---|---|
-| Immediate agency | Can the player predict how a submission could affect the next meaningful decision? | Trace links submission to a real outcome without guesswork |
-| Protagonist autonomy | Does Jules remain constrained by knowledge, capability, preferences, and commitments? | Illegal/uninformed actions are blocked with reasons |
-| Strategic depth | Are there multiple viable options with real trade-offs for each player? | At least two plausible strategies per player |
-| Compatibility | Can both players contribute without automatic erasure, and can they also genuinely conflict? | One compatible and one incompatible worked case |
-| Counterplay | Can the opponent respond to a consequential threat in time? | At least one credible disruption path per major threat |
-| Readability | Can an independent reviewer reconstruct why the outcome occurred? | State, accepted inputs, reason codes, and resulting events |
-| Information fairness | Is player-only information kept separate from Jules's knowledge? | No unexplained knowledge transfer or hidden-target leaks |
-| Pacing and cognitive load | Does the model generate meaningful decisions rather than idle setup, forced denial, or modifier bookkeeping? | Novice teach-back and observed play |
-| Objective fairness | Are goals meaningfully achievable and not trivially determined by a single deadline? | Predicates, feasibility routes, and exploit audit |
-| Narrative causality | Does a submission change a supported cause/opportunity rather than only its narration? | Each change is traceable to state/events |
-| Implementation burden | Can legality, resolution, expiry, and replay be expressed in a bounded deterministic contract? | Explicit contracts and tests remain small enough to audit |
-| Scenario generality | Does the control unit transfer beyond the umbrella example? | One second tiny scenario uses it without a bespoke exception |
+- I changes per-action directSupport; it does not change world state or legal options.
+- W changes explicitly named context variables or persistent world conditions. These can alter ranking or legal actions before Jules acts.
+- The I and W legal candidate sets may differ after W changes a real precondition, such as moving the repair kit within reach. That is part of the model difference, not grounds to claim the scenarios are identical at that instant.
+- Identical selected actions do not establish equivalence if the modes differ in options, future state, knowledge, or player-visible reasons.
 
-No player study or independent reconstruction has yet supplied evidence against these criteria. A document's completeness is not a substitute for evidence.
+### Findings we are not allowed to claim yet
 
-## 9. Questions that must be answered before selecting a model
+No one has independently reconstructed this revised procedure and no human has played it. We cannot yet claim either model is fun, fair, strategically deep, easy to teach, or appropriate for the full Fate premise. The baseline and sensitivity checks only make the structural comparison reproducible.
 
-### Semantics and fairness
-1. In Candidate I, does Jules select only among submitted legal proposals, or from all legal scenario actions? What happens when proposals duplicate, conflict, or are both illegal?
-2. Does each proposal itself have a mechanical force beyond nominating an action? If so, what is it and how is it communicated?
-3. In Candidate W, which effect types are permitted in the minimum prototype? Are magnitude, duration, costs, stacking, and visibility fixed per effect?
-4. What measurable variable can “salience” or “friction” change? If the protagonist policy does not consult that variable, why is it a valid effect?
-5. When does Jules select an action relative to influence application, information updates, deadlines, and objective evaluation?
-6. Can an influence create a future opportunity that Jules never uses? What resource/cost is consumed, and when does the opportunity expire?
-7. How do the two models provide counterplay without turning the game into winner-take-all request rejection or invisible environmental setup?
+## 11. Remaining design decisions and decision gate
 
-### Scenario and objective feasibility
-8. What existing source can establish that the flatmate knew about the loose rib? If no such source is seeded, is Player B's objective impossible by design?
-9. What observable state change means trust was preserved? Is it a player goal, a character belief, a relationship variable, or a terminal predicate?
-10. Does the three-round deadline produce meaningful choices or make one objective automatically unattainable? What earlier route gives both players a chance?
-11. Are there any Fate decisions in the test? If not, the test cannot show how the chosen control model interacts with Fate; that must be a separate test after control semantics are coherent.
+The following choices are now explicit **test-fixture defaults**, but still require project-owner review before becoming canon:
 
-### Evidence and decision quality
-12. Which differences in the trace are caused by the control model, and which are caused by unspecified influence effects, missing evidence, or the protagonist policy?
-13. Is the current preference table too scripted or biased? Does it produce state-dependent choices for principled reasons?
-14. What is the smallest follow-up experiment that can discriminate the candidates rather than simply produce another plausible story?
-15. Which conclusions are supported by the written trace, and which require an independent reviewer or human players?
+1. Whether direct intentions should add bounded support to all legal actions, or whether the product should instead restrict Jules to nominated proposals.
+2. Whether the seeded message and its forceful wording are appropriate for the umbrella story, or whether B's objective should be changed.
+3. Whether the trust-response rule creates a useful strategic sequencing choice or feels artificially punitive.
+4. Whether the protagonist tie-break order is a plausible characterization or an unacceptable baseline bias.
+5. Whether the bounded W effect vocabulary is sufficiently environmental and strategic, rather than disguised action encouragement.
+6. Whether the one-major-action-per-round economy is worth preserving after observing action denial and multi-step objectives.
 
-## 10. Decision gate
+Before a comparative prototype, run an offline deterministic enumerator over every valid player-submission pair for every reachable fixture state. It must report:
 
-Do not accept a model from the current paper trace. Before moving to a small comparative prototype:
+- null-input baseline action;
+- chosen action and full rank tuple for each candidate;
+- whether changing either player's submission alone changes the selected action, legal action set, or persistent state;
+- all reachable trajectories and whether each objective can be completed;
+- whether any candidate input is always irrelevant or strictly dominated;
+- cases where a player loses trust or misses a deadline;
+- hidden information available to each audience at each event;
+- deterministic replays and a result diff when one rule changes.
 
-- Define the candidate submission contracts for both models precisely.
-- Make the canonical test fixture agree on the deadline, photo access, knowledge facts, and available evidence sources.
-- Define objective progress separately from objective completion, with an explicit trust predicate and a feasible evidence route for B.
-- Give influence effects a bounded, operational meaning and show at least one outcome they actually change.
-- Clarify the candidate set, rejection rules, and fallback in direct intention.
-- Re-run the same three-round fixture with the same player submission budget, timing convention, character traits, knowledge, objectives, and ending rules.
-- Include at least one genuine conflict, one compatible pair of submissions, one unused/expired influence, and one state where each player's strategic route is favored.
-- Have an independent reviewer reconstruct the trace without coaching.
-- Only then decide whether either model is sufficiently defined to try in a local deterministic prototype.
+Then have an independent reviewer reconstruct the enumerator's results from this file. Only after the corrected trace and independent reconstruction agree should a small local comparative prototype be considered. Human teach-back sessions are still required before choosing a model for the actual game.
 
-After this gate, evaluate timing (simultaneous versus alternating) as a separate axis rather than assuming the answer from the chosen control unit.
+A model must not be selected merely because one authored baseline reaches a convenient result. The purpose of the enumerator is to find states where each control input matters, to expose dominant or irrelevant inputs, and to falsify a candidate before spending human playtest time.
 
-## 11. Related repository material and intended authority
+## 12. Historical-document handling
 
-This is the proposed single working reference for the control-model decision while the consolidation/audit is in progress.
+This file is the single working reference for the control-model experiment while the consolidation PR is in review.
 
-- SPEC.md remains the product-level draft and scope reference; it does not settle the control model.
-- scenarios/umbrella.json remains a design probe, not an executable source of truth.
-- INFORMATION_MODEL.md defines the required distinctions among facts, knowledge, belief, disclosure, and narration.
-- MODULE_CONTRACTS.md and ARCHITECTURE.md contain engineering boundaries that must be reconciled before implementation.
-- DECISIONS.md is the canonical decision log; D-013 says to compare pure models before proposing a hybrid.
-- PRIORITY_TABLE_REPLAY_01.md is source analysis for the candidate table and round trace.
-- MATCHED_MODEL_COMPARISON_01.md and MODEL_COMPARISON_SCORECARD.md are supporting analytical artifacts, not independent evidence.
-- DIRECT_INTENTION_TRACE.md, PAPER_SIMULATION_01.md, PAPER_SIMULATION_02.md, CORE_LOOP_COMPARISON.md, and PROTAGONIST_CONTROL.md are prior exploratory analyses. They contain historical assumptions that should not be silently treated as current rules.
+- SPEC.md is the product-level draft; it does not settle this choice.
+- scenarios/umbrella.json remains a non-executable design probe, not canonical truth.
+- INFORMATION_MODEL.md defines truth, evidence, accessibility, knowledge, belief, disclosure, visibility, and event distinctions.
+- MODULE_CONTRACTS.md and ARCHITECTURE.md describe the proposed technical boundary; they must identify who owns protagonist selection and model-specific submission handling before any engine implementation.
+- DECISIONS.md is the canonical decision log.
+- PRIORITY_TABLE_REPLAY_01.md and MATCHED_MODEL_COMPARISON_01.md are prior source analyses, not independent evidence.
+- DIRECT_INTENTION_TRACE.md, PAPER_SIMULATION_01.md, PAPER_SIMULATION_02.md, CORE_LOOP_COMPARISON.md, and PROTAGONIST_CONTROL.md are historical explorations. Their old fixtures and unresolved semantics must not be silently treated as current rules.
 
-**Consolidation rule:** once this file passes audit and is accepted by the project owner, update the other control-related documents to link here for current assumptions, label their original traces as historical evidence, and remove or archive duplicated active summaries. Preserve the history; do not maintain multiple competing definitions of the same rule.
+Preserve historical reasoning, but do not maintain multiple active definitions of the same test fixture, policy, or action contract.
