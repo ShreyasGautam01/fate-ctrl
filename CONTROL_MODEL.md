@@ -101,8 +101,9 @@ A prepared repair plan and an inspected source are progress, not terminal succes
 This test needs a rule for the trust predicate rather than an assumption about human psychology:
 
 - Trust begins at 1.
-- If Jules presents the message as a challenge **before** acknowledging Jules's own later damage, trust falls to 0.
+- If Jules presents the message before acknowledging their own later damage and **no private window is active**, trust falls to 0.
 - If Jules has already acknowledged the later damage before presenting the message, trust remains at 1.
+- If a private window is active during presentation, the disclosure is private rather than humiliating; trust remains at 1 even if Jules has not yet acknowledged their own damage.
 - A later honest return does not restore trust that fell to 0 in this three-round fixture.
 
 This is a deliberately strong ordering hypothesis to make the objective trade-off observable. It needs owner approval and later human testing before being treated as game canon. The fixture must not imply that this is a general model of real human trust.
@@ -233,8 +234,8 @@ The baseline run deliberately makes it possible to see whether submitted inputs 
 | State for test | Input changed from null baseline | Expected difference, and why |
 |---|---|---|
 | Round 1, initial state | I: one player proposes INSPECT_SHARED_THREAD instead of no proposal | INSPECT gets support 1 while FETCH has support 0; both have actionTier 2, so the direct proposal changes Jules's selected action |
-| Round 1, initial state | W: one player submits SURFACE_THREAD instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
-| Round 2 state with kit within reach, plan already prepared, thread uninspected, flatmate reachable | W: one player submits OBSCURE_THREAD | INSPECT and RETURN tie on deadline/action tiers. Without an influence, INSPECT wins by the fixed action order; OBSCURE sets its context signal to -1, so RETURN wins. The selected action changes deterministically |
+| Round 1, initial state | W: one player submits SET_THREAD_PROMINENCE(direction=up) instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
+| Round 2 state with kit within reach, plan already prepared, thread uninspected, flatmate reachable | W: one player submits SET_THREAD_PROMINENCE(direction=down) | INSPECT and RETURN tie on deadline/action tiers. Without an influence, INSPECT wins by the fixed action order; OBSCURE sets its context signal to -1, so RETURN wins. The selected action changes deterministically |
 | Round 2 state after evidence inspected, plan not ready, flatmate reachable | I: one player proposes PRESENT_EVIDENCE rather than no proposal | PRESENT_EVIDENCE gets support 1 and can beat PLAN_REPAIR at the tied actionTier 2 |
 | Round 2 state after evidence inspected and flatmate reachable | W: one player submits OPEN_PRIVATE_WINDOW | PRESENT_EVIDENCE gets contextSignal +1 and wins a rank tie; if selected, trust is preserved by the fixture's private-disclosure response rule |
 | Round 2 state after evidence inspected, kit out of reach, flatmate reachable | W: MOVE_REPAIR_KIT_WITHIN_REACH | PLAN_REPAIR becomes legal after effects; the selector's candidate set changes, and the state transition persists even if Jules does not select PLAN_REPAIR |
