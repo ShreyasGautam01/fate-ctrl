@@ -108,7 +108,7 @@ The exact order is open, but the eventual rules must define it once. A candidate
 8. build separate authorized views;
 9. generate presentation text from those views and events.
 
-This sequence is **not accepted**. In particular, the placement of Fate evaluation, effect expiry, and objective evaluation must be tested against same-boundary edge cases before being adopted.
+This sequence is **not accepted as the global game contract**. CONTROL_MODEL.md defines a narrower order for its three-round comparative fixture, including protagonist selection. That fixture order must not silently become the Fate or production order. In particular, the placement of Fate evaluation, effect expiry, and objective evaluation must be tested against same-boundary edge cases before a global order is adopted.
 
 ## 8. Required contract tests
 
