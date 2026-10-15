@@ -3,47 +3,49 @@
 **Last updated:** 2026-10-15  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** docs/round-resolution-simulation-02  
+**Working branch:** docs/control-model-consolidation-audit  
 **Current phase:** concept validation and specification  
 **Implementation:** not started
 
+## Current goal
+
+Consolidate the most consequential open design decision into one reviewable reference, have it audited independently, fix high-severity flaws, and then move toward a tiny comparative local prototype. Do not generate another broad design pass before the current control semantics are challenged.
+
 ## Product summary
-FATE/CTRL is a proposed two-player narrative strategy game. Both players influence one protagonist while pursuing distinct objectives; a constrained Fate system attempts to reach a scenario-defined dramatic ending. The story begins with an ordinary problem and escalates through causally connected consequences. Deterministic rules are authoritative; narration is presentation.
 
-## Baseline
-PR #1 established the first design documents; PR #2 added a first paper simulation, information model, and causal-route comparisons. This iteration adds a provisional resolution stress test, a direct-intention candidate trace, a model-comparison scorecard, a skeptical causal-route workshop, and an objective/fairness worksheet. PR #2 is merged; this iteration is separate from main until reviewed.
+FATE/CTRL is a proposed two-player narrative strategy game. Both players influence one protagonist while pursuing distinct objectives; a constrained Fate system attempts to reach a scenario-defined dramatic ending. Rules are intended to determine outcomes; narration presents resolved events.
 
-## Findings from this iteration
-- PAPER_SIMULATION_02.md stress-tests one provisional influence model. It is not a matched comparison with direct intentions and is not a human playtest.
-- DIRECT_INTENTION_TRACE.md provides the alternative model trace; MATCHED_MODEL_COMPARISON_01.md aligns the starting fixture and strategy profiles. PROTAGONIST_RESPONSE_RULES.md now compares candidate deterministic response policies. The matched trace still lacks a fully specified priority table and a B-favoring round, so this is a comparison framework, not a completed comparative result.
-- MODEL_COMPARISON_SCORECARD.md defines criteria without invented weights. The models are not selected.
-- A deterministic no-op on equal conflicting actions is predictable but may feel like wasted turns and encourage blocking. It is only a test rule.
-- Stale targets, cost refunds, deadline boundaries, knowledge acquisition, and Fate eligibility require global, explicit contracts.
-- Objective progress and objective completion are distinct. Objectives need measurable terminal predicates, feasibility paths, partial outcomes, and exploit checks.
-- The umbrella scenario still lacks a credible causal route to a literal citywide catastrophe. A smaller but dramatic target—Jules wrongly blamed for a consequential local failure during a real public emergency—may be stronger. CAUSAL_ROUTE_TRACE_01.md traces this route and identifies the break: it does not currently justify blame for causing a citywide emergency.
-- No interaction model, objective model, causal route, runtime schema, or implementation stack has been approved.
+## Current authority map
 
-## Documents to read next
-1. PAPER_SIMULATION_02.md — provisional influence-model resolution stress test and limitations.
-2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md, and PRIORITY_TABLE_REPLAY_01.md — candidate traces, shared priority-table replay, comparison criteria, and response-policy alternatives.
-3. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and an event-by-event trace.
-4. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — goal, progress, terminal predicate, and fairness model.
-5. PAPER_SIMULATION_01.md and PROTAGONIST_CONTROL.md — prior control-model questions.
-6. INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and ARCHITECTURE.md — data ownership and technical boundaries.
-7. TASKS.md and DECISIONS.md — open gates and proposed decisions.
+- CONTROL_MODEL.md is the proposed single working reference for the direct-intention versus environmental-influence decision. It is on this branch for audit; the project owner has not approved its rules.
+- SPEC.md remains the product-level draft.
+- scenarios/umbrella.json is a non-executable probe; facts, deadlines, objective predicates, and Fate rules remain incomplete.
+- DECISIONS.md remains the canonical decision log. No interaction model has been accepted.
+- TASKS.md is the task ledger.
+- The other control traces are prior authored analyses. When they conflict, do not silently treat an older trace as current canon; record the conflict and resolve it explicitly.
 
-## Next action
-Ask an independent reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md using only that document. Record whether they can reproduce the selected action, decisive priority, knowledge gained, objective progress, and unresolved facts without coaching. Then run a small human test with both control models in counterbalanced order; keep observed results separate from authored desk analysis. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
+## Important findings so far
+
+- The flatmate deadline differs across earlier documents (two resolution cycles versus three boundaries).
+- Photo accessibility differs across traces: one begins with the photo inaccessible to Jules, while the later matched trace assumes a searchable thread.
+- The latest shared priority table selects actions, but direct-intention semantics do not yet say clearly whether Jules chooses only among proposals or from all legal actions.
+- Environmental examples use terms like “salience,” “friction,” and “make an opportunity easier” without specifying the state variable, magnitude, duration, cost, or how the protagonist policy consumes the effect. Their claimed strategic contribution may therefore be cosmetic.
+- The current three-round replay does not establish that both environmental influences cause a meaningful difference to the outcome.
+- Player A's trust-preservation objective lacks an observable predicate. Player B's objective requires evidence of prior knowledge and nondisclosure; the photo only establishes an earlier defect unless another source proves what the flatmate knew.
+- The citywide-emergency Fate target still lacks a credible causal route from the interpersonal opening. No Fate outcome is tested by the three-round control comparison.
+- All previous simulations are authored desk analysis. No independent reconstruction or human playtest has been recorded.
+
+## Next action — deep audit of one file
+
+Ask Sonnet 5.5 to audit CONTROL_MODEL.md as the target document, using SPEC.md, scenarios/umbrella.json, INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and DECISIONS.md only as consistency references. The requested output should be a severity-ranked critique with exact section references, reproducible counterexamples, distinctions between true contradictions and open assumptions, and minimum changes needed. It should not rewrite files, choose the winning model, invent playtest evidence, or begin implementation. The audit prompt is in the next assistant message; it can also be pasted directly into Sonnet.
+
+After receiving the report, triage findings into confirmed defects, valid trade-offs, false positives, and decisions that require product-owner judgment. Update CONTROL_MODEL.md and affected cross-references only after resolving those points. Do not create more supporting files unless they add evidence.
 
 ## Constraints
-- Quality and cross-system trade-off analysis outrank rapid implementation.
-- Keep project state in repository docs so work can resume without chat history.
-- Explain decisions and effects on related systems.
-- Avoid paid LLM dependencies for core play.
-- Generated narration cannot decide outcomes.
-- Do not start production code until design gates are satisfied.
-- Make incremental, verified changes through PRs; project owner approves merges.
-- Distinguish analytical simulations from actual playtest evidence.
 
-## Session update protocol
-Update task statuses based on evidence; record decisions and rationale; update specs/contracts when behavior changes; record tests/playtest observations and limitations; update this handoff with the exact next action.
+- Quality and cross-system coherence outrank speed.
+- Preserve repository context, but avoid parallel definitions of active rules.
+- Avoid paid LLM dependencies for core play.
+- Do not let narration decide outcomes or invent facts.
+- Do not start production code before the control unit, fixture, action contracts, and test gates are approved.
+- Project owner reviews and merges pull requests.
