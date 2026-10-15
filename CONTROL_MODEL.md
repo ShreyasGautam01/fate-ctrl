@@ -153,8 +153,9 @@ An influence consumes the player's one submission for the round. This fixture ha
 
 - SURFACE_THREAD and OBSCURE_THREAD target the same temporary signal. If both validly target the thread in one resolution, they cancel to 0. Both submissions are consumed; neither changes evidence or thread accessibility.
 - Repeating the same signal is capped at its defined value (+1 or -1); it does not stack.
-- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal because it targets a different state field.
-- Validate submissions against the start snapshot, then revalidate target preconditions when applying them. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
+- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal because it targets a different state field. Duplicate MOVE_REPAIR_KIT_WITHIN_REACH submissions are idempotently coalesced into one persistent transition and one event listing both submissions as contributors; they do not make one another stale.
+- Compute effects from a shared round-start snapshot and group them by target before mutating canonical state. Signal conflicts are resolved by the rules above; independent persistent changes are then applied in stable effect-type/target-ID order. Do not let arbitrary iteration or player ID determine the winner.
+- Revalidate target preconditions as a group before application. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
 - No influence directly selects a protagonist action. It must change a state/context value that the legal-action generator or selector actually reads.
 
 The effect set is intentionally tiny. If the team cannot explain why an influence changed the outcome from the resulting state, that effect is not sufficiently specified.
@@ -216,7 +217,7 @@ This order is a fixture contract, not an accepted global game-resolution contrac
 
 ## 8. Worked trace and sensitivity checks
 
-The table below defines a repeatable **baseline run with no submissions that affect ranking**. It is not evidence of balance. Inputs can alter the trajectory under the tuple procedure above.
+The table below defines a repeatable **null-submission diagnostic baseline**. The enumerator may use null inputs for sensitivity analysis, but null is not a legal live-player submission: a real round requires one submission from each player. It is not evidence of balance. Inputs can alter the trajectory under the tuple procedure above; all legal paired submissions must also be enumerated.
 
 | Round | Baseline starting state | Baseline selected action | State/event change | Objective status after action |
 |---|---|---|---|---|
@@ -230,7 +231,7 @@ The baseline run deliberately makes it possible to see whether submitted inputs 
 |---|---|---|
 | Round 1, initial state | I: one player proposes INSPECT_SHARED_THREAD instead of no proposal | INSPECT gets support 1 while FETCH has support 0; both have actionTier 2, so the direct proposal changes Jules's selected action |
 | Round 1, initial state | W: one player submits SURFACE_THREAD instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
-| Round 2 state with kit within reach, thread uninspected, plan not ready | W: one player submits OBSCURE_THREAD | INSPECT gets contextSignal -1; if its prior default order would otherwise win a rank tie, the selected action changes to the next tied action |
+| Round 2 state with kit within reach, plan already prepared, thread uninspected, flatmate reachable | W: one player submits OBSCURE_THREAD | INSPECT and RETURN tie on deadline/action tiers. Without an influence, INSPECT wins by the fixed action order; OBSCURE sets its context signal to -1, so RETURN wins. The selected action changes deterministically |
 | Round 2 state after evidence inspected, plan not ready, flatmate reachable | I: one player proposes PRESENT_EVIDENCE rather than no proposal | PRESENT_EVIDENCE gets support 1 and can beat PLAN_REPAIR at the tied actionTier 2 |
 | Round 2 state after evidence inspected, kit out of reach, flatmate reachable | W: MOVE_REPAIR_KIT_WITHIN_REACH | PLAN_REPAIR becomes legal after effects; the selector's candidate set changes, and the state transition persists even if Jules does not select PLAN_REPAIR |
 
