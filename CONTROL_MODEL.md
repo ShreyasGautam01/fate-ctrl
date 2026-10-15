@@ -150,14 +150,15 @@ Each player submits one typed influence. Valid effects operate on seeded state a
 | MOVE_REPAIR_KIT_WITHIN_REACH | Kit exists and is not within reach | Persistently set repairKitWithinReach=true; PLAN_REPAIR becomes legal after effects resolve | Persistent physical state change; fails if kit is absent or target condition is stale |
 | OPEN_PRIVATE_WINDOW | Private conversation option exists; flatmate is reachable; evidence is already inspected and not yet presented | Set privateWindowActive=true for the current action/response step and set the selector signal for PRESENT_EVIDENCE to +1 | Does not disclose evidence itself; expires after this action/response step if unused |
 
-An influence consumes the player's one submission for the round. This fixture has no additional token cost. Temporary thread signals expire after action selection, whether or not the action uses them. Moving the existing kit is persistent because it changes the physical setup; it is not automatically reset at the boundary.
+An influence consumes the player's one submission for the round. This fixture has no additional token cost. Temporary thread/evidence signals expire after action selection, whether or not the action uses them. A private window and its signal expire after the action/response step if unused. Moving the existing kit is persistent because it changes the physical setup; it is not automatically reset at the boundary.
 
 ### Composition and conflict rules
 
 - SET_THREAD_PROMINENCE with opposite directions targets the same temporary signal. If up and down are both validly submitted in one resolution, they cancel to 0. Both submissions are consumed; neither changes evidence or thread accessibility.
-- Repeating the same direction is capped at its defined value (+1 or -1); it does not stack.
-- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal. Duplicate moves are idempotently coalesced into one persistent transition; both submitters are recorded as contributors and neither makes the other stale.
-- OPEN_PRIVATE_WINDOW is compatible with other valid effects. Duplicate opens coalesce into one current-round private window and do not stack its selector signal beyond +1.
+- SET_EVIDENCE_PROMINENCE uses the same opposite-direction cancellation rule for the PRESENT_EVIDENCE context signal.
+- Repeating the same prominence direction is capped at its defined value (+1 or -1); it does not stack.
+- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either prominence signal. Duplicate moves are idempotently coalesced into one persistent transition; both submitters are recorded as contributors and neither makes the other stale.
+- OPEN_PRIVATE_WINDOW is compatible with other valid effects. Duplicate opens coalesce into one current-round private window. Its +1 presentation signal combines with the evidence-prominence signal and is clamped to the range [-1,+1]; the private-window trust protection remains active even when the combined signal is 0.
 - Compute effects from a shared round-start snapshot and group them by target before mutating canonical state. Signal conflicts are resolved by the rules above; independent persistent changes are then applied in stable effect-type/target-ID order. Do not let arbitrary iteration or player ID determine the winner.
 - Revalidate target preconditions as a group before application. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
 - No influence directly selects a protagonist action. It must change a state/context value that the legal-action generator or selector actually reads.
@@ -176,19 +177,19 @@ Apply the action preconditions in §4 to the post-influence state and Jules's cu
 
 Compare actions lexicographically, highest tuple first:
 
-**(deadlineTier, actionTier, contextSignal, directSupport, tieBreakRank)**
+**(actionTier, contextSignal, directSupport, deadlineTier, tieBreakRank)**
 
-- **deadlineTier:** RETURN_HONESTLY gets 3 only when exactly one boundary remains and it is legal; every other action gets 0. At earlier boundaries all actions get 0.
 - **actionTier:** use the table below. A rank of 2 represents a meaningful current route; rank 1 is a lower-priority preparation action; WAIT is 0.
-- **contextSignal:** in W, use the temporary signal for the action (normally -1, 0, or +1). Thread-prominence effects modify INSPECT_SHARED_THREAD; OPEN_PRIVATE_WINDOW modifies PRESENT_EVIDENCE. In I this field is always 0. MOVE_REPAIR_KIT_WITHIN_REACH affects legality, not contextSignal.
+- **contextSignal:** in W, use the temporary signal for the action (normally -1, 0, or +1). Thread-prominence effects modify INSPECT_SHARED_THREAD; evidence-prominence effects and OPEN_PRIVATE_WINDOW modify PRESENT_EVIDENCE. If both effects target PRESENT_EVIDENCE, add the private-window +1 to the resolved evidence-prominence signal and clamp to [-1,+1]. In I this field is always 0. MOVE_REPAIR_KIT_WITHIN_REACH affects legality, not contextSignal.
 - **directSupport:** in I, use the valid support count (0–2). In W this field is always 0.
+- **deadlineTier:** RETURN_HONESTLY gets 3 only when exactly one boundary remains and it is legal; every other action gets 0. At earlier boundaries all actions get 0. This is deliberately after the mode-specific contribution, so a deadline adds strong pressure without making every player input irrelevant on the final round.
 - **tieBreakRank:** use the fixed test-fixture action order below. It is intentionally a provisional character choice, not a neutral or universal rule.
 
 | Action | actionTier condition |
 |---|---|
 | PRESENT_EVIDENCE | 2 if legal |
 | INSPECT_SHARED_THREAD | 2 if legal |
-| RETURN_HONESTLY | 2 if legal before the final boundary; its deadlineTier decides on the final boundary |
+| RETURN_HONESTLY | 2 if legal; its deadlineTier strengthens it on the final boundary after mode-specific input fields are compared |
 | PLAN_REPAIR | 2 if legal and at least two boundaries remain; otherwise 1 |
 | FETCH_REPAIR_KIT | 2 if legal and at least two boundaries remain; otherwise 1 |
 | WAIT | 0 |
@@ -237,8 +238,9 @@ The baseline run deliberately makes it possible to see whether submitted inputs 
 | Round 1, initial state | W: one player submits SET_THREAD_PROMINENCE(direction=up) instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
 | Round 2 state with kit within reach, plan already prepared, thread uninspected, flatmate reachable | W: one player submits SET_THREAD_PROMINENCE(direction=down) | INSPECT and RETURN tie on deadline/action tiers. Without an influence, INSPECT wins by the fixed action order; OBSCURE sets its context signal to -1, so RETURN wins. The selected action changes deterministically |
 | Round 2 state after evidence inspected, plan not ready, flatmate reachable | I: one player proposes PRESENT_EVIDENCE rather than no proposal | PRESENT_EVIDENCE gets support 1 and can beat PLAN_REPAIR at the tied actionTier 2 |
-| Round 2 state after evidence inspected and flatmate reachable | W: one player submits OPEN_PRIVATE_WINDOW | PRESENT_EVIDENCE gets contextSignal +1 and wins a rank tie; if selected, trust is preserved by the fixture's private-disclosure response rule |
+| Round 2 state after evidence inspected and flatmate reachable | W: one player submits SET_EVIDENCE_PROMINENCE(direction=up) | PRESENT_EVIDENCE gets contextSignal +1 and may be selected without a private window; if presented before own damage is acknowledged, trust falls to 0 |
 | Round 2 state after evidence inspected, kit out of reach, flatmate reachable | W: MOVE_REPAIR_KIT_WITHIN_REACH | PLAN_REPAIR becomes legal after effects; the selector's candidate set changes, and the state transition persists even if Jules does not select PLAN_REPAIR |
+| Round 2 state after evidence inspected and flatmate reachable | W: OPEN_PRIVATE_WINDOW | Adds a privacy state for the response and a +1 presentation signal; this can select PRESENT_EVIDENCE while preserving trust, without transferring evidence itself |
 
 If any row does not behave as specified, the trace or the rule contract is defective. The action ranking, not prose, determines the result. The enumerator should evaluate all valid submission pairs and verify these one-input sensitivity tests automatically.
 
