@@ -161,6 +161,7 @@ An influence consumes the player's one submission for the round. This fixture ha
 - Repeating the same prominence direction is capped at its defined value (+1 or -1); it does not stack.
 - MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either prominence signal. Duplicate moves are idempotently coalesced into one persistent transition; both submitters are recorded as contributors and neither makes the other stale.
 - OPEN_PRIVATE_WINDOW is compatible with other valid effects. Duplicate opens coalesce into one current-round private window. Its +1 presentation signal combines with the evidence-prominence signal and is clamped to the range [-1,+1]; the private-window trust protection remains active even when the combined signal is 0.
+- PASS is always legal and has no effect other than consuming that player's submission slot; it is included so a player can decline to apply a specific environmental effect. It is not a null state transition caused by an absent submission.
 - Compute effects from a shared round-start snapshot and group them by target before mutating canonical state. Signal conflicts are resolved by the rules above; independent persistent changes are then applied in stable effect-type/target-ID order. Do not let arbitrary iteration or player ID determine the winner.
 - Revalidate target preconditions as a group before application. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
 - No influence directly selects a protagonist action. It must change a state/context value that the legal-action generator or selector actually reads.
@@ -232,7 +233,7 @@ The table below defines a repeatable **null-submission diagnostic baseline**. Th
 | 2 (2 remain) | Kit within reach; thread uninspected; no plan; flatmate reachable | PLAN_REPAIR by fixture tie-break among rank-2 actions | Plan becomes ready | Neither objective complete |
 | 3 (1 remains) | Not yet returned; thread uninspected; flatmate reachable and departs after this action | RETURN_HONESTLY by deadlineTier=3 | Umbrella returned; own damage acknowledged; trust remains 1; then departure occurs | A complete; B incomplete |
 
-The baseline run deliberately makes it possible to see whether submitted inputs change anything. The following single-submission checks must also be run; their expected mechanics are specified, not claimed as empirical evidence.
+The baseline run deliberately makes it possible to see whether submitted inputs change anything. The following single-submission checks must also be run; their expected mechanics are specified, not claimed as empirical evidence. The null-input rows are diagnostics only; the enumerator also checks one player's legal input changed while the opponent's input is held fixed.
 
 | State for test | Input changed from null baseline | Expected difference, and why |
 |---|---|---|
@@ -255,7 +256,7 @@ If any row does not behave as specified, the trace or the rule contract is defec
 - **A can be blocked:** inspect in round 1, present evidence in round 2 before acknowledging the later tear and without a private window, then return honestly in round 3. B completes, but trust falls to 0 and is not restored, so A fails.
 - **B can be blocked:** use the early rounds for preparation/return choices and leave no action to inspect and present the evidence before departure. Discovering the message and presenting it are distinct actions.
 
-These sequences establish feasibility in the fixture, not overall balance. The trust response, private-window effect, and strength of the message are high-impact scenario assumptions and need explicit owner approval.
+These sequences establish feasibility in the fixture, not overall balance. The trust response, private-window effect, and strength of the message are high-impact scenario assumptions and need explicit owner approval. The rank tuple deliberately puts mode-specific contributions before deadlineTier so a final-round submission can still change the selected action; deadlines create strong pressure rather than a universal action veto.
 
 ## 9. Explainability and information visibility
 
