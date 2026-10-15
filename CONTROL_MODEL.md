@@ -61,7 +61,7 @@ The following facts are deliberately specific so the experiment is reproducible.
 - Player B's private briefing says the relevant message is in the thread. Player A is not given this information. Neither player's knowledge automatically becomes Jules's knowledge.
 - A repair kit exists in the apartment but is initially stored out of immediate reach. It can be brought within reach without creating a new object.
 - The flatmate is reachable in rounds 1, 2, and 3, and leaves immediately after Jules's action at the end of round 3. The countdown at the beginning of those rounds is respectively 3, 2, and 1 boundaries remaining.
-- The flatmate is available for a one-to-one conversation in this fixture. This is not a claim that an actual public emergency, broadcast, or Fate route exists.
+- A quiet, private conversation space exists in the apartment. It can be made available for the current disclosure action, but a private window is not active at round start. This is a seeded opportunity, not a new place created by an influence. This is not a claim that an actual public emergency, broadcast, or Fate route exists.
 - There is one major protagonist action per round. A player submission consumes that player's single submission for the round; no separate token economy is assumed in this comparison.
 - The test excludes the Fate/public-blame finale. No public emergency or public evidence channel is established, so that Fate milestone is ineligible.
 
@@ -82,6 +82,8 @@ The following facts are deliberately specific so the experiment is reproducible.
 | flatmate prior knowledge established to Jules | false |
 | trust | 1 (the fixture's baseline) |
 | flatmate reachable | true |
+| private conversation option exists | true |
+| private window active at round start | false |
 | flatmate departed | false |
 | temporary action-context signals | zero |
 
@@ -143,17 +145,18 @@ Each player submits one typed influence. Valid effects operate on seeded state a
 
 | Influence | Preconditions | Effect consumed by the selector | Duration / failure behavior |
 |---|---|---|---|
-| SURFACE_THREAD | Thread exists, is accessible, and is not inspected | Set temporary signal for INSPECT_SHARED_THREAD to +1 | Current action selection only; source contents remain unknown until inspection |
-| OBSCURE_THREAD | Same as SURFACE_THREAD | Set temporary signal for INSPECT_SHARED_THREAD to -1 | Current action selection only; does not hide/delete source truth or prevent explicit inspection |
+| SET_THREAD_PROMINENCE (direction=up/down) | Thread exists, is accessible, Jules knows it exists, and it is not inspected | Up sets the temporary selector signal for INSPECT_SHARED_THREAD to +1; down sets it to -1 | Current action selection only; source contents remain unknown and accessibility/truth do not change |
 | MOVE_REPAIR_KIT_WITHIN_REACH | Kit exists and is not within reach | Persistently set repairKitWithinReach=true; PLAN_REPAIR becomes legal after effects resolve | Persistent physical state change; fails if kit is absent or target condition is stale |
+| OPEN_PRIVATE_WINDOW | Private conversation option exists; flatmate is reachable; evidence is already inspected and not yet presented | Set privateWindowActive=true for the current action/response step and set the selector signal for PRESENT_EVIDENCE to +1 | Does not disclose evidence itself; expires after this action/response step if unused |
 
 An influence consumes the player's one submission for the round. This fixture has no additional token cost. Temporary thread signals expire after action selection, whether or not the action uses them. Moving the existing kit is persistent because it changes the physical setup; it is not automatically reset at the boundary.
 
 ### Composition and conflict rules
 
-- SURFACE_THREAD and OBSCURE_THREAD target the same temporary signal. If both validly target the thread in one resolution, they cancel to 0. Both submissions are consumed; neither changes evidence or thread accessibility.
-- Repeating the same signal is capped at its defined value (+1 or -1); it does not stack.
-- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal because it targets a different state field. Duplicate MOVE_REPAIR_KIT_WITHIN_REACH submissions are idempotently coalesced into one persistent transition and one event listing both submissions as contributors; they do not make one another stale.
+- SET_THREAD_PROMINENCE with opposite directions targets the same temporary signal. If up and down are both validly submitted in one resolution, they cancel to 0. Both submissions are consumed; neither changes evidence or thread accessibility.
+- Repeating the same direction is capped at its defined value (+1 or -1); it does not stack.
+- MOVE_REPAIR_KIT_WITHIN_REACH is compatible with either thread signal. Duplicate moves are idempotently coalesced into one persistent transition; both submitters are recorded as contributors and neither makes the other stale.
+- OPEN_PRIVATE_WINDOW is compatible with other valid effects. Duplicate opens coalesce into one current-round private window and do not stack its selector signal beyond +1.
 - Compute effects from a shared round-start snapshot and group them by target before mutating canonical state. Signal conflicts are resolved by the rules above; independent persistent changes are then applied in stable effect-type/target-ID order. Do not let arbitrary iteration or player ID determine the winner.
 - Revalidate target preconditions as a group before application. If a target is stale, the effect fails with a stable internal reason, does not mutate state, and still consumes the submitted influence slot in this test. Any player-facing reason must be visibility-filtered.
 - No influence directly selects a protagonist action. It must change a state/context value that the legal-action generator or selector actually reads.
@@ -176,7 +179,7 @@ Compare actions lexicographically, highest tuple first:
 
 - **deadlineTier:** RETURN_HONESTLY gets 3 only when exactly one boundary remains and it is legal; every other action gets 0. At earlier boundaries all actions get 0.
 - **actionTier:** use the table below. A rank of 2 represents a meaningful current route; rank 1 is a lower-priority preparation action; WAIT is 0.
-- **contextSignal:** in W, use the temporary signal for the action (normally -1, 0, or +1). In I this field is always 0. MOVE_REPAIR_KIT_WITHIN_REACH affects legality, not contextSignal.
+- **contextSignal:** in W, use the temporary signal for the action (normally -1, 0, or +1). Thread-prominence effects modify INSPECT_SHARED_THREAD; OPEN_PRIVATE_WINDOW modifies PRESENT_EVIDENCE. In I this field is always 0. MOVE_REPAIR_KIT_WITHIN_REACH affects legality, not contextSignal.
 - **directSupport:** in I, use the valid support count (0–2). In W this field is always 0.
 - **tieBreakRank:** use the fixed test-fixture action order below. It is intentionally a provisional character choice, not a neutral or universal rule.
 
@@ -233,6 +236,7 @@ The baseline run deliberately makes it possible to see whether submitted inputs 
 | Round 1, initial state | W: one player submits SURFACE_THREAD instead of no influence | INSPECT gets contextSignal +1 and beats FETCH at actionTier 2; the effect changes the selected action but does not reveal message contents |
 | Round 2 state with kit within reach, plan already prepared, thread uninspected, flatmate reachable | W: one player submits OBSCURE_THREAD | INSPECT and RETURN tie on deadline/action tiers. Without an influence, INSPECT wins by the fixed action order; OBSCURE sets its context signal to -1, so RETURN wins. The selected action changes deterministically |
 | Round 2 state after evidence inspected, plan not ready, flatmate reachable | I: one player proposes PRESENT_EVIDENCE rather than no proposal | PRESENT_EVIDENCE gets support 1 and can beat PLAN_REPAIR at the tied actionTier 2 |
+| Round 2 state after evidence inspected and flatmate reachable | W: one player submits OPEN_PRIVATE_WINDOW | PRESENT_EVIDENCE gets contextSignal +1 and wins a rank tie; if selected, trust is preserved by the fixture's private-disclosure response rule |
 | Round 2 state after evidence inspected, kit out of reach, flatmate reachable | W: MOVE_REPAIR_KIT_WITHIN_REACH | PLAN_REPAIR becomes legal after effects; the selector's candidate set changes, and the state transition persists even if Jules does not select PLAN_REPAIR |
 
 If any row does not behave as specified, the trace or the rule contract is defective. The action ranking, not prose, determines the result. The enumerator should evaluate all valid submission pairs and verify these one-input sensitivity tests automatically.
@@ -241,11 +245,12 @@ If any row does not behave as specified, the trace or the rule contract is defec
 
 - **A route:** FETCH_REPAIR_KIT or another early action; later PLAN_REPAIR if useful; RETURN_HONESTLY before departure. A completes only if trust remains at baseline.
 - **B route:** INSPECT_SHARED_THREAD, then PRESENT_EVIDENCE before departure. B completes only after disclosure and acknowledgement.
-- **Both goals can be achieved:** inspect in round 1, return honestly in round 2, present the evidence in round 3. Trust remains at baseline because Jules acknowledges their own damage before the disclosure.
-- **A can be blocked:** inspect in round 1, present evidence in round 2 before acknowledging the later tear, then return honestly in round 3. B completes, but trust falls to 0 and is not restored, so A fails.
-- **B can be blocked:** use the early rounds for kit preparation/return choices and leave no action to inspect and present the evidence before departure. Discovering the message and presenting it are distinct actions.
+- **Both goals can be achieved under I:** inspect in round 1, return honestly in round 2, present the evidence in round 3. Trust remains at baseline because Jules acknowledges their own damage before disclosure.
+- **Both goals can be achieved under W:** surface the thread so Jules inspects in round 1; open a private window and present the evidence in round 2; return honestly in round 3. Trust remains at baseline because the evidence is presented privately; the private window does not itself transfer the evidence.
+- **A can be blocked:** inspect in round 1, present evidence in round 2 before acknowledging the later tear and without a private window, then return honestly in round 3. B completes, but trust falls to 0 and is not restored, so A fails.
+- **B can be blocked:** use the early rounds for preparation/return choices and leave no action to inspect and present the evidence before departure. Discovering the message and presenting it are distinct actions.
 
-These sequences establish feasibility in the fixture, not overall balance. The trust response and the strength of the message are high-impact scenario assumptions and need explicit owner approval.
+These sequences establish feasibility in the fixture, not overall balance. The trust response, private-window effect, and strength of the message are high-impact scenario assumptions and need explicit owner approval.
 
 ## 9. Explainability and information visibility
 
