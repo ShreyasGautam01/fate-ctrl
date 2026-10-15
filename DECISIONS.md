@@ -110,13 +110,23 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 
 ## D-013 — Compare pure control models before proposing a hybrid
 - **Status:** Proposed.
-- **Context:** Direct intentions are immediately legible but may create a single-action bottleneck; environmental influence can let both players contribute but may feel indirect.
-- **Candidate:** Compare both models on matched traces using MODEL_COMPARISON_SCORECARD.md before selecting either or combining them.
+- **Context:** Direct intentions are immediately legible but may create a single-action bottleneck; environmental influence can let both players contribute but may feel indirect. The Sonnet audit found that earlier traces did not prove either input changed Jules's outcome.
+- **Candidate:** Use CONTROL_MODEL.md as the single active comparison contract. Compare direct support marks and typed environmental effects on a shared fixture with one protagonist policy. MODEL_COMPARISON_SCORECARD.md remains a supporting criteria history, not the authority for current submission semantics.
 - **Alternatives:** Select the intuitively clearer model immediately or combine the models to inherit their apparent strengths.
-- **Rationale:** A hybrid adds action types, cognitive load, and resolution rules; it should solve a demonstrated problem, not merely look comprehensive.
-- **Trade-offs:** Slower decision-making before prototype.
-- **Cross-system effects:** Player action vocabulary, protagonist agency, UI, action economy, scenario authoring, resolution engine, and test suite.
-- **Revisit trigger:** Matched traces and independent player evidence show a specific weakness that a hybrid can address with acceptable complexity.
+- **Rationale:** A hybrid adds action types, cognitive load, and resolution rules; it should solve a demonstrated problem, not merely look comprehensive. A model whose inputs have no effect is not a viable control unit.
+- **Trade-offs:** More explicit test semantics are needed before prototyping; current fixture/policy values remain provisional.
+- **Cross-system effects:** Player action vocabulary, protagonist agency, objective feasibility, information visibility, UI, action economy, scenario authoring, resolution engine, and test suite.
+- **Revisit trigger:** Deterministic enumeration and independent review establish each model's input sensitivity, reachable objectives, and non-dominated choices; human testing then assesses agency, legibility, cognitive load, and fun.
+
+## D-014 — Use a deterministic enumerator before a playable prototype
+- **Status:** Proposed.
+- **Context:** The current model traces were author-generated and contained null-control, policy-ordering, objective-feasibility, and fixture inconsistencies. Building a UI now would hide rather than solve these rule defects.
+- **Candidate:** Build a small offline enumerator that runs all valid submission pairs over reachable fixture states for both control models, using the same scenario and protagonist-selection policy. It reports legal actions, ranks, selected actions, state/event diffs, objective reachability, input sensitivity, and deterministic replay.
+- **Alternatives:** Continue only prose simulation; build a browser prototype before semantics are specified; or implement one chosen model immediately.
+- **Rationale:** Exhaustive small-state analysis can expose irrelevant or dominant inputs and impossible objectives before human playtest time is spent. It is a test harness, not the game.
+- **Trade-offs:** The harness will validate only the coded fixture and rules; it cannot establish fun, perceived fairness, or narrative quality.
+- **Cross-system effects:** CONTROL_MODEL.md, scenario validation, protagonist selection, action contracts, objective evaluator, event log/replay, later prototype tests.
+- **Revisit trigger:** An independent reviewer can reconstruct its results from the specification and all test gates in ARCHITECTURE.md pass. Human teach-back is still required before selecting a model for the actual game.
 
 ## Decision template
 ### D-XXX — Title
