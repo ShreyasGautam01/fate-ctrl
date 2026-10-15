@@ -8,8 +8,8 @@
 ### P0-01 — Resolve unit of play
 **Status:** In progress; first exploratory paper simulation completed, but no model selected and several rules remain unspecified.  
 **Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Current artifacts:** CORE_LOOP_COMPARISON.md compares timing models; PROTAGONIST_CONTROL.md compares control units; PAPER_SIMULATION_01.md traces three rounds. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md examine whether the umbrella ending can be earned. INFORMATION_MODEL.md defines information concepts and proposed ownership.  
-**Next:** Refine the leading control candidate with explicit provisional rules; test a compatible action pair, a conflicting pair, stale target, deadline collision, and a Fate prerequisite. Separately test three causal chains skeptically.  
+**Current artifacts:** CORE_LOOP_COMPARISON.md and PROTAGONIST_CONTROL.md frame the original choices; PAPER_SIMULATION_01.md is exploratory; PAPER_SIMULATION_02.md stress-tests one provisional influence model; DIRECT_INTENTION_TRACE.md gives the direct-intention candidate; MATCHED_MODEL_COMPARISON_01.md aligns the fixture and strategic profiles; MODEL_COMPARISON_SCORECARD.md defines unweighted criteria.  
+**Next:** PROTAGONIST_RESPONSE_RULES.md compares static weights, lexicographic priorities, scenario-authored tables, and LLM selection. PRIORITY_TABLE_REPLAY_01.md now supplies a provisional shared priority table, three-round replay, A-/B-favoring counterfactuals, and an exploit audit. This completes the authored desk-analysis step, not independent review or playtesting. Next: have an independent reviewer reconstruct outcomes, then test both models with human players in counterbalanced order. Neither model is selected.  
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
@@ -17,7 +17,7 @@
 **Exit:** Actions have understandable results and meaningful costs; players can explain why an intention succeeded, changed, or failed.
 
 ### P0-03 — Define objectives and scoring
-**Status:** Not started. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
+**Status:** Worksheet drafted in OBJECTIVE_AND_FAIRNESS_WORKSHEET.md; no scoring model or terminal predicates accepted. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
 **Exit:** Both players have measurable goals and multiple viable strategies.
 
 ### P0-04 — Define actions and economy
@@ -25,11 +25,11 @@
 **Exit:** Every prototype action is fully specified and common exploits are addressed.
 
 ### P0-05 — Define Fate
-**Status:** Not started. Define legal interventions, limits, signals, routes, counterplay, and alternate endings.  
+**Status:** Causal-route workshop in progress; no route or intervention model accepted. The current literal citywide-emergency target may be too large for the umbrella premise. Define legal interventions, limits, signals, routes, counterplay, and alternate endings.  
 **Exit:** Three routes and two credible disruptions can be simulated without arbitrary events.
 
 ### P0-06 — Simulate umbrella scenario
-**Status:** Premise analysis started. Three candidate causal architectures documented; none accepted. The citywide ending may need revision if no chain earns it. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
+**Status:** Premise analysis ongoing. Causal-route workshop distinguishes actual emergency causation from public blame and proposes a narrower candidate target; nothing is accepted. Three candidate mechanisms still lack a convincing event trace. Next: trace one candidate event by event and reject unsupported links. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
 **Exit:** Three strategy profiles yield coherent distinct trajectories and players can explain causality.
 
 ### P0-07 — Validate information/fairness

@@ -51,5 +51,23 @@ Compare hard-coded scenarios, JSON with a limited vocabulary of conditions/effec
 
 PAPER_SIMULATION_01.md is an authored analytical trace, not a human playtest. It exposed risks around one-action-per-round conflict, knowledge transfer, and deadline ordering. INFORMATION_MODEL.md proposes a vocabulary and ownership map; it is not an approved runtime schema. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md outline three possible escalation architectures, none selected. The next pass must add exact provisional resolution rules and test the weakest causal links rather than treating these documents as proof of fun or balance.
 
+## Evidence from the second analysis pass
+
+PAPER_SIMULATION_02.md stress-tests one provisional influence model. It does not yet provide a matched comparison against direct protagonist intentions and is not a human playtest. Its provisional ordering exposes decisions that must be global: effect validation, conflict handling, protagonist response, information acquisition, deadline expiry, and Fate/objective evaluation. CAUSAL_ROUTE_WORKSHOP.md identifies that the current target conflates causing an emergency with being blamed during one; none of the candidate chains yet justifies a literal citywide catastrophe. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md defines what an objective needs beyond an evocative sentence.
+
+## Next design exercise
+
+Write a matched three-round trace for direct protagonist intentions using the same fixture, objective drafts, deadlines, and edge cases as PAPER_SIMULATION_02.md. Then compare it against the influence model using criteria stated before judging the outcomes. In parallel, trace one causal route event by event and reject it if any link relies on a new fact, implausible public inference, or uncounterable Fate intervention. A neutral reviewer should be able to reconstruct the outcome from the event log alone.
+
+## Evidence from the second analysis pass
+
+PAPER_SIMULATION_02.md stress-tests one provisional influence model. It does not yet provide a matched comparison against direct protagonist intentions and is not a human playtest. Its provisional ordering exposes decisions that must be global: effect validation, conflict handling, protagonist response, information acquisition, deadline expiry, and Fate/objective evaluation. CAUSAL_ROUTE_WORKSHOP.md identifies that the current target conflates causing an emergency with being blamed during one; none of the candidate chains yet justifies a literal citywide catastrophe. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md defines what an objective needs beyond an evocative sentence.
+
+DIRECT_INTENTION_TRACE.md and MODEL_COMPARISON_SCORECARD.md add a direct-intention candidate and comparison criteria. The scorecard is deliberately unweighted; numerical scores would create false precision until the criteria and their relative importance are agreed. Neither model is selected.
+
+## Next design exercise
+
+Review the candidate traces and comparison scorecard; correct any unmatched assumptions or missing state transitions. Then compare both models against the criteria without invented weights. In parallel, trace one causal route event by event and reject it if any link relies on a new fact, implausible public inference, or uncounterable Fate intervention. A neutral reviewer should reconstruct the outcome from the event log alone.
+
 ## First design exercise
 Construct one complete sample round for both simultaneous and alternating models using the same starting state and objectives. Include legal choices, resolution order, Fate's legal response, resulting state/event log, player-facing explanation, and why each player might choose differently. Compare strategic depth, counterplay, fairness, clarity, pacing, and implementation complexity. Then simulate at least three rounds and record the recommendation and rationale in DECISIONS.md.

@@ -136,4 +136,4 @@ Before production implementation:
 9. Define playtest questions and revision triggers.
 10. List unknowns explicitly rather than hiding them in code.
 
-See DESIGN_REVIEW.md for unresolved questions. INFORMATION_MODEL.md defines the proposed distinctions between facts, evidence, knowledge, belief, disclosure, and narration. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md evaluate whether the umbrella premise can support the intended escalation. These supporting documents are analyses, not accepted rules.
+See DESIGN_REVIEW.md for unresolved questions. INFORMATION_MODEL.md defines the proposed distinctions between facts, evidence, knowledge, belief, disclosure, and narration. PAPER_SIMULATION_02.md is a provisional edge-case stress test, not an accepted round contract. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md describes the required objective semantics. CAUSAL_ROUTE_WORKSHOP.md questions whether the intended citywide ending is causally earned. SCENARIO_CAUSALITY_REVIEW.md and CANDIDATE_CAUSAL_ROUTES.md evaluate whether the umbrella premise can support the intended escalation. These supporting documents are analyses, not accepted rules.
