@@ -6,10 +6,10 @@
 ## Phase 0 — Define the game worth building
 
 ### P0-01 — Resolve unit of play
-**Status:** The deep Sonnet audit found blocking semantic defects in the earlier model comparison. CONTROL_MODEL.md and its machine fixture have since been revised, and a deterministic enumerator plus unit tests has been executed. No model is selected.
+**Status:** The deep Sonnet audit found blocking semantic defects in the earlier model comparison. CONTROL_MODEL.md and its machine fixture have since been revised, and a deterministic enumerator plus 12 unit tests has been executed. No model is selected.
 **Canonical design reference:** CONTROL_MODEL.md.  
 **Executable test fixture:** scenarios/control_model_test_fixture.json.  
-**Enumerator and tests:** tools/control_model_enumerator.py and tests/test_control_model_enumerator.py.  
+**Enumerator, tests, and report:** tools/control_model_enumerator.py, tests/test_control_model_enumerator.py, and reports/control_model_enumerator_summary.json.  
 **Supporting history:** CORE_LOOP_COMPARISON.md, PROTAGONIST_CONTROL.md, PAPER_SIMULATION_01.md, PAPER_SIMULATION_02.md, DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md, and PRIORITY_TABLE_REPLAY_01.md. These preserve reasoning, not current authority where assumptions differ from CONTROL_MODEL.md.
 
 **Executed structural results (not win rates):** I: 5 unique nonterminal states, 264 transition evaluations across path prefixes, 204 complete input sequences; terminal outcomes: A-only 42 sequences, B-only 36, both 126. W: 7 unique nonterminal states, 1,257 transition evaluations, 1,146 complete input sequences; terminal outcomes: A-only 642, B-only 9, both 495. These are not probabilities or balance scores because available input sets vary by state. The narrow count of B-only W sequences is a specific objective-feasibility/counterplay signal to investigate, not proof of imbalance.
