@@ -171,7 +171,7 @@ The following are not silently accepted game canon:
 
 The deterministic enumerator and its current unit tests have been executed. Next, have an independent reviewer reconstruct the selected actions and objective paths from the JSON fixture, policy contract, and report. Correct any discrepancies before considering a local comparative prototype. Human teach-back is still required before declaring either model fun, fair, or selected for the game.
 
-The offline deterministic enumerator now exists at tools/control_model_enumerator.py and reads scenarios/control_model_test_fixture.json. It is a test harness, not a UI, online backend, or production engine. Its executed outputs are summarized in PROJECT_HANDOFF.md; the JSON and code are still provisional test assets.
+The offline deterministic enumerator exists at `tools/control_model_enumerator.py` and reads `scenarios/control_model_test_fixture.json`. Twelve standard-library unit tests pass on the current working copy. Aggregate results are recorded in `reports/control_model_enumerator_summary.json`. The counts are not probabilities or balance scores. The code is a test harness, not a UI, online backend, or production engine; an independent code/fixture audit and reconstruction are still required.
 
 ## 11. Authority and historical documents
 
