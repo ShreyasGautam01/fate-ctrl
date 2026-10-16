@@ -59,7 +59,7 @@ This is an ordinal table, not a numeric utility formula. Evaluate it from top to
 ### Important limitations of this table
 
 1. P1 deliberately tests whether an immediate honest return can outrank evidence gathering. That choice is a design hypothesis, not a universal moral rule.
-2. P2 and P3 can conflict before the final round. This table says material uncertainty outranks preparation when the uncertainty is consequential and checkable; this is an explicit choice that should be challenged in review.
+2. P2 explicitly outranks P3 while the repair plan is missing and departure is within three completed round boundaries. Once the plan exists, P2 no longer applies and P3 can select evidence inspection. This gives A an early preparation advantage by design; review whether that makes B's route too constrained.
 3. P4 is a fallback, not permission to claim the flatmate knowingly concealed the defect.
 4. P5 cannot override P0–P4 and cannot transform a private fact into public knowledge.
 5. The final tie-break order is artificial but deterministic. If many meaningful decisions land here, the policy is under-specified.
