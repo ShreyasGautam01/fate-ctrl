@@ -52,11 +52,19 @@ def validate_fixture():
         raise ValueError("tie-break order must contain every action exactly once")
     if not {INSPECT, PRESENT, RETURN, WAIT}.issubset(ACTIONS):
         raise ValueError("required action missing from fixture")
+    expected_action_contracts = {
+        INSPECT: ("thread_uninspected", "inspect_thread"),
+        PRESENT: ("evidence_ready_for_presentation", "present_evidence"),
+        RETURN: ("return_possible", "return_and_acknowledge_damage"),
+        WAIT: ("always", "wait"),
+    }
     for name, action in FIXTURE["actions"].items():
         if not isinstance(action["directProposalAllowed"], bool):
             raise ValueError(f"invalid directProposalAllowed flag: {name}")
         if action["preconditionId"] not in ACTION_PRECONDITIONS or action["effectId"] not in ACTION_EFFECTS:
             raise ValueError(f"unsupported action precondition/effect ID: {name}")
+        if (action["preconditionId"], action["effectId"]) != expected_action_contracts.get(name):
+            raise ValueError(f"action ID is mapped to an unsupported precondition/effect pair: {name}")
         if not isinstance(action["actionTier"], int):
             raise ValueError(f"invalid action tier: {name}")
     if FIXTURE["actions"][WAIT]["directProposalAllowed"]:
@@ -64,6 +72,10 @@ def validate_fixture():
     for name, effect in INFLUENCES.items():
         if effect["targetAction"] not in ACTIONS or not -1 <= effect["signal"] <= 1 or effect["precondition"] not in INFLUENCE_PRECONDITIONS:
             raise ValueError(f"invalid influence definition: {name}")
+        if not isinstance(effect.get("privateWindow", False), bool):
+            raise ValueError(f"invalid privateWindow flag: {name}")
+        if effect.get("privateWindow", False) and (effect["targetAction"] != PRESENT or effect["signal"] != 1):
+            raise ValueError(f"private-window influence must target presentation with a positive signal: {name}")
     for obj_name, objective in FIXTURE["objectives"].items():
         fields = set(objective["requiredTrueFields"]) | set(objective.get("minimumValues", {}))
         if not fields <= STATE_FIELDS:
