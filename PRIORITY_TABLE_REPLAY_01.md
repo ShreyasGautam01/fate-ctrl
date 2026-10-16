@@ -40,7 +40,7 @@ No player objective directly appears in Jules's preference ranking. Otherwise th
 | ASK_KNOWLEDGE | Flatmate reachable; question can be asked; does not presume answer | Request Jules ask what the flatmate knew | Make a supported question easier to ask |
 | WAIT | Always legal | Request Jules wait | No beneficial change; only legal if a player can actually choose a no-op |
 
-The action names are labels for this paper test, not proposed production API identifiers. An influence may change access, salience, or opportunity cost, but cannot create evidence, transfer knowledge, or force an action.
+The action names are labels for this paper test, not proposed production API identifiers. An influence may change access, salience, or opportunity cost, but cannot create evidence, transfer knowledge, or force an action. This replay does not define numeric costs, modifier magnitude, or duration, so its example influence submissions are placeholders rather than proven mechanical effects. Do not treat equal protagonist choices as evidence that the models are strategically equivalent.
 
 ## 3. Candidate protagonist priority table
 
@@ -59,7 +59,7 @@ This is an ordinal table, not a numeric utility formula. Evaluate it from top to
 ### Important limitations of this table
 
 1. P1 deliberately tests whether an immediate honest return can outrank evidence gathering. That choice is a design hypothesis, not a universal moral rule.
-2. P2 and P3 can conflict before the final round. This table says material uncertainty outranks preparation when the uncertainty is consequential and checkable; this is an explicit choice that should be challenged in review.
+2. P2 outranks P3 while the plan is missing and at least two round boundaries remain, except when the evidence source or access opportunity is about to disappear. The shared fixture does not say that the photo is about to disappear, so P2 selects repair preparation in Round 1. That exception needs a concrete, observable deadline before it can be used in a real scenario.
 3. P4 is a fallback, not permission to claim the flatmate knowingly concealed the defect.
 4. P5 cannot override P0–P4 and cannot transform a private fact into public knowledge.
 5. The final tie-break order is artificial but deterministic. If many meaningful decisions land here, the policy is under-specified.
@@ -87,7 +87,7 @@ For both models, apply this sequence: validate submissions; apply legal influenc
 
 **Resulting state:** Jules has a repair plan. Jules still does not know what the photo shows. A gains objective progress only if the objective definition recognizes a prepared plan; this does not yet count as an honest return or preserved trust. B has not established prior knowledge.
 
-**What differs:** In direct intentions, B's requested action is not selected. In the influence model, B may have made the evidence easier to access, but that contribution is only strategically meaningful if it persists into the next round and has a defined, bounded effect. If the salience modifier disappears immediately and changes no later choice, it is cosmetic and should not be counted as meaningful influence.
+**What differs:** In direct intentions, B's requested action is not selected. In the influence model, B may have made the evidence easier to access, but this trace does not define how that effect changes legality, action cost, or Jules's priority evaluation. Its mechanical value is therefore **undetermined**, not demonstrated. To compare the model fairly, a later fixture must give the influence a bounded, visible effect with a defined duration and test whether that effect changes the legal options or decision under the same protagonist policy.
 
 ### Round 2 — Evidence versus conversation
 
@@ -107,7 +107,7 @@ For both models, apply this sequence: validate submissions; apply legal influenc
 
 **Resulting state:** Jules learns only what the photo visibly supports: the rib was loose before the loan. Jules does not learn whether the flatmate saw the defect, noticed it, or intended to conceal it. A's private conversation opportunity remains available only if the scenario rules say the influence persists; it does not itself force a conversation.
 
-**What differs:** Direct-intention A's requested action is not selected. In the influence model, A's opportunity may persist while Jules inspects the photo, potentially giving A a later benefit. That persistence is a real model advantage only if the cost/action budget makes setup meaningful and the rules tell players how long it lasts. Otherwise the influence model has hidden free value.
+**What differs:** Direct-intention A's requested action is not selected. In the influence model, A's opportunity may persist while Jules inspects the photo, potentially giving A a later benefit. The current fixture does not define the opportunity's duration, cost, or concrete effect, so that benefit is hypothetical. A later comparison must price setup and specify expiry before counting it as meaningful contribution.
 
 ### Round 3 — Final boundary
 
@@ -127,7 +127,7 @@ For both models, apply this sequence: validate submissions; apply legal influenc
 
 **Resulting state:** The umbrella is returned honestly before departure. Jules has not established nondisclosure. A may complete the honest-return predicate, but trust preservation must be evaluated from a defined observable consequence rather than assumed from honest intent. B does not complete the prior-knowledge predicate.
 
-**What differs:** The same protagonist policy yields the same selected action in both variants. Direct intentions create a clear request conflict and visible rejection for B. Environmental influence lets B alter the conditions for asking, but that setup does not overcome P1 and may feel less legible if the player cannot see why it failed to change the choice.
+**What differs:** The current provisional policy selects the same action in both variants, but the environmental influence has no defined mechanical effect capable of changing that decision. Therefore this round compares the presentation of a rejected request with the promise of an altered opportunity; it does not demonstrate that the influence model offers useful counterplay. Define and test the effect before making a strategic comparison.
 
 ## 5. Does the table actually favor both players?
 
@@ -169,6 +169,9 @@ P1 selects RETURN_HONESTLY. A's objective can be completed if its predicate is h
 
 ## 7. Comparison against predeclared criteria
 
+**Scope warning:** This fixture compares the action-selection rule and highlights questions for the two control models; it does not yet compare fully specified strategic mechanics. Environmental influences have no agreed cost, magnitude, stacking, or duration, and the protagonist policy does not calculate opportunity cost. Equal outcomes here are therefore not proof of model parity.
+
+
 No numerical ratings are assigned because this is an authored desk test.
 
 - **Legibility:** Direct intentions make the rejected request explicit. Influences need a UI that explains what changed and why it was insufficient.
@@ -184,8 +187,8 @@ No numerical ratings are assigned because this is an authored desk test.
 
 1. A small deterministic protagonist policy can make the same selection rule explicit across both control models, but this fixture's priority ordering remains a hypothesis.
 2. The example gives A a strong final-boundary advantage and B a plausible earlier evidence route. That is potentially strategic, but no claim of balance is warranted without independent players trying to exploit it.
-3. The influence model's possible advantage—both players can shape future conditions—is also its largest fairness risk. Duration, cost, stacking, visibility, and counterplay must be specified before comparing it fairly.
+3. The influence model's possible advantage—both players can shape future conditions—is also its largest fairness risk. Duration, cost, stacking, visibility, and counterplay must be specified before comparing it fairly. The current trace's influence examples are placeholders, not validated mechanics.
 4. Direct intentions are easier to explain at the moment of resolution, but the model needs a satisfying way for a rejected player to retain strategic options.
 5. Neither model should be selected from this self-authored trace alone.
 
-**Next gate:** Have an independent reviewer reconstruct each round using only the shared fixture, priority table, and action definitions. Ask them to identify the selected action, decisive rule, knowledge gained, objective progress, and unresolved facts. Then run a small human test with both control models in counterbalanced order. Record actual observations separately from this desk analysis. Do not start the gameplay engine until the resolution contract and the scenario's causal ending have also passed review.
+**Next gate:** Have an independent reviewer reconstruct each round using only the shared fixture, priority table, and action definitions. Then build a follow-up matched fixture with explicit influence magnitude, cost, expiry, and a state in which an influence changes a legal option or opportunity cost. The current B objective also remains unachievable in this fixture unless a corroborating source is seeded; use this trace to inspect action selection only, not to claim objective fairness. Ask them to identify the selected action, decisive rule, knowledge gained, objective progress, and unresolved facts. Then run a small human test with both control models in counterbalanced order. Record actual observations separately from this desk analysis. Do not start the gameplay engine until the resolution contract and the scenario's causal ending have also passed review.
