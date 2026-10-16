@@ -20,21 +20,56 @@ RANK_ORDER = tuple(POLICY["rankOrder"])
 TIE = {a: len(POLICY["tieBreakOrderHighestFirst"]) - i for i, a in enumerate(POLICY["tieBreakOrderHighestFirst"])}
 
 
+STATE_FIELDS = {
+    "round_no", "remaining", "returned", "acknowledged_damage", "inspected",
+    "presented", "prior_knowledge_acknowledged", "trust",
+}
+ACTION_PRECONDITIONS = {
+    "always", "thread_uninspected", "evidence_ready_for_presentation", "return_possible",
+}
+ACTION_EFFECTS = {"inspect_thread", "present_evidence", "return_and_acknowledge_damage", "wait"}
+INFLUENCE_PRECONDITIONS = {
+    "thread_uninspected", "evidence_ready_for_presentation", "private_window_available",
+}
+
+
 def validate_fixture():
+    if not isinstance(FIXTURE["rounds"], int) or FIXTURE["rounds"] < 1:
+        raise ValueError("rounds must be a positive integer")
     if FIXTURE["initialState"]["remaining"] != FIXTURE["rounds"]:
         raise ValueError("initial remaining count must equal fixture round count")
+    if set(FIXTURE["initialState"]) != STATE_FIELDS:
+        raise ValueError("initialState fields do not match the supported state schema")
     if FIXTURE["initialState"]["trust"] != FIXTURE["relationshipResponse"]["initialTrust"]:
         raise ValueError("initial trust values disagree")
+    if FIXTURE["worldFacts"]["threadInspectedInitially"] != FIXTURE["initialState"]["inspected"]:
+        raise ValueError("thread inspection world fact and protagonist state disagree")
+    if FIXTURE["worldFacts"]["flatmate"]["departsAfterActionWhenRemainingWas"] != FIXTURE["selectionPolicy"]["deadlineRule"]["remainingBoundaries"]:
+        raise ValueError("deadline selection and departure boundaries disagree")
     if len(RANK_ORDER) != 5 or set(RANK_ORDER) != {"contextSignal", "directSupport", "actionTier", "deadlineTier", "tieBreakRank"}:
         raise ValueError("rank order must contain each supported field exactly once")
     if set(POLICY["tieBreakOrderHighestFirst"]) != set(ACTIONS):
         raise ValueError("tie-break order must contain every action exactly once")
     if not {INSPECT, PRESENT, RETURN, WAIT}.issubset(ACTIONS):
         raise ValueError("required action missing from fixture")
-    allowed = {"thread_uninspected", "evidence_ready_for_presentation"}
+    for name, action in FIXTURE["actions"].items():
+        if not isinstance(action["directProposalAllowed"], bool):
+            raise ValueError(f"invalid directProposalAllowed flag: {name}")
+        if action["preconditionId"] not in ACTION_PRECONDITIONS or action["effectId"] not in ACTION_EFFECTS:
+            raise ValueError(f"unsupported action precondition/effect ID: {name}")
+        if not isinstance(action["actionTier"], int):
+            raise ValueError(f"invalid action tier: {name}")
+    if FIXTURE["actions"][WAIT]["directProposalAllowed"]:
+        raise ValueError("WAIT must remain a selector fallback, not a direct proposal")
     for name, effect in INFLUENCES.items():
-        if effect["targetAction"] not in ACTIONS or not -1 <= effect["signal"] <= 1 or effect["precondition"] not in allowed:
+        if effect["targetAction"] not in ACTIONS or not -1 <= effect["signal"] <= 1 or effect["precondition"] not in INFLUENCE_PRECONDITIONS:
             raise ValueError(f"invalid influence definition: {name}")
+    for obj_name, objective in FIXTURE["objectives"].items():
+        fields = set(objective["requiredTrueFields"]) | set(objective.get("minimumValues", {}))
+        if not fields <= STATE_FIELDS:
+            raise ValueError(f"objective {obj_name} references unknown state fields: {sorted(fields - STATE_FIELDS)}")
+        if objective["evaluateAt"] != "departure after the round-3 action":
+            raise ValueError(f"unsupported objective evaluation boundary: {obj_name}")
 
 validate_fixture()
 
@@ -53,26 +88,35 @@ class State:
         return tuple(asdict(self).values())
 
 
-def legal_actions(s):
+def action_is_legal(s, action_name):
+    precondition = FIXTURE["actions"][action_name]["preconditionId"]
     f = FIXTURE["worldFacts"]
-    out = [WAIT]
-    if f["threadExists"] and f["threadAccessibleFromPhone"] and f["julesKnowsThreadExists"] and not s.inspected:
-        out.append(INSPECT)
-    if s.inspected and not s.presented and s.remaining > 0 and f["flatmate"]["reachableBeforeAction"]:
-        out.append(PRESENT)
-    if not s.returned and s.remaining > 0 and f["flatmate"]["reachableBeforeAction"]:
-        out.append(RETURN)
-    return tuple(out)
+    if precondition == "always":
+        return True
+    if precondition == "thread_uninspected":
+        return f["threadExists"] and f["threadAccessibleFromPhone"] and f["julesKnowsThreadExists"] and not s.inspected
+    if precondition == "evidence_ready_for_presentation":
+        return s.inspected and not s.presented and s.remaining > 0 and f["flatmate"]["reachableBeforeAction"]
+    if precondition == "return_possible":
+        return not s.returned and s.remaining > 0 and f["flatmate"]["reachableBeforeAction"]
+    raise ValueError(f"unsupported action precondition: {precondition}")
+
+
+def legal_actions(s):
+    return tuple(a for a in ACTIONS if action_is_legal(s, a))
 
 
 def _influence_legal(s, name):
-    p = INFLUENCES[name]["precondition"]
+    precondition = INFLUENCES[name]["precondition"]
     f = FIXTURE["worldFacts"]
-    if p == "thread_uninspected":
+    if precondition == "thread_uninspected":
         return f["threadExists"] and f["threadAccessibleFromPhone"] and f["julesKnowsThreadExists"] and not s.inspected
-    if p == "evidence_ready_for_presentation":
-        return s.inspected and not s.presented and s.remaining > 0
-    raise ValueError(f"unsupported precondition: {p}")
+    if precondition == "evidence_ready_for_presentation":
+        return s.inspected and not s.presented and s.remaining > 0 and f["flatmate"]["reachableBeforeAction"]
+    if precondition == "private_window_available":
+        return (s.inspected and not s.presented and s.remaining > 0 and
+                f["flatmate"]["reachableBeforeAction"] and f["privateConversationOptionExists"])
+    raise ValueError(f"unsupported precondition: {precondition}")
 
 
 def options(s, model):
@@ -179,10 +223,11 @@ def transition(s, model, inputs):
     returned, ack, inspected, presented = s.returned, s.acknowledged_damage, s.inspected, s.presented
     prior_ack, trust = s.prior_knowledge_acknowledged, s.trust
     events = []
-    if action == INSPECT:
+    effect_id = FIXTURE["actions"][action]["effectId"]
+    if effect_id == "inspect_thread":
         inspected = True
         events += ["EvidenceInspected", "JulesLearnedPhotoAndSeededMessage"]
-    elif action == PRESENT:
+    elif effect_id == "present_evidence":
         presented, prior_ack = True, True
         events += ["EvidencePresented", "PriorKnowledgeAcknowledged"]
         response = FIXTURE["relationshipResponse"]
@@ -193,11 +238,13 @@ def transition(s, model, inputs):
         else:
             trust = response["trustWhenEvidencePresentedAfterAcknowledgement"]
         events.append(f"TrustSetTo{trust}")
-    elif action == RETURN:
+    elif effect_id == "return_and_acknowledge_damage":
         returned, ack = True, True
         events += ["HonestReturn", "OwnDamageAcknowledged"]
-    else:
+    elif effect_id == "wait":
         events.append("Waited")
+    else:
+        raise ValueError(f"unsupported action effect: {effect_id}")
     remaining = s.remaining - 1
     departed = remaining == 0
     nxt = State(s.round_no + 1, remaining, returned, ack, inspected, presented, prior_ack, trust)
