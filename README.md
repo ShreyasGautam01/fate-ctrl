@@ -12,6 +12,7 @@ These are the intended working sources of truth. Their proposals remain drafts u
 - [CONTROL_MODEL.md](CONTROL_MODEL.md) — active control-model comparison contract and validation gates.
 - [scenarios/control_model_test_fixture.json](scenarios/control_model_test_fixture.json) — machine-readable test fixture used by the enumerator; test-only, not story canon.
 - [tools/control_model_enumerator.py](tools/control_model_enumerator.py) and [tests/test_control_model_enumerator.py](tests/test_control_model_enumerator.py) — deterministic comparison harness and its unit tests.
+- [reports/control_model_enumerator_summary.json](reports/control_model_enumerator_summary.json) — reproducible aggregate output, sensitivity checks, terminal-route counts, and interpretation limits.
 - [scenarios/umbrella.json](scenarios/umbrella.json) — scenario design probe, not executable scenario truth; deadline, objectives, evidence history, and Fate rules remain incomplete.
 - [CAUSAL_ROUTE_TRACE_01.md](CAUSAL_ROUTE_TRACE_01.md) — most concrete causal-route test; does not establish a credible route to the literal citywide-emergency ending.
 - [INFORMATION_MODEL.md](INFORMATION_MODEL.md) — the canonical vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
