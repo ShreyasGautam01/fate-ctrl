@@ -23,8 +23,10 @@ class ControlModelEnumeratorTests(unittest.TestCase):
 
     def test_direct_intention_can_change_choice_against_competing_proposal(self):
         state = e.State()
+        # With only B's inspection proposal, inspection wins.
         _, b_only = e.transition(state, e.I, (e.PASS, e.INSPECT))
         self.assertEqual(b_only["selected"], e.INSPECT)
+        # Adding A's conflicting return proposal balances support; the character tie-break selects return.
         _, conflict = e.transition(state, e.I, (e.RETURN, e.INSPECT))
         self.assertEqual(conflict["selected"], e.RETURN)
 
