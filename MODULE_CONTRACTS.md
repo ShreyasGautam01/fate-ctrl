@@ -88,7 +88,7 @@ This is a **fixture-level test contract**, not yet the accepted global resolutio
 
 ## 6. Deterministic result envelope
 
-The local harness should return a structured result with at least:
+The desired result contract for the eventual game engine includes at least:
 
 - rules and fixture version;
 - state before and after;
@@ -107,6 +107,8 @@ Never use the player-facing prose as the test oracle. Tests compare structured s
 
 ## 7. Acceptance tests before gameplay code
 
+The following is the full pre-gameplay acceptance gate, not a claim that the current enumerator covers every item. Current tests cover enumeration, objective-route reachability, selected-action sensitivity, deterministic replay, effect cancellation, private-window behavior, and selected invalid inputs. Player-view projection, visibility leaks, stale entity IDs, network retries, and Fate remain untested.
+
 1. Invalid fixture data is rejected with path-specific errors.
 2. Illegal, duplicate, or stale inputs follow their declared rules and cannot mutate unrelated state.
 3. Both inputs are validated against the same declared snapshot.
@@ -116,7 +118,7 @@ Never use the player-facing prose as the test oracle. Tests compare structured s
 7. The selector never chooses an illegal action.
 8. A direct intention changes selection in at least one reachable state; the effect of that input is attributable to its support mark rather than a coincidental state difference.
 9. Each environmental influence has at least one reachable state where it changes legal options, a policy-read variable, or the selected action.
-10. The null-input baseline is diagnostic only; exhaustive enumeration includes all valid input pairs.
+10. The PASS/PASS baseline is diagnostic; exhaustive enumeration includes all valid paired submissions.
 11. Both objective predicates are reachable in multiple trajectories under the test fixture, and the trust/order trade-off is enumerated.
 12. A reviewer can reconstruct chosen actions, state changes, knowledge, and objectives from the structured record without relying on prose.
 13. Player-facing explanations do not leak private objectives, source contents, or opponent input before the rules allow it.
