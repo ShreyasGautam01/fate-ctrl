@@ -12,12 +12,20 @@
     "evidence": {
       "photo": "A dated photo shows the loose rib before the loan.",
       "message": "The rib is still loose—I noticed it yesterday. Jules is borrowing the umbrella, and I haven't told them about it.",
-      "establishes": ["prior knowledge", "nondisclosure"],
+      "establishes": [
+        "prior knowledge",
+        "nondisclosure"
+      ],
       "mayBeInventedByInfluence": false
     },
     "playerKnowledge": {
-      "playerA": ["Jules worsened the tear", "the flatmate leaves after three resolution boundaries"],
-      "playerB": ["the relevant seeded message is in the thread"],
+      "playerA": [
+        "Jules worsened the tear",
+        "the flatmate leaves after three resolution boundaries"
+      ],
+      "playerB": [
+        "the relevant seeded message is in the thread"
+      ],
       "playerBKnowsMessageContentInitially": false,
       "playerKnowledgeTransfersToJulesAutomatically": false
     },
@@ -44,29 +52,57 @@
       "directProposalAllowed": true,
       "actionTier": 2,
       "precondition": "thread accessible; Jules knows thread exists; not already inspected",
-      "effects": ["mark thread inspected", "Jules learns photo and seeded message content"],
-      "doesNot": ["disclose evidence", "complete Player B objective"]
+      "effects": [
+        "mark thread inspected",
+        "Jules learns photo and seeded message content"
+      ],
+      "doesNot": [
+        "disclose evidence",
+        "complete Player B objective"
+      ],
+      "preconditionId": "thread_uninspected",
+      "effectId": "inspect_thread"
     },
     "PRESENT_EVIDENCE": {
       "directProposalAllowed": true,
       "actionTier": 0,
       "precondition": "thread inspected; evidence not yet presented; flatmate has not departed",
-      "effects": ["mark evidence presented", "flatmate acknowledges prior knowledge from the seeded message"],
-      "doesNot": ["return umbrella", "erase Jules's responsibility for later tear"]
+      "effects": [
+        "mark evidence presented",
+        "flatmate acknowledges prior knowledge from the seeded message"
+      ],
+      "doesNot": [
+        "return umbrella",
+        "erase Jules's responsibility for later tear"
+      ],
+      "preconditionId": "evidence_ready_for_presentation",
+      "effectId": "present_evidence"
     },
     "RETURN_HONESTLY": {
       "directProposalAllowed": true,
       "actionTier": 2,
       "precondition": "umbrella not yet returned; flatmate has not departed",
-      "effects": ["mark umbrella returned", "Jules acknowledges later tear"],
-      "doesNot": ["restore trust after trust has fallen to zero"]
+      "effects": [
+        "mark umbrella returned",
+        "Jules acknowledges later tear"
+      ],
+      "doesNot": [
+        "restore trust after trust has fallen to zero"
+      ],
+      "preconditionId": "return_possible",
+      "effectId": "return_and_acknowledge_damage"
     },
     "WAIT": {
       "directProposalAllowed": false,
       "actionTier": 0,
       "precondition": "always",
       "effects": [],
-      "doesNot": ["preserve current round", "stop departure"]
+      "doesNot": [
+        "preserve current round",
+        "stop departure"
+      ],
+      "preconditionId": "always",
+      "effectId": "wait"
     }
   },
   "influences": {
@@ -97,7 +133,7 @@
     "OPEN_PRIVATE_WINDOW": {
       "targetAction": "PRESENT_EVIDENCE",
       "signal": 1,
-      "precondition": "evidence_ready_for_presentation",
+      "precondition": "private_window_available",
       "kind": "private_window_and_selector_signal",
       "privateWindow": true
     }
@@ -111,22 +147,46 @@
     "effectDuration": "current action selection; private window remains active through selected action response then expires"
   },
   "selectionPolicy": {
-    "rankOrder": ["contextSignal", "directSupport", "actionTier", "deadlineTier", "tieBreakRank"],
-    "tieBreakOrderHighestFirst": ["RETURN_HONESTLY", "INSPECT_SHARED_THREAD", "WAIT", "PRESENT_EVIDENCE"],
-    "deadlineRule": {"action": "RETURN_HONESTLY", "remainingBoundaries": 1, "tier": 3},
+    "rankOrder": [
+      "contextSignal",
+      "directSupport",
+      "actionTier",
+      "deadlineTier",
+      "tieBreakRank"
+    ],
+    "tieBreakOrderHighestFirst": [
+      "RETURN_HONESTLY",
+      "INSPECT_SHARED_THREAD",
+      "WAIT",
+      "PRESENT_EVIDENCE"
+    ],
+    "deadlineRule": {
+      "action": "RETURN_HONESTLY",
+      "remainingBoundaries": 1,
+      "tier": 3
+    },
     "directSupport": "one support mark per valid proposal, capped at two",
     "contextSignal": "resolved temporary influence signal; direct-intention mode uses zero"
   },
   "objectives": {
     "A": {
       "name": "honest return with trust preserved",
-      "requiredTrueFields": ["returned", "acknowledged_damage"],
-      "minimumValues": {"trust": 1},
+      "requiredTrueFields": [
+        "returned",
+        "acknowledged_damage"
+      ],
+      "minimumValues": {
+        "trust": 1
+      },
       "evaluateAt": "departure after the round-3 action"
     },
     "B": {
       "name": "establish accountability with evidence",
-      "requiredTrueFields": ["inspected", "presented", "prior_knowledge_acknowledged"],
+      "requiredTrueFields": [
+        "inspected",
+        "presented",
+        "prior_knowledge_acknowledged"
+      ],
       "evaluateAt": "departure after the round-3 action"
     }
   },
