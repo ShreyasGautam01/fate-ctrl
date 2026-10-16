@@ -9,6 +9,12 @@ import control_model_enumerator as e  # noqa: E402
 
 
 class ControlModelEnumeratorTests(unittest.TestCase):
+    def test_fixture_has_consistent_machine_contract(self):
+        e.validate_fixture()
+        self.assertEqual(e.FIXTURE["initialState"]["remaining"], e.FIXTURE["rounds"])
+        self.assertEqual(e.FIXTURE["worldFacts"]["threadInspectedInitially"], e.FIXTURE["initialState"]["inspected"])
+        self.assertEqual(set(e.POLICY["tieBreakOrderHighestFirst"]), set(e.ACTIONS))
+
     def test_authored_success_routes_are_reachable_in_both_models(self):
         result = e.run_assertions()
         self.assertTrue(result["objectiveRoutesPassed"])
@@ -17,10 +23,8 @@ class ControlModelEnumeratorTests(unittest.TestCase):
 
     def test_direct_intention_can_change_choice_against_competing_proposal(self):
         state = e.State()
-        # With only B's inspection proposal, inspection wins.
         _, b_only = e.transition(state, e.I, (e.PASS, e.INSPECT))
         self.assertEqual(b_only["selected"], e.INSPECT)
-        # Adding A's conflicting return proposal balances support; the character tie-break selects return.
         _, conflict = e.transition(state, e.I, (e.RETURN, e.INSPECT))
         self.assertEqual(conflict["selected"], e.RETURN)
 
@@ -83,9 +87,9 @@ class ControlModelEnumeratorTests(unittest.TestCase):
 
     def test_same_inputs_replay_identically(self):
         for model in (e.I, e.W):
-            a = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
-            b = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
-            self.assertEqual(json.dumps(a, sort_keys=True), json.dumps(b, sort_keys=True))
+            first = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
+            second = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
+            self.assertEqual(json.dumps(first, sort_keys=True), json.dumps(second, sort_keys=True))
 
     def test_terminal_state_rejects_more_inputs(self):
         with self.assertRaises(ValueError):
@@ -96,6 +100,8 @@ class ControlModelEnumeratorTests(unittest.TestCase):
             e.transition(e.State(), e.I, (e.PRESENT, e.PASS))
         with self.assertRaises(ValueError):
             e.transition(e.State(), e.W, ("EVIDENCE_UP", e.PASS))
+        with self.assertRaises(ValueError):
+            e.transition(e.State(), e.W, ("OPEN_PRIVATE_WINDOW", e.PASS))
 
 
 if __name__ == "__main__":
