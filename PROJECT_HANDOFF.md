@@ -3,7 +3,7 @@
 **Last updated:** 2026-10-15  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** docs/round-resolution-simulation-02  
+**Working branch:** docs/causal-route-and-review-gates-01  
 **Current phase:** concept validation and specification  
 **Implementation:** not started
 
