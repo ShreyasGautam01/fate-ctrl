@@ -17,7 +17,8 @@ Translate the Sonnet 5.5 audit into a testable control-model contract, execute t
 - CONTROL_MODEL.md is the decision rationale and control-model contract.
 - scenarios/control_model_test_fixture.json is the machine-readable source of truth for this experiment's exact facts, initial state, objectives, trust-response hypothesis, selector configuration, and influence definitions.
 - tools/control_model_enumerator.py is the one Python standard-library implementation of the enumerated comparison.
-- tests/test_control_model_enumerator.py has unit tests for known paths, input sensitivity, deterministic replay, effect cancellation, private-window behavior, and invalid input.
+- tests/test_control_model_enumerator.py has 12 unit tests for fixture consistency, known paths, input sensitivity, deterministic replay, effect cancellation, private-window behavior, and invalid input.
+- reports/control_model_enumerator_summary.json records the executed aggregate output; its outcome counts are not win rates or probabilities.
 - ARCHITECTURE.md describes the comparison harness and later gates.
 - MODULE_CONTRACTS.md describes logical ownership boundaries.
 - scenarios/umbrella.json remains a separate unresolved story probe; it has not been silently rewritten to match the test fixture.
@@ -34,7 +35,7 @@ The current harness enumerates all legal paired submissions over reachable nonte
 
 ## Executed run
 
-**Automated tests:** 11 tests passed locally using Python's standard library.
+**Automated tests:** 12 tests passed locally using Python's standard library.
 
 | Metric | Direct intention (I) | Environmental influence (W) |
 |---|---:|---:|
