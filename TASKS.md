@@ -13,7 +13,7 @@
 **Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
 
 ### P0-02 — Define protagonist influence
-**Status:** Analysis started in PROTAGONIST_CONTROL.md; no model selected. This task is coupled to P0-01 and must be resolved jointly rather than in isolation. Define the submitted intention/action, protagonist agency, knowledge constraints, and success/failure reasons.  
+**Status:** Analysis started in PROTAGONIST_CONTROL.md; no model selected. This task is coupled to P0-01 and must be resolved jointly rather than in isolation. Define the submitted intention/action, protagonist agency, knowledge constraints, and success/failure reasons. The current influence examples are placeholders until magnitude, cost, stacking, duration, and counterplay are specified.  
 **Exit:** Actions have understandable results and meaningful costs; players can explain why an intention succeeded, changed, or failed.
 
 ### P0-03 — Define objectives and scoring
