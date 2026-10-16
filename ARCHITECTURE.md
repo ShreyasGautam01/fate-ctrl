@@ -45,9 +45,9 @@ These are conceptual boundaries, not an instruction to create a large class hier
 
 ## 3. Language and testing approach
 
-**Recommendation:** use a small TypeScript/Node test harness if its domain types can be reused in a later browser prototype. Keep dependencies minimal and avoid choosing a UI framework now. A short Python probe would also be acceptable for a disposable enumeration, but do not maintain both implementations of the same rules.
+**Current test-harness choice:** Python 3 with the standard library, implemented in `tools/control_model_enumerator.py`. The reason is scope: the game runtime language has not been selected, but the current need is a finite-state design experiment with no UI and no third-party dependency. The enumerator reads its values from `scenarios/control_model_test_fixture.json` rather than maintaining a second hard-coded copy of the fixture.
 
-The deciding criterion is not language preference. It is whether the harness is easy to audit, can enumerate all valid input pairs, and reproduces the same structured results from the same state and rules version. The selection of TypeScript here is a provisional implementation recommendation, not a decision to build the full product stack.
+Do not build a parallel TypeScript version of this enumerator. After the control-model gate passes, either discard/archive the tool or port the accepted rule contract into the selected runtime with behavioral tests. A future browser game may still use TypeScript; that is a separate decision from the language used for this temporary research harness.
 
 ## 4. Canonical data boundaries
 
@@ -88,39 +88,32 @@ CONTROL_MODEL.md defines the current fixture order. For clarity, the enumerator 
 
 This order is only for the comparative fixture. Fate is absent. It does not settle the production-wide rule order for Fate, effect expiry collisions, or multiple terminal predicates; those remain a separate contract gate.
 
-## 6. What the enumerator must measure
+## 6. What the enumerator measures now—and what remains
 
-For every reachable state, and for every valid submission pair in each candidate mode, record:
+The implemented harness exhaustively enumerates legal paired submissions over reachable nonterminal states for both candidates and records:
 
-- null-input diagnostic baseline (clearly marked non-playable);
-- selected action with full rank tuple and decisive field;
-- legal actions before and after environmental effects;
-- effect application, cancellation, persistence, and expiry;
-- whether changing Player A's input alone changes state, action, or a policy-read variable;
-- whether changing Player B's input alone changes state, action, or a policy-read variable;
-- reachable trajectories, repeated states, action denial, and no-op inputs;
-- each player's progress and whether their terminal predicate is reachable;
-- sequences that preserve or damage trust under the test hypothesis;
-- facts known to each actor at every event;
-- deterministic state/event equality on replay;
-- dominance: an input that never helps, an input that always dominates, or a rule that collapses the two models to the same behavior.
+- the legal PASS/PASS baseline and conditional input-sensitivity tests that hold the opponent's input fixed;
+- legal actions, every rank tuple, selected action, runner-up, and the first rank field separating them;
+- direct support or resolved influence effects/signals, private-window status, action events, and the before/after canonical state;
+- objective completion at the departure boundary, terminal outcome sequence counts, and sample A-only, B-only, and joint-success paths;
+- deterministic replay and explicit tests for invalid inputs, influence cancellation, and objective routes.
 
-The report should separate model behavior from tie-break bias, fixture assumptions, protagonist traits, and action cost. Identical action sequences do not prove equivalence if legal options, state transitions, information, or future reachability differ.
+Counts are enumerated input sequences and transition evaluations, not probabilities or balance scores. Legal option sets vary by state, so raw terminal sequence counts cannot be interpreted as win odds.
+
+**Not yet covered:** a real per-player view projection, visibility-leak testing, public/private reason-code filtering, network retries/stale entity IDs, Fate, and any claim about fun or perceived fairness. Those remain separate validation work. Identical selected-action sequences do not prove equivalence if legal options, state transitions, information, future reachability, or counterplay differ.
 
 ## 7. Validation gate before any playable prototype
 
-Do not proceed to a UI or full game prototype until:
+The current execution passes only a **structural-enumeration checkpoint**, not the prototype gate. Before any playable prototype:
 
-1. CONTROL_MODEL.md contains internally consistent submission semantics and a total selection procedure.
-2. The fixture defines an evidence source that makes Player B's objective genuinely feasible.
-3. Both objectives have explicit predicates and multiple reachable trajectories; objective progress is distinct from completion.
-4. Every environmental effect has a precise target, precondition, result, duration/expiry, composition rule, and visible or safely hidden reason.
-5. The direct and influence inputs both have non-zero sensitivity in reachable states and neither candidate is structurally null under the enumerator.
-6. The independent reviewer can reproduce the enumerator's results from the specification.
-7. Dominance, input sensitivity, trust ordering, objective reachability, and hidden-information behavior have been inspected.
-8. Remaining owner choices—especially Jules's tie-break/personality, the trust response, and Player B's evidence objective—are explicitly accepted or changed.
+1. Have an independent reviewer reconstruct the enumerator's selected actions and outcome paths from CONTROL_MODEL.md plus the JSON fixture.
+2. Review owner-sensitive assumptions: direct-intention support semantics, whether the seeded message is too conclusive, Jules's tie-break preference, and the trust/private-window response.
+3. Inspect the conditional-sensitivity tables, effect cancellation behavior, objective reachability, and whether either input type is dominant or irrelevant in particular states.
+4. Decide if the narrow W influence set is meaningfully distinct from I, rather than merely a different interface for steering the same action.
+5. Add the missing player-view/visibility tests before any UI or network work.
+6. Only after the independent reconstruction agrees with the implementation, consider a tiny local comparative prototype.
 
-Then conduct a small counterbalanced human teach-back test. A deterministic enumerator can prove properties of the coded rules, not that players will find the game fun or fair.
+Then conduct counterbalanced human teach-back sessions. The enumerator can establish properties of its coded rules; it cannot show that players will find the game fun, fair, understandable, or worth replaying.
 
 ## 8. Later architecture options
 
@@ -142,11 +135,13 @@ Treat client input and scenario uploads as untrusted. Keep canonical state serve
 
 ## 10. Ownership and related references
 
-- CONTROL_MODEL.md owns the current test fixture, candidate semantics, protagonist rank policy, and comparison gates.
-- MODULE_CONTRACTS.md defines logical responsibilities and input/output boundaries.
+- CONTROL_MODEL.md owns the decision rationale, control-model semantics, and validation gates.
+- `scenarios/control_model_test_fixture.json` is the machine-readable source of truth for this experiment's exact world facts, initial state, objective predicates, trust hypothesis, influence configuration, and rank/tie-break values.
+- `tools/control_model_enumerator.py` executes the small finite-state model; `tests/test_control_model_enumerator.py` tests its structural properties.
+- MODULE_CONTRACTS.md defines logical responsibility and input/output boundaries.
 - INFORMATION_MODEL.md owns the vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
 - DECISIONS.md records accepted/proposed project decisions.
-- scenarios/umbrella.json is still a draft design probe; it is not yet the canonical source of the repaired test fixture.
+- scenarios/umbrella.json remains a separate draft story probe; it is not the machine source for this control-model experiment.
 - CAUSAL_ROUTE_TRACE_01.md and related files concern the separate, unresolved escalation/Fate premise.
 
-Do not copy the control-model rules into this document. Link to their canonical source and keep this file focused on execution boundaries and validation strategy.
+Do not copy numeric fixture/policy values into this document. Link to the JSON source of truth and keep this file focused on semantics, trade-offs, and validation.
