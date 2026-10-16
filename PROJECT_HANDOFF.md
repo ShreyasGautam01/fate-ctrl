@@ -1,6 +1,6 @@
 # Project Handoff
 
-**Last updated:** 2026-10-15  
+**Last updated:** 2026-10-16  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
 **Working branch:** docs/round-resolution-simulation-02  
@@ -11,29 +11,33 @@
 FATE/CTRL is a proposed two-player narrative strategy game. Both players influence one protagonist while pursuing distinct objectives; a constrained Fate system attempts to reach a scenario-defined dramatic ending. The story begins with an ordinary problem and escalates through causally connected consequences. Deterministic rules are authoritative; narration is presentation.
 
 ## Baseline
-PR #1 established the first design documents; PR #2 added a first paper simulation, information model, and causal-route comparisons. This iteration adds a provisional resolution stress test, a direct-intention candidate trace, a model-comparison scorecard, a skeptical causal-route workshop, and an objective/fairness worksheet. PR #2 is merged; this iteration is separate from main until reviewed.
+PR #1 established the first design documents; PR #2 added a first paper simulation, information model, and causal-route comparisons. The current branch adds a provisional resolution stress test, direct-intention candidate trace, model-comparison scorecard, causal-route workshop and trace, objective/fairness worksheet, protagonist-response alternatives, and a shared-priority-table replay. This branch is not merged into main; project owner reviews and merges changes.
 
 ## Findings from this iteration
-- PAPER_SIMULATION_02.md stress-tests one provisional influence model. It is not a matched comparison with direct intentions and is not a human playtest.
-- DIRECT_INTENTION_TRACE.md provides the alternative model trace; MATCHED_MODEL_COMPARISON_01.md aligns the starting fixture and strategy profiles. PROTAGONIST_RESPONSE_RULES.md now compares candidate deterministic response policies. The matched trace still lacks a fully specified priority table and a B-favoring round, so this is a comparison framework, not a completed comparative result.
-- MODEL_COMPARISON_SCORECARD.md defines criteria without invented weights. The models are not selected.
-- A deterministic no-op on equal conflicting actions is predictable but may feel like wasted turns and encourage blocking. It is only a test rule.
-- Stale targets, cost refunds, deadline boundaries, knowledge acquisition, and Fate eligibility require global, explicit contracts.
-- Objective progress and objective completion are distinct. Objectives need measurable terminal predicates, feasibility paths, partial outcomes, and exploit checks.
-- The umbrella scenario still lacks a credible causal route to a literal citywide catastrophe. A smaller but dramatic target—Jules wrongly blamed for a consequential local failure during a real public emergency—may be stronger. CAUSAL_ROUTE_TRACE_01.md traces this route and identifies the break: it does not currently justify blame for causing a citywide emergency.
+- PRIORITY_TABLE_REPLAY_01.md applies one explicit, provisional protagonist policy to both control models. It is desk analysis, not human playtest evidence.
+- The shared policy exposes a genuine deadline asymmetry: with one boundary remaining, honest return can outrank B's attempt to establish prior knowledge. B therefore needs a viable earlier information path; fairness does not require both objectives to complete in every state.
+- In the current trace, the influence model's potential for both players to shape future conditions is only valuable if duration, cost, stacking, visibility, and counterplay are explicit. Otherwise the contribution is cosmetic or opaque.
+- The direct-intention model makes rejected requests legible but risks repeated frustration for the player whose request loses. Both models remain candidates; no score or selection is justified yet.
+- The protagonist priority table remains a hypothesis. An independent reviewer should reconstruct the outcomes from the document without coaching before a human comparison.
+- The umbrella scenario still lacks a credible causal route to a literal citywide catastrophe. A smaller target—Jules publicly blamed for a consequential local operational failure during an independently existing storm disruption—is the only current target worth further tracing, not accepted canon.
+- Stale targets, cost refunds, deadline boundaries, knowledge acquisition, and Fate eligibility still need global, explicit contracts.
+- Objective progress and objective completion are distinct. Repair preparation, evidence discovery, honest return, trust preservation, and proof of nondisclosure must not be collapsed into one flag.
 - No interaction model, objective model, causal route, runtime schema, or implementation stack has been approved.
 
 ## Documents to read next
-1. PAPER_SIMULATION_02.md — provisional influence-model resolution stress test and limitations.
-2. DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md, and PRIORITY_TABLE_REPLAY_01.md — candidate traces, shared priority-table replay, comparison criteria, and response-policy alternatives.
-3. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and an event-by-event trace.
-4. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — goal, progress, terminal predicate, and fairness model.
-5. PAPER_SIMULATION_01.md and PROTAGONIST_CONTROL.md — prior control-model questions.
-6. INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and ARCHITECTURE.md — data ownership and technical boundaries.
-7. TASKS.md and DECISIONS.md — open gates and proposed decisions.
+1. PRIORITY_TABLE_REPLAY_01.md — shared protagonist policy, three-round replay, counterfactuals, and exploit audit.
+2. MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md — model comparison and response policy.
+3. PAPER_SIMULATION_02.md and DIRECT_INTENTION_TRACE.md — earlier provisional resolution stress test and direct-intention trace.
+4. CAUSAL_ROUTE_WORKSHOP.md and CAUSAL_ROUTE_TRACE_01.md — causal alternatives and event-by-event trace.
+5. OBJECTIVE_AND_FAIRNESS_WORKSHEET.md — objective predicates, partial outcomes, and fairness.
+6. INFORMATION_MODEL.md, MODULE_CONTRACTS.md, and ARCHITECTURE.md — information ownership and technical boundaries.
+7. TASKS.md and DECISIONS.md — open gates and decision status.
 
 ## Next action
-Ask an independent reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md using only that document. Record whether they can reproduce the selected action, decisive priority, knowledge gained, objective progress, and unresolved facts without coaching. Then run a small human test with both control models in counterbalanced order; keep observed results separate from authored desk analysis. Do not score or select a model yet. Compare both models against the predeclared criteria without inventing numeric weights. Separately, review CAUSAL_ROUTE_TRACE_01.md: Target 1 (blame for a local operational failure) is currently the only target worth further tracing; Target 3 (blame for causing a citywide emergency) is unsupported. Decide whether the smaller target preserves the desired finale, or replace the scenario premise. Have a reviewer reconstruct the trace without coaching. If the causal route cannot earn the ending, revise the ending or replace the scenario rather than forcing it.
+1. Conduct an independent reconstruction of PRIORITY_TABLE_REPLAY_01.md. Ask the reviewer to list the selected action, decisive priority, knowledge gained, objective progress, and unresolved facts for every round and counterfactual, without coaching. Record mismatches as ambiguity defects.
+2. If the trace is reproducible, design a short human test comparing direct intentions and environmental influence in counterbalanced order. Capture player predictions, perceived agency, understanding of rejection/effect duration, and whether losing a decision still leaves meaningful options. Do not invent numerical results or call desk analysis a playtest.
+3. Separately test the local public-blame finale against the original desired escalation. Include a non-Fate route and at least two plausible player disruptions. If the route requires contrivance, revise the ending or replace the opening premise.
+4. Only after these gates pass, finalize the smallest action set and resolution contract, then consider a minimal deterministic prototype.
 
 ## Constraints
 - Quality and cross-system trade-off analysis outrank rapid implementation.
