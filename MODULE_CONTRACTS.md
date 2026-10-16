@@ -1,7 +1,7 @@
 # Module Contracts — Proposed Logical Boundaries
 
 **Status:** Revised architecture proposal after the control-model audit. These are logical responsibilities, not a commitment to one class per module or a production stack.  
-**Primary decision reference:** CONTROL_MODEL.md. It defines the current test fixture and the two model-specific submission contracts. Those rules are still provisional.
+**Primary decision reference:** CONTROL_MODEL.md. It defines the test semantics and routes machine-readable values through scenarios/control_model_test_fixture.json. Those rules are still provisional. The executed aggregate output is recorded in reports/control_model_enumerator_summary.json.
 
 ## 1. Architecture principles
 
@@ -126,4 +126,4 @@ The following is the full pre-gameplay acceptance gate, not a claim that the cur
 
 ## 8. Out of scope for this architecture pass
 
-No UI, browser rendering, authentication, Supabase, network/reconnect protocol, production persistence, Fate intervention implementation, generative narration, or scalable scenario scripting. First use the harness to determine whether the two control inputs have meaningful, non-dominated effects and whether objectives are reachable. Expand the architecture only when an experiment requires it.
+No UI, browser rendering, authentication, Supabase, network/reconnect protocol, production persistence, Fate intervention implementation, generative narration, or scalable scenario scripting is included. The first enumerator run shows both inputs can affect choices and that all three terminal objective classes are reachable under the test fixture; it also reveals a narrow B-only W route that needs independent analysis. Expand the architecture only when the next experiment requires it.
