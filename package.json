@@ -1,0 +1,15 @@
+{
+  "name": "fate-ctrl-enumerator",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Deterministic model-checking harness for the provisional FATE/CTRL control-model fixture",
+  "scripts": {
+    "build": "tsc --project tsconfig.json",
+    "test": "npm run build && node --test dist/tests/*.test.js",
+    "enumerate": "npm run build && node dist/src/enumerator.js"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^22.18.0"
+  }
+}
