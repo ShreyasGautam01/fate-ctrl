@@ -130,23 +130,24 @@ This is a fixture contract only. It does not settle the production-wide resoluti
 
 ## 8. Required deterministic comparison
 
-The enumerator must test all valid paired submissions over every reachable fixture state for both models. It should report:
+The enumerator tests valid paired submissions over every reachable nonterminal fixture state for both models. It reports:
 
-- Null-input diagnostic baseline, kept separate from legal live submissions.
-- Full legal-action list, the rank tuple of each action, selected action, and decisive tuple field.
-- Accepted/failed submissions, effect conflicts, context signals, private-window status, and state/event diff.
-- Knowledge held by Jules and each player before and after each event.
-- Per-round progress and terminal A/B predicates at departure.
-- Whether changing either player's submission alone changes the selected action, legal action set, context, or resulting state.
-- Whether A-only, B-only, and both-objective trajectories are reachable; whether any objective is impossible.
-- Whether input pairs are irrelevant, always dominant, or expose an action that is effectively forced.
-- Deterministic replay equality and visibility-safe explanations.
+- The legal PASS/PASS baseline and comparisons that change one player's input while holding the opponent's input fixed.
+- The full legal-action list, every candidate's rank tuple, selected action, runner-up, and first rank field that separates them.
+- The validated input pair, resolved influence effects/conflicts, context signals, private-window status, and state/event diff.
+- Explicit protagonist knowledge-acquisition events and the resulting state.
+- Terminal A/B predicates and sample A-only, B-only, and joint-success paths.
+- Whether changing either player's input can change the selected action or persistent state; conditional input-sensitivity counts by submission type.
+- Whether each objective and both objectives together are reachable in the fixture.
+- Deterministic replay and selected invalid-input cases.
 
-Trajectory counts are enumeration counts, not probabilities or balance scores. The enumerator cannot establish enjoyment or perceived fairness.
+**Not yet implemented:** player-specific view generation, visibility-leak testing, public/private reason-code projection, stale entity-ID handling, network retries, Fate interactions, and a general explanation system. These are not claimed as validated by this enumerator and remain blockers before any multiplayer implementation.
+
+Trajectory counts are counts of legal input sequences under state-dependent option sets—not probabilities, win rates, or balance scores. The enumerator cannot establish enjoyment or perceived fairness.
 
 ## 9. Test route expectations, not claimed results
 
-These are expected mechanics to verify against the actual enumerator, not test results.
+The enumerator's unit tests now verify the following fixture mechanics. These are executed rule checks, not playtest findings.
 
 - **A-only route:** return before evidence presentation, then inspect the thread, but do not push presentation when WAIT has the better unmodified rank. A succeeds; B does not.
 - **B-only route:** inspect first, then push a non-private evidence presentation before Jules acknowledges their own damage; trust falls to 0. Return at the final boundary. B succeeds; A does not.
@@ -168,7 +169,7 @@ The following are not silently accepted game canon:
 5. Whether three boundaries give enough space for meaningful strategic counterplay.
 6. Whether environmental influence should later include persistent world-state effects beyond the current context/privacy test.
 
-Before a playable prototype, run the deterministic enumerator and have an independent reviewer reconstruct the output from this file. Only then decide whether to build a small local comparative prototype. Human teach-back is still required before declaring either model fun, fair, or selected for the game.
+The deterministic enumerator and its current unit tests have been executed. Next, have an independent reviewer reconstruct the selected actions and objective paths from the JSON fixture, policy contract, and report. Correct any discrepancies before considering a local comparative prototype. Human teach-back is still required before declaring either model fun, fair, or selected for the game.
 
 The offline deterministic enumerator now exists at tools/control_model_enumerator.py and reads scenarios/control_model_test_fixture.json. It is a test harness, not a UI, online backend, or production engine. Its executed outputs are summarized in PROJECT_HANDOFF.md; the JSON and code are still provisional test assets.
 
