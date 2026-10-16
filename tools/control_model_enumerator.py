@@ -365,14 +365,20 @@ def run_assertions():
             final = path[-1]
             got = (final["AComplete"], final["BComplete"])
             expected = {"AOnly": (True, False), "BOnly": (False, True), "Both": (True, True)}[goal]
-            assert got == expected, f"{model}/{goal}: expected {expected}, got {got}"
+            if got != expected:
+                raise AssertionError(f"{model}/{goal}: expected {expected}, got {got}")
             route_results[model][goal] = [{"round": r["round"], "inputs": r["inputs"], "selected": r["selected"], "trust": r["after"]["trust"]} for r in path]
-        assert json.dumps(transition(State(), model, (PASS, PASS))[1], sort_keys=True) == json.dumps(transition(State(), model, (PASS, PASS))[1], sort_keys=True)
+        first = json.dumps(transition(State(), model, (PASS, PASS))[1], sort_keys=True)
+        second = json.dumps(transition(State(), model, (PASS, PASS))[1], sort_keys=True)
+        if first != second:
+            raise AssertionError(f"nondeterministic replay detected for model {model}")
     s = State(round_no=2, remaining=2, inspected=True)
     sig, private, _ = resolve_influences(s, ("EVIDENCE_UP", "EVIDENCE_DOWN"))
-    assert sig[PRESENT] == 0 and not private
+    if sig[PRESENT] != 0 or private:
+        raise AssertionError("opposite evidence-prominence signals should cancel with no private window")
     sig, private, _ = resolve_influences(s, ("EVIDENCE_DOWN", "OPEN_PRIVATE_WINDOW"))
-    assert sig[PRESENT] == 0 and private
+    if sig[PRESENT] != 0 or not private:
+        raise AssertionError("private-window bonus should cancel the negative signal while preserving privacy")
     return {"objectiveRoutesPassed": True, "deterministicReplayPassed": True, "influenceCancellationPassed": True, "routes": route_results}
 
 
