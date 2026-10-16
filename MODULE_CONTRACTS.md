@@ -3,6 +3,8 @@
 **Status:** Revised architecture proposal after the control-model audit. These are logical responsibilities, not a commitment to one class per module or a production stack.  
 **Primary decision reference:** CONTROL_MODEL.md. It defines the test semantics and routes machine-readable values through scenarios/control_model_test_fixture.json. Those rules are still provisional. The executed aggregate output is recorded in reports/control_model_enumerator_summary.json.
 
+**Executable test assets:** scenarios/control_model_test_fixture.json is the machine fixture; tools/control_model_enumerator.py is its single Python enumerator; tests/test_control_model_enumerator.py contains 12 tests; reports/control_model_enumerator_summary.json stores aggregate output. These validate only the narrow offline comparison. They do not establish player-view security, human fairness, fun, or the production global resolution order.
+
 ## 1. Architecture principles
 
 - One authoritative owner for each mutable piece of state.
@@ -107,7 +109,7 @@ Never use the player-facing prose as the test oracle. Tests compare structured s
 
 ## 7. Acceptance tests before gameplay code
 
-The following is the full pre-gameplay acceptance gate, not a claim that the current enumerator covers every item. Current tests cover enumeration, objective-route reachability, selected-action sensitivity, deterministic replay, effect cancellation, private-window behavior, and selected invalid inputs. Player-view projection, visibility leaks, stale entity IDs, network retries, and Fate remain untested.
+The following is the full pre-gameplay acceptance gate, not a claim that the current enumerator covers every item. The current code and 12 unit tests cover fixture consistency, selected-action sensitivity, legal-action choice, sample objective routes, replay, influence cancellation, private-window trust handling, and selected invalid inputs; the aggregate metrics are in reports/control_model_enumerator_summary.json. Current tests cover enumeration, objective-route reachability, selected-action sensitivity, deterministic replay, effect cancellation, private-window behavior, and selected invalid inputs. Player-view projection, visibility leaks, stale entity IDs, network retries, and Fate remain untested.
 
 1. Invalid fixture data is rejected with path-specific errors.
 2. Illegal, duplicate, or stale inputs follow their declared rules and cannot mutate unrelated state.
@@ -126,4 +128,4 @@ The following is the full pre-gameplay acceptance gate, not a claim that the cur
 
 ## 8. Out of scope for this architecture pass
 
-No UI, browser rendering, authentication, Supabase, network/reconnect protocol, production persistence, Fate intervention implementation, generative narration, or scalable scenario scripting is included. The first enumerator run shows both inputs can affect choices and that all three terminal objective classes are reachable under the test fixture; it also reveals a narrow B-only W route that needs independent analysis. Expand the architecture only when the next experiment requires it.
+No UI, browser rendering, authentication, Supabase, network/reconnect protocol, production persistence, Fate intervention implementation, generative narration, or scalable scenario scripting is included. The first enumerator run shows both input types can affect the selector and that all three terminal objective classes are reachable in the fixture. It also shows only 9 B-only W input sequences versus 642 A-only W sequences; this is a structural result to audit, not evidence of probability or fairness. Expand the architecture only when the next experiment requires it.
