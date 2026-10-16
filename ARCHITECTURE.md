@@ -3,11 +3,11 @@
 **Status:** Revised after the control-model audit. This defines the next experimental architecture, not the final production stack.  
 **Primary control contract:** CONTROL_MODEL.md.  
 **Detailed logical responsibilities:** MODULE_CONTRACTS.md.  
-**Implementation status:** no gameplay code or comparative enumerator exists yet.
+**Implementation status:** no gameplay code exists; a provisional local enumerator and 12 unit tests have been executed.
 
 ## 1. Architectural decision: test the rule system before building the game
 
-The Sonnet audit identified that the previous paper comparison could not establish that either player input caused the outcome. The next technical artifact should therefore be a **local deterministic enumerator**, not a UI or online game.
+The Sonnet audit identified that the previous paper comparison could not establish that either player input caused the outcome. A **local deterministic enumerator** now exists and has been run against a machine-readable fixture. The immediate next step is an independent code/fixture audit and reconstruction, not a UI or online game.
 
 The enumerator is a small model-testing tool. It should enumerate states and input pairs, produce structured outcomes, and expose where one control model is irrelevant, dominant, impossible to use, or objective-breaking. It is not the playable game and should not include networking, persistence, or narration.
 
@@ -45,7 +45,7 @@ These are conceptual boundaries, not an instruction to create a large class hier
 
 ## 3. Language and testing approach
 
-**Current test-harness choice:** Python 3 with the standard library, implemented in `tools/control_model_enumerator.py`. The reason is scope: the game runtime language has not been selected, but the current need is a finite-state design experiment with no UI and no third-party dependency. The enumerator reads its values from `scenarios/control_model_test_fixture.json` rather than maintaining a second hard-coded copy of the fixture.
+**Current test-harness choice:** Python 3 with the standard library, implemented in `tools/control_model_enumerator.py`. The reason is scope: the game runtime language has not been selected, but the current need is a finite-state design experiment with no UI and no third-party dependency. The enumerator reads configured values from `scenarios/control_model_test_fixture.json`; the supported transition semantics remain implemented in the Python code and are checked against the fixture by validation/tests. Do not maintain a second implementation in TypeScript or another language.
 
 Do not build a parallel TypeScript version of this enumerator. After the control-model gate passes, either discard/archive the tool or port the accepted rule contract into the selected runtime with behavioral tests. A future browser game may still use TypeScript; that is a separate decision from the language used for this temporary research harness.
 
@@ -90,7 +90,7 @@ This order is only for the comparative fixture. Fate is absent. It does not sett
 
 ## 6. What the enumerator measures now—and what remains
 
-The implemented harness exhaustively enumerates legal paired submissions over reachable nonterminal states for both candidates and records:
+The implemented harness exhaustively enumerates legal paired submissions over reachable nonterminal fixture states for both candidates. Its aggregate run is recorded in `reports/control_model_enumerator_summary.json`. It records:
 
 - the legal PASS/PASS baseline and conditional input-sensitivity tests that hold the opponent's input fixed;
 - legal actions, every rank tuple, selected action, runner-up, and the first rank field separating them;
@@ -137,7 +137,7 @@ Treat client input and scenario uploads as untrusted. Keep canonical state serve
 
 - CONTROL_MODEL.md owns the decision rationale, control-model semantics, and validation gates.
 - `scenarios/control_model_test_fixture.json` is the machine-readable source of truth for this experiment's exact world facts, initial state, objective predicates, trust hypothesis, influence configuration, and rank/tie-break values.
-- `tools/control_model_enumerator.py` executes the small finite-state model; `tests/test_control_model_enumerator.py` tests its structural properties.
+- `tools/control_model_enumerator.py` executes the small finite-state model; `tests/test_control_model_enumerator.py` tests its structural properties; `reports/control_model_enumerator_summary.json` records the aggregate execution results.
 - MODULE_CONTRACTS.md defines logical responsibility and input/output boundaries.
 - INFORMATION_MODEL.md owns the vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
 - DECISIONS.md records accepted/proposed project decisions.
