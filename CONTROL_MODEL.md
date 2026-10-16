@@ -1,8 +1,8 @@
-# Control Model — Revised Test Contract 0.3
+# Control Model — Revised Test Contract 0.4
 
 **Status:** Provisional comparison contract after deep audit; not accepted production rules.  
 **Decision owner:** Project owner.  
-**Evidence class:** Desk analysis plus a Sonnet 5.5 critique. A deterministic enumerator is being implemented; no human playtest is claimed.  
+**Evidence class:** Sonnet 5.5 audit plus an executed deterministic enumerator and automated tests. No independent human playtest is claimed.  
 **Scope:** Compare direct intention with environmental influence using one small, self-contained fixture. Do not treat this file's mechanics or rankings as story canon.
 
 ## 1. Decision and architecture boundary
@@ -45,72 +45,28 @@ The enumerator is a local rules test, not a playable game or production architec
 
 ## 3. Shared test fixture
 
-These are test assumptions, not accepted scenario canon.
+The executable values for this comparison live in [scenarios/control_model_test_fixture.json](scenarios/control_model_test_fixture.json). **That JSON is the machine-readable source of truth** for the fixture ID/version, world facts and evidence text, player-knowledge notes, initial state, round count, action definitions and proposal eligibility, influence targets/signals/preconditions, effect composition, ranking order/tie-break values, objective predicates, and the test-only trust-response hypothesis.
 
-### World facts and timing
+The enumerator loads this file directly. It validates basic consistency (round count versus initial countdown, initial trust versus relationship-response configuration, ranking fields, action/tie-break coverage, influence targets/signals, and recognized preconditions) before enumeration. Do not create a second executable copy of those values. If the Markdown explanation and JSON disagree, stop and reconcile them rather than guessing which value to trust.
 
-- Jules borrowed a red umbrella from a flatmate. A loose rib existed before the loan; Jules later worsened a tear. These are two distinct condition events.
-- A message thread exists and is accessible from Jules's phone. Jules knows the thread exists but has not inspected the relevant older messages.
-- The thread contains a dated photo of the earlier loose rib and a message sent by the flatmate before the loan: “The rib is still loose—I noticed it yesterday. Jules is borrowing the umbrella, and I haven't told them about it.” The message is a seeded fixture fact, not something an influence may invent.
-- The photo alone proves only the earlier visible condition. The seeded message provides the stronger evidence of prior knowledge and nondisclosure.
-- Player B's private briefing identifies the relevant message. Player A is not given its content. Neither player's knowledge automatically transfers to Jules.
-- A private conversation option exists, but it is not active at the start of any round unless an influence opens it.
-- The flatmate is reachable during rounds 1–3 and departs immediately after Jules's action at the end of round 3. The countdown starts at 3, then 2, then 1 boundary remaining.
-- There is one major protagonist action each round. Each player submits one item each round. No separate token economy is assumed.
-- There is no public emergency or public evidence chain in this fixture. Fate's public-blame milestone is ineligible.
+The fixture is **not accepted story canon**. It models two distinct condition events: a loose rib predates the loan, and Jules later worsens a tear. The seeded thread contains a dated photo and an explicit message about prior knowledge/nondisclosure. Player B knows the relevant message is in the thread, but neither player's knowledge transfers to Jules. The flatmate is reachable until after Jules's action on the final boundary. The test excludes Fate and any public emergency.
 
-### Initial state
+The test objectives are deliberately concrete: A needs an honest return and trust at baseline; B needs inspection, evidence presentation, and acknowledgement of the flatmate's prior knowledge. The seeded message makes B's route possible without allowing an influence to invent evidence. Inspection, disclosure, and objective completion remain separate events.
 
-| Field | Initial value |
-|---|---|
-| round / boundaries remaining | 1 / 3 |
-| umbrella returned | false |
-| Jules acknowledged their later tear | false |
-| message thread exists and is accessible | true |
-| Jules knows the thread exists | true |
-| thread inspected by Jules | false |
-| evidence presented to flatmate | false |
-| flatmate prior knowledge established to Jules | false |
-| trust | 1 (baseline) |
-| private conversation option exists | true |
-| private window active | false |
-| flatmate departed | false |
-| temporary action-context signals | 0 |
+The trust response is intentionally strong and artificial: premature non-private evidence presentation lowers trust; presentation after acknowledgement or through a private window preserves it. The exact values and predicates are defined in the JSON and need owner approval before they can be promoted to scenario canon.
 
-### Test objectives
-
-These predicates make the fixture computable; they are not final scoring rules.
-
-- **Player A — honest return with trust preserved:** complete at departure if the umbrella was returned, Jules acknowledged the later tear, and trust is at least its baseline value of 1.
-- **Player B — establish accountability with evidence:** complete at departure if Jules inspected the seeded message, presented it to the flatmate before departure, and the flatmate's prior knowledge was acknowledged from that evidence.
-
-Inspection is progress, not disclosure. Disclosure is progress, not by itself proof that every audience has learned the fact. The fixture's presentation action explicitly supplies the flatmate acknowledgement.
-
-### Deterministic relationship-response hypothesis
-
-Trust begins at 1.
-
-- If Jules presents the message before acknowledging Jules's later damage and no private window is active, trust falls to 0.
-- If Jules has already acknowledged the later damage, trust remains at 1 when the message is presented.
-- If a private window is active during presentation, the disclosure is private rather than humiliating; trust remains at 1 even if Jules has not yet acknowledged their own damage.
-- A later honest return does not restore trust that fell to 0.
-
-This deliberately strong ordering rule creates a testable sequencing choice; it is not a general claim about human relationships. The project owner must review it before canonizing the scenario.
+**Scope limitation:** the enumerator uses player-knowledge metadata to document the intended information split, but it does not yet implement a player-view UI or prove the absence of every visibility leak. That requires a separate view/projection test before multiplayer implementation.
 
 ## 4. Legal protagonist-action vocabulary
 
-All actions consume Jules's one major action for the round. The legal-action generator evaluates these preconditions against canonical state and Jules's knowledge after influence effects are resolved.
+The JSON fixture defines the executable action identifiers, proposal eligibility, action tiers, preconditions, effects, and actions' non-effects. The current finite vocabulary is:
 
-| Action | Preconditions | Authoritative effect | What it does not do |
-|---|---|---|---|
-| INSPECT_SHARED_THREAD | Thread exists, is accessible, Jules knows it exists, and it has not been inspected | Mark the thread inspected; Jules learns the photo's visible condition and the seeded message's content; emit EvidenceInspected and a knowledge-acquisition event | Does not disclose evidence or complete B's objective |
-| PRESENT_EVIDENCE | Thread has been inspected; flatmate is reachable; evidence has not already been presented | Mark evidence presented; record the flatmate acknowledgement; emit EvidencePresented and PriorKnowledgeAcknowledged; apply the trust rule in §3 | Does not return the umbrella or erase Jules's responsibility for the later tear |
-| RETURN_HONESTLY | Umbrella has not been returned and the flatmate is reachable | Mark umbrella returned and Jules's later damage acknowledged; emit HonestReturn and OwnDamageAcknowledged | Does not restore trust already lost |
-| WAIT | Always | No protagonist state change; the boundary still advances | Does not preserve the current round or stop departure |
+- **INSPECT_SHARED_THREAD:** inspect the accessible thread; Jules learns the photo's visible condition and the seeded message content. It does not disclose evidence.
+- **PRESENT_EVIDENCE:** present an already-inspected message to the reachable flatmate; the fixture records acknowledgement of the prior-knowledge claim and applies its trust-response rule. It does not return the umbrella.
+- **RETURN_HONESTLY:** return the umbrella and acknowledge Jules's later damage. It does not repair trust already lost.
+- **WAIT:** a legal protagonist fallback that changes no protagonist state; the boundary still advances.
 
-WAIT is a protagonist fallback action, not a direct-intention proposal in this experiment. It remains in the legal action set so the shared selector can decline a lower-priority confrontation. The choice to exclude WAIT from direct proposals is a test-level anti-stall control, not accepted product canon.
-
-No generic “do what feels right” action, arbitrary state patch, or unseeded evidence discovery is allowed.
+Each selected action consumes Jules's one major action for the round. Legal actions are generated from canonical state and knowledge after environmental effects resolve. No action may create unseeded evidence or invent facts. The code implements these named transitions; changing an action's semantics requires updating the implementation and tests as well as the fixture/document.
 
 ## 5. Candidate I — Direct-intention semantics
 
@@ -129,28 +85,16 @@ This makes direct intention a competing nomination model, not a guaranteed comma
 
 ## 6. Candidate W — Environmental-influence semantics
 
-Each player submits one bounded influence or PASS. The comparison uses three effect families. They change a temporary action-context signal or enable a private conversation; they do not create or transfer evidence.
+The JSON fixture contains the allowed W input IDs and their mechanical definitions. The current set is deliberately small:
 
-### Effect vocabulary
+- **PASS:** consume the submission slot without applying a specific influence.
+- **THREAD_UP / THREAD_DOWN:** set a temporary positive/negative selector signal for inspecting the uninspected thread.
+- **EVIDENCE_UP / EVIDENCE_DOWN:** set a temporary positive/negative selector signal for presenting inspected evidence.
+- **OPEN_PRIVATE_WINDOW:** open the seeded private-conversation opportunity for the current action/response step and add its configured presentation signal.
 
-| Influence | Preconditions | Effect read by the selector | Duration / failure behavior |
-|---|---|---|---|
-| PASS | Always | None | Consumes the submission slot without changing state/context |
-| SET_THREAD_PROMINENCE(direction=up/down) | Thread exists, is accessible, Jules knows it exists, and it is not inspected | Up gives INSPECT_SHARED_THREAD a +1 context signal; down gives it -1 | This action selection only; does not reveal message content or change access/truth |
-| SET_EVIDENCE_PROMINENCE(direction=up/down) | Thread is inspected, evidence is not presented, and flatmate is reachable | Up gives PRESENT_EVIDENCE a +1 context signal; down gives it -1 | This action selection only; does not present evidence or open a private window |
-| OPEN_PRIVATE_WINDOW | Private conversation option exists, flatmate is reachable, evidence is inspected, and evidence is not presented | Opens a private window for this action/response step and contributes +1 to the PRESENT_EVIDENCE context signal | Does not disclose evidence; window and its signal expire after the action/response step if unused |
+The influence resolver validates each submission against the same round-start snapshot, groups effects by target, cancels opposed signals, caps repeated same-direction signal values, and applies the private-window bonus with the JSON-configured clamp. Temporary signals and the private window expire after the current action/response step; none transfers evidence to Jules. A stale/ineligible effect fails without changing state/context and consumes its submission slot for this test.
 
-### Composition and conflicts
-
-- Opposite SET_THREAD_PROMINENCE directions cancel to 0. Repeating the same direction is capped at +1 or -1; it does not stack.
-- Opposite SET_EVIDENCE_PROMINENCE directions cancel to 0. Repeating the same direction is capped at +1 or -1; it does not stack.
-- OPEN_PRIVATE_WINDOW is compatible with either evidence-prominence direction. Its +1 is added to the resolved evidence-prominence signal and the result is clamped to [-1,+1]. The private protection remains active even when the resulting signal is 0.
-- Validate both influences against the same round-start snapshot, then group effects by target before applying them. Do not make player-ID or iteration order decide conflicts.
-- A stale or ineligible influence fails with a stable internal reason, changes no state/context, and still consumes that player's submission slot for this test.
-- Player-facing error reasons must not reveal the opponent's hidden objective or source content.
-- No influence chooses Jules's action directly. If an influence changes no selector-read variable and no response consequence in a reachable state, it is not a useful effect and should be removed.
-
-The current influence set is intentionally limited to context and privacy effects. It does not represent every possible environmental-control game; it is the smallest test candidate for deciding whether indirect steering is legible and strategic enough to pursue.
+These definitions test whether indirect context changes can steer the common action selector. They do not claim that this is the best final environmental-control vocabulary. A new influence type or precondition must be supported explicitly by the fixture, resolver, and tests; a prose-only effect is not a mechanic.
 
 ## 7. Shared deterministic protagonist-selection policy
 
@@ -162,19 +106,11 @@ Generate the full set from §4 using post-influence state and Jules's current kn
 
 ### Rank procedure
 
-Compare every legal action lexicographically, highest tuple first:
+The exact rank-field order, action tiers, deadline tier, and stable tie-break order are configuration in the JSON fixture, not duplicated constants in this Markdown. The current selector compares, lexicographically, the configured values for context signal, direct-intention support, action tier, deadline tier, and tie-break rank.
 
-**(contextSignal, directSupport, actionTier, deadlineTier, tieBreakRank)**
+Direct-intention mode supplies support counts; environmental-influence mode supplies context signals and any private-window state. The same configured ranking policy then selects from the complete legal-action set in both models. No player objective is an input to Jules's preference ranking.
 
-- **contextSignal:** for W, the resolved signal on that action, normally -1, 0, or +1. For I, 0 for all actions.
-- **directSupport:** for I, the number of valid players proposing that action (0–2). For W, 0 for all actions.
-- **actionTier:** RETURN_HONESTLY = 2 if legal; INSPECT_SHARED_THREAD = 2 if legal; PRESENT_EVIDENCE = 0 if legal; WAIT = 0. This makes direct confrontation a lower baseline preference unless a player input elevates it.
-- **deadlineTier:** RETURN_HONESTLY gets 3 when exactly one boundary remains and it is legal; all other actions get 0. This is after mode-specific input fields, so the deadline strongly favors return without making player inputs universally inert.
-- **tieBreakRank:** use the fixed test order below; it is an explicit character assumption, not a neutral truth.
-
-**Fixed tie-break order, highest first:** RETURN_HONESTLY, INSPECT_SHARED_THREAD, WAIT, PRESENT_EVIDENCE.
-
-This order means Jules defaults toward returning the umbrella before confronting the flatmate, and defaults to WAIT rather than presenting evidence if neither player meaningfully pushes disclosure. A direct proposal or an environmental signal may change that result. The ordering is intentionally provisional and requires sensitivity analysis.
+The enumerator records the full rank tuple for every legal candidate, selected action, runner-up, and first rank field separating the winner from the runner-up. The tie-break is an explicit authored preference, not a neutral truth: it must be sensitivity-tested and is not accepted characterization. The JSON is authoritative for numeric values and tie order.
 
 ### Resolution and state-update order for this fixture
 
@@ -214,8 +150,8 @@ These are expected mechanics to verify against the actual enumerator, not test r
 
 - **A-only route:** return before evidence presentation, then inspect the thread, but do not push presentation when WAIT has the better unmodified rank. A succeeds; B does not.
 - **B-only route:** inspect first, then push a non-private evidence presentation before Jules acknowledges their own damage; trust falls to 0. Return at the final boundary. B succeeds; A does not.
-- **Both route:** inspect first, present evidence through an active private window, then return honestly. Trust remains at baseline; both succeed.
-- **Counterplay:** when return and presentation are both legal, a direct proposal for return or an environmental prominence-down signal must be able to defeat an unsupported presentation.
+- **Both route in I:** inspect, return honestly, then present evidence after acknowledgement; both succeed. **Both route in W:** use THREAD_UP to inspect, OPEN_PRIVATE_WINDOW to present privately, then return honestly; both succeed.
+- **Counterplay:** when return and presentation are both legal, a direct proposal for return or an EVIDENCE_DOWN influence must be able to defeat an unsupported presentation.
 - **Boundary pressure:** at the final boundary, return is strongly preferred among otherwise equivalent actions, but a higher mode-specific signal/support may change the choice.
 - **Conflict:** opposite prominence signals cancel. A cancel must not reveal private evidence or its content.
 
@@ -234,7 +170,7 @@ The following are not silently accepted game canon:
 
 Before a playable prototype, run the deterministic enumerator and have an independent reviewer reconstruct the output from this file. Only then decide whether to build a small local comparative prototype. Human teach-back is still required before declaring either model fun, fair, or selected for the game.
 
-The next software artifact should be an offline deterministic enumerator, not a UI, online backend, or production engine.
+The offline deterministic enumerator now exists at tools/control_model_enumerator.py and reads scenarios/control_model_test_fixture.json. It is a test harness, not a UI, online backend, or production engine. Its executed outputs are summarized in PROJECT_HANDOFF.md; the JSON and code are still provisional test assets.
 
 ## 11. Authority and historical documents
 
