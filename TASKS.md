@@ -81,7 +81,6 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - Independent, uncoached reconstruction of PRIORITY_TABLE_REPLAY_01.md; this is a separate paper trace from the machine-readable fixture.
 - If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
 - A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
-- Independent code/fixture audit and reconstruction.
 - Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
 - Player-view projection and visibility tests.
