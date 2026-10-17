@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "fate-ctrl-enumerator-summary-v1",
+  "fixtureId": "fate-ctrl-control-model-comparison-0.3",
+  "fixturePath": "scenarios/control_model_test_fixture.json",
+  "command": "python tools/control_model_enumerator.py",
+  "testCommand": "python -m unittest discover -s tests -v",
+  "executedChecks": {
+    "unitTestsPassed": 12,
+    "objectiveRouteAssertions": true,
+    "deterministicReplayAssertion": true,
+    "oppositeInfluenceCancellationAssertion": true
+  },
+  "models": {
+    "I": {
+      "name": "Direct intention",
+      "uniqueReachableNonterminalStates": 5,
+      "transitionEvaluationsAcrossPathPrefixes": 264,
+      "completeLegalInputSequences": 204,
+      "terminalOutcomeSequenceCounts": {
+        "A=False,B=True": 36,
+        "A=True,B=False": 42,
+        "A=True,B=True": 126
+      },
+      "objectiveAReachable": true,
+      "objectiveBReachable": true,
+      "bothObjectivesReachable": true,
+      "conditionalInputSensitivity": {
+        "player1ChangedAction": 5,
+        "player2ChangedAction": 5,
+        "perSubmissionChangedActionCounts": {
+          "INSPECT_SHARED_THREAD": 2,
+          "PRESENT_EVIDENCE": 4,
+          "RETURN_HONESTLY": 4,
+          "PASS": 0
+        }
+      }
+    },
+    "W": {
+      "name": "Environmental influence",
+      "uniqueReachableNonterminalStates": 7,
+      "transitionEvaluationsAcrossPathPrefixes": 1257,
+      "completeLegalInputSequences": 1146,
+      "terminalOutcomeSequenceCounts": {
+        "A=False,B=True": 9,
+        "A=True,B=False": 642,
+        "A=True,B=True": 495
+      },
+      "objectiveAReachable": true,
+      "objectiveBReachable": true,
+      "bothObjectivesReachable": true,
+      "conditionalInputSensitivity": {
+        "player1ChangedAction": 14,
+        "player2ChangedAction": 14,
+        "perSubmissionChangedActionCounts": {
+          "THREAD_UP": 6,
+          "THREAD_DOWN": 6,
+          "EVIDENCE_UP": 4,
+          "EVIDENCE_DOWN": 8,
+          "OPEN_PRIVATE_WINDOW": 4,
+          "PASS": 0
+        }
+      }
+    }
+  },
+  "interpretationLimits": [
+    "Terminal outcome counts enumerate legal input sequences; they are not probabilities, win rates, or balance scores.",
+    "Legal options vary by state, so raw sequence counts are not comparable as likelihoods.",
+    "The enumerator tests the authored fixture/policy, not enjoyment, perceived agency, fairness, readability, or narrative credibility.",
+    "Player-view projection, visibility-leak testing, Fate, UI, networking, and human playtesting remain untested."
+  ]
+}
