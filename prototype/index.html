@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>FATE/CTRL — Control Model Lab</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="masthead">
+      <div class="brand-mark" aria-hidden="true">F/C</div>
+      <div><p class="eyebrow">FATE/CTRL · EXPERIMENT 01</p><h1>Control Model Lab</h1></div>
+      <span class="status-pill">Prototype</span>
+    </header>
+    <section class="notice"><strong>Design experiment, not the finished game.</strong><p>This three-round umbrella scenario compares two ways to influence Jules. Fate, online play, and the citywide-emergency ending are not included. The rules and trust values are provisional.</p></section>
+    <section class="setup panel">
+      <div class="section-heading"><div><p class="eyebrow">SESSION SETUP</p><h2>Choose how influence works</h2></div><span id="fixture-status" class="muted small">Loading rules…</span></div>
+      <label for="model-select" class="field-label">Control model</label>
+      <div class="setup-row">
+        <select id="model-select"><option value="I">Direct intention — propose Jules’s action</option><option value="W">Environmental influence — change what feels salient</option></select>
+        <button id="restart-button" class="button button-secondary" type="button">Start new test</button>
+      </div>
+      <p id="model-description" class="muted model-description"></p>
+    </section>
+    <section class="story panel">
+      <p class="eyebrow">THE RED UMBRELLA · ROUND <span id="round-number">1</span> OF 3</p>
+      <h2>Jules has to return a borrowed umbrella.</h2>
+      <p>A red umbrella already had a loose rib before Jules borrowed it. Jules later made a tear worse. The flatmate is leaving after three action boundaries. A dated photo and a message are in a shared phone thread, but Jules has not inspected it yet.</p>
+      <div class="deadline-row"><span class="deadline-dot" aria-hidden="true"></span><span id="deadline-copy">Three action boundaries remain before the flatmate leaves.</span></div>
+    </section>
+    <section class="state-strip panel" aria-labelledby="state-heading">
+      <div class="section-heading compact"><div><p class="eyebrow">SHARED WORLD</p><h2 id="state-heading">What is currently true</h2></div></div>
+      <div id="state-facts" class="fact-grid"></div>
+    </section>
+    <section id="turn-panel" class="turn-panel panel" aria-live="polite">
+      <p class="eyebrow" id="turn-eyebrow">PLAYER A · PRIVATE CHOICE</p><h2 id="turn-heading">Choose your influence</h2>
+      <p id="turn-instructions" class="muted">Choose one submission. The other player will not see it until both choices are locked.</p>
+      <div id="objective-card" class="objective-card"></div>
+      <form id="submission-form"><fieldset id="submission-options" class="choice-list"><legend class="field-label">Your move</legend><p class="muted">Loading legal choices…</p></fieldset><button id="lock-button" class="button button-primary" type="submit" disabled>Lock choice</button></form>
+    </section>
+    <section id="handoff-panel" class="handoff-panel panel hidden" aria-live="polite"><p class="eyebrow">CHOICE LOCKED</p><h2 id="handoff-heading">Pass the device to Player B</h2><p id="handoff-copy" class="muted">Player A’s choice is hidden. Player B should make their choice without seeing it.</p><button id="handoff-button" class="button button-primary" type="button">Continue to Player B</button></section>
+    <section id="result-panel" class="result-panel panel hidden" aria-live="polite">
+      <p class="eyebrow">ROUND RESOLVED</p><h2 id="result-heading">Jules chose an action</h2><p id="result-summary"></p>
+      <div class="result-meta"><div><span class="muted small">Decisive rule</span><strong id="decisive-rule">—</strong></div><div><span class="muted small">Trust after action</span><strong id="trust-result">—</strong></div></div>
+      <details class="decision-details"><summary>See how the decision was ranked</summary><ol id="ranked-actions"></ol><p id="input-reveal" class="muted small"></p></details>
+      <div id="objective-results" class="objective-results hidden"></div>
+      <button id="next-button" class="button button-primary" type="button">Next round</button><button id="play-again-button" class="button button-secondary hidden" type="button">Play this model again</button>
+    </section>
+    <section class="history panel"><div class="section-heading compact"><div><p class="eyebrow">SESSION LOG</p><h2>What happened</h2></div><span id="history-count" class="muted small">0 rounds</span></div><ol id="history-list" class="history-list"><li class="empty-history">No actions resolved yet.</li></ol></section>
+    <footer><p>FATE/CTRL prototype · deterministic rules · no account or network match · fixture: <span id="fixture-id">—</span></p></footer>
+    <div id="toast" class="toast hidden" role="status"></div>
+  </main>
+</body>
+</html>
