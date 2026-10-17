@@ -1,67 +1,94 @@
 # Project Plan and Task Ledger
 
-**Current phase:** 0 — concept validation and rule design.  
+**Current phase:** 0 — concept validation and specification.  
 **Completion rule:** A document existing does not mean a task is complete; exit criteria must be met.
 
 ## Phase 0 — Define the game worth building
 
 ### P0-01 — Resolve unit of play
-**Status:** In progress; first exploratory paper simulation completed, but no model selected and several rules remain unspecified.  
-**Deliverable:** Worked-round comparison, collision rules, recommendation, rationale.  
-**Current artifacts:** CORE_LOOP_COMPARISON.md and PROTAGONIST_CONTROL.md frame the original choices; PAPER_SIMULATION_01.md is exploratory; PAPER_SIMULATION_02.md stress-tests one provisional influence model; DIRECT_INTENTION_TRACE.md gives the direct-intention candidate; MATCHED_MODEL_COMPARISON_01.md aligns the fixture and strategic profiles; MODEL_COMPARISON_SCORECARD.md defines unweighted criteria.  
-**Next:** PROTAGONIST_RESPONSE_RULES.md compares static weights, lexicographic priorities, scenario-authored tables, and LLM selection. PRIORITY_TABLE_REPLAY_01.md now supplies a provisional shared priority table, three-round replay, A-/B-favoring counterfactuals, and an exploit audit. This completes the authored desk-analysis step, not independent review or playtesting. Next: have an independent reviewer reconstruct outcomes, then test both models with human players in counterbalanced order. Neither model is selected.  
-**Exit:** A three-round paper simulation has no ambiguous ordering or unexplained cancellation, and the selected model wins against explicit criteria.
+**Status:** The deep Sonnet audit found blocking semantic defects in the earlier model comparison. CONTROL_MODEL.md and its machine fixture have since been revised, and a deterministic enumerator plus 12 unit tests has been executed. No model is selected.
+**Canonical design reference:** CONTROL_MODEL.md.  
+**Executable test fixture:** scenarios/control_model_test_fixture.json.  
+**Enumerator, tests, and report:** tools/control_model_enumerator.py, tests/test_control_model_enumerator.py, and reports/control_model_enumerator_summary.json.  
+**Supporting history:** CORE_LOOP_COMPARISON.md, PROTAGONIST_CONTROL.md, PAPER_SIMULATION_01.md, PAPER_SIMULATION_02.md, DIRECT_INTENTION_TRACE.md, MATCHED_MODEL_COMPARISON_01.md, MODEL_COMPARISON_SCORECARD.md, PROTAGONIST_RESPONSE_RULES.md, and PRIORITY_TABLE_REPLAY_01.md. These preserve reasoning, not current authority where assumptions differ from CONTROL_MODEL.md.
+
+**Executed structural results (not win rates):** I: 5 unique nonterminal states, 264 transition evaluations across path prefixes, 204 complete input sequences; terminal outcomes: A-only 42 sequences, B-only 36, both 126. W: 7 unique nonterminal states, 1,257 transition evaluations, 1,146 complete input sequences; terminal outcomes: A-only 642, B-only 9, both 495. These are not probabilities or balance scores because available input sets vary by state. The narrow count of B-only W sequences is a specific objective-feasibility/counterplay signal to investigate, not proof of imbalance.
+
+**Automated checks:** 11 standard-library unit tests pass locally, including explicit A-only/B-only/both routes in both models, conditional input sensitivity, deterministic replay, cancellation, private-window trust behavior, and invalid-input rejection.
+
+**Next:** Have an independent reviewer audit the enumerator implementation and JSON fixture together, then reconstruct selected actions and objective paths from the published test contract. Triage any discrepancy before changing the fixture or policy. No human playtest evidence exists.
+
+**Exit:** Both input models have precise semantics; an independent reviewer reproduces implementation results; all objective routes and sensitivities are understood; input dominance and narrow paths are assessed; only then run counterbalanced human teach-back/play sessions and decide whether to build a local prototype.
 
 ### P0-02 — Define protagonist influence
-**Status:** Analysis started in PROTAGONIST_CONTROL.md; no model selected. This task is coupled to P0-01 and must be resolved jointly rather than in isolation. Define the submitted intention/action, protagonist agency, knowledge constraints, and success/failure reasons. The current influence examples are placeholders until magnitude, cost, stacking, duration, and counterplay are specified.  
-**Exit:** Actions have understandable results and meaningful costs; players can explain why an intention succeeded, changed, or failed.
+**Status:** The current test selector is deterministic and records rank tuples, but its action tiers and tie-break remain provisional product choices.
+**Exit:** The selector never chooses an illegal/uninformed action, applies the same configured policy to both modes, records the decisive rank field, and does not directly optimize either player objective.
 
 ### P0-03 — Define objectives and scoring
-**Status:** Worksheet drafted in OBJECTIVE_AND_FAIRNESS_WORKSHEET.md; no scoring model or terminal predicates accepted. Define primary/secondary success, overlapping goals, partial outcomes, and termination.  
-**Exit:** Both players have measurable goals and multiple viable strategies.
+**Status:** The machine fixture defines test-only predicates for A's honest return/trust and B's evidence-backed accountability. These are not accepted product scoring rules.
+**Exit:** Reachability/counterplay are independently reviewed; the project owner approves the eventual meaning of trust, accountability, partial outcomes, and terminal results.
 
 ### P0-04 — Define actions and economy
-**Status:** Not started. Compare minimum action set and resource model; specify targets, costs, duration, counterplay, failure.  
-**Exit:** Every prototype action is fully specified and common exploits are addressed.
+**Status:** The current test uses a finite protagonist action vocabulary and bounded temporary context/privacy influences. Production resources, persistent effects, and a general effect schema are not selected.
+**Exit:** Every prototype action/effect has explicit preconditions, state changes, event record, duration/expiry, conflict behavior, and stale-target behavior.
 
 ### P0-05 — Define Fate
-**Status:** Causal-route workshop in progress; no route or intervention model accepted. The current literal citywide-emergency target may be too large for the umbrella premise. Define legal interventions, limits, signals, routes, counterplay, and alternate endings.  
-**Exit:** Three routes and two credible disruptions can be simulated without arbitrary events.
+**Status:** Separate blocker. The control comparison excludes Fate because the public-emergency causal chain is not established.
+**Supporting references:** CAUSAL_ROUTE_TRACE_01.md, CAUSAL_ROUTE_WORKSHOP.md, CANDIDATE_CAUSAL_ROUTES.md, and SCENARIO_CAUSALITY_REVIEW.md.
+**Exit:** A credible route, bounded Fate interventions, counterplay, and a satisfying non-Fate ending can be simulated without arbitrary events.
 
-### P0-06 — Simulate umbrella scenario
-**Status:** Premise analysis ongoing. Causal-route workshop distinguishes actual emergency causation from public blame and proposes a narrower candidate target; nothing is accepted. Three candidate mechanisms still lack a convincing event trace. Next: trace one candidate event by event and reject unsupported links. Model facts, character knowledge, objectives, deadlines, causal links, effects, Fate milestones, and endings.  
-**Exit:** Three strategy profiles yield coherent distinct trajectories and players can explain causality.
+### P0-06 — Validate the umbrella scenario
+**Status:** scenarios/umbrella.json remains an unresolved story probe. The smaller control-model JSON is a test fixture, not silent canonization of the story.
+**Next:** After the control semantics and owner assumptions are reviewed, decide whether to promote compatible fixture elements into the story scenario. Separately decide whether to replace the citywide target with a local public-blame route or replace the premise.
+**Exit:** Three strategy profiles yield coherent distinct trajectories with traceable facts, knowledge, deadlines, causal links, and endings.
 
-### P0-07 — Validate information/fairness
-**Status:** Conceptual information model drafted in INFORMATION_MODEL.md; no runtime schema accepted. Audit public/private facts, objective difficulty, Fate power, and information leakage.  
-**Exit:** Each hidden fact has an owner, discovery path, and visibility rule.
+### P0-07 — Validate information and fairness
+**Status:** INFORMATION_MODEL.md remains conceptual. The enumerator documents protagonist knowledge acquisition but does not implement a player-view projection or visibility-leak tests.
+**Exit:** Each hidden fact has an owner, discovery path, visibility rule, and evidence/counterplay route; unauthorized views do not receive hidden data.
 
-### P0-08 — Approve contracts and architecture gate
-**Status:** Not started. Confirm source of truth, resolution boundary, visibility filtering, and tests.  
-**Exit:** No duplicated authority; action/event contracts are testable.
+### P0-08 — Approve contracts and architecture
+**Status:** The comparison-harness responsibilities are described in ARCHITECTURE.md and MODULE_CONTRACTS.md; this is not the production engine.
+**Exit:** The global resolution and visibility contracts cover Fate, boundary collisions, stale targets, duplicate submissions, terminal conditions, and filtered explanations.
 
 ### P0-09 — Prepare first playtest
-**Status:** Not started. Define hypotheses, tasks, observations, and revise/stop thresholds.  
-**Exit:** Protocol can distinguish confusion from a weak mechanic.
+**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted. PR #5 adds an independent specification-reconstruction gate before human playtesting.
+**Next:** First complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
+**Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
-## Phase 1 — Minimal deterministic engine (only after Phase 0 approval)
-Validate scenario data; represent canonical state and typed commands; implement legality and deterministic resolution; implement objectives and Fate as legal actions; add replay fixtures and automated tests; build a minimal simulation interface.
+## Phase 1 — Deterministic comparison harness (not yet the game)
 
-**Exit:** Tests pass, matches replay identically, and invalid actions cannot mutate state.
+Validate the JSON fixture; enumerate every valid I/W input pair over reachable states; record rank tuples, state/events, objective results, sensitivity, and reachable paths; run deterministic replay and boundary tests.
 
-## Phase 2 — Playable prototype
-Implement only selected interaction model and minimum action set; provide public/private views, action feedback, event history, endings, and authored/assembled narration; conduct structured playtests.
+**Exit:** Independent reconstruction agrees with the implementation, and no model is structurally null or trivially dominant under the test fixture. This gate does not establish fun or fairness.
 
-**Exit:** Players understand rules, report meaningful decisions, and can explain outcomes. Otherwise revise the design before expanding.
+## Phase 2 — Minimal local playable prototype
+
+Only after the comparison gate and owner review, implement a local prototype of the chosen model with a small UI, authorized views, action feedback, event history, objective results, and deterministic presentation. If the models remain materially uncertain, prototype both behind the same fixture rather than silently selecting one.
+
+**Exit:** Players understand rules, report meaningful decisions, and can explain outcomes. Otherwise revise before expanding.
 
 ## Phase 3 — Product direction
+
 Decide whether online multiplayer is essential; test session length, replay, scenario variation, accessibility, and mobile usability; evaluate optional LLM narration only if justified.
 
 ## Phase 4 — Production hardening (if justified)
-Add server-authoritative online matches, persistence, reconnect, anti-cheat, privacy, monitoring, deployment, schema migrations, and operational docs. Test concurrency, duplicates, hidden information, recovery, and deployment.
+
+Add server-authoritative online matches, persistence, reconnect, anti-cheat, privacy, monitoring, deployment, schema migrations, and operational documentation. Test concurrency, duplicates, hidden information, recovery, and deployment.
 
 ## Current blockers
-Turn model; protagonist influence; action economy/conflict resolution; objective compatibility/scoring; Fate power/visibility/alternate ending; first-playtest mode; scenario schema.
+
+- Independent code/fixture audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md.
+- Independent, uncoached reconstruction of PRIORITY_TABLE_REPLAY_01.md; this is a separate paper trace from the machine-readable fixture.
+- If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
+- A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
+- Independent code/fixture audit and reconstruction.
+- Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
+- Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
+- Player-view projection and visibility tests.
+- Canonicalizing the umbrella story facts/deadline/objectives separately from the comparison fixture.
+- Fate's legal power, visibility, credible causal target, counterplay, and alternate ending.
+- Global resolution and visibility contract outside the limited fixture.
 
 ## Change discipline
-Every task needs a narrow objective, explicit inputs/outputs, dependencies, acceptance criteria, test/review method, out-of-scope list, and rollback path. Record design changes in DECISIONS.md and update affected contracts.
+
+Record accepted design choices in DECISIONS.md. Keep test-fixture assumptions separate from scenario canon. Treat authored reasoning, independent review, automated enumeration, and human playtest results as different evidence classes. Do not add more analysis files unless they provide reproducible evidence.
