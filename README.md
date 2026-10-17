@@ -2,7 +2,7 @@
 
 FATE/CTRL is a proposed two-player narrative strategy game about competing intentions, shared influence over one protagonist, and a Fate system pursuing a dramatic outcome.
 
-**Phase:** concept validation and specification. **Gameplay implementation:** not started.
+**Phase:** concept validation plus an owner-authorized experimental prototype. **Production gameplay:** not started; no control model is selected.
 
 ## Authority map
 
@@ -12,6 +12,7 @@ These are the intended working sources of truth. Their proposals remain drafts u
 - [CONTROL_MODEL.md](CONTROL_MODEL.md) — active control-model comparison contract and validation gates.
 - [scenarios/control_model_test_fixture.json](scenarios/control_model_test_fixture.json) — machine-readable test fixture used by the enumerator; test-only, not story canon.
 - [tools/control_model_enumerator.py](tools/control_model_enumerator.py) and [tests/test_control_model_enumerator.py](tests/test_control_model_enumerator.py) — deterministic comparison harness and its unit tests.
+- [prototype/](prototype/) — experimental local browser prototype for comparing both control-model candidates against the existing test fixture; not accepted story canon or production gameplay.
 - [reports/control_model_enumerator_summary.json](reports/control_model_enumerator_summary.json) — reproducible aggregate output, sensitivity checks, terminal-route counts, and interpretation limits.
 - [scenarios/umbrella.json](scenarios/umbrella.json) — scenario design probe, not executable scenario truth; deadline, objectives, evidence history, and Fate rules remain incomplete.
 - [CAUSAL_ROUTE_TRACE_01.md](CAUSAL_ROUTE_TRACE_01.md) — most concrete causal-route test; does not establish a credible route to the literal citywide-emergency ending.
@@ -49,4 +50,4 @@ These files preserve the reasoning behind current questions. They are supporting
 
 ## First milestone
 
-Resolve and test the smallest playable loop before selecting a production architecture. A deterministic enumerator now checks the provisional control-model semantics. Next, deeply audit that implementation and its machine fixture, then independently reconstruct its results. No playable game or human playtest exists yet.
+A small browser prototype now exists to make the provisional control choices tangible. It is explicitly a test-fixture experiment, not a selection of either model and not the production game. The deterministic enumerator and fixture still require independent audit and reconstruction; human observations must be recorded separately from desk analysis. See [prototype/README.md](prototype/README.md) for local run instructions.
