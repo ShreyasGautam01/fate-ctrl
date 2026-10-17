@@ -51,8 +51,8 @@
 **Exit:** The global resolution and visibility contracts cover Fate, boundary collisions, stale targets, duplicate submissions, terminal conditions, and filtered explanations.
 
 ### P0-09 — Prepare first playtest
-**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted. PR #5 adds an independent specification-reconstruction gate before human playtesting.
-**Next:** First complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
+**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted. An owner-authorized, test-fixture-only browser prototype is being added to make the two control candidates tangible; it does not mean the comparison/review gates have passed.
+**Next:** Run the prototype's automated rules tests against the repository fixture. Before treating any human session as evidence for selecting a model, complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
 **Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
 ## Phase 1 — Deterministic comparison harness (not yet the game)
@@ -63,7 +63,9 @@ Validate the JSON fixture; enumerate every valid I/W input pair over reachable s
 
 ## Phase 2 — Minimal local playable prototype
 
-Only after the comparison gate and owner review, implement a local prototype of the chosen model with a small UI, authorized views, action feedback, event history, objective results, and deterministic presentation. If the models remain materially uncertain, prototype both behind the same fixture rather than silently selecting one.
+**Status:** An owner-authorized experimental comparison UI is being built before the model-selection gate closes. This is a deliberate, bounded exception for learning: it uses the existing test fixture, offers both candidate models, and must not be treated as selection of either model or as production gameplay. It excludes Fate, networking, persistence, and scenario canonization.
+
+The production prototype of a selected model remains gated on independent code/fixture audit, uncoached reconstruction, owner review of provisional semantics, and a credible explanation of the narrow B-only environmental-influence routes.
 
 **Exit:** Players understand rules, report meaningful decisions, and can explain outcomes. Otherwise revise before expanding.
 
@@ -82,6 +84,7 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
 - A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
 - Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
+- Verify the experimental browser UI against the actual shared JSON fixture; do not treat a passing UI test as proof of fairness or fun.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
 - Player-view projection and visibility tests.
 - Canonicalizing the umbrella story facts/deadline/objectives separately from the comparison fixture.

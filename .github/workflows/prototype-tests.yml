@@ -1,0 +1,26 @@
+name: Prototype rules tests
+
+on:
+  pull_request:
+    paths:
+      - "prototype/**"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/prototype-tests.yml"
+  push:
+    branches: [main]
+    paths:
+      - "prototype/**"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/prototype-tests.yml"
+
+jobs:
+  prototype-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check prototype/app.js
+      - run: node --check prototype/rules.mjs
+      - run: node --test prototype/tests/rules.test.mjs

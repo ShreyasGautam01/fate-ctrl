@@ -15,7 +15,7 @@ Develop FATE/CTRL as a coherent, testable game. Protect design intent and correc
 If documents conflict, report the conflict and propose reconciliation; do not silently choose. SPEC.md describes intended behavior, DECISIONS.md records choice status/rationale, and TASKS.md tracks approved work.
 
 ## Working rules
-- Do not implement gameplay before the design gate in TASKS.md passes.
+- Do not implement production gameplay before the design gate in TASKS.md passes. An explicitly owner-authorized experiment may be built against the existing test fixture only; label it non-canon, preserve both candidate models where relevant, and do not imply that the gate or model selection has passed.
 - Do not present provisional ideas as accepted requirements.
 - Prefer the smallest complete, testable change.
 - Before large changes, explain the problem, proposal, alternatives, risks, and acceptance criteria.
