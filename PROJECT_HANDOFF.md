@@ -1,22 +1,23 @@
 # Project Handoff
 
-**Last updated:** 2026-10-17  
+**Last updated:** 2026-10-18  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** docs/causal-route-and-review-gates-01  
-**Current pull request:** https://github.com/ShreyasGautam01/fate-ctrl/pull/5  
-**Current phase:** concept validation and executable rule testing  
-**Playable game implementation:** not started
+**Working branch:** feat/control-model-playable-prototype-01  
+**Current pull request:** https://github.com/ShreyasGautam01/fate-ctrl/pull/6  
+**Current phase:** concept validation plus an owner-authorized experimental browser prototype  
+**Production gameplay:** not started; neither control model is selected
 
 ## Current goal
 
-Translate the Sonnet 5.5 audit into a testable control-model contract, execute the small state-space comparison, then have an independent reviewer challenge the implementation and fixture. Do not select a model or build a UI yet.
+Make the two provisional control models tangible in a small browser experiment without selecting either model or canonizing the story. Continue the independent audit/reconstruction gates in parallel; the experimental UI is not evidence of balance, fairness, or fun by itself.
 
 ## Current authority map
 
 - CONTROL_MODEL.md is the decision rationale and control-model contract.
 - scenarios/control_model_test_fixture.json is the machine-readable source of truth for this experiment's exact facts, initial state, objectives, trust-response hypothesis, selector configuration, and influence definitions.
 - tools/control_model_enumerator.py is the one Python standard-library implementation of the enumerated comparison.
+- prototype/ loads the same JSON fixture and provides an experimental pass-and-play comparison UI; prototype/rules.mjs mirrors the relevant fixture semantics for browser execution and is tested against the fixture in CI. If its behavior differs from the Python enumerator, stop and reconcile before playtest.
 - tests/test_control_model_enumerator.py has 12 unit tests for fixture consistency, known paths, input sensitivity, deterministic replay, effect cancellation, private-window behavior, and invalid input.
 - reports/control_model_enumerator_summary.json records the executed aggregate output; its outcome counts are not win rates or probabilities.
 - ARCHITECTURE.md describes the comparison harness and later gates.
@@ -62,11 +63,12 @@ These are test assumptions, not accepted game canon. They should not be resolved
 
 ## Next action
 
-1. Complete an independent audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md. Check configuration fidelity, exhaustive paired-input enumeration, conditional sensitivity calculations, branch-order artifacts, and the narrow B-only W route. Do not ask the reviewer to rewrite files or choose a model.
-2. Separately, have a reviewer reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching. Treat this as a review of the older umbrella-story paper trace, not as a substitute for auditing the newer machine-readable control-model fixture.
-3. Resolve discrepancies before comparing the control models. If the environmental-influence candidate remains under consideration, create a matched follow-up fixture that defines influence target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction. Include a credible corroborating evidence route for the umbrella-story B objective.
-4. Revisit the umbrella scenario's causal ending independently. The current fixture does not establish the literal citywide-emergency finale; do not silently promote a weaker ending or test assumption to canon.
-5. Only after these gates and owner review should the project decide whether to build a local playable prototype. No human playtest has occurred and no control model is selected.
+1. Complete CI and review PR #6. Verify the browser app against the repository's actual JSON fixture; local tests used a representative fixture, so CI is the integration check.
+2. Independently audit tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md. Check configuration fidelity, exhaustive paired-input enumeration, conditional sensitivity calculations, branch-order artifacts, and the narrow B-only W route. Do not ask the reviewer to rewrite files or choose the model.
+3. Separately, have a reviewer reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching. This older umbrella-story paper trace is not a substitute for auditing the newer machine-readable fixture.
+4. Before treating human sessions as evidence for selecting a model, resolve discrepancies, review the provisional selector/trust/evidence assumptions, and explain the narrow B-only W routes. If W remains under consideration, define influence costs, durations, stacking, visibility, counterplay, stale-target behavior, and action-budget interaction in a matched fixture.
+5. Revisit the umbrella scenario's causal ending independently. The current fixture does not establish the literal citywide-emergency finale; do not silently promote a weaker ending or test assumption to canon.
+6. Keep the prototype explicitly experimental. No human playtest has occurred and no control model is selected.
 
 ## Constraints
 
@@ -74,6 +76,6 @@ These are test assumptions, not accepted game canon. They should not be resolved
 - Keep one machine-readable test fixture and one implementation of the comparison rules.
 - Avoid paid LLM dependencies for core play.
 - Do not let narration decide outcomes or invent facts.
-- Do not build UI, networking, persistence, or production infrastructure before the control-model gate.
+- The owner has authorized a bounded test-fixture UI before the gate; do not expand it into production gameplay, networking, persistence, or Fate before the remaining review gates.
 - Project owner reviews and merges pull requests.
 - Keep specification, executed tests, independent review, and human playtest evidence distinct.
