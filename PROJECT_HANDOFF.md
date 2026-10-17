@@ -1,10 +1,10 @@
 # Project Handoff
 
-**Last updated:** 2026-10-16  
+**Last updated:** 2026-10-17  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** docs/control-model-consolidation-audit  
-**Current pull request:** https://github.com/ShreyasGautam01/fate-ctrl/pull/4  
+**Working branch:** docs/causal-route-and-review-gates-01  
+**Current pull request:** https://github.com/ShreyasGautam01/fate-ctrl/pull/5  
 **Current phase:** concept validation and executable rule testing  
 **Playable game implementation:** not started
 
@@ -62,7 +62,11 @@ These are test assumptions, not accepted game canon. They should not be resolved
 
 ## Next action
 
-Audit tools/control_model_enumerator.py as the primary target, using scenarios/control_model_test_fixture.json and CONTROL_MODEL.md as the only consistency references. Ask the reviewer to check whether the code faithfully implements the config, whether exhaustive enumeration is actually exhaustive, whether any sensitivity or route result is an artifact of branch ordering, and whether the B-only W bottleneck is real under this policy. Do not ask them to rewrite files or choose the model. Once their audit is reviewed and fixed, have a second reviewer reconstruct the report and only then decide whether to prototype both models locally.
+1. Complete an independent audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md. Check configuration fidelity, exhaustive paired-input enumeration, conditional sensitivity calculations, branch-order artifacts, and the narrow B-only W route. Do not ask the reviewer to rewrite files or choose a model.
+2. Separately, have a reviewer reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching. Treat this as a review of the older umbrella-story paper trace, not as a substitute for auditing the newer machine-readable control-model fixture.
+3. Resolve discrepancies before comparing the control models. If the environmental-influence candidate remains under consideration, create a matched follow-up fixture that defines influence target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction. Include a credible corroborating evidence route for the umbrella-story B objective.
+4. Revisit the umbrella scenario's causal ending independently. The current fixture does not establish the literal citywide-emergency finale; do not silently promote a weaker ending or test assumption to canon.
+5. Only after these gates and owner review should the project decide whether to build a local playable prototype. No human playtest has occurred and no control model is selected.
 
 ## Constraints
 

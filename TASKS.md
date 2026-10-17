@@ -51,8 +51,9 @@
 **Exit:** The global resolution and visibility contracts cover Fate, boundary collisions, stale targets, duplicate submissions, terminal conditions, and filtered explanations.
 
 ### P0-09 — Prepare first playtest
-**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted.
-**Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation.
+**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted. PR #5 adds an independent specification-reconstruction gate before human playtesting.
+**Next:** First complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
+**Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
 ## Phase 1 — Deterministic comparison harness (not yet the game)
 
@@ -76,7 +77,10 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 
 ## Current blockers
 
-- Independent code/fixture audit and reconstruction.
+- Independent code/fixture audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md.
+- Independent, uncoached reconstruction of PRIORITY_TABLE_REPLAY_01.md; this is a separate paper trace from the machine-readable fixture.
+- If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
+- A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
 - Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
 - Player-view projection and visibility tests.
