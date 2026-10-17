@@ -128,6 +128,15 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Cross-system effects:** CONTROL_MODEL.md, the machine fixture, protagonist selection, action contracts, objective evaluator, event log/replay, and later prototype tests.
 - **Revisit trigger:** An independent reviewer reconstructs its results and the open fairness signals are explained. Human teach-back is still required before selecting a model.
 
+## D-015 — Build a bounded comparison prototype before model selection
+- **Status:** Accepted for the experiment only; neither control model is selected.
+- **Context:** The owner asked to move toward a playable game after the documentation review. The remaining control-model audit and independent reconstruction gates are still open, and the owner needs a concrete way to experience the candidate mechanics.
+- **Decision:** Build a small local browser prototype driven by the existing machine-readable test fixture. Keep both direct-intention and environmental-influence modes available behind the same deterministic resolution contract. Exclude Fate, online multiplayer, persistence, and the unresolved citywide-emergency story.
+- **Alternatives:** Continue paper analysis only; choose a control model prematurely and build that one; or build a full online game before validating the loop.
+- **Rationale:** A bounded prototype makes the consequences and interaction differences inspectable without canonizing the test scenario or investing in production infrastructure.
+- **Risks and limits:** The fixture's trust response, seeded evidence, objectives, and selection policy are provisional. Pass-and-play UI is not secure against a technically curious opponent. Human feedback is qualitative and cannot replace independent rule audit.
+- **Revisit trigger:** Independent audit/reconstruction results and observed player confusion or meaningful-choice evidence.
+
 ## Decision template
 ### D-XXX — Title
 - Status:
