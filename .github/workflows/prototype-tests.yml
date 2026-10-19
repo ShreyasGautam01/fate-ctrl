@@ -1,4 +1,4 @@
-name: Prototype rules tests
+name: Prototype tests
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ on:
       - ".github/workflows/prototype-tests.yml"
 
 jobs:
-  prototype-rules:
+  prototype:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,4 +23,5 @@ jobs:
           node-version: 22
       - run: node --check prototype/app.js
       - run: node --check prototype/rules.mjs
-      - run: node --test prototype/tests/rules.test.mjs
+      - run: node --check prototype/story.mjs
+      - run: node --test prototype/tests/*.test.mjs

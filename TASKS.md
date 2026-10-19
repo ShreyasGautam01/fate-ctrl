@@ -6,7 +6,7 @@
 ## Phase 0 — Define the game worth building
 
 ### P0-01 — Resolve unit of play
-**Status:** The deep Sonnet audit found blocking semantic defects in the earlier model comparison. CONTROL_MODEL.md and its machine fixture have since been revised, and a deterministic enumerator plus 12 unit tests has been executed. No model is selected.
+**Status:** CONTROL_MODEL.md and its machine fixture were revised after a deep audit, and a deterministic enumerator plus tests have executed. The owner prefers direct intention for the next player-facing iteration because it invites inference about consequences. This is a lead candidate for further testing, not a final production-model selection.
 **Canonical design reference:** CONTROL_MODEL.md.  
 **Executable test fixture:** scenarios/control_model_test_fixture.json.  
 **Enumerator, tests, and report:** tools/control_model_enumerator.py, tests/test_control_model_enumerator.py, and reports/control_model_enumerator_summary.json.  
@@ -50,9 +50,9 @@
 **Status:** The comparison-harness responsibilities are described in ARCHITECTURE.md and MODULE_CONTRACTS.md; this is not the production engine.
 **Exit:** The global resolution and visibility contracts cover Fate, boundary collisions, stale targets, duplicate submissions, terminal conditions, and filtered explanations.
 
-### P0-09 — Prepare first playtest
-**Status:** PLAYTEST_PLAN.md is a proposed protocol; no human playtests have been conducted. An owner-authorized, test-fixture-only browser prototype is being added to make the two control candidates tangible; it does not mean the comparison/review gates have passed.
-**Next:** Run the prototype's automated rules tests against the repository fixture. Before treating any human session as evidence for selecting a model, complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
+### P0-09 — Record first-prototype findings
+**Status:** PLAYTEST_PLAN.md is a proposed protocol. The owner reviewed the first experiment but could provide only limited feedback because it showed too little of the intended game. Feedback: choices were difficult to understand, resolution was mechanical and objective-centric rather than story-led, and raw submissions were revealed. The owner also preferred direct-intention mode because it preserves inference about consequences. This is qualitative direction, not comparative playtest proof.
+**Next:** Review the story-first branch CI and smoke-test it in a browser. Before treating any human session as evidence for selecting a model, complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
 **Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
 ## Phase 1 — Deterministic comparison harness (not yet the game)
@@ -61,11 +61,11 @@ Validate the JSON fixture; enumerate every valid I/W input pair over reachable s
 
 **Exit:** Independent reconstruction agrees with the implementation, and no model is structurally null or trivially dominant under the test fixture. This gate does not establish fun or fairness.
 
-## Phase 2 — Minimal local playable prototype
+## Phase 2 — Local playable experiments
 
-**Status:** An owner-authorized experimental comparison UI is being built before the model-selection gate closes. This is a deliberate, bounded exception for learning: it uses the existing test fixture, offers both candidate models, and must not be treated as selection of either model or as production gameplay. It excludes Fate, networking, persistence, and scenario canonization.
+**Status:** The first experimental comparison lab has merged. A bounded narrative-first follow-up is being developed from the owner's feedback. It uses the existing fixture, defaults to direct-intention mode, and preserves environmental influence only as a comparison candidate. The owner preference is not final model selection. The story excludes Fate, networking, persistence and scenario canonization.
 
-The production prototype of a selected model remains gated on independent code/fixture audit, uncoached reconstruction, owner review of provisional semantics, and a credible explanation of the narrow B-only environmental-influence routes.
+The next iteration must pass its story/rule consistency review and browser smoke test. Production model selection remains gated on independent code/fixture audit, uncoached reconstruction, owner review of provisional semantics, and a credible explanation of the narrow B-only environmental-influence routes.
 
 **Exit:** Players understand rules, report meaningful decisions, and can explain outcomes. Otherwise revise before expanding.
 
@@ -84,7 +84,9 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
 - A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
 - Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
-- Verify the experimental browser UI against the actual shared JSON fixture; do not treat a passing UI test as proof of fairness or fun.
+- Verify the story-first browser UI against the actual shared JSON fixture; do not treat a passing UI test as proof of fairness or fun.
+- Check that direct-intention labels are understandable and all story prose is justified by resolved events/state.
+- Keep meters explicitly framed as state-condition indicators, not success probabilities.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
 - Player-view projection and visibility tests.
 - Canonicalizing the umbrella story facts/deadline/objectives separately from the comparison fixture.

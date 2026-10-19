@@ -148,3 +148,23 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - Trade-offs and risks:
 - Dependencies:
 - Revisit trigger:
+
+
+## D-016 — Make story and public consequences primary in the next prototype iteration
+- **Status:** Accepted for the next experiment only; not a production-game decision.
+- **Context:** The owner's evaluation of the first prototype found that options were hard to understand, the UI was too mechanical and information-heavy, and outcomes were reported as objective/state results rather than an unfolding story. The owner could not provide broader comparative feedback because the first version revealed too little of the intended experience.
+- **Decision:** Present deterministic authored story beats derived from resolved events and state as the primary feedback. Keep raw player submissions out of the normal player UI. Show a small number of tracked state-condition meters and action-to-action changes, clearly labelled as state, not odds. Move experiment settings and ranking diagnostics behind collapsed controls.
+- **Alternatives:** Only restyle the dashboard; add more logs and metrics; use a generative model to decide outcomes; select a control model before its experience can be evaluated.
+- **Rationale:** Players should understand what happened through the scene. Story communicates resolved mechanics without replacing them; observable events leave room to infer the opponent's likely intentions.
+- **Cross-system effects:** Story presentation consumes resolved records; meters consume canonical state; the UI omits private submissions; tests must check these boundaries. Narration never mutates authoritative state.
+- **Trade-offs and risks:** Authored prose can repeat or flatten branches. The fixture does not yet support the intended Fate escalation. Binary progress bars can overstate precision, so labels and supporting text must explain what is actually tracked.
+- **Revisit trigger:** Uncoached sessions show whether choices are understandable, prose matches rules, meters improve comprehension, inference is possible, and pacing creates meaningful tension.
+
+## D-017 — Use direct intention as the lead player-facing candidate
+- **Status:** Accepted preference for the next experiment; production control model remains unselected.
+- **Context:** After experiencing both modes, the owner preferred the mode where players choose actions they want Jules to take over the mode where they select objective-related signals. The owner specifically valued having to reason about the possible consequences of an action.
+- **Decision:** Make direct-intention the default and primary path for the next narrative-first experiment. Keep environmental influence available only as an experimental comparator for now. Do not delete the alternative or claim a final model selection until the independent rules audit and broader playtest gates are reviewed.
+- **Alternatives:** Keep both modes equally prominent; drop environmental influence permanently now; implement a hybrid before a problem with either pure model has been demonstrated.
+- **Rationale:** Action-oriented choices are easier to reason about as moves in a story and put consequence prediction in the player's hands. The owner preference is meaningful qualitative direction, but it is not yet a broader playtest result.
+- **Cross-system effects:** Choice vocabulary, action resolution, hidden-intention inference, objective fairness, state meters, scenario design, and future UI prioritization.
+- **Revisit trigger:** A richer matched scenario and uncoached sessions show whether the action model produces clear, consequential, non-dominated choices without making Jules feel like a passive executor.
