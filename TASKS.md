@@ -14,7 +14,7 @@
 
 **Executed structural results (not win rates):** I: 5 unique nonterminal states, 264 transition evaluations across path prefixes, 204 complete input sequences; terminal outcomes: A-only 42 sequences, B-only 36, both 126. W: 7 unique nonterminal states, 1,257 transition evaluations, 1,146 complete input sequences; terminal outcomes: A-only 642, B-only 9, both 495. These are not probabilities or balance scores because available input sets vary by state. The narrow count of B-only W sequences is a specific objective-feasibility/counterplay signal to investigate, not proof of imbalance.
 
-**Automated checks:** 12 standard-library unit tests were present in main before the current audit PR. PR #8 adds paired-input validation, duplicate tie-break and terminal-boundary checks; its CI has passed 14 Python tests. These checks do not replace the independent audit or human testing.
+**Automated checks:** 12 standard-library unit tests were present in main before the current audit PR. PR #8 adds paired-input validation, duplicate tie-break and terminal-boundary checks; its CI has passed 16 Python tests. These checks do not replace the independent audit or human testing.
 
 **Next:** Have an independent reviewer audit the enumerator implementation and JSON fixture together, then reconstruct selected actions and objective paths from the published test contract. Triage any discrepancy before changing the fixture or policy. No human playtest evidence exists.
 
@@ -56,7 +56,7 @@
 **Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
 ### P0-10 — Validate the story-first playable slice
-**Status:** Implemented in merged PR #7 as a bounded experiment. CI passed 15 Node tests for the browser rules, story branches and meter behavior. Direct-intention is the default because the owner preferred action choices and consequence inference; environmental influence remains available only as a comparison setting.
+**Status:** Implemented in merged PR #7 as a bounded experiment. CI passed 15 Node tests for the browser rules, story branches and meter behavior. PR #10 then removes ranking diagnostics from the player UI and adds a regression guard; its CI passed 16 Node tests. Direct-intention is the default because the owner preferred action choices and consequence inference; environmental influence remains available only as a comparison setting.
 **Next:** Complete a full browser smoke test of both modes, verify the story remains faithful to resolved facts/events, and observe whether choices are understandable. The current three-moment story is only a UX/mechanics experiment, not the full game.
 **Exit:** Players understand what their action proposes, can follow story consequences without a mechanics dashboard, can observe relevant state changes, and do not see opponent raw submissions. CI success alone does not prove these conditions.
 
@@ -94,6 +94,7 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - Draft PR #9 proposes a narrower local-failure causal route; it is not story canon and needs skeptical causal review.
 - Check that direct-intention labels are understandable and all story prose is justified by resolved events/state.
 - Keep meters explicitly framed as state-condition indicators, not success probabilities.
+- Keep input-derived rank tuples and selector diagnostics out of the player view; see PR #10 and its regression test.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
 - Player-view projection and visibility tests.
 - Canonicalizing the umbrella story facts/deadline/objectives separately from the comparison fixture.
