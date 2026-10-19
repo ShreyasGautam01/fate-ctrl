@@ -251,7 +251,7 @@ function renderMeters(currentState, previousState) {
 function renderSubmission(player) {
   const objective = objectiveCopy[player];
   $('turn-eyebrow').textContent = 'PLAYER ' + player + ' · PRIVATE TURN';
-  $('turn-heading').textContent = player === 'A' ? 'What do you want Jules to do?' : 'How will you steer the situation?';
+  $('turn-heading').textContent = model === MODEL_DIRECT ? 'What do you want Jules to do?' : 'How will you steer the situation?';
 
   const turnPrivacy = player === 'A'
     ? 'Choose the action you want Jules to take, then lock it. Player B will choose privately too, and Jules may not do exactly what you proposed.'
