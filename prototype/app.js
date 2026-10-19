@@ -34,10 +34,10 @@ const directChoiceCopy = {
 };
 const influenceChoiceCopy = {
   PASS: { title: 'Leave the situation alone', description: 'Apply no targeted pressure this moment.' },
-  THREAD_UP: { title: 'Draw Jules’s attention to the phone', description: 'Make opening the thread feel more important right now.' },
-  THREAD_DOWN: { title: 'Keep Jules focused on the umbrella', description: 'Make the phone thread easier to ignore for now.' },
-  EVIDENCE_UP: { title: 'Make the message hard to ignore', description: 'Once the thread is inspected, make showing it feel more pressing.' },
-  EVIDENCE_DOWN: { title: 'Make showing the message feel premature', description: 'Reduce the pull to raise the evidence right now.' },
+  THREAD_UP: { title: 'Bring the phone thread to Jules’s attention', description: 'Make opening the thread feel more important right now.' },
+  THREAD_DOWN: { title: 'Let the phone thread fade into the background', description: 'Make opening it feel easier to put off for now.' },
+  EVIDENCE_UP: { title: 'Make the inspected message hard to ignore', description: 'Once the thread is inspected, make showing it feel more pressing.' },
+  EVIDENCE_DOWN: { title: 'Make raising the message feel premature', description: 'Reduce the pull to raise the evidence right now.' },
   OPEN_PRIVATE_WINDOW: { title: 'Create a private moment to talk', description: 'Give Jules a chance to raise the message away from an audience. In this test, that can protect trust.' }
 };
 
@@ -252,9 +252,15 @@ function renderSubmission(player) {
   const objective = objectiveCopy[player];
   $('turn-eyebrow').textContent = 'PLAYER ' + player + ' · PRIVATE TURN';
   $('turn-heading').textContent = player === 'A' ? 'What do you want Jules to do?' : 'How will you steer the situation?';
-  $('turn-instructions').textContent = player === 'A'
+
+  const turnPrivacy = player === 'A'
     ? 'Choose a move in private, then lock it. The scene will not resolve until Player B has locked a choice too.'
-    : 'Use the shared scene and your own objective to make a private move. Player A’s locked selection stays hidden.';
+    : 'Use the shared scene and your own aim to make a private move. Player A’s locked selection stays hidden.';
+  const modelExplanation = model === MODEL_DIRECT
+    ? ' Your move is a proposal, not an order: Jules will choose an action after both moves are locked.'
+    : ' Your move changes what feels important to Jules; it does not choose Jules’s action.';
+  $('turn-instructions').textContent = turnPrivacy + modelExplanation;
+
   const title = document.createElement('strong');
   title.textContent = 'YOUR PRIVATE AIM';
   const description = document.createElement('p');
