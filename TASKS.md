@@ -14,7 +14,7 @@
 
 **Executed structural results (not win rates):** I: 5 unique nonterminal states, 264 transition evaluations across path prefixes, 204 complete input sequences; terminal outcomes: A-only 42 sequences, B-only 36, both 126. W: 7 unique nonterminal states, 1,257 transition evaluations, 1,146 complete input sequences; terminal outcomes: A-only 642, B-only 9, both 495. These are not probabilities or balance scores because available input sets vary by state. The narrow count of B-only W sequences is a specific objective-feasibility/counterplay signal to investigate, not proof of imbalance.
 
-**Automated checks:** 11 standard-library unit tests pass locally, including explicit A-only/B-only/both routes in both models, conditional input sensitivity, deterministic replay, cancellation, private-window trust behavior, and invalid-input rejection.
+**Automated checks:** 12 standard-library unit tests were present in main before the current audit PR. PR #8 adds paired-input validation, duplicate tie-break and terminal-boundary checks; its CI has passed 14 Python tests. These checks do not replace the independent audit or human testing.
 
 **Next:** Have an independent reviewer audit the enumerator implementation and JSON fixture together, then reconstruct selected actions and objective paths from the published test contract. Triage any discrepancy before changing the fixture or policy. No human playtest evidence exists.
 
@@ -52,8 +52,13 @@
 
 ### P0-09 — Record first-prototype findings
 **Status:** PLAYTEST_PLAN.md is a proposed protocol. The owner reviewed the first experiment but could provide only limited feedback because it showed too little of the intended game. Feedback: choices were difficult to understand, resolution was mechanical and objective-centric rather than story-led, and raw submissions were revealed. The owner also preferred direct-intention mode because it preserves inference about consequences. This is qualitative direction, not comparative playtest proof.
-**Next:** Review the story-first branch CI and smoke-test it in a browser. Before treating any human session as evidence for selecting a model, complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
+**Status:** The feedback is recorded in DECISIONS.md and PROJECT_HANDOFF.md. PR #7's story-first version is merged and its 15 Node tests passed. A browser smoke test has not been performed. Before treating any human session as evidence for selecting a model, complete the independent code/fixture audit for the machine-readable control-model harness. Separately ask a reviewer to reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching; this older umbrella-story paper trace must not be confused with the newer machine fixture. If environmental influence remains a candidate, define all effect semantics in a matched follow-up fixture and include a credible corroborating evidence route for B before using it to discuss objective feasibility or fairness.
 **Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
+
+### P0-10 — Validate the story-first playable slice
+**Status:** Implemented in merged PR #7 as a bounded experiment. CI passed 15 Node tests for the browser rules, story branches and meter behavior. Direct-intention is the default because the owner preferred action choices and consequence inference; environmental influence remains available only as a comparison setting.
+**Next:** Complete a full browser smoke test of both modes, verify the story remains faithful to resolved facts/events, and observe whether choices are understandable. The current three-moment story is only a UX/mechanics experiment, not the full game.
+**Exit:** Players understand what their action proposes, can follow story consequences without a mechanics dashboard, can observe relevant state changes, and do not see opponent raw submissions. CI success alone does not prove these conditions.
 
 ## Phase 1 — Deterministic comparison harness (not yet the game)
 
@@ -84,7 +89,9 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - If environmental influence remains under consideration, a matched fixture with explicit target, preconditions, magnitude, cost, duration/expiry, stacking, visibility, counterplay, invalid-target behavior, and action-budget interaction.
 - A credible corroborating evidence route before claiming the umbrella-story B objective is feasible or fair.
 - Owner approval/revision of direct-support semantics, protagonist tie-breaks, seeded evidence wording, and trust response.
-- Verify the story-first browser UI against the actual shared JSON fixture; do not treat a passing UI test as proof of fairness or fun.
+- Browser-smoke-test the merged story-first UI against the actual shared JSON fixture; do not treat a passing UI test as proof of fairness or fun.
+- PR #8's input/config validation fixes passed their Python and Node CI runs; review and merge them when ready, while keeping the broader independent audit open.
+- Draft PR #9 proposes a narrower local-failure causal route; it is not story canon and needs skeptical causal review.
 - Check that direct-intention labels are understandable and all story prose is justified by resolved events/state.
 - Keep meters explicitly framed as state-condition indicators, not success probabilities.
 - Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
