@@ -3,12 +3,6 @@ import { openingStory, storyForResolution, worldMeters } from './story.mjs';
 
 const $ = id => document.getElementById(id);
 
-const actionNames = {
-  INSPECT_SHARED_THREAD: 'Inspect the phone thread',
-  PRESENT_EVIDENCE: 'Show the message',
-  RETURN_HONESTLY: 'Return the umbrella and own the tear',
-  WAIT: 'Wait'
-};
 const objectiveCopy = {
   A: {
     title: 'Keep the return honest without losing trust',
@@ -18,13 +12,6 @@ const objectiveCopy = {
     title: 'Bring the earlier nondisclosure to light',
     description: 'Use the existing message to establish that the flatmate knew about the loose rib before the loan. Do not erase Jules’s responsibility for the later tear.'
   }
-};
-const fieldCopy = {
-  contextSignal: 'The temporary context signal was decisive.',
-  directSupport: 'The number of direct proposals was decisive.',
-  actionTier: 'The action’s configured priority was decisive.',
-  deadlineTier: 'The approaching deadline was decisive.',
-  tieBreakRank: 'The character’s configured preference broke the tie.'
 };
 const directChoiceCopy = {
   PASS: { title: 'Hold back for now', description: 'Add no specific proposal this moment. Jules may still act under the situation and the rules.' },
@@ -309,18 +296,7 @@ function renderResolution() {
   $('next-button').classList.toggle('hidden', record.departed);
   $('play-again-button').classList.toggle('hidden', !record.departed);
   $('objective-debrief').classList.toggle('hidden', !record.departed);
-  $('rule-explanation').textContent = fieldCopy[record.decisiveField] || 'Only one legal action remained, or the configured ranking rules produced a tie.';
-  $('rule-selected-action').textContent = actionNames[record.selected] || 'Resolved action';
   $('fixture-id').textContent = fixture.fixtureId;
-
-  const ranked = $('ranked-actions');
-  ranked.replaceChildren();
-  for (const id of record.rankedActions) {
-    const item = document.createElement('li');
-    const tuple = record.rankFields[id].tuple.join(' / ');
-    item.textContent = (actionNames[id] || id) + ' — ' + tuple + (id === record.selected ? ' · selected' : '');
-    ranked.append(item);
-  }
 
   const results = $('objective-results');
   results.replaceChildren();
