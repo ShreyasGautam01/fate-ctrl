@@ -72,7 +72,7 @@ Draft PR #9 adds an event-by-event, falsifiable trial of the narrower target alr
 1. Browser-smoke-test the merged story-first prototype in Codespaces or a browser: both control modes, all moments, the handoff, meter deltas and endings. **No browser smoke test is claimed yet.**
 2. Independently audit tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md. PR #8 fixes concrete input/config validation gaps but does not close this gate.
 3. Reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching. This historical umbrella paper trace is separate from the newer machine-readable fixture.
-4. Explain the narrow B-only environmental-influence routes and review seeded evidence, trust, direct-support and character tie-break assumptions.
+4. Independently reproduce the W B-only route anatomy documented in CONTROL_MODEL.md; decide whether its public-early-disclosure/trust trade-off is intended or a fixture artifact, and review seeded evidence, direct-support and tie-break assumptions.
 5. Decide whether the Target 1 causal route survives skeptical review; establish three materially different routes or change the premise. Do not silently promote the draft in PR #9 to canon.
 6. Build player-specific view projections and leakage tests before secure multiplayer.
 7. Run uncoached play sessions to evaluate comprehension, meaningful decisions, inference, story consistency, pacing, counterplay and replay desire.
