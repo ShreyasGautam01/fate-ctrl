@@ -1,0 +1,49 @@
+name: Prototype browser smoke
+
+on:
+  pull_request:
+    paths:
+      - "prototype/**"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/prototype-browser-smoke.yml"
+  push:
+    branches: [main]
+    paths:
+      - "prototype/**"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/prototype-browser-smoke.yml"
+
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned browser test dependency
+        run: npm install --no-save --no-package-lock playwright@1.64.1
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run mobile-sized browser smoke
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/fate-ctrl-http.log 2>&1 &
+          server_pid=$!
+          trap "kill $server_pid" EXIT
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8000/prototype/ > /dev/null; then
+              break
+            fi
+            sleep 1
+          done
+          node prototype/browser-tests/smoke.cjs
+      - name: Upload failure screenshot
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prototype-browser-smoke-failure
+          path: artifacts/prototype-smoke-failure.png
+          if-no-files-found: ignore
