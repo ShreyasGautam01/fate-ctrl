@@ -1,5 +1,5 @@
 import { createInitialState, resolveRound, submissionOptions, MODEL_DIRECT, MODEL_INFLUENCE, PASS } from './rules.mjs';
-import { openingStory, storyForResolution, worldMeters } from './story.mjs';
+import { openingStory, storyForResolution, worldMeters, momentLabel } from './story.mjs';
 
 const $ = id => document.getElementById(id);
 
@@ -123,10 +123,7 @@ function lockCurrentChoice(event) {
 }
 
 function render() {
-  const moment = Math.min(state.round_no, fixture.rounds);
-  $('moment-label').textContent = state.remaining === 0
-    ? 'AFTER THE FINAL MOMENT'
-    : 'MOMENT ' + moment + ' OF ' + fixture.rounds;
+  $('moment-label').textContent = momentLabel(phase, state, fixture.rounds, lastRecord);
   $('deadline-copy').textContent = state.remaining === 0
     ? 'The flatmate has left. This run has reached its ending.'
     : state.remaining === 1
