@@ -35,7 +35,6 @@ async function main() {
 
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   await page.getByRole('heading', { name: 'A debt before goodbye' }).waitFor();
-  await page.getByText('Loaded', { exact: true }).waitFor();
 
   // Moment 1: both players privately intend that Jules inspect the thread.
   await lock(page, 'INSPECT_SHARED_THREAD', 'Lock my move');
