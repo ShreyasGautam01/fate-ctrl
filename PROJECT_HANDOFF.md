@@ -1,81 +1,84 @@
 # Project Handoff
 
-**Last updated:** 2026-10-18  
+**Last updated:** 2026-10-19  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** feat/control-model-playable-prototype-01  
-**Current pull request:** https://github.com/ShreyasGautam01/fate-ctrl/pull/6  
-**Current phase:** concept validation plus an owner-authorized experimental browser prototype  
-**Production gameplay:** not started; neither control model is selected
+**Working branch:** feat/narrative-first-playable-slice-02  
+**Current phase:** concept validation with a bounded narrative-first browser experiment  
+**Production gameplay:** not started; neither control model is selected  
+**Story canon:** unresolved; the literal citywide-emergency route is not established
 
-## Current goal
+## Owner feedback and current design direction
 
-Make the two provisional control models tangible in a small browser experiment without selecting either model or canonizing the story. Continue the independent audit/reconstruction gates in parallel; the experimental UI is not evidence of balance, fairness, or fun by itself.
+The owner could provide limited feedback on the first prototype because it revealed too little of the intended game. The supported findings are:
 
-## Current authority map
+- Choices were difficult to understand.
+- The UI was too mechanical and information-heavy.
+- The resolution reported game-objective outcomes without an unfolding story, making play dry and boring.
+- Raw submissions were revealed after resolution; this conflicts with the desired inference loop.
+- Of the two experimental control approaches, direct action/intention felt better. It asks players to choose an action they want Jules to take and reason about possible consequences, whereas environmental influence exposes objective-related signals more directly and reduces that layer of inference.
 
-- CONTROL_MODEL.md is the decision rationale and control-model contract.
-- scenarios/control_model_test_fixture.json is the machine-readable source of truth for this experiment's exact facts, initial state, objectives, trust-response hypothesis, selector configuration, and influence definitions.
-- tools/control_model_enumerator.py is the one Python standard-library implementation of the enumerated comparison.
-- prototype/ loads the same JSON fixture and provides an experimental pass-and-play comparison UI; prototype/rules.mjs mirrors the relevant fixture semantics for browser execution and is tested against the fixture in CI. If its behavior differs from the Python enumerator, stop and reconcile before playtest.
-- tests/test_control_model_enumerator.py has 12 unit tests for fixture consistency, known paths, input sensitivity, deterministic replay, effect cancellation, private-window behavior, and invalid input.
-- reports/control_model_enumerator_summary.json records the executed aggregate output; its outcome counts are not win rates or probabilities.
-- ARCHITECTURE.md describes the comparison harness and later gates.
-- MODULE_CONTRACTS.md describes logical ownership boundaries.
-- scenarios/umbrella.json remains a separate unresolved story probe; it has not been silently rewritten to match the test fixture.
-- DECISIONS.md is the canonical decision log; neither control model has been selected.
-- Older traces are historical analyses and must not override the contract when their assumptions differ.
+The direct-action preference is an owner preference for the next experiment, not proof of fairness or a final production-model selection. Keep environmental influence available only as a comparison setting until the model-selection gates are reviewed.
 
-## Audit findings and implemented corrections
+## Current iteration
 
-Sonnet's audit of the prior contract found that the inputs effectively had no causal force in the trace, the selection procedure was ambiguous, B's evidence objective was infeasible, and photo awareness, trust semantics, influence persistence, and selector ownership were not adequately specified.
+The current branch evolves the same small fixture experiment rather than expanding it into production:
 
-CONTROL_MODEL.md now defines two test candidates and points to a machine-readable fixture. The direct-intention candidate adds one support mark per valid proposal. Environmental influence uses a small set of temporary selector signals and a private-window opportunity. Both models share a configured deterministic selector, state-transition code, objective predicates, and the same three-boundary fixture. The seeded message enables B's prior-knowledge predicate without allowing an influence to invent evidence.
+- The scene is the primary feedback. Deterministic authored story beats vary according to the protagonist action and resolved state.
+- Direct-intention mode is the default. The move descriptions explain the intended action in natural language and remind the player that Jules may choose differently.
+- Locked selections are removed from visible controls during handoff. Story output does not print raw submissions.
+- Three meters show honest return, evidence discovered/shared, and relationship trust. They represent exact tracked conditions, not odds of winning. Changes are annotated after resolution.
+- Story history, objective recap, ranking details and experiment settings are secondary/collapsed.
+- Tests cover story branches, meter derivation, and separation between story presentation and player submissions.
 
-The current harness enumerates all legal paired submissions over reachable nonterminal fixture states, calculates full rank tuples, tracks state/event/objective results, checks conditional input sensitivity, and finds example objective routes. It is a local test tool, not the game engine.
+The story presentation is deterministic and authored. It consumes already-resolved action/state and cannot decide outcomes or change state. The fixture's facts, trust response, objectives and protagonist-selection policy remain provisional.
 
-## Executed run
+## Authority map
 
-**Automated tests:** 12 tests passed locally using Python's standard library.
+- CONTROL_MODEL.md is the provisional control-model comparison contract; no model is selected.
+- scenarios/control_model_test_fixture.json is the machine-readable source of truth for the current test fixture.
+- tools/control_model_enumerator.py and tests/test_control_model_enumerator.py are the deterministic Python comparison harness and its tests.
+- prototype/rules.mjs is the browser implementation of the fixture's resolution semantics.
+- prototype/story.mjs maps resolved records/state to deterministic prose and state meters; it must never select or mutate outcomes.
+- prototype/app.js, prototype/index.html, and prototype/styles.css provide the player-facing experiment and optional diagnostics.
+- prototype/tests/ tests browser-rule and story/meter behavior; CI is configured to run these tests.
+- scenarios/umbrella.json is a separate unresolved story probe, not the canonical source for the smaller comparison fixture.
+- DECISIONS.md records choice status and rationale; TASKS.md owns current gates, blockers and exit criteria.
+- INFORMATION_MODEL.md, ARCHITECTURE.md, and MODULE_CONTRACTS.md remain references for future information boundaries and logical ownership.
 
-| Metric | Direct intention (I) | Environmental influence (W) |
-|---|---:|---:|
-| Unique reachable nonterminal states | 5 | 7 |
-| Transition evaluations across all path prefixes | 264 | 1,257 |
-| Complete legal input sequences | 204 | 1,146 |
-| Sequences ending A-only | 42 | 642 |
-| Sequences ending B-only | 36 | 9 |
-| Sequences ending with both goals | 126 | 495 |
+## Existing technical evidence and open risks
 
-These values are exhaustive counts for this test fixture, **not probabilities, win rates, or balance scores**. Available options vary by state; raw sequence counts cannot establish fairness. Still, B-only W trajectories are far narrower in this run than A-only trajectories, and that deserves a rule-level explanation. The enumerator shows A-only, B-only, and joint-success routes exist in both models; it does not establish how real players experience the choices.
+The earlier deterministic comparison enumerated paired submissions over the fixture and found A-only, B-only and joint-success routes in both modes. These are exhaustive counts of paths in a small fixture, not probabilities, win rates, balance scores or evidence of fun. B-only environmental-influence routes are unusually narrow and still need a rule-level explanation.
 
-Both players' inputs change selected actions in reachable states when the opponent's input is held fixed. The test covers deterministic replay, selected invalid inputs, opposite-signal cancellation, and the private-window trust rule. Player-view projection, leakage tests, Fate, UI, online behavior, and human play remain untested.
+Previous independent design review identified weaknesses in causal logic, selector semantics, evidence feasibility, trust response and influence behavior. The revised fixture/harness addressed some defects, but remaining gates are:
 
-## Owner decisions still open
+1. Independent audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md.
+2. Uncoached reconstruction of PRIORITY_TABLE_REPLAY_01.md; this historical umbrella trace is separate from the machine fixture.
+3. Explanation of narrow B-only environmental-influence routes and owner review of seeded evidence, trust, direct-support and tie-break assumptions.
+4. Player-specific view projection and leakage tests before any secure multiplayer work.
+5. A credible causal route for Fate's intended ending, or an explicit decision to narrow or replace that target.
+6. Human sessions evaluating story comprehension, meaningful decisions, inference, pacing, counterplay and replay desire.
 
-- Is additive direct-intention support the desired control fantasy, especially when both players propose different actions?
-- Is the seeded message too conclusive for the intended mystery?
-- Is Jules's tie-break/default preference plausible?
-- Does the private-window/trust response create an interesting sequencing choice or encode an arbitrary result?
-- Is environmental influence meaningfully distinct enough to merit further investment, given the current signal-based implementation?
+## Validation status for this iteration
 
-These are test assumptions, not accepted game canon. They should not be resolved by silently hard-coding a preferred story outcome.
+No browser smoke test or full visual/browser verification is claimed yet. The earlier prototype's rules CI passed against the committed fixture, but the current branch adds story and interface behavior that needs its own CI result and review. Passing automated tests proves only the behavior covered by those tests; it does not establish fun, fairness, visual polish across browsers, or hidden-information security.
 
-## Next action
+## Next steps
 
-1. Complete CI and review PR #6. Verify the browser app against the repository's actual JSON fixture; local tests used a representative fixture, so CI is the integration check.
-2. Independently audit tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md. Check configuration fidelity, exhaustive paired-input enumeration, conditional sensitivity calculations, branch-order artifacts, and the narrow B-only W route. Do not ask the reviewer to rewrite files or choose the model.
-3. Separately, have a reviewer reconstruct PRIORITY_TABLE_REPLAY_01.md without coaching. This older umbrella-story paper trace is not a substitute for auditing the newer machine-readable fixture.
-4. Before treating human sessions as evidence for selecting a model, resolve discrepancies, review the provisional selector/trust/evidence assumptions, and explain the narrow B-only W routes. If W remains under consideration, define influence costs, durations, stacking, visibility, counterplay, stale-target behavior, and action-budget interaction in a matched fixture.
-5. Revisit the umbrella scenario's causal ending independently. The current fixture does not establish the literal citywide-emergency finale; do not silently promote a weaker ending or test assumption to canon.
-6. Keep the prototype explicitly experimental. No human playtest has occurred and no control model is selected.
+1. Run CI and review the current branch's rules/story tests.
+2. Smoke-test a complete three-moment run in both modes, including handoff and ending; verify no raw submissions are exposed and meters match the canonical state.
+3. Compare every story branch with the events and state it describes. Prose must not imply a fact/action that the rules did not establish.
+4. Independently audit the enumerator/fixture and reconstruct the historical paper trace without coaching.
+5. Adversarially design the larger Fate scenario on paper before implementing Fate.
+6. Use direct-intention as the lead player-facing candidate in the next iteration, while preserving environmental influence as an experimental comparator until the open gates are reviewed.
 
 ## Constraints
 
 - Quality and cross-system coherence outrank speed.
-- Keep one machine-readable test fixture and one implementation of the comparison rules.
+- Authoritative state and rules remain deterministic; story presentation must not mutate them.
+- Keep one executable fixture and do not silently canonize it.
 - Avoid paid LLM dependencies for core play.
-- Do not let narration decide outcomes or invent facts.
-- The owner has authorized a bounded test-fixture UI before the gate; do not expand it into production gameplay, networking, persistence, or Fate before the remaining review gates.
-- Project owner reviews and merges pull requests.
-- Keep specification, executed tests, independent review, and human playtest evidence distinct.
+- Keep raw player submissions out of ordinary player-facing views; a local browser is not a security boundary.
+- Do not add networking, accounts, persistence or production gameplay before their design gates.
+- The project owner reviews and merges pull requests.
+- Distinguish specification, automated tests, independent review, browser verification and human playtest evidence.
