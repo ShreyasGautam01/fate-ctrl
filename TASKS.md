@@ -56,8 +56,8 @@
 **Exit:** The protocol distinguishes confusion, weak mechanics, unfair objectives, and unearned escalation; an independent reviewer can reconstruct the relevant rules without author coaching; actual playtest observations are recorded separately from desk analysis.
 
 ### P0-10 — Validate the story-first playable slice
-**Status:** Implemented in merged PR #7 as a bounded experiment. CI passed 15 Node tests for the browser rules, story branches and meter behavior. PR #10 then removes ranking diagnostics from the player UI and adds a regression guard; its CI passed 16 Node tests. Direct-intention is the default because the owner preferred action choices and consequence inference; environmental influence remains available only as a comparison setting.
-**Next:** Complete a full browser smoke test of both modes, verify the story remains faithful to resolved facts/events, and observe whether choices are understandable. The current three-moment story is only a UX/mechanics experiment, not the full game.
+**Status:** Implemented in merged PR #7 as a bounded experiment. CI passed 15 Node tests for the browser rules, story branches and meter behavior. PR #10 removes ranking diagnostics, fixes decision/aftermath labels, and adds a Chromium smoke workflow; its CI passed 17 Node tests and the browser smoke. Direct-intention is the default because the owner preferred action choices and consequence inference; environmental influence remains available only as a comparison setting.
+**Next:** Review the automated browser smoke, then perform a visual/accessibility check when the UI branch is merged. A human/uncoached session is still needed to learn whether choices are understandable and the narrative is engaging. The current three-moment story is only a UX/mechanics experiment, not the full game.
 **Exit:** Players understand what their action proposes, can follow story consequences without a mechanics dashboard, can observe relevant state changes, and do not see opponent raw submissions. CI success alone does not prove these conditions.
 
 ## Phase 1 — Deterministic comparison harness (not yet the game)
