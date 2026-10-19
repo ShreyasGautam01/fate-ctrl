@@ -1,0 +1,26 @@
+name: Control model enumerator tests
+
+on:
+  pull_request:
+    paths:
+      - "tools/control_model_enumerator.py"
+      - "tests/test_control_model_enumerator.py"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/control-model-enumerator-tests.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/control_model_enumerator.py"
+      - "tests/test_control_model_enumerator.py"
+      - "scenarios/control_model_test_fixture.json"
+      - ".github/workflows/control-model-enumerator-tests.yml"
+
+jobs:
+  enumerator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest discover -s tests -v
