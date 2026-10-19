@@ -227,6 +227,8 @@ def complete(state, obj, departed):
 
 
 def transition(s, model, inputs):
+    if not isinstance(inputs, (tuple, list)) or len(inputs) != 2:
+        raise ValueError("exactly two player submissions are required")
     if s.remaining <= 0:
         raise ValueError("cannot resolve a submission after departure")
     before = s
