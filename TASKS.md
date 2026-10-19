@@ -16,7 +16,7 @@
 
 **Automated checks:** 12 standard-library unit tests were present in main before the current audit PR. PR #8 adds paired-input validation, duplicate tie-break and terminal-boundary checks; its CI has passed 16 Python tests. These checks do not replace the independent audit or human testing.
 
-**Next:** Have an independent reviewer audit the enumerator implementation and JSON fixture together, then reconstruct selected actions and objective paths from the published test contract. Triage any discrepancy before changing the fixture or policy. No human playtest evidence exists.
+**Next:** The 9 W B-only sequences have been reconstructed analytically as one path shape: a positive THREAD_UP at boundary 1, a public EVIDENCE_UP at boundary 2, and the deadline return at boundary 3. This explains the count but does not validate the trust hypothesis or establish fairness. Have an independent reviewer reproduce this and audit the enumerator/fixture/contract before changing policy. No comparative human playtest evidence exists.
 
 **Exit:** Both input models have precise semantics; an independent reviewer reproduces implementation results; all objective routes and sensitivities are understood; input dominance and narrow paths are assessed; only then run counterbalanced human teach-back/play sessions and decide whether to build a local prototype.
 
@@ -95,7 +95,7 @@ Add server-authoritative online matches, persistence, reconnect, anti-cheat, pri
 - Check that direct-intention labels are understandable and all story prose is justified by resolved events/state.
 - Keep meters explicitly framed as state-condition indicators, not success probabilities.
 - Keep input-derived rank tuples and selector diagnostics out of the player view; see PR #10 and its regression test.
-- Explanation of why B-only W trajectories are narrow under the current fixture; do not infer probabilities from sequence counts.
+- Independent reproduction and owner review of the narrow B-only W path shape documented in CONTROL_MODEL.md; its nine sequences are path counts, not probabilities.
 - Player-view projection and visibility tests.
 - Canonicalizing the umbrella story facts/deadline/objectives separately from the comparison fixture.
 - Fate's legal power, visibility, credible causal target, counterplay, and alternate ending.
