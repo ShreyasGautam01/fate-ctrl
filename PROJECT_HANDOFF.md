@@ -47,7 +47,7 @@ The current PR #8 branch's CI passed **14 Python unit tests and 15 Node tests**.
 
 ## Current UI privacy fix: #10
 
-PR #10 removes the optional action-ranking inspector from the player-facing experience. Even though it did not print the literal player choices, its ranking tuples could expose how submitted support affected Jules's action, undermining the intended inference loop. CI passed **16 Node tests** for the current PR #10 code head. It remains open and unmerged. The local browser still contains both submissions in memory, so this is a presentation/privacy improvement, not secure hidden-information architecture.
+PR #10 removes the optional action-ranking inspector from the player-facing experience. Even though it did not print the literal player choices, its ranking tuples could expose how submitted support affected Jules's action, undermining the intended inference loop. CI passed **17 Node tests** for the current PR #10 code head. A pinned Playwright/Chromium smoke test also passed at a 390 × 844 viewport, completing a direct-intention run and checking both objectives, state meters, submission visibility and the environmental-influence mode. PR #10 remains open and unmerged. The local browser still contains both submissions in memory, so this is a presentation/privacy improvement, not secure hidden-information architecture.
 
 ## Current causal-design draft: #9
 
