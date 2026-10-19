@@ -2,10 +2,26 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { createInitialState, resolveRound, submissionOptions, MODEL_DIRECT, MODEL_INFLUENCE, PASS } from '../rules.mjs';
+import { createInitialState, resolveRound, submissionOptions, validateFixture, MODEL_DIRECT, MODEL_INFLUENCE, PASS } from '../rules.mjs';
 
 const fixturePath = new URL('../../scenarios/control_model_test_fixture.json', import.meta.url);
 const fixture = JSON.parse(await readFile(fileURLToPath(fixturePath), 'utf8'));
+
+test('fixture rejects unsupported influence composition and fractional signals', () => {
+  assert.equal(validateFixture(fixture), true);
+
+  const fractionalSignal = structuredClone(fixture);
+  fractionalSignal.influences.THREAD_UP.signal = 0.5;
+  assert.throws(() => validateFixture(fractionalSignal), /non-integral selector signal/i);
+
+  const booleanSignal = structuredClone(fixture);
+  booleanSignal.influences.THREAD_UP.signal = true;
+  assert.throws(() => validateFixture(booleanSignal), /non-integral selector signal/i);
+
+  const wrongComposition = structuredClone(fixture);
+  wrongComposition.composition.privateWindowSignal = 'ignore';
+  assert.throws(() => validateFixture(wrongComposition), /private-window signal composition/i);
+});
 
 test('both modes expose only valid opening submissions', () => {
   const state = createInitialState(fixture);
