@@ -1,31 +1,41 @@
-# FATE/CTRL Control Model Lab (experimental prototype)
+# FATE/CTRL — story-first prototype
 
-This is a browser-playable experiment comparing the two control-model candidates in `../scenarios/control_model_test_fixture.json`. It is **not** the finished game or accepted story canon. It excludes Fate, online multiplayer, accounts, persistence, and generated narration.
+This is a bounded, browser-playable experiment for learning whether private player decisions, observable consequences, and a short deterministic story can make the core loop more understandable and engaging. It still uses the test fixture in the repository and is **not the finished game or accepted story canon**.
 
-## Run it
+## Run locally
 
-From the repository root, start a static file server:
+From the repository root, start a static file server with Python:
 
-```bash
-python -m http.server 8000
-```
+    python -m http.server 8000
 
-Then open `http://localhost:8000/prototype/` in a browser. Do not open `index.html` directly from the file system: the browser must fetch the shared JSON fixture over HTTP.
+Open http://localhost:8000/prototype/ in a browser. Do not open the HTML file directly from the file system; the prototype fetches the shared JSON fixture over HTTP.
 
-## Play
+## How a run works
 
-1. Select **Direct intention** or **Environmental influence**, then click **Start new test**.
-2. Player A chooses and locks a move.
-3. Pass the device to Player B; the interface hides Player A’s selection until both choices are locked.
-4. Read Jules’s selected action and the ranking explanation.
-5. Play all three rounds, then compare objectives. Restart under the other model to compare the experience.
+1. Player A reads the shared scene and their private aim, chooses a move, and locks it.
+2. The choice controls are removed from the visible page before the device is handed to Player B.
+3. Player B reads the same public scene and their own private aim, then locks a move.
+4. The rules resolve one protagonist action. The app presents a deterministic story beat based on that resolved event and resulting state.
+5. A small group of meters shows the tracked state after the action. These are condition-completion indicators, not odds of success.
+6. Continue for up to three moments. Earlier story beats can be reviewed in the collapsed story history.
 
-The pass-and-play handoff is a usability aid, not strong security: someone can still inspect browser memory or code. Do not use it for sensitive hidden information. Objective, trust, and evidence assumptions are test-only. No Fate action or citywide-emergency route is implemented.
+The normal player interface never prints either raw submission. The optional rules inspector shows the selected protagonist action and ranking mechanics, not the player inputs. This is a usability boundary only: pass-and-play on one browser is not secure against someone inspecting application memory or source.
+
+## What the experience is testing
+
+- Whether story-first consequences communicate what happened better than an objective-only report.
+- Whether the three state indicators make changes legible without taking attention away from the story.
+- Whether private choices plus public actions leave room to infer the other player's intentions.
+- Whether the two provisional control models feel meaningfully different when presented in clear language.
+
+Neither model has been selected. The fixture's actions, trust response, story, objectives, and deterministic policy remain experimental. This version still excludes Fate, the citywide-emergency ending, online multiplayer, accounts, persistence, and generated narration. Its authored story is a presentation of resolved rules events; it never decides state.
 
 ## Tests
 
-Requires Node.js 20 or later; no third-party packages are needed:
+Requires Node.js 20 or later; no third-party packages are needed.
 
-```bash
-node --test prototype/tests/rules.test.mjs
-```
+Run all prototype tests from the repository root:
+
+    node --test prototype/tests/*.test.mjs
+
+Tests cover rule behavior, narrative branching, meter calculations, and the requirement that player submissions are not serialized into player-facing story text. Automated checks do not establish that the story is fun, fair, visually polished in every browser, or secure for online multiplayer.
