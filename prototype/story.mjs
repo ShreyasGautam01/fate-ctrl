@@ -124,7 +124,7 @@ export function worldMeters(state) {
     },
     {
       id: 'evidence',
-      label: 'Evidence in conversation',
+      label: 'Evidence discovered / shared',
       percent: evidencePercent,
       detail: evidencePercent === 100 ? 'The message was shown and the prior knowledge acknowledged.' : evidencePercent === 50 ? 'Jules has inspected the thread; the message has not yet been put to the flatmate.' : 'The thread has not been inspected.'
     },
