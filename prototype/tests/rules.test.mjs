@@ -46,6 +46,8 @@ test('selected actions are legal and replay is deterministic', () => {
 });
 test('rejects illegal submissions and post-departure turns', () => {
   const state = createInitialState(fixture);
+  assert.throws(() => resolveRound(state, MODEL_DIRECT, [PASS], fixture));
+  assert.throws(() => resolveRound(state, MODEL_DIRECT, [PASS, PASS, PASS], fixture));
   assert.throws(() => resolveRound(state, MODEL_DIRECT, ['PRESENT_EVIDENCE', PASS], fixture));
   assert.throws(() => resolveRound(state, MODEL_INFLUENCE, ['EVIDENCE_UP', PASS], fixture));
   assert.throws(() => resolveRound({ ...state, remaining: 0 }, MODEL_DIRECT, [PASS, PASS], fixture));
