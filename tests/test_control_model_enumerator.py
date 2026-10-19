@@ -93,6 +93,14 @@ class ControlModelEnumeratorTests(unittest.TestCase):
             second = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
             self.assertEqual(json.dumps(first, sort_keys=True), json.dumps(second, sort_keys=True))
 
+    def test_each_round_requires_exactly_two_player_submissions(self):
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, (e.PASS,))
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, (e.PASS, e.PASS, e.PASS))
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, None)
+
     def test_terminal_state_rejects_more_inputs(self):
         with self.assertRaises(ValueError):
             e.transition(e.State(round_no=4, remaining=0), e.I, (e.PASS, e.PASS))
