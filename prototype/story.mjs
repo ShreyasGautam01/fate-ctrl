@@ -136,3 +136,11 @@ export function worldMeters(state) {
     }
   ];
 }
+
+
+/** Label the current decision moment or the just-resolved aftermath accurately. */
+export function momentLabel(phase, state, totalRounds, record = null) {
+  if (state.remaining === 0) return 'AFTER THE FINAL MOMENT';
+  if (phase === 'result' && record) return 'AFTER MOMENT ' + record.round + ' OF ' + totalRounds;
+  return 'MOMENT ' + Math.min(state.round_no, totalRounds) + ' OF ' + totalRounds;
+}
