@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { createInitialState, resolveRound, MODEL_DIRECT, MODEL_INFLUENCE, PASS } from '../rules.mjs';
-import { openingStory, storyForResolution, worldMeters } from '../story.mjs';
+import { openingStory, storyForResolution, worldMeters, momentLabel } from '../story.mjs';
 
 const fixtureUrl = new URL('../../scenarios/control_model_test_fixture.json', import.meta.url);
 const fixture = JSON.parse(await readFile(fileURLToPath(fixtureUrl), 'utf8'));
@@ -98,4 +98,20 @@ test('player-facing UI does not expose input-derived ranking diagnostics', () =>
   assert.equal(appSource.includes('record.rankedActions'), false);
   assert.equal(htmlSource.includes('ranked-actions'), false);
   assert.equal(htmlSource.includes('Optional rules inspector'), false);
+});
+
+
+test('timeline label distinguishes a decision moment from its resolved aftermath', () => {
+  assert.equal(momentLabel('A', createInitialState(fixture), 3), 'MOMENT 1 OF 3');
+
+  const first = resolveRound(createInitialState(fixture), MODEL_DIRECT, ['INSPECT_SHARED_THREAD', PASS], fixture);
+  assert.equal(momentLabel('result', first.state, 3, first.record), 'AFTER MOMENT 1 OF 3');
+  assert.equal(momentLabel('A', first.state, 3), 'MOMENT 2 OF 3');
+
+  let state = first.state;
+  const second = resolveRound(state, MODEL_DIRECT, ['RETURN_HONESTLY', PASS], fixture);
+  assert.equal(momentLabel('result', second.state, 3, second.record), 'AFTER MOMENT 2 OF 3');
+
+  const afterFinal = { ...second.state, round_no: 4, remaining: 0 };
+  assert.equal(momentLabel('result', afterFinal, 3, { round: 3 }), 'AFTER THE FINAL MOMENT');
 });
