@@ -30,7 +30,7 @@ PR #7, the narrative-first browser iteration, has merged. Its CI run passed 15 N
 - Uses direct-intention as the default and explains choices in natural language.
 - Removes locked choice controls from the visible page during handoff and does not print raw submissions in player-facing story output.
 - Shows three condition meters—honest return, evidence discovered/shared, and trust. They reflect tracked state, not odds of success.
-- Moves the history, objective recap, rules inspector and experiment settings behind collapsed controls.
+- Moves story history, ending objective recap and experiment settings behind collapsed controls. The ranking inspector could reveal input-derived support and is therefore being removed in PR #10.
 
 The story is a deterministic presentation of resolved state/events. It is not allowed to select an outcome or mutate authoritative state. The experience still uses the original three-moment comparison fixture.
 
@@ -45,6 +45,10 @@ PR #8 adds a validation fix found during a separate code review:
 
 The current PR #8 branch's CI passed **14 Python unit tests and 15 Node tests**. PR #8 is open and unmerged. This fixes identified validation gaps but is not the full independent audit of the enumerator, fixture and control-model contract.
 
+## Current UI privacy fix: #10
+
+PR #10 removes the optional action-ranking inspector from the player-facing experience. Even though it did not print the literal player choices, its ranking tuples could expose how submitted support affected Jules's action, undermining the intended inference loop. CI passed **16 Node tests** for the current PR #10 code head. It remains open and unmerged. The local browser still contains both submissions in memory, so this is a presentation/privacy improvement, not secure hidden-information architecture.
+
 ## Current causal-design draft: #9
 
 Draft PR #9 adds an event-by-event, falsifiable trial of the narrower target already discussed in the causal documents: Jules is publicly blamed for a consequential local operational failure during an independently caused storm disruption. It explicitly does not claim that the umbrella causes a citywide emergency. The draft remains exploratory; the umbrella/deadline connection, objective fit, route diversity and finale scale remain open questions.
@@ -56,7 +60,7 @@ Draft PR #9 adds an event-by-event, falsifiable trial of the narrower target alr
 - tools/control_model_enumerator.py and tests/test_control_model_enumerator.py are the deterministic Python comparison harness and tests.
 - prototype/rules.mjs implements the browser fixture's resolution semantics.
 - prototype/story.mjs maps resolved records/state to deterministic prose and condition meters; it must never select or mutate outcomes.
-- prototype/app.js, prototype/index.html and prototype/styles.css provide the player-facing experiment and optional diagnostics.
+- prototype/app.js, prototype/index.html and prototype/styles.css provide the player-facing experiment. PR #10 removes the input-derived ranking inspector from this view.
 - prototype/tests/ covers the rule, narrative and meter behavior.
 - scenarios/umbrella.json and CAUSAL_ROUTE_TRACE_01.md remain design probes, not accepted story canon.
 - INFORMATION_MODEL.md defines the vocabulary for facts, evidence, access, knowledge, belief, disclosure, visibility and events.
