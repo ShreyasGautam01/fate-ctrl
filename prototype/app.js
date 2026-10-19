@@ -28,9 +28,9 @@ const fieldCopy = {
 };
 const directChoiceCopy = {
   PASS: { title: 'Hold back for now', description: 'Add no specific proposal this moment. Jules may still act under the situation and the rules.' },
-  INSPECT_SHARED_THREAD: { title: 'Urge Jules to inspect the phone thread', description: 'A dated photo and a message may clarify what was known before the loan.' },
-  RETURN_HONESTLY: { title: 'Urge Jules to return the umbrella honestly', description: 'Jules can acknowledge making the tear worse. That is honest, but it will not answer every question about the older damage.' },
-  PRESENT_EVIDENCE: { title: 'Urge Jules to show the message', description: 'This is available after Jules has inspected the thread. The way the message is raised can affect trust.' }
+  INSPECT_SHARED_THREAD: { title: 'Inspect the phone thread', description: 'You want Jules to look for what was known about the umbrella before the loan.' },
+  RETURN_HONESTLY: { title: 'Return the umbrella and acknowledge the tear', description: 'You want Jules to own the damage they made worse. This may settle their responsibility without resolving what the flatmate knew.' },
+  PRESENT_EVIDENCE: { title: 'Show the message to the flatmate', description: 'You want Jules to use the message already found in the thread. The timing and circumstances may affect trust.' }
 };
 const influenceChoiceCopy = {
   PASS: { title: 'Leave the situation alone', description: 'Apply no targeted pressure this moment.' },
@@ -105,7 +105,7 @@ function resetSession(showToast) {
 function updateModelDescription() {
   const selected = $('model-select').value;
   $('model-description').textContent = selected === MODEL_DIRECT
-    ? 'Each player privately nominates an action Jules might take. A nomination adds weight; it is not a command.'
+    ? 'Choose the action you want Jules to take. The other player also chooses privately; then the rules decide which action Jules actually takes. You must reason about the possible consequences.'
     : 'Each player privately nudges the context around Jules. Compatible signals can reinforce one another; opposing signals can cancel.';
 }
 
@@ -254,10 +254,10 @@ function renderSubmission(player) {
   $('turn-heading').textContent = player === 'A' ? 'What do you want Jules to do?' : 'How will you steer the situation?';
 
   const turnPrivacy = player === 'A'
-    ? 'Choose a move in private, then lock it. The scene will not resolve until Player B has locked a choice too.'
-    : 'Use the shared scene and your own aim to make a private move. Player A’s locked selection stays hidden.';
+    ? 'Choose the action you want Jules to take, then lock it. Player B will choose privately too, and Jules may not do exactly what you proposed.'
+    : 'Use the shared scene and your own aim to choose the action you want Jules to take. Player A’s locked selection stays hidden.';
   const modelExplanation = model === MODEL_DIRECT
-    ? ' Your move is a proposal, not an order: Jules will choose an action after both moves are locked.'
+    ? ' This is an intention, not a guarantee: Jules will choose one legal action after both moves are locked.'
     : ' Your move changes what feels important to Jules; it does not choose Jules’s action.';
   $('turn-instructions').textContent = turnPrivacy + modelExplanation;
 
