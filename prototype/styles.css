@@ -133,9 +133,6 @@ summary { color: var(--muted); font-size: .84rem; font-weight: 700; cursor: poin
 .debrief-note { color: var(--muted); font-size: .8rem; }
 #objective-results { padding-left: 20px; color: var(--muted); font-size: .82rem; }
 #objective-results li { padding: 4px 0; }
-.rank-inspector { margin-top: 12px; }
-#ranked-actions { padding-left: 20px; color: var(--muted); font-size: .75rem; }
-#ranked-actions li { padding: 3px 0; overflow-wrap: anywhere; }
 .footer { padding: 4px 3px 0; color: var(--quiet); font-size: .73rem; line-height: 1.55; }
 .footer > p { max-width: 650px; margin: 0 auto 14px; text-align: center; }
 .experiment-settings { max-width: 540px; margin: 22px auto 0; padding-top: 14px; }
