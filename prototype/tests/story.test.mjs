@@ -7,6 +7,8 @@ import { openingStory, storyForResolution, worldMeters } from '../story.mjs';
 
 const fixtureUrl = new URL('../../scenarios/control_model_test_fixture.json', import.meta.url);
 const fixture = JSON.parse(await readFile(fileURLToPath(fixtureUrl), 'utf8'));
+const appSource = await readFile(new URL('../app.js', import.meta.url), 'utf8');
+const htmlSource = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 
 test('opening establishes a human situation rather than a rules summary', () => {
   const beat = openingStory();
@@ -87,4 +89,13 @@ test('story explicitly reflects the trust consequence of a public early reveal',
   const prose = storyForResolution(record).paragraphs.join(' ');
   assert.equal(record.after.trust, 0);
   assert.match(prose, /damaged trust|willingness.*damaged/i);
+});
+
+
+test('player-facing UI does not expose input-derived ranking diagnostics', () => {
+  assert.equal(appSource.includes('record.inputs'), false);
+  assert.equal(appSource.includes('record.rankFields'), false);
+  assert.equal(appSource.includes('record.rankedActions'), false);
+  assert.equal(htmlSource.includes('ranked-actions'), false);
+  assert.equal(htmlSource.includes('Optional rules inspector'), false);
 });
