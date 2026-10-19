@@ -48,7 +48,8 @@ def validate_fixture():
         raise ValueError("deadline selection and departure boundaries disagree")
     if len(RANK_ORDER) != 5 or set(RANK_ORDER) != {"contextSignal", "directSupport", "actionTier", "deadlineTier", "tieBreakRank"}:
         raise ValueError("rank order must contain each supported field exactly once")
-    if set(POLICY["tieBreakOrderHighestFirst"]) != set(ACTIONS):
+    tie_break_order = POLICY["tieBreakOrderHighestFirst"]
+    if len(tie_break_order) != len(ACTIONS) or set(tie_break_order) != set(ACTIONS):
         raise ValueError("tie-break order must contain every action exactly once")
     if not {INSPECT, PRESENT, RETURN, WAIT}.issubset(ACTIONS):
         raise ValueError("required action missing from fixture")
@@ -80,8 +81,9 @@ def validate_fixture():
         fields = set(objective["requiredTrueFields"]) | set(objective.get("minimumValues", {}))
         if not fields <= STATE_FIELDS:
             raise ValueError(f"objective {obj_name} references unknown state fields: {sorted(fields - STATE_FIELDS)}")
-        if objective["evaluateAt"] != "departure after the round-3 action":
-            raise ValueError(f"unsupported objective evaluation boundary: {obj_name}")
+        expected_boundary = f"departure after the round-{FIXTURE['rounds']} action"
+        if objective["evaluateAt"] != expected_boundary:
+            raise ValueError(f"unsupported objective evaluation boundary for {obj_name}: expected {expected_boundary!r}")
 
 validate_fixture()
 
