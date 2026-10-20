@@ -444,3 +444,73 @@ Write one uninterrupted opening and the first three decision moments under O1 an
 **Provisional recommendation:** test O2 first because it best ties player decisions, evidence provenance, time pressure and Fate's public-blame goal to the same story. Keep O1 as the control candidate for the paper comparison. If O2 only works by making the umbrella a decorative identifier, or if neither version produces three consequential disagreements, move to O3 and replace the premise.
 
 No objective change should be coded into the existing fixture yet. The fixture is a comparison harness, and this proposal must not silently alter its goals or be mistaken for accepted story canon.
+
+## 14. Matched paper slice — current objective set vs. public-accountability objective
+
+**Purpose:** Make the O1/O2 comparison concrete without changing executable rules. This is an authored paper exercise, not an independent reconstruction, deterministic simulation, or human playtest.
+
+### 14.1 Shared opening for both candidates
+
+**Public scene**
+
+> Rain has backed up service at the interchange. The main display still points riders toward the lower passage; water is visible on the stairs, and a staff announcement is difficult to hear over the crowd. Jules is on the ordinary journey home, carrying the red umbrella with the torn edge. The flatmate expects it back before leaving in twelve minutes.
+>
+> A passenger near the display is already filming the crowd. Riders are checking the transit operator's existing update channel. The lower passage has a known closure warning; the storm, water ingress, stale display, recording device and update channel all pre-exist the relevant player decisions.
+
+The setup must show the filming and channel before either can influence a later event. It must also make the old display's timestamp available to inspect. If either source is added only when Fate needs it, the route fails.
+
+**Private brief A in both candidates:** Jules should return the umbrella honestly before the flatmate leaves and preserve trust.
+
+**Private brief B in O1:** Establish that the flatmate knew about the loose rib before lending the umbrella and had not disclosed it.
+
+**Private brief B in O2:** Establish an evidence-backed, proportionate public account of the transit failure before the public narrative hardens. The objective is not to clear Jules at any cost; if Jules contributed, the accurate record may say so.
+
+**Fate hypothesis in both candidates:** Make the public assign Jules primary responsibility for the routing failure while obscuring the independent and institutional contributing causes. The storm itself is not Fate's creation, and the terminal result is public scapegoating, not proof that Jules caused the wider emergency.
+
+### 14.2 Three linked decision moments
+
+These are candidate moments, not a locked resolution order. In a direct-intention version, each player privately proposes a protagonist action; the selector/rules decide what Jules actually does. Player submissions remain hidden, and the story follows the resolved event rather than announcing which proposal won.
+
+| Moment | Shared situation and direct-action choices | What the story must show | O1 vs. O2 difference |
+|---|---|---|---|
+| **M1 — The unclear route** | Jules sees the old display, hears only part of the staff instruction, and has a deadline at home. Plain-language candidates: **Ask the steward to repeat the current route**; **Help riders using the route shown on the display**; **Head home now and message the flatmate**. | Which instruction Jules actually had access to; whether Jules stayed; the time cost; whether a public gesture was recorded. The story must not declare the display stale to Jules unless the timestamp was noticed or otherwise learned. | O1's B is already interested in umbrella evidence but has no direct action tied to the station source. O2's B has a reason to seek source-backed public context, though B must not automatically transfer private player knowledge to Jules. |
+| **M2 — The incident becomes observable** | The lower passage closes and a bottleneck forms from pre-existing conditions. Riders discuss the old display in the existing transit channel. Candidates when legal: **Photograph and forward the displayed route**; **Check its timestamp and find the current notice**; **Update the flatmate about the delay**. | If Jules forwarded the image, preserve its source and time. If Jules pointed, show only what the recording actually captures. If Jules left, do not attribute the station action to Jules. The crowd incident still has causes independent of Jules. | In O1, a turn spent investigating the umbrella message advances B's domestic objective but does not correct the route story. In O2, checking a timestamp or preserving the official source advances B's public-accountability objective. |
+| **M3 — A claim begins to settle** | An existing channel or local report uses the clip or forwarded image as part of an account of the bottleneck. The public has only what actually reached it; the operator has more complete information. Candidates: **Request the incident log or full recording**; **Send a sourced correction to the same audience**; **Leave to meet the flatmate's deadline**. | Distinguish what the evidence shows from what people infer. Make correction access, cost and cutoff legible. Fate may delay one eligible source-access opportunity or promote an existing item briefly; it may not invent a claim or suppress all correction. | O1 now splits attention between the umbrella evidence and transit correction with no established cross-link. O2 can make one evidence decision affect the public account and risk exposing Jules's actual conduct, creating direct conflict with A. |
+
+The candidates above must be filtered by the character's actual knowledge and the current world state. A choice is not legal merely because a player knows the relevant fact privately.
+
+### 14.3 Worked counterfactuals
+
+**Path A — Verify, then correct.** Jules asks the steward to repeat the route, learns the current instruction through that event, and does not direct people based only on the old display. Later, Jules or another actor obtains the official timeline and sends it to the relevant audience. The crowd incident may still happen, but the evidence does not support attributing its primary cause to Jules. Fate cannot rescue this path by changing what Jules heard.
+
+**Path B — Help quickly, then face attribution.** Jules tries to help using the displayed route or forwards the image before checking its timestamp. The action is understandable under time pressure but contributes to confusion. The existing recording/post provides a narrow source link to Jules. A later full timeline could show both Jules's contribution and the reasons it was not the primary cause. Fate succeeds only if the incomplete item reaches a plausible audience and the proportionate correction misses the cutoff.
+
+**Path C — Leave before the public event.** Jules chooses the fastest route home and sends the flatmate an update. The station failure may still occur, but no event establishes that Jules directed the crowd or relayed the stale route. Fate cannot use mere presence from a scene Jules left to create responsibility. The terminal story resolves the personal promise separately from the public incident.
+
+These counterfactuals test an essential promise: **players can lose an objective or fail to stop an event without the narrator rewriting what actually happened.**
+
+### 14.4 What the matched slice reveals
+
+| Criterion | O1: retain umbrella accountability | O2: public accountability |
+|---|---|---|
+| First decision feels relevant to the private objective | A's return objective does; B's objective does not | A's return objective does; B's source/evidence objective can |
+| Shared action creates genuine conflict | Mainly through shared time; evidence tracks can remain separate | Evidence disclosure can help the public account while threatening A's privacy or trust |
+| Facts and evidence support both objectives | The umbrella message supports B, but the transit source supports Fate's story; no link between them is established | The transit sources support B and can affect Fate's terminal claim |
+| Distinct Fate counterplay | Possible, but not coupled to B's objective | Clearer: source access, provenance, and correction timing contest public attribution |
+| Current desk verdict | **Weak coupling unless a concrete cross-link is added** | **Stronger candidate for the next paper iteration; still untested** |
+
+O2 currently gives the more coherent shared action economy. This is a desk-design judgement, not proof that O2 is more fun. It also means that the original Player B goal would be demoted or replaced, so this cannot be treated as a minor wording change.
+
+### 14.5 Decision gate before writing scenario mechanics
+
+Run an uncoached review of this exact slice. Ask the reviewer to explain:
+- what each player wants and why they can reasonably disagree;
+- what Jules knew before each proposed action;
+- which source supports each public claim and what it fails to prove;
+- how the personal deadline changes a public-evidence decision;
+- what Fate can legally do, what it costs, and how it can be countered;
+- why each counterfactual ending follows from events rather than a narrative override.
+
+**Pass:** the reviewer reconstructs the same causal facts, identifies at least two meaningful disagreements between A and B, and can describe both Fate-success and non-Fate endings without inventing information.
+
+**Fail:** the author must explain missing context; O2 only works if Jules is forced to remain at the station; or A's umbrella promise remains decorative. In that case, test O3 and replace the premise before coding scenario actions.
