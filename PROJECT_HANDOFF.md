@@ -23,7 +23,7 @@ The first prototype was too mechanical to reveal much of that experience. The ow
 - **Preferred model:** Direct intention is the lead candidate because it preserves consequence inference. Environmental influence remains a comparison setting until both mechanics and player experience are understood.
 - **Quality bar:** A better visual style cannot compensate for weak causal logic, unmeaningful choices or a flat story.
 
-These are design inputs from one owner session, not comparative playtest evidence or proof of fairness.
+These are design inputs from one owner session, not comparative playtest evidence or proof of fairness. **No formal or uncoached human playtest of the improved narrative-first build has been conducted.**
 
 ## What is merged into main
 
