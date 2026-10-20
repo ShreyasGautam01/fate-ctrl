@@ -33,26 +33,24 @@ A local browser prototype compares direct intention and environmental influence 
 ### PR #7 — Story-first iteration
 The story-first version is merged. It presents deterministic authored story beats based on resolved actions/state, defaults to direct-intention, uses more natural-language choice descriptions, removes locked controls during handoff, and shows three condition meters: honest return, evidence discovered/shared and trust. The meter values are fixture-specific and do not estimate the probability of winning.
 
-The merged UI still has limitations addressed by open PR #10; do not assume that PR #10's privacy changes are present in main yet.
+PR #10 is also merged: the ranking inspector and input-derived diagnostics are now absent from the ordinary player interface. Its branch-level browser smoke is not a human playtest or a security guarantee.
 
-## Open pull requests as of this reconciliation
+## Current review and design work
 
-### PR #8 — Enumerator input/config validation
-https://github.com/ShreyasGautam01/fate-ctrl/pull/8
+### Merged PR #8 — Enumerator input/config validation
+The Python enumerator now rejects malformed paired submissions, duplicate/incorrectly ordered tie-break entries, inconsistent configured terminal boundaries, unsupported composition/influence shapes, and fractional or boolean selector signals. The PR's CI passed 16 Python tests and 16 Node tests. This hardens known contracts but does **not** close the independent end-to-end audit of the enumerator, shared fixture and `CONTROL_MODEL.md`.
 
-**State:** Open, not merged. The branch tightens validation for paired inputs, tie-break order/uniqueness, configured terminal boundaries, supported influence composition/shapes, and selector signal types. The PR reports successful CI for 16 Python and 16 Node tests. This is a useful implementation hardening pass, **not** the independent end-to-end audit of the enumerator, fixture and contract.
+### Merged PR #10 — Keep input-derived diagnostics out of the player UI
+The normal gameplay interface no longer exposes ranking tuples/selector diagnostics that could reveal how private submissions affected Jules's action. Decision and aftermath timeline labels are distinct. Its branch passed 17 Node tests and a pinned Playwright/Chromium smoke at 390 × 844, including a complete direct-intention path, meter/objective checks, handoff privacy checks, and an environmental-influence path.
 
-### PR #10 — Remove input-derived diagnostics from the player UI
-https://github.com/ShreyasGautam01/fate-ctrl/pull/10
+This is automated browser evidence from the PR branch, not proof of human comprehension, enjoyment, balance, full visual quality or secure multiplayer. The local browser still contains submissions in memory.
 
-**State:** Open, not merged. Removes the ranking inspector because even collapsed input-derived ranking tuples can reveal how private submissions affected selection; fixes decision/aftermath timeline labels; adds regression checks and pinned Playwright/Chromium smoke coverage. Its branch reports 17 passing Node tests and a passing 390 × 844 browser smoke that completes the direct-intention path, checks story/meter/objective state and handoff privacy, and exercises environmental influence.
-
-That browser result applies to PR #10's tested branch, not the current main branch. The local browser still retains submissions in memory, so hiding information in the UI is not secure multiplayer architecture.
-
-### PR #9 — Draft causal route
+### PR #9 — Draft causal-route challenge
 https://github.com/ShreyasGautam01/fate-ctrl/pull/9
 
-**State:** Draft, not merged. It tests a narrower ending: Jules becomes publicly blamed for a consequential local operational failure during an independently caused storm disruption. It does not claim the umbrella causes a citywide emergency. The route still needs skeptical reconstruction, multiple materially different viable paths, and an explicit decision about scale/premise before any promotion to canon.
+**State:** Open, draft, not canon. The draft now compares three different public-blame mechanisms: a physical gesture captured without context; stale information relayed via an existing commuter channel; and post-incident attribution competing with access to a correction. It includes counterfactual mini-replays and explicit rejection criteria.
+
+The current desk conclusion is deliberately provisional: Route A is plausible but unproven; Route B is conditional on a believable, bounded channel; Route C is weak and may need rejection. The scenario has **not** passed the three-viable-route gate. The original citywide-emergency scale and whether the personal umbrella objectives truly interact with the transit event also remain unresolved.
 
 ## What the current experiment is—and is not
 
@@ -71,7 +69,7 @@ Current story prose is authored and deterministic. It may describe only events a
 - `tools/control_model_enumerator.py` and `tests/test_control_model_enumerator.py`: Python enumerator and its tests.
 - `prototype/rules.mjs`: browser resolution semantics for the fixture.
 - `prototype/story.mjs`: deterministic presentation and state-meter derivation; it cannot choose or mutate outcomes.
-- `prototype/app.js`, `prototype/index.html`, `prototype/styles.css`: player-facing experiment. PR #10 is the pending change that removes input-derived ranking diagnostics.
+- `prototype/app.js`, `prototype/index.html`, `prototype/styles.css`: player-facing experiment, including the merged PR #10 privacy/timeline fixes.
 - `INFORMATION_MODEL.md`: conceptual distinction between facts, evidence, access, knowledge, belief, disclosure, visibility and narration.
 - `ARCHITECTURE.md` and `MODULE_CONTRACTS.md`: logical responsibilities, not a locked production stack.
 - `DECISIONS.md`: rationale and statuses of major choices.
@@ -83,12 +81,11 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 ## Immediate next steps
 
-1. Review PR #8; if accepted, merge through the owner's normal process and verify CI on the resulting main branch.
-2. Review PR #10 after #8's rule changes are present; rerun its tests and Chromium smoke against the combined tree. Separate successful branch runs are not a substitute for testing the combined main branch.
-3. Independently audit the enumerator/fixture/contract and reconstruct the narrow environmental-influence B-only path shape. Do not interpret path counts as probabilities or balance scores.
-4. Reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. This historical umbrella paper trace is separate from the machine-readable comparison fixture.
-5. Review PR #9's causal story skeptically. Establish at least three meaningfully different viable routes or change the causal target/premise. Do not implement Fate or canonize the route before this gate.
-6. Design a richer playable narrative slice around meaningful action trade-offs and a causally coherent escalation; then run uncoached sessions for comprehension, inference, fairness, pacing, counterplay and replay desire.
+1. Verify the combined main-branch tests and browser-smoke workflow after PR #8 and PR #10 merged; separate branch results are useful evidence but not a substitute for integration checks.
+2. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`; separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
+3. Continue PR #9's draft review by reconstructing its three route mini-replays independently. Reject weak routes rather than forcing three to pass. Check whether the umbrella objectives materially interact with public blame.
+4. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
+5. After a coherent scenario is accepted, design a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure. Then test it with uncoached players.
 
 ## Constraints to preserve
 
