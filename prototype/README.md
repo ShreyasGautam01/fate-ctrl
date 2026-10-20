@@ -19,7 +19,7 @@ Open http://localhost:8000/prototype/ in a browser. Do not open the HTML file di
 5. A small group of meters shows the tracked state after the action. These are condition-completion indicators, not odds of success.
 6. Continue for up to three moments. Earlier story beats can be reviewed in the collapsed story history.
 
-The normal player interface never prints either raw submission. The optional rules inspector shows the selected protagonist action and ranking mechanics, not the player inputs. This is a usability boundary only: pass-and-play on one browser is not secure against someone inspecting application memory or source.
+The normal player interface never prints either raw submission and contains no ranking inspector that could expose how private inputs affected selection. Technical ranking details remain available in automated tests, not in the gameplay interface. This is a usability boundary only: pass-and-play on one browser is not secure against someone inspecting application memory or source.
 
 ## What the experience is testing
 
