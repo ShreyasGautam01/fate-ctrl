@@ -330,3 +330,75 @@ For each route that survives, a reviewer who has not authored it must independen
 **Pass condition:** at least three materially different routes survive without author coaching, no route requires an invented fact or forced rendezvous, objective interactions are consequential, and a player can explain the ending from events they were allowed to observe.
 
 **Fail condition:** if only one or two routes survive, or if the umbrella objectives remain parallel to the public incident, stop route expansion and compare alternative premises before writing a milestone graph or implementing Fate.
+
+## 12. Adversarial mini-replays and counterfactual checks
+
+These are desk reconstructions, not independent review or human playtest. Their purpose is to check whether each route has a real causal hinge and an actionable way to break it. No unseeded witness, camera, channel, system failure, or public audience may be added mid-trace.
+
+### 12.1 Physical-direction route
+
+**Starting facts:** The lower passage is scheduled to close because of existing water ingress. The entrance display is stale. The public-address instruction is difficult to hear from Jules's position. A bystander is visibly recording the crowd before Jules makes a move.
+
+| Moment | If the route advances | Counterfactual that must remain available |
+|---|---|---|
+| 1 — Choice | Jules tries to help using the visible display before verifying the newer instruction. | Jules asks staff to confirm the route, waits for the repeated announcement, or leaves. Those actions cost time but must be legal and may avoid becoming the visible source. |
+| 2 — Consequence | Passengers move toward a passage that is about to close. The actual bottleneck is caused by the stale display, closure timing and crowd; Jules's action may contribute. | Staff redirection or a different crowd response reduces the harm. The closure remains real; the game must not rewrite it to punish the player. |
+| 3 — Attribution | The existing clip shows Jules's gesture and umbrella but omits the source instruction. Public blame becomes possible, not automatic. | The staff timeline or uncut recording reaches the relevant audience before the cutoff. |
+| 4 — Ending | Fate succeeds only if the clip has an established audience and a credible correction has not arrived in time. | If Jules never made the gesture, or the correction is timely and credible, this route fails. Fate must accept that result or pursue a different already-eligible route. |
+
+**Desk finding:** Causally understandable if the viewer's inference stays narrow ("Jules appeared to guide people") and later attribution does not claim the clip proves that Jules caused the storm or the closure. This route cannot rely on a camera that appears only after the action.
+
+### 12.2 Stale-information relay route
+
+**Additional starting fact required for this route:** The commuter channel already exists and is used by people affected by this disruption. Its reach and correction affordances are bounded in the scenario. If the story cannot establish that concisely, remove this route rather than inventing viral reach.
+
+| Moment | If the route advances | Counterfactual that must remain available |
+|---|---|---|
+| 1 — Choice | Jules forwards the visible display's route information before checking its timestamp. The intended action is to help other commuters. | Jules inspects the timestamp or asks staff first. If Jules has already inspected and understood the stale timestamp, later forwarding must reflect that knowledge rather than pretending Jules is unaware. |
+| 2 — Distribution | A bounded group of readers receives the image and some rely on it. The old information adds to congestion; it is not the only cause. | The image reaches few people, is marked as unverified, or a current source supersedes it. The incident must not scale beyond the seeded channel's reach. |
+| 3 — Attribution | The post's provenance traces the widely circulated copy to Jules. This proves sharing, not authorship of the stale notice or official authority. | Jules sends a correction through the same channel and preserves the original timestamp/source. A correction must be able to reach at least some of the same readers. |
+| 4 — Ending | Fate can exploit the lag between initial distribution and correction, within its declared one-window limit. | If the corrected message arrives before the terminal cutoff or the channel's audience is too small for meaningful attribution, this route does not meet Fate's target. |
+
+**Desk finding:** This is the strongest candidate for connecting an ordinary decision to a wider public narrative, but it is also the most demanding to author clearly. Avoid the word "viral" unless distribution is modeled with a defined audience, reach and timing. A message that can reach everyone instantly and a correction that can reach no one are not fair mechanics.
+
+### 12.3 Post-incident attribution/correction route
+
+**Additional starting facts required:** The physical bottleneck can happen without Jules contributing. An already-existing recording shows Jules near the display, and a real but uncertain passenger account exists. A specific official log or full recording can correct the timeline through an explicit access route.
+
+| Moment | If the route advances | Counterfactual that must remain available |
+|---|---|---|
+| 1 — Independent event | The passage closes and the bottleneck forms from the pre-existing hazard, stale display and timing. Jules may be helping elsewhere or already leaving. | The event remains possible without Jules. This prevents the story from making the protagonist indispensable to every crisis. |
+| 2 — Weak association | The partial recording places Jules by the display. The passenger account alleges that the person with the red umbrella supplied the route, but its observation is incomplete. | The viewer can see that the clip does not show direction-giving. The source of the passenger account is traceable and can be questioned. |
+| 3 — Correction race | Jules must choose whether to spend time obtaining the official log / locating the witness or meet the original umbrella deadline. | A credible correction remains discoverable, but not necessarily costless. If players are never told that a log or witness may exist, failure becomes an arbitrary hidden-information trap. |
+| 4 — Ending | Blame persists only if the existing allegation has reached a plausible audience and the better source misses the cutoff. | If no positive allegation exists, the route cannot succeed just because Jules failed to correct it. If a credible log arrives, public belief can change. |
+
+**Desk finding:** This route is not yet convincing enough to count as viable. A rumor plus presence near a sign may not support meaningful public blame. It should be rejected unless the writer can seed a specific, plausible source for the allegation without making that source omniscient or deliberately irrational.
+
+### 12.4 Comparison result and next rule
+
+The mini-replays support the following provisional classification:
+
+- **A is the clearest causal route**, but depends on a visible action and a genuinely incomplete recording.
+- **B is the strongest candidate for a wider audience**, but adds a communication channel and propagation rules that may burden a short, text-first game.
+- **C is currently a failure candidate**, not a proven third route. It must not be counted toward route diversity until its attribution evidence survives skeptical review.
+
+Therefore, the current scenario has **one developed route, one conditional alternate, and one route that may need rejection**. It does not yet pass the requirement for three viable routes. The right next move is not to declare success; it is to test whether a better third route exists within this premise or compare a new premise.
+
+A useful engine rule follows: **Fate's route is eligible only when its prerequisites are already true.** If player action breaks every available blame route, Fate may spend a bounded action to pursue a fallback objective or the scenario may reach a non-Fate ending. Fate must never conjure the missing evidence needed to rescue a failed route.
+
+### 12.5 Cross-objective check
+
+A route is not strategically complete if it only describes the Fate storyline. At each moment, the paper trace must also record:
+- whether Jules is closer to returning the umbrella honestly;
+- whether trust with the flatmate has changed and why;
+- whether the evidence about the umbrella has been inspected, shared or acknowledged;
+- the time/opportunity cost paid to pursue public correction or avoid public exposure;
+- which state changes can still be reversed, and which are past the deadline.
+
+**Open finding:** In the current draft, the umbrella/accountability objective and the transit evidence are not causally linked. Sharing the same limited moments creates an opportunity cost, but that may be weaker than true objective coupling. No transit log, message, or video may be made to prove the flatmate's prior knowledge unless its contents were independently established. This is a likely point at which the scenario may need revision.
+
+### 12.6 Next design gate
+
+Before implementation, produce a single compact table for the selected premise with one row per decision boundary and columns for: public scene, each player's private aim/information, Jules's actual knowledge, legal direct actions, resolved event candidates, persistent state deltas, Fate eligibility/cost, evidence availability, and terminal-route viability. Then independently reconstruct both a Fate-success path and a non-Fate path for each route.
+
+If the three-route requirement still fails after the independent review, compare replacement premises. Do not write a general Fate planner, add a new backend, or extend the current three-moment fixture to disguise the causal gap.
