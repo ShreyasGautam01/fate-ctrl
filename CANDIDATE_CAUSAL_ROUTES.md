@@ -125,3 +125,81 @@ A route can proceed to a milestone sketch only if:
 Do not select a route yet. C is the best thematic fit on paper, but its path to a genuinely citywide emergency is currently the weakest causal link. A has the clearest visual role for the umbrella but risks contrivance. B gives strong system-level counterplay but risks losing the human story.
 
 Next, write a one-page chain for each route with exact actors, knowledge, evidence, timing, and the point where the player can intervene. If none survives a skeptical plausibility review, revise Fate's ending to something smaller or use a different scenario.
+
+## Target 1 local-blame mechanisms — a separate, narrower test
+
+**Status:** Experimental alternatives, not accepted routes. This section operates at a different level from Routes A–C above. The original routes ask how a larger emergency might connect to the umbrella; these mechanisms ask how Jules could become publicly blamed for a **local crowd-routing failure** during an independently caused storm disruption. They do not establish that Jules caused a citywide emergency.
+
+### Shared minimum facts
+
+If Target 1 is explored, the scenario must establish before relevant choices:
+- the storm, water ingress, transit delay and reason the lower passage is due to close;
+- an older entrance display and a current staff instruction, with a clear account of what Jules actually sees/hears;
+- a visible, pre-existing recording device if a clip is later used;
+- a bounded, existing commuter channel only if message redistribution is part of the selected route;
+- a discoverable official log or full recording, including the cost and time required to access it;
+- a real but non-forcing reason Jules is at the interchange, plus an umbrella-return deadline that can be sacrificed without breaking the entire story.
+
+Do not seed every optional channel just to preserve every route. The opening has to remain understandable; route-specific facts must be introduced before they become consequential, not retroactively at the climax.
+
+### Mechanism T1-A — Physical direction captured without context
+
+**Chain:** Jules tries to help riders using the visible display before verifying the newer instruction. A bottleneck develops from the existing closure, stale display and crowd. A bystander's already-running recording shows Jules's gesture and red umbrella but misses the instruction that preceded it. An existing local channel uses the clip as evidence that Jules directed people.
+
+**What the evidence proves:** Jules appeared to point or guide people. It does not prove what Jules knew, whether the instruction was current, or that Jules caused the underlying transit failure.
+
+**Counterplay:** ask staff before directing people; establish the instruction timeline; obtain the full recording or staff log; get the correction to an audience that actually saw the clip.
+
+**Fate limit:** Fate may increase attention to the existing clip for a bounded window, but cannot create a recording, alter its field of view, or force every viewer to accept its interpretation.
+
+**Desk verdict:** Clearest candidate, but still unproven. Reject if the recording appears only after the action, or if the public claim leaps from “appeared to direct people” to “caused the emergency.”
+
+### Mechanism T1-B — Stale information relayed through an existing channel
+
+**Additional prerequisite:** the commuter channel already exists and has a plausible, bounded audience among riders affected by this disruption. Do not use “viral” as an unexplained force.
+
+**Chain:** Jules forwards a photo of the displayed route to help other riders before checking its timestamp. Some recipients treat the authentic but outdated display as current. The message adds to congestion when the passage closes. The forwarded copy's provenance links it to Jules, but does not make Jules the author of the stale display or an official source.
+
+**What the evidence proves:** Jules distributed a source. The original timestamp/source and whether a current update superseded it remain material.
+
+**Counterplay:** inspect the timestamp; verify with staff; add a correction through the same channel; preserve source provenance so “forwarded this” is not confused with “created the instruction.”
+
+**Fate limit:** Fate may amplify an already-shared item within the channel's established reach or delay a specific correction once. It cannot invent subscribers, rewrite timestamps, or make a correction permanently invisible.
+
+**Desk verdict:** Conditional alternate and the best candidate for a wider public narrative. Reject if the channel's reach is invented, the route's consequences exceed that reach, or corrections cannot reach the same audience.
+
+### Mechanism T1-C — Post-incident attribution races against correction
+
+**Additional prerequisites:** the local failure can occur without Jules causing it; a real but uncertain passenger report associates the red-umbrella person with the route; an existing recording places Jules near the sign; and a credible official log can correct the account.
+
+**Chain:** The passage closes because of the existing hazard, stale display and timing. A partial clip shows Jules near the display but not directing the crowd. A traceable, incomplete witness report alleges that the red-umbrella person gave the route. The public sees this weak association while the operator has better records. Jules must decide whether to spend time getting the source or leave to meet the original deadline.
+
+**What the evidence proves:** Jules was present; the report is uncertain. Missing a correction does not convert it into proof.
+
+**Counterplay:** question the source; identify the limits of the witness's view; acquire the official timeline; deliver the correction before the public account hardens.
+
+**Fate limit:** Fate may temporarily delay one eligible source-access opportunity, with a visible event and a later counteraction. It cannot invent the witness, create an unsupported allegation, or suppress all correction indefinitely.
+
+**Desk verdict:** Weak and possibly not viable. Reject unless a specific, plausible source for the allegation is established before play. Rumour plus mere proximity is not enough.
+
+### Comparative desk result
+
+| Check | T1-A: physical direction | T1-B: stale relay | T1-C: attribution race |
+|---|---|---|---|
+| Distinct causal role | A human act may add to confusion | A source is redistributed to an audience | An independent incident becomes attached to Jules after the event |
+| Key evidence | Partial clip | Message provenance and original timestamp | Partial clip plus a traceable but uncertain report |
+| Main counterplay | Staff instruction and full clip | Verify, preserve provenance, correct same channel | Challenge source and obtain the official timeline |
+| Viability today | Plausible, unproven | Conditional | Weak; likely reject absent stronger source |
+
+The current design gate is **not passed**: one developed route, one conditional alternate, and one weak route do not equal three viable routes. Keep the local-blame target separate from the original citywide-emergency target. If a skeptical reviewer rejects T1-C, either develop a genuinely different third mechanism or change the premise; do not relabel variations of the same clip as different routes.
+
+### Minimum counterfactual trace
+
+Every route retained for play must be reconstructible through four beats:
+
+1. **Choice:** a legal, understandable direct action based on information Jules actually has.
+2. **Consequence:** an observable event follows from pre-existing conditions plus that action; the storm or closure is not invented to punish the player.
+3. **Attribution:** the exact source, audience and evidence allow a plausible belief, not guaranteed universal belief.
+4. **Correction/ending:** players can access and disclose a better source at a cost; Fate has a bounded intervention; both Fate-success and non-Fate paths have explicit terminal conditions.
+
+If the protagonist leaves before the relevant event, that event may still happen, but the game must not attribute the action to Jules. If all blame routes are broken, Fate must accept the failed route or use a different already-eligible objective; it cannot conjure missing evidence.
