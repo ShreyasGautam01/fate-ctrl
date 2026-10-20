@@ -15,6 +15,55 @@ class ControlModelEnumeratorTests(unittest.TestCase):
         self.assertEqual(e.FIXTURE["worldFacts"]["threadInspectedInitially"], e.FIXTURE["initialState"]["inspected"])
         self.assertEqual(set(e.POLICY["tieBreakOrderHighestFirst"]), set(e.ACTIONS))
 
+    def test_fixture_validation_rejects_duplicate_tie_breaks_and_wrong_terminal_boundary(self):
+        tie_order = e.POLICY["tieBreakOrderHighestFirst"]
+        try:
+            e.POLICY["tieBreakOrderHighestFirst"] = [*tie_order, tie_order[0]]
+            with self.assertRaisesRegex(ValueError, "every action exactly once"):
+                e.validate_fixture()
+        finally:
+            e.POLICY["tieBreakOrderHighestFirst"] = tie_order
+
+        rounds = e.FIXTURE["rounds"]
+        remaining = e.FIXTURE["initialState"]["remaining"]
+        try:
+            e.FIXTURE["rounds"] = rounds + 1
+            e.FIXTURE["initialState"]["remaining"] = remaining + 1
+            with self.assertRaisesRegex(ValueError, "objective evaluation boundary"):
+                e.validate_fixture()
+        finally:
+            e.FIXTURE["rounds"] = rounds
+            e.FIXTURE["initialState"]["remaining"] = remaining
+
+    def test_fixture_rejects_unsupported_signal_composition(self):
+        composition = e.FIXTURE["composition"]
+        original_opposite = composition["oppositeSignals"]
+        original_private = composition["privateWindowSignal"]
+        try:
+            composition["oppositeSignals"] = "average"
+            with self.assertRaisesRegex(ValueError, "opposite-signal composition"):
+                e.validate_fixture()
+            composition["oppositeSignals"] = original_opposite
+            composition["privateWindowSignal"] = "ignore"
+            with self.assertRaisesRegex(ValueError, "private-window signal composition"):
+                e.validate_fixture()
+        finally:
+            composition["oppositeSignals"] = original_opposite
+            composition["privateWindowSignal"] = original_private
+
+    def test_fixture_rejects_fractional_or_boolean_influence_signals(self):
+        influence = e.FIXTURE["influences"]["THREAD_UP"]
+        original_signal = influence["signal"]
+        try:
+            influence["signal"] = 0.5
+            with self.assertRaisesRegex(ValueError, "non-integral selector signal"):
+                e.validate_fixture()
+            influence["signal"] = True
+            with self.assertRaisesRegex(ValueError, "non-integral selector signal"):
+                e.validate_fixture()
+        finally:
+            influence["signal"] = original_signal
+
     def test_authored_success_routes_are_reachable_in_both_models(self):
         result = e.run_assertions()
         self.assertTrue(result["objectiveRoutesPassed"])
@@ -92,6 +141,14 @@ class ControlModelEnumeratorTests(unittest.TestCase):
             first = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
             second = e.transition(e.State(), model, (e.PASS, e.PASS))[1]
             self.assertEqual(json.dumps(first, sort_keys=True), json.dumps(second, sort_keys=True))
+
+    def test_each_round_requires_exactly_two_player_submissions(self):
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, (e.PASS,))
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, (e.PASS, e.PASS, e.PASS))
+        with self.assertRaisesRegex(ValueError, "exactly two player submissions"):
+            e.transition(e.State(), e.I, None)
 
     def test_terminal_state_rejects_more_inputs(self):
         with self.assertRaises(ValueError):

@@ -158,6 +158,19 @@ The enumerator's unit tests now verify the following fixture mechanics. These ar
 
 If any of these fail, fix the test contract or deliberately revise the intended behavior before using the comparison to select a model.
 
+
+### Environmental-influence B-only route shape — desk reconstruction
+
+The current fixture's **9 B-only W input sequences** collapse to one causal pattern with three input-pair variants at each of the first two boundaries:
+
+1. **Boundary 1 — inspect:** the selector must receive a positive context signal for INSPECT_SHARED_THREAD. The only paired submissions that achieve that from the initial state are THREAD_UP/PASS, PASS/THREAD_UP, and THREAD_UP/THREAD_UP. That is three ordered pairs.
+2. **Boundary 2 — present publicly:** once inspected, the selector must receive a positive signal for PRESENT_EVIDENCE without opening a private window. The only pairs are EVIDENCE_UP/PASS, PASS/EVIDENCE_UP, and EVIDENCE_UP/EVIDENCE_UP. That is three ordered pairs. The message is presented before Jules acknowledges making the later tear worse, so this fixture's test-only relationship rule sets trust to 0.
+3. **Boundary 3 — return:** after evidence is presented, the remaining influence options are ineligible, leaving PASS/PASS. The deadline tier selects RETURN_HONESTLY. Player B's predicate is true, while Player A's minimum-trust predicate is false.
+
+Thus the path count is 3 × 3 × 1 = 9. This reconstruction explains the shape of the enumerated route, but does **not** make the count a probability or establish fairness. The W-only B route is effectively a specific trade-off encoded by this fixture: public early disclosure can complete B's evidence objective while losing A's trust condition; a private window preserves trust and therefore leads to the joint-success outcome if Jules returns the umbrella at the final boundary. The trust rule is deliberately strong and artificial, so this is primarily a reason to review the fixture's relationship hypothesis and W's counterplay—not to infer that a player has a 9/1,146 chance of success.
+
+An independent reviewer should reproduce this route from the fixture and policy, then answer whether the narrow public-disclosure trade-off is an intended strategic choice or an artifact of the current signal vocabulary and trust rule. The owner's preference currently favours direct intention for the next player-facing experiment, so no additional W mechanics should be added merely to enlarge this count.
+
 ## 10. Open owner decisions and next gate
 
 The following are not silently accepted game canon:

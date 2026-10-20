@@ -1,84 +1,102 @@
 # Project Handoff
 
-**Last updated:** 2026-10-19  
+**Last reconciled:** 2026-10-21  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Working branch:** feat/narrative-first-playable-slice-02  
-**Current phase:** concept validation with a bounded narrative-first browser experiment  
-**Production gameplay:** not started; neither control model is selected  
-**Story canon:** unresolved; the literal citywide-emergency route is not established
+**Current phase:** Concept validation with a bounded, story-first browser experiment  
+**Production gameplay:** Not started; neither control model is selected  
+**Story canon:** Unresolved; the literal citywide-emergency route is not established  
+**Merge authority:** The project owner reviews and merges pull requests; open-branch work is not yet part of main.
 
-## Owner feedback and current design direction
+## One-minute summary
 
-The owner could provide limited feedback on the first prototype because it revealed too little of the intended game. The supported findings are:
+FATE/CTRL is intended to be a two-player narrative strategy game: both players influence one relatable protagonist, Jules, while pursuing competing objectives. An eventual Fate system applies its own bounded pressure and can give players reasons to cooperate temporarily. The intended session is short, text-first, tense and increasingly consequential.
 
-- Choices were difficult to understand.
-- The UI was too mechanical and information-heavy.
-- The resolution reported game-objective outcomes without an unfolding story, making play dry and boring.
-- Raw submissions were revealed after resolution; this conflicts with the desired inference loop.
-- Of the two experimental control approaches, direct action/intention felt better. It asks players to choose an action they want Jules to take and reason about possible consequences, whereas environmental influence exposes objective-related signals more directly and reduces that layer of inference.
+The first prototype was too mechanical to reveal much of that experience. The owner's supported feedback is that choices were hard to understand, the UI exposed too much mechanics detail, and resolutions reported objective results instead of telling a story. The owner preferred direct-action/intention mode because players must infer consequences themselves. The next experiment should therefore be story-led, use understandable actions, hide submitted intentions and input-derived ranking diagnostics, and show only a few grounded state indicators.
 
-The direct-action preference is an owner preference for the next experiment, not proof of fairness or a final production-model selection. Keep environmental influence available only as a comparison setting until the model-selection gates are reviewed.
+## Owner feedback and current direction
 
-## Current iteration
+- **Choice clarity:** Current options felt difficult to understand. Choice wording must use ordinary in-world language, with enough context to understand the intended action but not a guaranteed outcome.
+- **Story:** The game should narrate scenes and consequences as the story unfolds. Objective/state results are secondary explanation, not the main experience.
+- **Inference and privacy:** Players observe what Jules does and how the world responds; they should not automatically see the opponent's submission or ranking signals derived from private submissions.
+- **State display:** A small number of bars/percentages may make changes legible, but each must correspond to an explicit tracked condition and show the change caused by the moment. They are not success probabilities; current coarse percentages still need UX validation.
+- **Preferred model:** Direct intention is the lead candidate because it preserves consequence inference. Environmental influence remains a comparison setting until both mechanics and player experience are understood.
+- **Quality bar:** A better visual style cannot compensate for weak causal logic, unmeaningful choices or a flat story.
 
-The current branch evolves the same small fixture experiment rather than expanding it into production:
+These are design inputs from one owner session, not comparative playtest evidence or proof of fairness. **No formal or uncoached human playtest of the improved narrative-first build has been conducted.**
 
-- The scene is the primary feedback. Deterministic authored story beats vary according to the protagonist action and resolved state.
-- Direct-intention mode is the default. The move descriptions explain the intended action in natural language and remind the player that Jules may choose differently.
-- Locked selections are removed from visible controls during handoff. Story output does not print raw submissions.
-- Three meters show honest return, evidence discovered/shared, and relationship trust. They represent exact tracked conditions, not odds of winning. Changes are annotated after resolution.
-- Story history, objective recap, ranking details and experiment settings are secondary/collapsed.
-- Tests cover story branches, meter derivation, and separation between story presentation and player submissions.
+## What is merged into main
 
-The story presentation is deterministic and authored. It consumes already-resolved action/state and cannot decide outcomes or change state. The fixture's facts, trust response, objectives and protagonist-selection policy remain provisional.
+### PR #6 — Initial comparison lab
+A local browser prototype compares direct intention and environmental influence over a three-moment deterministic fixture. It established a runnable test surface, not the full game. It excludes Fate, the intended public-emergency finale, online multiplayer, persistence and generated narration.
+
+### PR #7 — Story-first iteration
+The story-first version is merged. It presents deterministic authored story beats based on resolved actions/state, defaults to direct-intention, uses more natural-language choice descriptions, removes locked controls during handoff, and shows three condition meters: honest return, evidence discovered/shared and trust. The meter values are fixture-specific and do not estimate the probability of winning.
+
+The merged UI still has limitations addressed by open PR #10; do not assume that PR #10's privacy changes are present in main yet.
+
+## Open pull requests as of this reconciliation
+
+### PR #8 — Enumerator input/config validation
+https://github.com/ShreyasGautam01/fate-ctrl/pull/8
+
+**State:** Open, not merged. The branch tightens validation for paired inputs, tie-break order/uniqueness, configured terminal boundaries, supported influence composition/shapes, and selector signal types. The PR reports successful CI for 16 Python and 16 Node tests. This is a useful implementation hardening pass, **not** the independent end-to-end audit of the enumerator, fixture and contract.
+
+### PR #10 — Remove input-derived diagnostics from the player UI
+https://github.com/ShreyasGautam01/fate-ctrl/pull/10
+
+**State:** Open, not merged. Removes the ranking inspector because even collapsed input-derived ranking tuples can reveal how private submissions affected selection; fixes decision/aftermath timeline labels; adds regression checks and pinned Playwright/Chromium smoke coverage. Its branch reports 17 passing Node tests and a passing 390 × 844 browser smoke that completes the direct-intention path, checks story/meter/objective state and handoff privacy, and exercises environmental influence.
+
+That browser result applies to PR #10's tested branch, not the current main branch. The local browser still retains submissions in memory, so hiding information in the UI is not secure multiplayer architecture.
+
+### PR #9 — Draft causal route
+https://github.com/ShreyasGautam01/fate-ctrl/pull/9
+
+**State:** Draft, not merged. It tests a narrower ending: Jules becomes publicly blamed for a consequential local operational failure during an independently caused storm disruption. It does not claim the umbrella causes a citywide emergency. The route still needs skeptical reconstruction, multiple materially different viable paths, and an explicit decision about scale/premise before any promotion to canon.
+
+## What the current experiment is—and is not
+
+**It is:** a deterministic, fixture-driven local experiment for testing natural-language direct actions, observable consequences, hidden-intention inference, story presentation, state-condition meters and a comparison mode.
+
+**It is not:** the full 10–15-minute game; accepted story canon; a selected control model; a Fate implementation; secure hidden-information multiplayer; or proof that the game is fun or balanced.
+
+Current story prose is authored and deterministic. It may describe only events and state established by the rules. It must never choose an action, invent evidence, silently disclose private information, or alter authoritative state. Core gameplay should not require a paid LLM API.
 
 ## Authority map
 
-- CONTROL_MODEL.md is the provisional control-model comparison contract; no model is selected.
-- scenarios/control_model_test_fixture.json is the machine-readable source of truth for the current test fixture.
-- tools/control_model_enumerator.py and tests/test_control_model_enumerator.py are the deterministic Python comparison harness and its tests.
-- prototype/rules.mjs is the browser implementation of the fixture's resolution semantics.
-- prototype/story.mjs maps resolved records/state to deterministic prose and state meters; it must never select or mutate outcomes.
-- prototype/app.js, prototype/index.html, and prototype/styles.css provide the player-facing experiment and optional diagnostics.
-- prototype/tests/ tests browser-rule and story/meter behavior; CI is configured to run these tests.
-- scenarios/umbrella.json is a separate unresolved story probe, not the canonical source for the smaller comparison fixture.
-- DECISIONS.md records choice status and rationale; TASKS.md owns current gates, blockers and exit criteria.
-- INFORMATION_MODEL.md, ARCHITECTURE.md, and MODULE_CONTRACTS.md remain references for future information boundaries and logical ownership.
+- `README.md`: repository entry point and source-of-truth index.
+- `SPEC.md`: overall product hypothesis and design scope; still a draft.
+- `CONTROL_MODEL.md`: provisional direct-intention/environmental-influence comparison contract.
+- `scenarios/control_model_test_fixture.json`: executable source of truth for the small comparison experiment only.
+- `tools/control_model_enumerator.py` and `tests/test_control_model_enumerator.py`: Python enumerator and its tests.
+- `prototype/rules.mjs`: browser resolution semantics for the fixture.
+- `prototype/story.mjs`: deterministic presentation and state-meter derivation; it cannot choose or mutate outcomes.
+- `prototype/app.js`, `prototype/index.html`, `prototype/styles.css`: player-facing experiment. PR #10 is the pending change that removes input-derived ranking diagnostics.
+- `INFORMATION_MODEL.md`: conceptual distinction between facts, evidence, access, knowledge, belief, disclosure, visibility and narration.
+- `ARCHITECTURE.md` and `MODULE_CONTRACTS.md`: logical responsibilities, not a locked production stack.
+- `DECISIONS.md`: rationale and statuses of major choices.
+- `TASKS.md`: canonical task ledger, blockers and exit criteria.
+- `PLAYTEST_PLAN.md`: independent-reconstruction and human-playtest protocol.
+- `scenarios/umbrella.json`, `CAUSAL_ROUTE_TRACE_01.md` and causal-route workshop docs: scenario probes, not accepted canon.
 
-## Existing technical evidence and open risks
+Historical simulations preserve design reasoning but do not outrank the active contract, current executable fixture or explicit decision status.
 
-The earlier deterministic comparison enumerated paired submissions over the fixture and found A-only, B-only and joint-success routes in both modes. These are exhaustive counts of paths in a small fixture, not probabilities, win rates, balance scores or evidence of fun. B-only environmental-influence routes are unusually narrow and still need a rule-level explanation.
+## Immediate next steps
 
-Previous independent design review identified weaknesses in causal logic, selector semantics, evidence feasibility, trust response and influence behavior. The revised fixture/harness addressed some defects, but remaining gates are:
+1. Review PR #8; if accepted, merge through the owner's normal process and verify CI on the resulting main branch.
+2. Review PR #10 after #8's rule changes are present; rerun its tests and Chromium smoke against the combined tree. Separate successful branch runs are not a substitute for testing the combined main branch.
+3. Independently audit the enumerator/fixture/contract and reconstruct the narrow environmental-influence B-only path shape. Do not interpret path counts as probabilities or balance scores.
+4. Reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. This historical umbrella paper trace is separate from the machine-readable comparison fixture.
+5. Review PR #9's causal story skeptically. Establish at least three meaningfully different viable routes or change the causal target/premise. Do not implement Fate or canonize the route before this gate.
+6. Design a richer playable narrative slice around meaningful action trade-offs and a causally coherent escalation; then run uncoached sessions for comprehension, inference, fairness, pacing, counterplay and replay desire.
 
-1. Independent audit of tools/control_model_enumerator.py against scenarios/control_model_test_fixture.json and CONTROL_MODEL.md.
-2. Uncoached reconstruction of PRIORITY_TABLE_REPLAY_01.md; this historical umbrella trace is separate from the machine fixture.
-3. Explanation of narrow B-only environmental-influence routes and owner review of seeded evidence, trust, direct-support and tie-break assumptions.
-4. Player-specific view projection and leakage tests before any secure multiplayer work.
-5. A credible causal route for Fate's intended ending, or an explicit decision to narrow or replace that target.
-6. Human sessions evaluating story comprehension, meaningful decisions, inference, pacing, counterplay and replay desire.
-
-## Validation status for this iteration
-
-No browser smoke test or full visual/browser verification is claimed yet. The earlier prototype's rules CI passed against the committed fixture, but the current branch adds story and interface behavior that needs its own CI result and review. Passing automated tests proves only the behavior covered by those tests; it does not establish fun, fairness, visual polish across browsers, or hidden-information security.
-
-## Next steps
-
-1. Run CI and review the current branch's rules/story tests.
-2. Smoke-test a complete three-moment run in both modes, including handoff and ending; verify no raw submissions are exposed and meters match the canonical state.
-3. Compare every story branch with the events and state it describes. Prose must not imply a fact/action that the rules did not establish.
-4. Independently audit the enumerator/fixture and reconstruct the historical paper trace without coaching.
-5. Adversarially design the larger Fate scenario on paper before implementing Fate.
-6. Use direct-intention as the lead player-facing candidate in the next iteration, while preserving environmental influence as an experimental comparator until the open gates are reviewed.
-
-## Constraints
+## Constraints to preserve
 
 - Quality and cross-system coherence outrank speed.
-- Authoritative state and rules remain deterministic; story presentation must not mutate them.
-- Keep one executable fixture and do not silently canonize it.
-- Avoid paid LLM dependencies for core play.
-- Keep raw player submissions out of ordinary player-facing views; a local browser is not a security boundary.
-- Do not add networking, accounts, persistence or production gameplay before their design gates.
-- The project owner reviews and merges pull requests.
-- Distinguish specification, automated tests, independent review, browser verification and human playtest evidence.
+- Direct intention is the preferred lead candidate, not a final model selection.
+- Story is the primary player feedback; state meters are secondary and must reflect actual tracked state.
+- Authoritative rules are deterministic; narration is presentation only.
+- Keep submitted intentions and input-derived ranking diagnostics out of the normal player UI. A local browser is not a security boundary.
+- Keep the test fixture separate from accepted story canon.
+- Do not add networking, accounts, persistence, production gameplay or a paid LLM dependency before their needs are demonstrated and contracts reviewed.
+- Distinguish automated tests, independent reconstruction, browser smoke tests, visual/accessibility review and human playtesting.

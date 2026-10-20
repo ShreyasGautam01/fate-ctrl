@@ -2,7 +2,54 @@ export const MODEL_DIRECT = "I";
 export const MODEL_INFLUENCE = "W";
 export const PASS = "PASS";
 
-export function createInitialState(fixture) { return { ...fixture.initialState }; }
+export function validateFixture(fixture) {
+  if (!fixture || typeof fixture !== 'object') throw new Error('Fixture must be an object.');
+  const composition = fixture.composition;
+  if (!composition || composition.oppositeSignals !== 'cancel_to_zero') {
+    throw new Error('Unsupported opposite-signal composition.');
+  }
+  if (composition.privateWindowSignal !== 'add_then_clamp') {
+    throw new Error('Unsupported private-window signal composition.');
+  }
+  if (!Number.isInteger(composition.sameDirectionCap) || composition.sameDirectionCap < 1) {
+    throw new Error('sameDirectionCap must be a positive integer.');
+  }
+  if (!Number.isInteger(composition.selectorSignalMin) ||
+      !Number.isInteger(composition.selectorSignalMax) ||
+      composition.selectorSignalMin > 0 ||
+      composition.selectorSignalMax < 0 ||
+      composition.selectorSignalMin > composition.selectorSignalMax) {
+    throw new Error('Selector signal bounds must be ordered integers containing zero.');
+  }
+
+  const actionIds = new Set(Object.keys(fixture.actions || {}));
+  const supportedPreconditions = new Set(['thread_uninspected', 'evidence_ready_for_presentation', 'private_window_available']);
+  for (const [id, effect] of Object.entries(fixture.influences || {})) {
+    const signal = effect.signal;
+    if (!actionIds.has(effect.targetAction) ||
+        !supportedPreconditions.has(effect.precondition) ||
+        typeof signal !== 'number' || !Number.isFinite(signal) || !Number.isInteger(signal) || signal < -1 || signal > 1) {
+      throw new Error('Invalid influence definition or non-integral selector signal: ' + id);
+    }
+    const privateWindow = effect.privateWindow === undefined ? false : effect.privateWindow;
+    if (typeof privateWindow !== 'boolean') {
+      throw new Error('Invalid privateWindow flag: ' + id);
+    }
+    const expectedKind = privateWindow ? 'private_window_and_selector_signal' : 'temporary_selector_signal';
+    if (effect.kind !== expectedKind) {
+      throw new Error('Influence kind does not match its supported effect shape: ' + id);
+    }
+    if (privateWindow && (effect.targetAction !== 'PRESENT_EVIDENCE' || signal !== 1)) {
+      throw new Error('Private-window influence must target presentation with a positive signal: ' + id);
+    }
+  }
+  return true;
+}
+
+export function createInitialState(fixture) {
+  validateFixture(fixture);
+  return { ...fixture.initialState };
+}
 
 function actionLegal(state, actionId, fixture) {
   const facts = fixture.worldFacts;

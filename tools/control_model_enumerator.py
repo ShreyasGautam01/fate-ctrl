@@ -6,6 +6,7 @@ from dataclasses import asdict, dataclass
 from itertools import product
 from pathlib import Path
 import json
+import math
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXTURE_PATH = ROOT / "scenarios" / "control_model_test_fixture.json"
@@ -34,7 +35,7 @@ INFLUENCE_PRECONDITIONS = {
 
 
 def validate_fixture():
-    if not isinstance(FIXTURE["rounds"], int) or FIXTURE["rounds"] < 1:
+    if type(FIXTURE["rounds"]) is not int or FIXTURE["rounds"] < 1:
         raise ValueError("rounds must be a positive integer")
     if FIXTURE["initialState"]["remaining"] != FIXTURE["rounds"]:
         raise ValueError("initial remaining count must equal fixture round count")
@@ -48,7 +49,18 @@ def validate_fixture():
         raise ValueError("deadline selection and departure boundaries disagree")
     if len(RANK_ORDER) != 5 or set(RANK_ORDER) != {"contextSignal", "directSupport", "actionTier", "deadlineTier", "tieBreakRank"}:
         raise ValueError("rank order must contain each supported field exactly once")
-    if set(POLICY["tieBreakOrderHighestFirst"]) != set(ACTIONS):
+    composition = FIXTURE["composition"]
+    if composition["oppositeSignals"] != "cancel_to_zero":
+        raise ValueError("unsupported opposite-signal composition")
+    if composition["privateWindowSignal"] != "add_then_clamp":
+        raise ValueError("unsupported private-window signal composition")
+    if type(composition["sameDirectionCap"]) is not int or composition["sameDirectionCap"] < 1:
+        raise ValueError("sameDirectionCap must be a positive integer")
+    signal_min, signal_max = composition["selectorSignalMin"], composition["selectorSignalMax"]
+    if type(signal_min) is not int or type(signal_max) is not int or signal_min > 0 or signal_max < 0 or signal_min > signal_max:
+        raise ValueError("selector signal bounds must be ordered integers containing zero")
+    tie_break_order = POLICY["tieBreakOrderHighestFirst"]
+    if len(tie_break_order) != len(ACTIONS) or set(tie_break_order) != set(ACTIONS):
         raise ValueError("tie-break order must contain every action exactly once")
     if not {INSPECT, PRESENT, RETURN, WAIT}.issubset(ACTIONS):
         raise ValueError("required action missing from fixture")
@@ -65,23 +77,31 @@ def validate_fixture():
             raise ValueError(f"unsupported action precondition/effect ID: {name}")
         if (action["preconditionId"], action["effectId"]) != expected_action_contracts.get(name):
             raise ValueError(f"action ID is mapped to an unsupported precondition/effect pair: {name}")
-        if not isinstance(action["actionTier"], int):
+        if type(action["actionTier"]) is not int:
             raise ValueError(f"invalid action tier: {name}")
     if FIXTURE["actions"][WAIT]["directProposalAllowed"]:
         raise ValueError("WAIT must remain a selector fallback, not a direct proposal")
     for name, effect in INFLUENCES.items():
-        if effect["targetAction"] not in ACTIONS or not -1 <= effect["signal"] <= 1 or effect["precondition"] not in INFLUENCE_PRECONDITIONS:
-            raise ValueError(f"invalid influence definition: {name}")
+        signal = effect.get("signal")
+        if (effect["targetAction"] not in ACTIONS or effect["precondition"] not in INFLUENCE_PRECONDITIONS or
+                isinstance(signal, bool) or not isinstance(signal, (int, float)) or
+                not math.isfinite(signal) or not float(signal).is_integer() or not -1 <= signal <= 1):
+            raise ValueError(f"invalid influence definition or non-integral selector signal: {name}")
         if not isinstance(effect.get("privateWindow", False), bool):
             raise ValueError(f"invalid privateWindow flag: {name}")
-        if effect.get("privateWindow", False) and (effect["targetAction"] != PRESENT or effect["signal"] != 1):
+        private_window = effect.get("privateWindow", False)
+        expected_kind = "private_window_and_selector_signal" if private_window else "temporary_selector_signal"
+        if effect.get("kind") != expected_kind:
+            raise ValueError(f"influence kind does not match its supported effect shape: {name}")
+        if private_window and (effect["targetAction"] != PRESENT or signal != 1):
             raise ValueError(f"private-window influence must target presentation with a positive signal: {name}")
     for obj_name, objective in FIXTURE["objectives"].items():
         fields = set(objective["requiredTrueFields"]) | set(objective.get("minimumValues", {}))
         if not fields <= STATE_FIELDS:
             raise ValueError(f"objective {obj_name} references unknown state fields: {sorted(fields - STATE_FIELDS)}")
-        if objective["evaluateAt"] != "departure after the round-3 action":
-            raise ValueError(f"unsupported objective evaluation boundary: {obj_name}")
+        expected_boundary = f"departure after the round-{FIXTURE['rounds']} action"
+        if objective["evaluateAt"] != expected_boundary:
+            raise ValueError(f"unsupported objective evaluation boundary for {obj_name}: expected {expected_boundary!r}")
 
 validate_fixture()
 
@@ -227,6 +247,8 @@ def complete(state, obj, departed):
 
 
 def transition(s, model, inputs):
+    if not isinstance(inputs, (tuple, list)) or len(inputs) != 2:
+        raise ValueError("exactly two player submissions are required")
     if s.remaining <= 0:
         raise ValueError("cannot resolve a submission after departure")
     before = s
