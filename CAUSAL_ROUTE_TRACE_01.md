@@ -402,3 +402,45 @@ A route is not strategically complete if it only describes the Fate storyline. A
 Before implementation, produce a single compact table for the selected premise with one row per decision boundary and columns for: public scene, each player's private aim/information, Jules's actual knowledge, legal direct actions, resolved event candidates, persistent state deltas, Fate eligibility/cost, evidence availability, and terminal-route viability. Then independently reconstruct both a Fate-success path and a non-Fate path for each route.
 
 If the three-route requirement still fails after the independent review, compare replacement premises. Do not write a general Fate planner, add a new backend, or extend the current three-moment fixture to disguise the causal gap.
+
+## 13. Objective-coupling decision — preserve, reframe, or replace
+
+**Status:** Design recommendation for the next paper slice; not an owner-approved change to objectives.
+
+The route review exposed a second issue independent of attribution: the current umbrella objective (return honestly and preserve trust) and Player B's objective (establish that the flatmate knew about prior damage) can play out as a separate domestic dispute while the transit failure follows its own public-evidence track. A shared protagonist and a limited number of moments create opportunity cost, but that alone may not create a unified story.
+
+Three options should be compared explicitly:
+
+| Option | A's role | B's role | Fate's role | Advantage | Main risk |
+|---|---|---|---|---|---|
+| **O1 — Keep current objectives** | Return the umbrella honestly and preserve trust | Establish the flatmate's prior knowledge about the old damage | Make Jules the scapegoat for the transit failure | Preserves the original intimate conflict | The personal evidence may not affect the public incident at all; the game risks feeling like two unrelated stories fighting for turns |
+| **O2 — Reframe B around public accountability** | Return the umbrella honestly and preserve trust; may prefer privacy and a fast exit | Establish an evidence-backed, proportionate account of the transit failure before the public account hardens | Make the public assign Jules primary blame while underweighting the independent causes | All three goals can conflict over the same sources, disclosures, time and public narrative | The original flatmate-nondisclosure objective is demoted or removed; public accountability may be less personally intimate |
+| **O3 — Replace the premise** | Rebuild a personal goal naturally connected to the civic crisis | Give B a genuinely incompatible but evidence-based aim in that same crisis | Pursue the scenario's causal failure | Can eliminate the artificial bridge instead of defending it | Requires a new opening and fresh objective/reachability analysis |
+
+### 13.1 Strongest candidate to test next: O2
+
+O2 is the cleanest current candidate for a one-page paper test. It is **not yet the final decision**. It turns the strategic conflict into three different standards:
+
+- **Player A — personal trust:** fulfil the promise to return the umbrella honestly before the flatmate leaves, while avoiding unnecessary public exposure. A may support a correction if Jules is unfairly blamed, but may resist disclosure when it puts the relationship or Jules's own conduct at risk.
+- **Player B — proportionate accountability:** ensure that the public record reflects the best corroborated timeline of the transit incident. B does not have the goal "clear Jules at any cost"; if Jules's action contributed, the truthful account may say so. B opposes a scapegoat story that hides the stale display, closure timing, or other established contributors.
+- **Fate — scapegoating:** exploit gaps and timing so the public assigns Jules primary responsibility for a failure whose principal causes are broader than Jules's conduct. Fate must not change the actual cause or require every viewer to believe a false claim.
+
+This triangle has a useful strategic property: B and Fate may both want the incident discussed publicly, but for incompatible reasons. A and B may cooperate to correct an unfair accusation, yet conflict if B's full account exposes Jules's risky action. Players can therefore cooperate temporarily without having identical objectives.
+
+The umbrella has a limited but legible role: it creates the opening promise and deadline, competes for Jules's time, and visually identifies Jules in the established recording. It must not be claimed to cause the transit failure. The older-damage message should not remain a primary objective unless the scenario proves how it changes trust, credibility, knowledge, or a consequential choice in the public incident. Otherwise retain it only as optional domestic context or remove it.
+
+### 13.2 Minimum story test before implementation
+
+Write one uninterrupted opening and the first three decision moments under O1 and O2, then compare them on the same questions:
+
+1. Can a player explain their private aim in one sentence without translating game metrics?
+2. Does each of the first three decisions affect at least one personal concern and one public-incident concern, or is it visibly a separate subplot?
+3. Can A and B reasonably disagree about an action without either player acting irrationally?
+4. Can a truthful account implicate Jules partially while still defeating Fate's disproportionate scapegoating goal?
+5. Does the umbrella deadline create a real sacrifice rather than simply force Jules into the incident?
+6. Can the non-Fate ending still resolve the personal promise and the public incident?
+7. Can a reader retell the causal chain without saying "then it goes viral" or relying on an unseeded source?
+
+**Provisional recommendation:** test O2 first because it best ties player decisions, evidence provenance, time pressure and Fate's public-blame goal to the same story. Keep O1 as the control candidate for the paper comparison. If O2 only works by making the umbrella a decorative identifier, or if neither version produces three consequential disagreements, move to O3 and replace the premise.
+
+No objective change should be coded into the existing fixture yet. The fixture is a comparison harness, and this proposal must not silently alter its goals or be mistaken for accepted story canon.
