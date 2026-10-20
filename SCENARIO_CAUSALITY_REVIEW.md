@@ -114,6 +114,68 @@ Reject or revise a route if:
 
 ## 7. Current conclusion and next work
 
-Do not finalize the umbrella facts or write a milestone graph yet. First choose a coherent damage-history option, define the relationship and deadline in human terms, and generate at least three short causal-chain candidates. Compare them on plausibility, memorability, strategic branching, visibility, counterplay, objective interaction, and authoring cost.
+The umbrella/transit premise is **not ready for scenario implementation**. The existing causal trace supports one developed hypothesis for public blame over a local routing failure during an independently caused storm disruption. Candidate Target 1 mechanisms now distinguish physical direction, redistribution of stale information, and post-incident attribution racing against a correction. Their current desk verdict is one plausible-but-unproven mechanism, one conditional alternate, and one weak mechanism that may need rejection. Three viable routes have not been demonstrated.
 
-If no causal bridge survives those checks, replace the scenario or revise Fate's terminal goal. Protect the game's core fantasy rather than forcing a weak premise to survive.
+Keep three questions separate:
+
+1. **Causal target:** Is Fate making Jules the public scapegoat for a local failure, for worsening a wider response failure, or for causing a citywide emergency? These are materially different outcomes.
+2. **Route viability:** Does each proposed route have pre-existing facts, a plausible evidence chain, meaningful player intervention, a correction path, and a non-Fate ending?
+3. **Objective coupling:** Do the umbrella deadline and competing player goals materially affect choices within that incident, or do they form a separate domestic subplot that merely consumes time?
+
+The next paper exercise should compare the existing objective set against a version where Player B seeks a proportionate, evidence-backed account of the transit failure. Do not silently change `CONTROL_MODEL.md` or `scenarios/control_model_test_fixture.json`; those remain test references, not story canon. Use `CAUSAL_ROUTE_TRACE_01.md` for the detailed Target 1 trace and `CANDIDATE_CAUSAL_ROUTES.md` for alternate route mechanisms.
+
+If fewer than three materially different routes survive skeptical reconstruction—or if the local-blame target lacks the intended scale—compare replacement premises before writing a Fate milestone graph or implementing scenario mechanics.
+
+## 8. Objective coupling and a matched opening slice
+
+**Status:** O1/O2 comparison hypothesis; not an approved objective change.
+
+The current objectives may compete through time without interacting causally. That may be insufficient for a unified story. Compare these options on the same scenes and decision opportunities:
+
+| Option | Player A | Player B | Fate | Main benefit | Main risk |
+|---|---|---|---|---|---|
+| **O1 — Retain current objectives** | Return the umbrella honestly and preserve trust | Establish that the flatmate knew about the old damage and had not disclosed it | Make Jules the scapegoat for the transit failure | Preserves the original intimate conflict | The umbrella evidence may not affect the public incident at all; the two stories may run in parallel |
+| **O2 — Public accountability** | Return the umbrella honestly and preserve trust; may prefer a quick, private resolution | Establish an evidence-backed, proportionate account of the transit incident before the public narrative hardens | Make the public assign Jules primary responsibility while underweighting the independent causes | Shared sources, time and disclosure create direct strategic disagreement | Player B's original domestic objective is demoted or replaced |
+| **O3 — Replace premise** | A new personal goal naturally connected to the crisis | A genuinely conflicting objective in that same crisis | Exploit the causal failure | Can remove the artificial bridge entirely | Requires rebuilding and retesting the opening |
+
+### 8.1 Provisional candidate: O2
+
+O2 is the strongest option to test on paper because the three goals can disagree for understandable reasons:
+
+- **A values personal trust and keeping a promise.** A may try to avoid public exposure, yet support correction if Jules is unfairly blamed.
+- **B values a complete and proportionate public account.** B does not need to clear Jules at any cost; if Jules contributed to the confusion, an accurate account can acknowledge it while identifying the broader causes.
+- **Fate values scapegoating.** It wants the public to assign Jules primary responsibility while losing sight of the stale display, closure timing and other established contributors. It cannot change the actual cause of the incident.
+
+B and Fate may both seek public attention, but their reasons and desired account differ. A and B may cooperate on correction, then disagree if the evidence exposes Jules's own risky action. This is a more useful conflict than simply assigning each player a different meter.
+
+### 8.2 Matched first three moments
+
+Use the same opening and available scene facts for O1 and O2:
+
+**Opening:** Heavy rain is already delaying transit. The old display points toward a lower passage due to close because of water ingress. A staff instruction is difficult to hear. Jules is on an ordinary journey home with the damaged red umbrella; the flatmate expects it back before leaving in twelve minutes. Any phone recording, commuter channel, route timestamp and correction source must be shown or established before they matter.
+
+| Moment | Direct-action choices to test | Shared consequence to narrate | Where the objectives diverge |
+|---|---|---|---|
+| **1. Unclear route** | Ask the steward to repeat the current route; help riders using the visible display; head home and message the flatmate | State which instruction Jules actually learned, whether Jules stayed, and what the crowd did. A public gesture is recorded only if the pre-existing camera could see it. | O1 B has no clear reason to seek station information; O2 B has a reason to care about provenance. A's personal deadline competes with staying. |
+| **2. A source can be checked or relayed** | Photograph and forward the display; inspect its timestamp and look for the current notice; update the flatmate about the delay | Preserve whether Jules checked the timestamp, what source was shared, who received it, and how the passage closure affected people. Forwarding does not change the original source. | O1 may spend a moment on the separate umbrella message; O2 can use the same time to support an accurate public account. |
+| **3. Attribution begins** | Request the full recording or official log; send a sourced correction to the same audience; leave to meet the deadline | Show what the clip or message proves and omits, what correction is accessible, and the cost/cutoff. Fate may delay one eligible source-access opportunity, not suppress all correction. | O1 and O2 differ on whether B's evidence-gathering action advances a connected objective. O2 may expose Jules's conduct and conflict directly with A. |
+
+The three moments are a **paper design test**, not a locked turn order or production rules contract. Direct-action choices should describe intended acts, not promise their outcomes. Authoritative state and story must still be resolved separately.
+
+### 8.3 Acceptance gate
+
+O1 and O2 should be judged against the same questions:
+
+1. Can each player explain their goal in one plain sentence?
+2. Do the first three decisions affect both personal stakes and the public incident, rather than splitting into unrelated subplots?
+3. Can the players disagree without either acting irrationally?
+4. Can an accurate account implicate Jules partly while still defeating disproportionate scapegoating?
+5. Does the umbrella deadline create a real opportunity cost without forcing Jules into the incident?
+6. Can both a Fate-success and a non-Fate ending resolve the personal promise and public incident?
+7. Can an uncoached reader reconstruct the causal chain without author explanation, “then it goes viral,” or an unseeded source?
+
+**Pass:** at least two meaningful disagreements, clear evidence ownership, credible counterplay and a full non-Fate ending can be reconstructed.
+
+**Fail:** the umbrella is merely a decorative identifier, private umbrella evidence has no consequential relationship to the public incident, or Jules must remain at the interchange for the plot to work. Test O3 and replace the premise rather than coding around these failures.
+
+O2 is a candidate for the next paper iteration only. No objective change is approved, and no production mechanics should be implemented until the route and objective-coupling gates pass.
