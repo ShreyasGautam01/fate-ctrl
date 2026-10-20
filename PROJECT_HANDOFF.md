@@ -83,7 +83,7 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 1. Verify the combined main-branch tests and browser-smoke workflow after PR #8 and PR #10 merged; separate branch results are useful evidence but not a substitute for integration checks.
 2. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`; separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
-3. Continue PR #9's draft review by reconstructing its three route mini-replays independently. Reject weak routes rather than forcing three to pass. Check whether the umbrella objectives materially interact with public blame.
+3. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
 4. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
 5. After a coherent scenario is accepted, design a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure. Then test it with uncoached players.
 
