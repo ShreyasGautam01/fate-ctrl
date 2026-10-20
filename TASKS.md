@@ -13,9 +13,9 @@ This ledger tracks completion and decision gates. A document, passing test, simu
 |---|---|---|
 | Initial browser experiment | **Merged — PR #6** | A deterministic three-moment comparison lab exists. Its state/objectives/policy are test-only. |
 | Story-first iteration | **Merged — PR #7** | Authored story beats, direct-intention as default, handoff, and condition meters exist. The interface is still an experiment, not the finished game. |
-| Enumerator and fixture validation | **Open — PR #8** | Adds fail-closed input/config validation; reported Python and Node CI runs passed. The independent audit remains open. |
-| Input-derived UI diagnostics | **Open — PR #10** | Removes ranking diagnostics from the player UI and adds Chromium smoke coverage. The branch's 17 Node tests and 390 × 844 browser smoke passed; these changes are not yet in `main`. |
-| Story premise / Fate ending | **Draft — PR #9** | Tests public blame for a local operational failure during an independently caused storm disruption. It is not canon and is not yet a complete or accepted route. |
+| Enumerator and fixture validation | **Merged — PR #8** | Fail-closed input/config validation is in main; the independent audit remains open. |
+| Input-derived UI diagnostics | **Merged — PR #10** | Ranking diagnostics are removed from the player UI; the PR's 17 Node tests and 390 × 844 Chromium smoke passed before merge. Human playtesting remains outstanding. |
+| Story premise / Fate ending | **Draft — PR #9** | The trace compares physical direction, stale-information relay and post-incident attribution. A is plausible but unproven, B is conditional, C is weak; the three-viable-route gate remains open. Nothing is canon. |
 | Human playtesting | **Not done** | The owner gave useful but limited first-prototype feedback. There has been no uncoached session of the improved narrative-first experience. |
 | Production engine, online play and persistence | **Not started / not approved** | No production architecture or full-game rules should be inferred from the local prototype. |
 
@@ -42,6 +42,12 @@ A local browser interface compares direct intention and environmental influence 
 ### Merged PR #7 — Story-first iteration
 The ordinary resolution view now emphasizes deterministic authored story rather than only objective outcomes. Direct intention is the default, choice labels use more natural language, locked controls are removed during handoff, and three state-condition meters show tracked state. The fixture and its story are still provisional.
 
+### Merged PR #8 — Enumerator input/config validation
+Input/config validation now rejects malformed paired submissions and invalid rule configuration shapes. Its PR runs passed 16 Python and 16 Node tests. This does not replace the independent end-to-end audit of the enumerator, fixture and control-model contract.
+
+### Merged PR #10 — Player-interface privacy and browser smoke
+The ranking inspector and input-derived diagnostics are removed from the normal player UI, and decision/aftermath labels are clearer. Its branch passed 17 Node tests and a pinned Chromium smoke at 390 × 844. This is browser automation evidence, not human playtest evidence or a security guarantee for online hidden information.
+
 ### Earlier design and audit foundation
 - `CONTROL_MODEL.md`, `scenarios/control_model_test_fixture.json`, `tools/control_model_enumerator.py`, its tests, and the report provide a small reproducible comparison harness.
 - `INFORMATION_MODEL.md`, `ARCHITECTURE.md`, and `MODULE_CONTRACTS.md` describe conceptual information boundaries and responsibility ownership; they are not a final production architecture.
@@ -52,23 +58,23 @@ Historical simulations and workshop documents are evidence of prior reasoning, n
 
 ## 4. Review queue and validation evidence
 
-### PR #8 — Enumerator input/config validation
+### Merged PR #8 — Enumerator input/config validation
 The branch adds checks for exactly two submissions, unique and ordered tie-break entries, terminal-boundary consistency with the configured round count, supported influence-composition modes, integer selector signals (excluding booleans/fractions), and supported influence shapes. It adds Python/browser regression tests and a Python CI workflow. The PR reports successful CI with 16 Python tests and 16 Node tests.
 
 **Still not proven:** the implementation has not been independently audited end-to-end against the fixture and `CONTROL_MODEL.md`; passing tests cannot show that every contract nuance is covered.
 
-### PR #10 — Keep input-derived diagnostics out of the player UI
+### Merged PR #10 — Keep input-derived diagnostics out of the player UI
 The branch removes ranking diagnostics from the normal UI, clarifies timeline labels, adds regression tests and pinned Playwright/Chromium browser smoke coverage. Its reported 17 Node tests and browser smoke passed at 390 × 844, including a complete direct-intention run, meter and terminal checks, handoff/privacy checks, and an environmental-influence run.
 
-**Still not proven:** human comprehension, fun, fairness, all-browser visual quality, or secure hidden information. The local browser still holds submissions in memory. The smoke run is branch evidence; the changes are not in `main` until PR #10 is merged.
+**Still not proven:** human comprehension, fun, fairness, all-browser visual quality, or secure hidden information. The local browser still holds submissions in memory. The changes are now in main. The browser smoke tested the PR branch before merge; passing smoke tests are not evidence of human comprehension, fairness or fun.
 
 ### PR #9 — Causal-route draft
-This draft tests a smaller target: during an independently caused storm disruption, Jules may be blamed for a consequential local operational failure. It distinguishes actual cause, what Jules knows, what a recording shows, and what the public believes. It currently does not establish multiple materially distinct viable routes, the intended scale, or accepted scenario canon. Keep it in draft until skeptical review.
+The draft now includes three route hypotheses and adversarial mini-replays: physical direction captured without context; stale information relayed through an existing channel; and post-incident attribution competing with correction. The desk review provisionally finds A plausible but unproven, B conditional on bounded channel reach, and C currently weak. The three-viable-route gate remains open, as do objective coupling and the original citywide-scale question. No route is canon.
 
 ## 5. Active tasks and exit criteria
 
 ### P0-01 — Independently validate the comparison harness
-**Status:** Partially implemented; PR #8 is open.  
+**Status:** Input/config validation is merged via PR #8; independent audit remains open.  
 **Next:** Independently inspect the enumerator, fixture and contract together; reconstruct selected actions and terminal routes without relying on the report as authority; record counterexamples and rule gaps before changing policy.
 
 The historical enumeration reported:
@@ -113,17 +119,17 @@ These are counts of paths under different state-dependent input sets, **not prob
 **Exit:** Players can explain their aim and available actions, anticipate some consequences, infer possible opponent intentions from public events, reconstruct why a result occurred, identify counterplay, and say whether they want to replay. Record sample size and scenario version; small sessions are qualitative evidence, not statistical proof.
 
 ### P0-10 — Validate the story-first browser slice
-**Status:** PR #7 is merged; PR #10 has passing branch-level test/browser-smoke evidence but remains open.  
-**Next:** Review and merge through the owner's normal process, then run checks on the combined main-branch code. Perform human comprehension and visual/accessibility review after the privacy change is present in the merged build.  
+**Status:** PR #7, PR #8 and PR #10 are merged. PR #10's branch passed 17 Node tests and Chromium smoke at 390 × 844 before merge.  
+**Next:** Verify the combined main-branch build, then perform a human comprehension and visual/accessibility review.  
 **Exit:** Natural-language choices are understandable; story accurately describes resolved events; meters show real tracked state and deltas without false precision; the normal UI omits submissions and input-derived diagnostics.
 
 ## 6. Recommended next sequence
 
-1. Review PR #8 and merge only when the owner is satisfied; confirm CI on the resulting main branch.
-2. Review PR #10 next; rerun its tests and browser smoke against the combined code after PR #8's rule changes are present. Do not treat separate green branches as proof that the combined tree has passed.
-3. Complete independent enumeration/contract review and an uncoached reconstruction of `PRIORITY_TABLE_REPLAY_01.md`. This older umbrella paper trace is separate from the machine fixture.
-4. Skeptically review PR #9's causal route on paper. Establish three genuinely different viable routes or reject/change the target before promoting it to canon or implementing Fate.
-5. Design a richer, coherent narrative slice with direct-action choices, consequential trade-offs, public story events, observable state changes, and bounded/counterable Fate pressure. Do not just add more interface elements to the three-moment fixture.
+1. Verify the combined main-branch CI/browser workflow after PR #8 and PR #10 were merged; treat their earlier branch runs as useful evidence, not a substitute for integration review.
+2. Complete the independent enumerator/fixture/contract audit and uncoached reconstruction of `PRIORITY_TABLE_REPLAY_01.md`; they are separate review tasks.
+3. Continue the draft PR #9 route challenge: independently reconstruct the three mini-replays, reject weak routes, and decide whether the umbrella objectives meaningfully interact with public blame. The three-route gate is not passed.
+4. If fewer than three credible routes survive—or the local target lacks the intended scale—compare replacement premises rather than implementing Fate.
+5. Only after a coherent scenario is accepted, build a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure.
 6. Run uncoached think-aloud sessions on that richer slice. Revise until story, rules, inference and pacing work together.
 7. Only after those gates, decide whether online multiplayer is necessary and design server-authoritative views, persistence and operations accordingly.
 
