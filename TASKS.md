@@ -1,8 +1,8 @@
 # Project Plan and Task Ledger
 
 **Last reconciled:** 2026-10-21  
-**Current phase:** Concept validation through a bounded, story-first browser experiment.  
-**Production gameplay:** Not started. Neither control model nor the story premise is finalized.  
+**Current phase:** Direct-action mode selected; validate story causality and contested-action resolution through bounded paper tests before implementation.  
+**Production gameplay:** Not started. Direct-action mode is selected; the scenario, action-arbitration rule, Fate and full-game rules remain unapproved.  
 **Merge policy:** The project owner reviews and merges pull requests. Open-branch work is not part of `main` until merged.
 
 This ledger tracks completion and decision gates. A document, passing test, simulation, or prototype existing does not by itself mean the related design question is settled.
@@ -26,7 +26,7 @@ Pull requests: [#6](https://github.com/ShreyasGautam01/fate-ctrl/pull/6), [#7](h
 These guide the next experiment; they do not amount to a final ruleset.
 
 - **Two players, one protagonist:** players compete through their influence over Jules, while the eventual Fate system pursues its own scenario-defined outcome and may create reasons for temporary cooperation.
-- **Direct intention leads:** players choose an action they want Jules to take and infer possible consequences. The owner preferred this to selecting abstract signals tied directly to objective features. Environmental influence remains a comparator, not a discarded model or a production decision.
+- **Direct-action mode is selected:** players privately choose a concrete action they want Jules to take and infer possible consequences from observed events. Environmental influence remains only as a historical comparator in the existing experiment, not a co-equal mode for new gameplay unless the owner explicitly reopens it.
 - **Story is the primary feedback:** each resolution should show a credible scene, action, dialogue, or consequence. Objective results alone are too mechanical.
 - **Observed action is public; submitted intention is private:** do not reveal raw submissions or input-derived ranking diagnostics in normal play, including inside a collapsible inspector. Players should infer intentions from observable events rather than read the opponent's move or the resolver's private calculations.
 - **Meters are secondary:** show a small set of explicitly tracked conditions and changes. Do not present them as win probabilities. The current percentages are coarse fixture-specific indicators and need further UX validation.
@@ -86,8 +86,9 @@ These are counts of paths under different state-dependent input sets, **not prob
 **Exit:** An independent reviewer reproduces implementation results, understands all objective paths and input-sensitivity results, and distinguishes code defects from product choices.
 
 ### P0-02 — Define protagonist response and agency
-**Status:** Test selector is deterministic; action tiers, direct-support semantics and tie-break policy remain provisional.  
-**Exit:** Actions are legal and informed, the same configured response policy is used across candidate modes, consequences are explainable without disclosing private submissions, and Jules does not simply optimize either player objective.
+**Status:** Direct-action mode is selected by owner direction. The comparison fixture's support-count selector is experiment-specific; the O2 paper slice and candidate rule in `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 are not accepted production mechanics.  
+**Next:** Independently reconstruct the same-state counterfactuals, then specify equal-priority ties, invalid proposals, stale actions and deadline collisions. Test different action pairs separately from player-role swaps.  
+**Exit:** The resolver is deterministic and reconstructable; both legal proposals have meaningful effects in some states; role swaps are fair; no raw intentions leak; Jules acts only on acquired knowledge; and narration cannot choose outcomes.
 
 ### P0-03 — Define objectives and outcome semantics
 **Status:** Fixture-only predicates exist for an honest return/trust outcome and evidence-backed accountability. They are not approved product scoring rules.  
@@ -129,9 +130,10 @@ These are counts of paths under different state-dependent input sets, **not prob
 2. Complete the independent enumerator/fixture/contract audit and uncoached reconstruction of `PRIORITY_TABLE_REPLAY_01.md`; they are separate review tasks.
 3. Use Stage -1B in `PLAYTEST_PLAN.md` for an uncoached reconstruction of the three Target 1 mechanisms and the O1/O2 objective slice. Record each route as viable, conditional or reject; do not coach the reviewer toward three passes. The three-route gate is not passed.
 4. If fewer than three credible routes survive—or the local target lacks the intended scale—compare replacement premises rather than implementing Fate.
-5. Only after a coherent scenario is accepted, build a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure.
-6. Run uncoached think-aloud sessions on that richer slice. Revise until story, rules, inference and pacing work together.
-7. Only after those gates, decide whether online multiplayer is necessary and design server-authoritative views, persistence and operations accordingly.
+5. The next focused gate is an independent reconstruction of `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Vary action pairs at identical states, separate action-pair responsiveness from role-symmetry, and close equal-priority/invalid-action edge cases before coding a new selector.
+6. Only after the resolver and a coherent scenario pass review, build a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure.
+7. Run uncoached think-aloud sessions on that richer slice. Revise until story, rules, inference and pacing work together.
+8. Only after those gates, decide whether online multiplayer is necessary and design server-authoritative views, persistence and operations accordingly.
 
 ## 7. Change discipline
 
