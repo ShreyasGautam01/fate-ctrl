@@ -81,11 +81,11 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 ## Immediate next steps
 
-1. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–12. Test action-pair changes separately from role-swaps, and check whether the two objectives yield meaningful competing choices across the listed sequences. An important gap surfaced in §12: 18:24 is A's promise deadline but is not yet defined as the scenario's terminal horizon, so B's correction status there cannot be called a final loss. Specify location-aware actions after Jules leaves the station, then review consensus, invalid actions, log delay and deadline boundaries. Do not code a new selector until the candidate rule and objective coupling pass review.
-2. Verify combined main-branch CI/browser checks after PR #8 and PR #10 merged; their earlier branch runs are useful evidence but not a substitute for integration checks.
-3. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`, and separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
-4. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
-5. If the radio trace needs arbitrary audience reactions, deadlines or Fate-created evidence—or cannot yield three distinct routes and a non-Fate ending—compare another premise rather than implementing Fate.
+1. Obtain an uncoached reconstruction of the borrowed-radio trace in `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.7. Check the fixed facts, radio behavior, prior-warning provenance, initial-report attachment, event ordering and counterfactuals.
+2. Extend the matrix to cover the route-paddle actions against radio/thread/handover actions. Review hard action preconditions and location/knowledge changes; a route paddle choice is currently not fully cross-tested.
+3. Have the reviewer independently classify R1–R3. R1 is conditional, R2 is an incident mechanism but a weak blame route, and R3 may duplicate R1's causal hinge. Do not declare three viable routes unless the distinctions survive skeptical reconstruction.
+4. Keep the umbrella/transit scene and executable fixtures unchanged. If P2 relies on arbitrary audience belief/deadlines, or cannot support three distinct routes and a credible non-Fate ending, compare another premise rather than implementing Fate.
+5. Separately verify main-branch CI/browser checks and complete the historical enumerator audit; those are useful but do not substitute for the current scenario gate.
 
 ## Constraints to preserve
 
