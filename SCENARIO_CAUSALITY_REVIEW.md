@@ -393,6 +393,21 @@ These are scene rules to challenge, not universal truths about Jules. The notice
 
 In this table, each row starts from the named state; proposals are simultaneous and hidden. “Chosen” means the action Jules actually performs, not the action submitted by a named player.
 
+**Action contracts for the rows below** — all actions consume one four-minute beat. These definitions are part of this paper candidate only.
+
+| Action | Precondition at beat start | Effect when selected |
+|---|---|---|
+| **Ask the steward** | Jules is still at the information point; the current route is not yet verified. | At the end of the beat, the steward points out the closure notice and explains that water on the steps closed the lower passage. Jules learns those facts. |
+| **Leave for home** | Jules is still at the interchange and the upper-street route remains passable. | Travel starts at beat start and arrival is at the end of the four-minute beat. The beat's four minutes **include the trip**; do not add a second four-minute travel cost. No further interchange action can be taken in that beat. |
+| **Forward the displayed route** | Jules can access the display and group; no verification is required to send it. | At beat end, Jules posts a photo showing the display's “OPEN” state and visible 18:05 update time, without a current-route caveat. The post becomes available to the group's 42 members. This can mislead, but does not change the actual closure. |
+| **Post a sourced correction** | Jules has learned the current closure, can access the group, and the earlier route claim remains uncorrected. | At beat end, Jules posts the 18:11 notice's closure information and the 18:05 display timestamp to the same group. Both posts remain visible. This changes correction availability, not what every member believes. |
+| **Request the incident log** | Jules remains at the information point and has access to the pre-existing request process shown on the notice. | At beat end, the request is filed. The complete log is released no earlier than nine minutes after filing; filing itself reveals no log content and does not change verified-route evidence. The log can support later review, but it cannot be used as instant proof in these rows. |
+| **WAIT** | Always available as the fallback if neither proposal is valid. | No protagonist state change; the four-minute beat and deadline checks still occur. |
+
+The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if it is the **Leave for home** action, whose four-minute cost includes arrival. A request filed at the end of an 18:16 beat is filed at 18:20 and cannot yield the log before 18:29; requesting it does not magically deliver evidence during the beat.
+
+
+
 | Fixed state | Player A proposes | Player B proposes | Candidate result | What this tests |
 |---|---|---|---|---|
 | **S1 — 18:12, route uncertain; 12 minutes until deadline** | Leave for home | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
@@ -420,3 +435,20 @@ This table is **not proof of balance**. It is a local coherence check of the can
 - **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
 
 **Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The equal-priority tie-break remains deliberately open. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary and the invalid-action fallback. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
+
+### 11.4 Author desk reconstruction — status and defects
+
+This is an author self-check against the action contracts and priority order above; it is **not** an independent review.
+
+- S1, Leave vs Ask: Ask wins because verification (priority 3) outranks early departure (priority 6).
+- S1, Leave vs Forward: Leave wins because early departure (priority 6) outranks forwarding an unverified route (priority 7). Reassigning the same actions to the opposite players does not change the result.
+- S2, Leave vs Correction: Correction wins because the post is verified and one travel beat can still follow (priority 4). Leaving in the next beat reaches home at 18:24.
+- S2, Leave vs Request log: Request wins under the candidate priority (5 vs 6). This does **not** mean Jules obtains evidence before the deadline. The request is filed at 18:20, due no earlier than 18:29; the benefit is only preserving a later evidence path while the promise remains exactly achievable. This preference is plausible but deliberately high-risk and needs reviewer challenge.
+- S3, Leave vs Request log: Leave wins because this is the last feasible travel beat (priority 2). The log request would finish too late to get Jules home afterward.
+- S3, Leave vs Correction: Leave wins because the deadline priority (2) outranks correction (4). Both Correction proposals instead select Correction by consensus; the rule knowingly permits the shared move to sacrifice the personal deadline.
+- Consensus cases execute one valid action once, regardless of its position in the disagreement-priority list. Hard preconditions still apply; consensus cannot create access, knowledge or an absent source.
+- On this menu, all action pairs used in the table have distinct conflict priorities. Equal-priority conflicts are therefore **not exercised by this table** and remain a pre-implementation blocker if the action vocabulary grows or priorities are changed.
+
+**Desk result:** the listed table outcomes are reconstructable from the candidate priorities once the action contracts and log timing above are included. This is only a local consistency result. It does not establish that the situation priorities are the right characterization of Jules, that the action set is balanced, that the umbrella/public-incident objectives are naturally coupled, or that a player would enjoy the loop. O2 remains provisional, no causal route gate has passed, and no selector implementation should start from this author check alone.
+
+
