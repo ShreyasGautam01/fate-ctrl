@@ -255,9 +255,11 @@ Each player privately submits one **direct action** from the legal action menu f
 
 For this trace, the test resolver uses this plain rule:
 
-1. If both players nominate the same legal action, that action has two support marks and overrides a lower-priority alternative.
-2. If the proposals differ, each has one support mark. Jules applies a **prewritten situation priority only to those two proposed actions**: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. The resolver must not silently execute a third, unproposed action just because it has a higher general priority. An action's effects cannot exceed what Jules knows and what the scene makes available.
-3. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
+1. Validate each proposal against the same beat-start state and Jules's acquired knowledge. A private player objective is not a fact Jules has learned.
+2. If both valid proposals are the same action, execute it once by consensus. In this paper candidate, consensus may steer Jules away from a lower-priority action; it does not execute twice.
+3. If the proposals differ, compare **only those two proposed actions** using a prewritten situation priority: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. The resolver must not silently execute a third, unproposed action just because it has a higher general priority.
+4. If only one proposal is legal, execute the valid proposal. If neither is legal, use WAIT; the beat still advances. Hard preconditions cannot be bypassed by consensus. An action's effects cannot exceed what Jules knows and what the scene makes available.
+5. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
 
 This rule is deliberately easy for a reviewer to reconstruct, not a proposed final game mechanic. It is used to expose a design issue, not to smuggle a selector decision into story prose.
 
