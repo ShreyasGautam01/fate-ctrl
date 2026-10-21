@@ -367,11 +367,14 @@ This is an **action-arbitration question, not a reason to reopen direct mode**. 
 
 Keep the selected interaction model: each player privately chooses a direct action for Jules. For this candidate only:
 
-1. Validate both actions against the same beat-start state and Jules's acquired knowledge.
-2. If both legal proposals are identical, execute that action once. This is consensus, not two actions.
-3. If the proposals differ, compare **only those two proposed actions** using a short, predeclared situation-priority rule. Never silently replace them with an unproposed “best” action.
-4. If only one proposal is legal, execute the valid proposal. The behavior when neither is legal, and exact ties between equal-priority actions, remain open and must be specified before coding.
-5. Apply the selected action's effects, knowledge updates, story and meter changes. Do not expose the raw proposal pair or priority diagnostics in the player-facing timeline.
+1. Validate both submissions against the same beat-start state and Jules's acquired knowledge. A player-only fact cannot make an action legal for Jules. An action based on an understandable mistake may remain legal; it is not silently corrected using hidden world knowledge.
+2. If both proposals are invalid, resolve to the defined `WAIT` fallback: no protagonist effect, the four-minute beat still elapses, and normal deadline triggers still run. If exactly one proposal is valid, execute the valid proposal. In either case, do not expose which submission failed or the internal reason in the normal player UI.
+3. If both legal proposals are identical, execute that action once. This is consensus, not two actions. Consensus does not legalize an action that failed step 1.
+4. If the proposals differ, compare **only those two legal proposed actions** using the short, predeclared situation-priority rule below. Never silently replace them with an unproposed “best” action. If priorities are exactly tied, the rule is not yet complete: do not code until a public, deterministic tie-break is selected and independently reconstructed.
+5. An action targeting something that becomes stale before resolution is treated as invalid under the same rules as step 1; do not silently retarget it. The current paper fixture uses one shared beat-start snapshot, so neither player's action is allowed to mutate the state before the other proposal is validated.
+6. Apply the selected action's effects, explicit knowledge updates, time cost, and event record atomically. Build the story and state-meter changes from that resolved event. Do not expose the raw proposal pair, support count, or priority diagnostics in the player-facing timeline.
+
+**Deadline boundary for this paper slice:** actions are evaluated from the beat-start time and their stated four-minute cost. A return completed at or before 18:24 meets the promise; a return completed after 18:24 does not. If the remaining time is shorter than the four-minute travel action, leaving no longer counts as preventing the deadline miss—although it may still be a legal choice that sacrifices the objective. Apply departure/objective checks after the resolved action's time cost, with arrival at the exact deadline counted as on time.
 
 The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
 
@@ -415,4 +418,4 @@ This table is **not proof of balance**. It is a local coherence check of the can
 - **Counterplay and cost:** Both consensus and disagreement need viable consequences. Agreeing cannot always be optimal; disagreement cannot make player proposals irrelevant in every state.
 - **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
 
-**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. Have a reviewer reconstruct every row from this section alone. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
+**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The equal-priority tie-break remains deliberately open. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary and the invalid-action fallback. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
