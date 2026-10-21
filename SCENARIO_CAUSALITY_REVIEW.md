@@ -179,3 +179,42 @@ O1 and O2 should be judged against the same questions:
 **Fail:** the umbrella is merely a decorative identifier, private umbrella evidence has no consequential relationship to the public incident, or Jules must remain at the interchange for the plot to work. Test O3 and replace the premise rather than coding around these failures.
 
 O2 is a candidate for the next paper iteration only. No objective change is approved, and no production mechanics should be implemented until the route and objective-coupling gates pass.
+
+## 9. Author desk adversarial pass — unresolved defects
+
+**Reviewer type:** authoring/assistant desk review of the current draft, 2026-10-21. This is not the independent Stage -1B review and does not pass the design gate.
+
+The O1/O2 paper slice improves the objective comparison, but the draft still has structural gaps that must be resolved before a human reviewer can fairly reconstruct it.
+
+| Defect | Why it matters | Required resolution |
+|---|---|---|
+| **The two-player action economy is underspecified** | The slice lists three Jules actions at each moment, but not what Player A and Player B each submit, how their proposals interact, or what makes one action win. The player objective may affect interpretation without affecting the decision. | For the next paper slice, specify only enough to test a round: each player privately proposes one legal direct intention; the protagonist has one resolved action; a fixed, visible-to-reviewers tie/selection rule resolves conflicts. Keep player submissions hidden from the other player and from player-facing narration. Do not tune the selector yet. |
+| **Private player knowledge can leak into Jules's action** | Player B may know an objective-relevant fact that Jules has not learned. If B can propose “check the timestamp,” that is a player suggestion, not proof Jules already knows the display is stale. | Track world facts, Jules-known facts, and each player's private objective separately. A proposed intention may request an investigation, but only the resolved event can grant its information. Never let private player knowledge silently become protagonist knowledge. |
+| **The umbrella is still mostly a deadline, not a causal bridge** | A time cost creates strategic opportunity cost, but does not by itself make the personal conflict part of the transit story. O2 can work as a shared action economy, yet the umbrella evidence no longer materially affects the public claim. | Test whether A's need to return the umbrella honestly creates a concrete choice about a relevant public disclosure—for example, leaving before obtaining a correction or disclosing that Jules forwarded the old display. Do not make the umbrella itself a cause of the transit failure. If this connection feels contrived, explicitly decouple the personal and public stories or replace the premise. |
+| **The audience is still a placeholder** | “Existing commuter channel” and “local report” do not yet define who receives a claim, how quickly, or why the public would treat it as credible. A correction only works if it can reach the relevant audience. | Choose one bounded audience for the first slice (e.g., passengers in the interchange's existing commuter group) and specify the source, posting delay, provenance, and correction reach. Avoid “the public” as a universal mind. |
+| **Fate's intervention is described but not yet a fair rule** | Delaying source access could feel like an arbitrary block unless the affected opportunity, cost, duration and visible counterplay are specified before use. | For paper testing only, write one candidate intervention contract: target one already-available official record; delay access by one decision beat; announce the access delay as an in-world obstruction; permit a competing source or later retry; never alter the record's contents. Treat this as a candidate, not accepted canon. |
+| **The intended scale remains unresolved** | The local target can plausibly create unfair blame for a local routing failure, but it does not justify the original citywide-emergency ending. | Compare terminal labels explicitly: (a) local scapegoating over crowd-routing confusion; (b) disproportionate blame for worsening a wider response; (c) blame for causing a citywide emergency. Do not use (c) unless a separate, credible causal chain earns it. |
+
+### 9.1 Current desk verdict by gate
+
+- **Causal distinction:** partially improved. T1-A and T1-B use different causal hinges; T1-C remains weak and may collapse into an attribution variant unless its source is concretely established.
+- **Objective coupling:** O2 is stronger than O1 as a shared action economy, but the umbrella currently supplies pressure more than causal connection. This is not yet a decisive win for O2.
+- **Direct-action preference:** retained as the leading interaction hypothesis. It is not yet a selected production control model.
+- **Story/UI requirements:** story-first narration, hidden intentions, and a small number of readable condition indicators remain requirements from owner feedback. They are not satisfied by this paper document.
+- **Implementation readiness:** **not ready**. The next useful artifact should be a compact, fully worked three-beat paper round that defines both player intentions, the resolved protagonist action, knowledge updates, the observable story paragraph, and only the state indicators changed by that event.
+
+### 9.2 Next paper-round acceptance test
+
+Use one worked round under O2, without coding:
+
+1. Show the same public scene to both players, then provide distinct private objectives.
+2. Have each player submit one direct intention without seeing the other's submission.
+3. Resolve to one protagonist action using a rule that can be reconstructed from the fixture, not a narrative judgment.
+4. Write the story paragraph from the resolved event and facts actually known to Jules.
+5. Update at most three visible state indicators, each with a one-line causal explanation.
+6. Reveal only the observable action and consequence—not either player's submitted intention or the hidden selection diagnostics.
+7. Ask a reviewer what happened, what Jules knew, what changed, why the indicators moved, and what each player might try next.
+
+**Pass:** the reviewer can explain the event and indicators without being shown the hidden submissions; both player intentions remain inferable only from observed behavior; the scene creates a plausible next disagreement.
+
+**Fail:** the story reveals player inputs, the meter change is not grounded in the event, the protagonist acts on unknown information, or the resolution can only be justified by saying the selector chose it. In that case, fix the action contract before building a richer browser UI.
