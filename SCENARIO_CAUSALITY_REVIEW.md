@@ -382,14 +382,14 @@ Keep the selected interaction model: each player privately chooses a direct acti
 The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
 
 1. Prevent a known, immediate physical danger.
-2. Prevent an irreversible deadline miss when this is the last feasible travel block.
+2. Leave for home when departing in this beat is the last opportunity to arrive by the 18:24 deadline.
 3. Verify a safety-relevant route while its status remains uncertain.
-4. Correct a verified, still-active false route claim when one travel block can remain afterward.
-5. Preserve a later route to an official record by filing a request when the deadline remains feasible afterward.
+4. Correct a verified, still-active false route claim. This remains a higher priority than filing a deferred record request; if departure is the last feasible travel action, priority 2 still takes precedence.
+5. Preserve a later route to an official record by filing a request when at least one subsequent travel action can still meet the deadline.
 6. Begin the journey early when none of the higher priorities applies.
 7. Forward route advice without current confirmation while Jules has not verified the route and the verification source is available.
 
-**How to read this priority list:** read from highest to lowest. A conditional item applies only when its stated condition is true in the beat-start state and the proposed action would produce the named effect. If one of two conflicting proposals is favored by the highest applicable item, choose it. If neither action has an applicable priority, or both have the same highest applicable priority, the candidate resolver is **undefined for that pair**; do not guess, reveal a submission, or let narration decide. Resolve that tie with a deterministic scene rule before implementation. Consensus bypasses this disagreement ladder after hard preconditions pass.
+**How to read this priority list:** read from highest to lowest. A conditional item applies only when its stated condition is true in the beat-start state and the proposed action would produce the named effect. If one of two conflicting proposals is favored by the highest applicable item, choose it. If a log request would consume the last feasible travel block, priority 5 no longer applies: treat the deferred request as the lowest-ranked legal action in this scene, below an immediately useful correction. If neither action has an applicable priority, or both have the same highest applicable priority, the candidate resolver is **undefined for that pair**; do not guess, reveal a submission, or let narration decide. Resolve that tie with a deterministic scene rule before implementation. Consensus bypasses this disagreement ladder after hard preconditions pass.
 
 These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet. The last-feasible-departure priority applies at 18:20, when a four-minute travel action arrives at 18:24; at 18:16, one more four-minute action still leaves the 18:20–18:24 travel block available.
 
@@ -437,7 +437,7 @@ The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if
 | S3, same state, correction still absent | Leave for home | Post a sourced correction | **Leave for home** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
 | S3, same state, correction still absent | Leave for home | Leave for home | **Leave for home** | Consensus selects the travel action; Jules arrives at exactly 18:24 and meets the deadline. |
 | S3, same state, correction still absent | Request the incident log | Request the incident log | **Request log once** | Consensus can knowingly sacrifice the deadline; the request is filed at 18:24 and the log arrives no earlier than 18:33. |
-| S3, same state, correction still absent | Post a sourced correction | Request the incident log | **UNRESOLVED — tie rule missing** | Neither conditional priority applies after the deadline becomes impossible to meet with another four-minute action. Do not invent a preference for this pair. |
+| S3, same state, correction still absent | Post a sourced correction | Request the incident log | **Post correction** | The deadline is no longer recoverable by either action. An immediate correction outranks a deferred record request, whose conditional priority no longer applies. |
 | S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the consensus rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
 
 This table is **not proof of balance**. It is a local coherence check of the candidate rule. The highest-risk rows are S1's “forward old display” choice and S3's consensus correction: reviewers must judge whether the action labels, consequences and priorities are natural rather than tuned merely to make the table pass.
@@ -452,7 +452,7 @@ This table is **not proof of balance**. It is a local coherence check of the can
 - **Counterplay and cost:** Both consensus and disagreement need viable consequences. Agreeing cannot always be optimal; disagreement cannot make player proposals irrelevant in every state.
 - **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
 
-**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The equal-priority tie-break remains deliberately open. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary, single-valid-proposal behavior, both-invalid fallback and its deadline consequence. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
+**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The listed actions have a distinct effective priority in the states shown; no general tie-break is defined for future action families. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary, single-valid-proposal behavior, both-invalid fallback and its deadline consequence. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
 
 ### 11.4 Author desk reconstruction — status and defects
 
