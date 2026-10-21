@@ -81,7 +81,7 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 ## Immediate next steps
 
-1. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Test fixed-state action-pair changes separately from role-swaps; review the priorities, consensus, invalid actions and deadline boundaries. Do not code a new selector until the candidate rule passes.
+1. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–12. Test action-pair changes separately from role-swaps, and check whether the two objectives yield meaningful competing choices across the listed sequences. Review consensus, invalid actions, log delay and deadline boundaries. Do not code a new selector until the candidate rule and objective coupling pass review.
 2. Verify combined main-branch CI/browser checks after PR #8 and PR #10 merged; their earlier branch runs are useful evidence but not a substitute for integration checks.
 3. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`, and separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
 4. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
