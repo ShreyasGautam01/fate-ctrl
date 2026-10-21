@@ -85,7 +85,7 @@ Historical simulations preserve design reasoning but do not outrank the active c
 2. Verify combined main-branch CI/browser checks after PR #8 and PR #10 merged; their earlier branch runs are useful evidence but not a substitute for integration checks.
 3. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`, and separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
 4. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
-5. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
+5. If the radio trace needs arbitrary audience reactions, deadlines or Fate-created evidence—or cannot yield three distinct routes and a non-Fate ending—compare another premise rather than implementing Fate.
 
 ## Constraints to preserve
 
