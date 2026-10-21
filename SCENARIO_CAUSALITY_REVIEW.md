@@ -561,3 +561,56 @@ A second, distinct consensus path exposes the same weakness: after closure verif
 **Finding:** the location-aware continuation closes the false assumption that the scenario automatically ends at 18:24, but it exposes a deeper design failure: under the current action definitions, the public correction can be completed from home after Jules verifies the closure, and exact-deadline return still satisfies A. Thus the umbrella deadline does not reliably force a meaningful conflict with B's correction goal.
 
 **Next decision gate:** do not patch this with an arbitrary correction cutoff. Test whether a *naturally bounded* public event/source exists in the intended setting, with its time, audience and causal consequence established before play. If none does, replace or decouple the umbrella premise from the public-accountability scenario. Direct-action mode remains selected; no UI or resolver implementation should proceed on this scene until the premise/objective gate passes.
+
+
+## 14. Premise decision gate — test a causal replacement, do not invent a cutoff
+
+**Status:** Comparative desk recommendation, not canon. Sections 10–13 reveal that the current umbrella/transit variant can be made locally deterministic, but its dramatic pressure is not grounded strongly enough to justify locking it.
+
+### 14.1 Audit of naturally bounded opportunities in the current premise
+
+| Existing fact or opportunity | What it legitimately supports | What it does not support |
+|---|---|---|
+| Jules must return the umbrella by 18:24 | A deadline for Player A's personal objective; missing it may affect trust if an explicit response rule says so | A deadline for public correction, the end of the game, or a reason the public account becomes irreversible |
+| A 42-member commuter group exists and is phone-accessible | A correction can be published to a bounded audience; the earlier claim and correction can be compared by timestamp | Proof that anyone read, believed, or acted on either post |
+| The steward and official closure notice are at the interchange | Jules can learn the true route and identify a source while physically present | A continuing station-only restriction on correcting a claim by phone once Jules has learned the source facts |
+| A log-request process exists and takes at least nine minutes | A request can create a delayed evidence path | A deadline at 18:24, remote delivery, a hard cutoff, or a public report that automatically locks at that time |
+| The storm and lower-passage closure pre-exist Jules's action | A credible independent cause of a local routing problem | Proof that Jules's action caused a bottleneck, made it worse, or led to a wider emergency |
+
+**Finding:** no current fact creates a natural cutoff for Player B's correction. The 18:24 umbrella deadline is the only established deadline, and using it as a public-report deadline would be a causal mismatch. A scheduled staff handover, bulletin cutoff or irreversible crowd event could be authored as a new fact, but unless it has a plausible operational reason and observable consequence, it would be an artificial constraint designed only to force competition. Do not add one by default.
+
+### 14.2 Three scenario paths forward
+
+| Candidate | What stays / changes | Objective coupling | Causal and evidence strength | Main risk | Desk recommendation |
+|---|---|---|---|---|---|
+| **P0 — Keep umbrella + transit correction** | Keep current premise and O2; add no new cutoff | Low under present rules: after Jules verifies the closure, a phone correction and an on-time handover can both occur | Weak: stale post availability is established, but audience uptake and a consequence are not | Players can satisfy both goals; Fate's target is not earned | **Do not implement yet.** Retain as a failed/partial probe and only continue if an organic bounded source or consequence can be justified. |
+| **P1 — Add a procedural handover deadline** | Keep premise, add a pre-existing station-staff handover at a stated time that limits when a witness statement can enter the official log | Potentially moderate if evidence acquisition and the umbrella return consume distinct action opportunities before handover | Could be stronger for official attribution, but does not by itself prove the group acted on Jules's post | Easy to make a contrived deadline; an official record may be submitted later through another channel | **Conditional, not preferred.** Only test if the fiction makes the handover procedure, cutoff, audience and later appeal route explicit before choices. |
+| **P2 — Replace the borrowed object with a working communication prop** | New provisional premise: Jules borrows a handheld venue radio from a flatmate who is also a volunteer/shift coordinator at a crowded community venue during an already-established storm disruption. The radio is unreliable; evidence that the lender knew about its fault exists in a pre-existing message thread, but Jules does not automatically know it. | Higher potential: return/handover, trust, disclosure of the known equipment fault, and a route instruction that Jules actually relays can all be parts of the same causal chain | A specific radio transmission or an observable physical direction can create a plausible *contribution* to local crowd confusion; actual causes and the independent closure remain separate | More setup; must not make the radio failure random or imply that a faulty device proves who caused the crowd outcome | **Best next paper candidate.** It integrates the personal obligation with the communication/evidence problem without needing the umbrella to act as a symbolic causal bridge. Keep it provisional until a full trace survives review. |
+
+### 14.3 P2 — integrated premise outline for a paper test only
+
+This is a candidate for testing, not a scenario rewrite or approval.
+
+- **Opening:** Jules is helping at a community venue during a storm disruption that already exists for independently established reasons. Jules has borrowed a handheld radio from flatmate Ren, who is finishing a volunteer shift and expects the radio back at the scheduled handover. Jules needs to return it honestly to preserve Ren's trust.
+- **Shared technical fact:** the radio has a known, reproducible transmit dropout after a defined period of use. The fault is an authored pre-existing property, not a random malfunction triggered whenever the plot needs it. The rule must define exactly what fails, when it fails, and what Jules can observe.
+- **Evidence split:** a message already exists in an accessible thread showing Ren was warned about the dropout before lending the radio. Player B knows the message exists; Jules does not know its content until an explicit inspection action resolves. The message proves prior warning/knowledge only if its sender, time and wording are seeded and credible.
+- **Player A's provisional goal:** return the radio by handover, honestly acknowledge Jules's own actions, and preserve trust with Ren. A is not automatically required to lie or hide a safety-relevant fact.
+- **Player B's provisional goal:** establish a proportionate record of the radio fault and prior warning, while retaining evidence of any incorrect instruction Jules actually relayed. B should not be rewarded for falsely exonerating Jules.
+- **Fate's provisional local target:** make Jules appear primarily responsible for the crowd-routing confusion even when the equipment fault and the independent storm/closure are material contributors. Fate cannot create a transmission, invent an eyewitness, alter the radio's known behavior or guarantee that every attendee believes the accusation.
+- **Initial action families to test:** inspect the message thread; test or use the radio; repeat/verify a route instruction with a named source; move a visible divider/point people only when the state supports it; document the incident; return the radio. Each needs explicit timing, location, information preconditions and observable effects.
+
+P2 is only a more tightly coupled *starting hypothesis*. This outline does not yet demonstrate three materially distinct blame routes, meaningful counterplay, a satisfying non-Fate terminal state, or fun. The communication fault itself must not become an all-purpose explanation: a fault, a bad instruction, a crowd response, and a later attribution are separate events requiring separate evidence.
+
+### 14.4 Comparative acceptance test before choosing P2
+
+Write one three-beat paper trace with fixed times and location, then test at least these branches:
+
+1. Jules verifies the route through an independent source before transmitting; no unsupported blame should arise from the radio alone.
+2. Jules knowingly or carelessly relays a stale instruction while the fault or its warning is relevant; record the exact message, actual recipients and observed consequence.
+3. Jules inspects the thread and learns Ren had prior warning; show how disclosure affects A's trust objective without treating prior knowledge as proof of every downstream outcome.
+4. Jules leaves/returns the radio without taking part in the routing event; Fate must lose any route that requires Jules to have performed the missing action.
+5. Fate's proposed blame intervention is absent; derive a credible non-Fate ending from the same world facts.
+
+**Pass gate:** at least three materially different causal routes survive skeptical reconstruction; both players have meaningful actions in the same incident; facts/provenance/knowledge and audience response are explicit; at least one counterfactual defeats each route; the radio's behavior is deterministic; and a non-Fate terminal path is credible. If P2 needs a last-minute report cutoff, automatic audience belief, or Fate-created evidence to pass, reject it and test a different premise.
+
+**Decision boundary:** P0 is not approved; P1 is conditional; P2 is the recommended next paper test only. Direct-action mode remains selected. Do not change executable fixtures, implement a selector, or treat the radio premise as canon based on this outline.
