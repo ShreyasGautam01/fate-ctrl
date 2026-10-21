@@ -129,7 +129,7 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Revisit trigger:** An independent reviewer reconstructs its results and the open fairness signals are explained. Human teach-back is still required before selecting a model.
 
 ## D-015 — Build a bounded comparison prototype before model selection
-- **Status:** Accepted for the experiment only; neither control model is selected.
+- **Status:** Accepted for the comparison experiment at the time; D-017 later selects direct-action as the game direction. The fixture's detailed resolver remains unapproved.
 - **Context:** The owner asked to move toward a playable game after the documentation review. The remaining control-model audit and independent reconstruction gates are still open, and the owner needs a concrete way to experience the candidate mechanics.
 - **Decision:** Build a small local browser prototype driven by the existing machine-readable test fixture. Keep both direct-intention and environmental-influence modes available behind the same deterministic resolution contract. Exclude Fate, online multiplayer, persistence, and the unresolved citywide-emergency story.
 - **Alternatives:** Continue paper analysis only; choose a control model prematurely and build that one; or build a full online game before validating the loop.
