@@ -233,10 +233,11 @@ This slice is intended to test whether direct actions produce a reconstructable 
 - It is 18:12. Heavy rain has already disrupted transit. Water ingress on the lower passage's steps is the physical reason the passage is closed; Jules did not cause the storm or the closure.
 - A wall display still says the lower passage is open. Its visible last-update time is 18:05.
 - The station steward has placed an official closure notice at the entrance to the lower passage at 18:11. A queue obscures it from Jules's starting position. The steward is at the nearby information point and can confirm the current route. Jules can discover the closure by asking; Jules does not yet know its cause or the notice's timestamp.
-- Before Jules arrives, a passenger posted “South passage open — the wall display says so” to the existing **North Interchange Riders** group. Jules is a member. The group has 42 members; the post's author and time are visible. A post becomes available to the whole group immediately, but availability does not mean every member has read or believed it.
+- Before Jules arrives, a passenger posted “South passage open — the wall display says so” to the existing **North Interchange Riders** group. Jules is a member, and the post appears in Jules's phone notifications at the start of the slice. Jules can read its wording, author and time, but has not yet verified whether the route is currently open. The group has 42 members. A post becomes available to the whole group immediately, but availability does not mean every member has read or believed it.
 - An existing station camera records the entrance and wall display but has no audio. Its existence and limitations are known from the start; this slice does not require or claim that it captures a misleading gesture by Jules.
+- A notice at the information point states that the station keeps a complete incident log and accepts retrieval requests, but delivery takes at least nine minutes from the time a request is filed. Filing the request preserves a later route to the record; it does not reveal its contents. The notice, access method and turnaround are visible before any choice, not introduced only when an action needs them.
 - Jules is carrying the red umbrella, which was damaged before the loan and whose tear Jules later worsened. Jules promised to return it honestly by 18:24. The flatmate is leaving then. Jules's flat is four minutes away by the known upper-street route, which remains passable.
-- Each beat consumes four in-world minutes. The first starts at 18:12; the second at 18:16; the third at 18:20. The return deadline is therefore reachable only if Jules leaves no later than the start of the third beat.
+- Each beat consumes four in-world minutes. The chosen action resolves at the end of its beat; its time cost is charged before deadline checks, and any incident-log request is filed at that resolution point. The first beat starts at 18:12; the second at 18:16; the third at 18:20. A return after 18:24 misses the promise; arrival exactly at 18:24 is on time. Leaving in the third beat therefore meets the deadline exactly, without a travel buffer.
 
 **Shared player-facing facts:** the rain disruption, the stale display, the existing group post, Jules's umbrella deadline, and the visible scene. Neither player is told a fact that Jules has not learned as if Jules already knows it.
 
@@ -262,7 +263,7 @@ This rule is deliberately easy for a reviewer to reconstruct, not a proposed fin
 
 ### 10.3 Beat 1 — The route is uncertain (18:12–18:16)
 
-**Jules knows at the start:** the wall display says the lower passage is open; it is raining heavily; staff are waving people away, but Jules has not heard or read a clear closure explanation. Jules does *not* know that the display is stale.
+**Jules knows at the start:** the wall display says the lower passage is open; it is raining heavily; staff are waving people away, but Jules has not heard or read a clear closure explanation. Jules has also seen the existing group post repeating the display's route claim. Jules does *not* know that the display is stale or why staff are waving people away.
 
 **Hidden direct intentions for the desk trace**
 
@@ -312,7 +313,7 @@ The proposals conflict, one support mark each. The provisional situation priorit
 
 ### 10.5 Beat 3 — The deadline becomes immediate (18:20–18:24)
 
-**Jules knows at the start:** the route facts are verified and the correction is posted. Four minutes remain; the known journey home takes four minutes. A complete incident log exists as a station record, but requesting it now will not return it before this deadline. That limitation is part of the scene before the decision, not a surprise introduced afterward.
+**Jules knows at the start:** the route facts are verified and the correction is posted. Four minutes remain; the known journey home takes four minutes. The information-point notice already established the incident-log retrieval process: any request filed now will arrive after 18:24. That limitation is known before the decision, not introduced afterward.
 
 **Hidden direct intentions for the desk trace**
 
@@ -367,14 +368,14 @@ This is an **action-arbitration question, not a reason to reopen direct mode**. 
 
 Keep the selected interaction model: each player privately chooses a direct action for Jules. For this candidate only:
 
-1. Validate both submissions against the same beat-start state and Jules's acquired knowledge. A player-only fact cannot make an action legal for Jules. An action based on an understandable mistake may remain legal; it is not silently corrected using hidden world knowledge.
-2. If both proposals are invalid, resolve to the defined `WAIT` fallback: no protagonist effect, the four-minute beat still elapses, and normal deadline triggers still run. If exactly one proposal is valid, execute the valid proposal. In either case, do not expose which submission failed or the internal reason in the normal player UI.
-3. If both legal proposals are identical, execute that action once. This is consensus, not two actions. Consensus does not legalize an action that failed step 1.
-4. If the proposals differ, compare **only those two legal proposed actions** using the short, predeclared situation-priority rule below. Never silently replace them with an unproposed “best” action. If priorities are exactly tied, the rule is not yet complete: do not code until a public, deterministic tie-break is selected and independently reconstructed.
-5. An action targeting something that becomes stale before resolution is treated as invalid under the same rules as step 1; do not silently retarget it. The current paper fixture uses one shared beat-start snapshot, so neither player's action is allowed to mutate the state before the other proposal is validated.
+1. Validate both submissions against the same beat-start state and Jules's acquired knowledge. A player-only fact cannot make an action legal for Jules. An action based on an understandable mistake may remain legal; it is not silently corrected using hidden world knowledge. Hard action preconditions are checked before consensus or priorities.
+2. If both proposals are invalid, resolve to the defined `WAIT` fallback: no protagonist effect, the four-minute beat still elapses, and normal deadline triggers still run. If exactly one proposal is valid, execute the valid proposal. Do not expose which submission failed or the internal reason in the normal player UI.
+3. If both valid proposals are identical, execute that action once. **Consensus bypasses the situation-priority ladder**: it represents both players steering toward the same direct action and may deliberately sacrifice a deadline or other opportunity. It still cannot bypass a hard precondition or make an unavailable action possible. This is an intentional property of the candidate model, not an accepted production rule.
+4. If the proposals differ, compare **only those two legal proposed actions** using the predeclared scene-priority rule below. Never silently replace them with an unproposed “best” action. The priority ladder resolves disagreement; it is not a universal obligation for Jules to always perform the highest-priority action when both players agree on a different legal move. If priorities are exactly tied, the rule is not yet complete: do not code until a public, deterministic tie-break is selected and independently reconstructed.
+5. An action targeting something that becomes stale before resolution is treated as invalid under the same rules as step 1; do not silently retarget it. This paper slice validates both proposals against one beat-start snapshot before any mutation, so one proposal cannot alter the conditions under which the other is validated.
 6. Apply the selected action's effects, explicit knowledge updates, time cost, and event record atomically. Build the story and state-meter changes from that resolved event. Do not expose the raw proposal pair, support count, or priority diagnostics in the player-facing timeline.
 
-**Deadline boundary for this paper slice:** actions are evaluated from the beat-start time and their stated four-minute cost. A return completed at or before 18:24 meets the promise; a return completed after 18:24 does not. If the remaining time is shorter than the four-minute travel action, leaving no longer counts as preventing the deadline miss—although it may still be a legal choice that sacrifices the objective. Apply departure/objective checks after the resolved action's time cost, with arrival at the exact deadline counted as on time.
+**Deadline boundary for this paper slice:** each selected action consumes its four-minute beat, and deadline checks occur after that cost. A return completed at or before 18:24 meets the promise; a return completed after 18:24 does not. Leaving in the 18:20 beat means arrival at exactly 18:24 and counts as on time. If less than four minutes remain before the latest feasible departure, leaving can no longer prevent a miss, although it may still be a legal choice that sacrifices the objective. An incident-log request is filed at action completion; its nine-minute minimum retrieval time starts then, so none of the requests in S2 or S3 returns before the deadline.
 
 The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
 
