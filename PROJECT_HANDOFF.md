@@ -85,12 +85,12 @@ Historical simulations preserve design reasoning but do not outrank the active c
 2. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`; separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
 3. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
 4. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
-5. After a coherent scenario is accepted, design a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure. Then test it with uncoached players.
+5. Direct-action mode is selected. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 and pressure-test the proposal-constrained resolver using same-state action-pair variations. Role-symmetry and action responsiveness are separate checks. Close priority ties, invalid/stale actions and deadline boundaries before coding.
 
 ## Constraints to preserve
 
 - Quality and cross-system coherence outrank speed.
-- Direct intention is the preferred lead candidate, not a final model selection.
+- Direct-action mode is the selected interaction direction. The exact contested-proposal resolver, action economy and production rules are not yet selected.
 - Story is the primary player feedback; state meters are secondary and must reflect actual tracked state.
 - Authoritative rules are deterministic; narration is presentation only.
 - Keep submitted intentions and input-derived ranking diagnostics out of the normal player UI. A local browser is not a security boundary.
