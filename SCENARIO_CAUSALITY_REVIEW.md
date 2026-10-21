@@ -353,10 +353,10 @@ This is an **action-arbitration question, not a reason to reopen direct mode**. 
 | Jules acts only on acquired knowledge | Pass for this slice | The closure facts enter Jules's knowledge after asking the steward. |
 | Story follows the resolved event | Pass for this slice | The three paragraphs narrate only the action and consequences selected by the paper rule. |
 | Meters have explicit meaning and causes | Provisional pass | Their definitions are explicit, but the trust response and meter presentation require review. |
-| Competing private actions meaningfully steer Jules | **Fail** | Exchanging the two proposals never changes a resolved action in this trace. |
+| Competing private actions meaningfully steer Jules | **Not established by this trace alone** | The trace illustrates three conflicts but does not hold state constant while varying the action pair. Role-symmetry alone is expected. Section 11 provides the needed counterfactual table. |
 | Fate's local blame claim is earned | **Fail on this branch** | No blameworthy causal contribution by Jules occurs, and the correction is reachable by the bounded audience. Fate must lose this route, not overrule the evidence. |
 
-**Next required artifact:** an action-arbitration counterfactual table over the same fixed scene. Hold the world, objectives and timing constant; vary the proposed action pair, and separately test role-swaps. The outcome should usually be invariant to role-swapping unless asymmetry is a declared rule, but it must respond to action-pair changes in strategically meaningful states. Do not code a new selector until that table has a clear, defensible pass.
+**Next required step:** independently reconstruct §11 from the fixed facts and candidate rule. Check whether every outcome follows the stated priority, whether the proposed-action pair changes the result in meaningful states, and whether role-swaps remain fair. Fill in equal-priority, invalid-proposal and stale-action behavior before implementation. Section 11 remains a design hypothesis—not accepted rules—and the selector must not be coded until the test passes.
 
 
 ## 11. Counterfactual table — a proposal-constrained direct-action resolver
