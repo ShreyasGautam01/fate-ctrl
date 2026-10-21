@@ -381,6 +381,7 @@ The candidate situation priority for this scene is qualitative and state-conditi
 4. Correct a verified, still-active false route claim when one travel block can remain afterward.
 5. Obtain additional, non-urgent official documentation while the deadline remains feasible afterward.
 6. Begin the journey early when none of the higher priorities applies.
+7. Forward route advice without current confirmation when the verification source is already available.
 
 These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet.
 
