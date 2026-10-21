@@ -66,7 +66,7 @@ The **timing model** is still unresolved:
 
 Do not conflate this timing choice with the now-selected direct-action control mode. A hybrid is acceptable only if it solves a demonstrated problem without needless cognitive load.
 
-The chosen loop must define when players see state and commit, whether commitments can change, how illegal/stale actions are handled, how conflicts resolve, when deadlines and delayed effects trigger, when Fate acts and pays, how outcomes are explained, and how timeouts/disconnects work if online play is selected. CONTROL_MODEL.md is a historical test-only comparison fixture; its semantics do not define the production rules. DECISIONS.md records the owner's selection of direct-action mode. The candidate resolver in SCENARIO_CAUSALITY_REVIEW.md §§10–11 remains unapproved.
+The chosen loop must define when players see state and commit, whether commitments can change, how illegal/stale actions are handled, how conflicts resolve, when deadlines and delayed effects trigger, when Fate acts and pays, how outcomes are explained, and how timeouts/disconnects work if online play is selected. CONTROL_MODEL.md is a historical test-only comparison fixture; its semantics do not define the production rules. DECISIONS.md records the owner's selection of direct-action mode. The candidate resolver and objective-coupling analysis in SCENARIO_CAUSALITY_REVIEW.md §§10–12 remain unapproved.
 
 ## 8. Candidate action families
 Potential actions: influence the protagonist; interfere with another influence; protect an eligible fact/object/relationship; delay a consequence; reveal a hidden fact; suppress an object's availability or an effect; swap or redirect eligible resources/targets/consequences.
