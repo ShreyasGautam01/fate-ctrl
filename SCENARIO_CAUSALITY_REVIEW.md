@@ -741,7 +741,7 @@ These are scene-specific priority hypotheses, not universal moral rankings. The 
 | S2 | Set paddle WEST MAIN HALL | Return R4 before handover | **Set paddle WEST MAIN HALL** | The immediate route cue is prioritized over early equipment handover. |
 | S2 | Set paddle WEST MAIN HALL | Review/attach warning | **Set paddle WEST MAIN HALL** | The arrivals are due at 18:20; the visible alternate-route direction takes priority over report research. |
 | S2 | Set paddle WEST MAIN HALL | Return R4 early | **Set paddle WEST MAIN HALL** | The immediate route cue for the waiting arrivals takes priority over early equipment handover. |
-| **S3 — queue waiting, four minutes to sign-off** | Review/attach warning | Return R4 to Ren | **Review/attach warning** | The warning enters the first report; the on-time direct handover is missed. |
+| **S3-V — queue waiting after verified route / incomplete radio transmission, four minutes to sign-off** | Review/attach warning | Return R4 to Ren | **Review/attach warning** | The warning enters the first report; the on-time direct handover is missed. |
 | S3 | Send short instruction on R4 | Review/attach warning | **Send short instruction** | Resolves the active queue before the report closes; the prior-warning evidence can only be appended later. |
 | S3 | Send short instruction on R4 | Return R4 to Ren | **Send short instruction** | The live route delay is addressed first; R4 handover is missed. |
 | S3 | Review/attach warning | Same action | **Review/attach once** | B's evidence milestone is achieved; A's on-time return predicate fails. |
