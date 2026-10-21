@@ -504,3 +504,60 @@ The action table is locally reconstructable, but that is not the same as proving
 - The most credible candidate for Fate pressure remains the branch where Jules forwards the stale display before verifying it. The scene still lacks evidence of downstream exposure and effect, so primary public blame remains unearned. Fate cannot simply make the group read the message or invent a crowd movement.
 
 **Next gate:** first close the scene's continuation contract: does the scenario end at 18:24, or is that only A's personal deadline? Track Jules's location after each action and list legal actions available from home versus at the station. Do not score B as failing simply because the correction is absent at 18:24 when no correction deadline exists. Then test a narrowly revised B objective with two candidate milestones—correct the active route claim and preserve/obtain official evidence for later accountability—against the same branches. Keep both objectives provisional; don't add a new report cutoff or crowd reaction unless the scenario establishes its source, timing, audience and observable consequence in advance. If the milestones require arbitrary constraints, replace the premise rather than hiding the gap.
+
+
+## 13. Scene continuation contract — test location, not a terminal rule
+
+**Status:** Author desk proposal for making the current slice reconstructable. It does **not** set the overall game horizon or establish final wins. The four-minute beat timing and the 18:24 umbrella promise remain scenario-local. This section explicitly separates action availability from objective completion.
+
+### 13.1 Minimal world-state fields
+
+For every resolution, retain at least these fields:
+
+- `time`: beginning and end of the four-minute beat;
+- `location`: `interchange` or `home`;
+- `closure_verified`: whether Jules learned the current closure from the steward/official notice;
+- `notice_photo_on_phone`: whether Jules actually captured the notice (not assumed just because it was visible);
+- `stale_group_claim_exists` and `correction_posted`;
+- `incident_log_request_time` and `incident_log_available_time`, if a request was actually filed;
+- `umbrella_returned`, `damage_acknowledged`, `trust`, and the flatmate's `departed` state;
+- the audience-facing message availability/provenance separately from any evidence that people read, believed, or acted on it.
+
+Location, source access and knowledge are separate state. Returning the umbrella does not delete the group post or travel the station record to Jules. Posting a correction does not imply that any recipient has read it.
+
+### 13.2 Candidate action availability after each location change
+
+| Action | At interchange | At home | Rule / unresolved edge |
+|---|---|---|---|
+| Ask the steward about the closure | Legal if the route is not verified and the steward is present | Not legal | Jules must be physically at the information point. |
+| Photograph the official closure notice | Legal if Jules can reach the notice | Not legal unless a photo was already captured | Seeing/being told about a notice is not the same as possessing a copy. |
+| Forward a photo of the stale display without a caveat | Legal only while Jules can capture/access the displayed claim | Only if Jules already has a suitable photo saved | This action redistributes a representation of the display; it does not alter the closure. If Jules already knows the closure is false, a deliberate misleading forward would require a separate, explicitly authored action and intent. |
+| Post a sourced text correction to the group | Legal if the closure is verified and the group is accessible | Legal if the closure is verified and the group is accessible | The current action definition needs only a source-citing correction, not an attachment. If the design intends to require the primary notice image, change the precondition and test that version separately. A post proves availability, not audience uptake. |
+| Request the station incident log | Legal at the information point under the seeded request process | Not yet defined as legal | The request notice exists at the station. The delivery/access mechanism after nine minutes is still undefined; do not assume Jules receives or can inspect the log from home until that is specified. |
+| Go home to return the umbrella honestly | Legal if the flatmate has not departed and the upper-street route is passable | Not applicable once the umbrella is returned | The four-minute journey includes handover and honest acknowledgement. Arrival at 18:24 is on time; after 18:24 is late. |
+| Return to the interchange | Not needed | Candidate legal action if the scenario continues and the upper-street route is passable | For this desk test only, assume the return trip also takes four minutes. This reciprocal travel-time assumption needs confirmation before it can become executable scenario data. |
+| Wait / review the phone | Legal | Legal | Must still consume a beat if selected as a protagonist action. If neither submitted proposal is valid, the resolver's `WAIT` fallback advances time; it is not a free pause. |
+
+### 13.3 Continuation rule used to interpret the matrix
+
+1. **18:24 is Player A's deadline, not a game-ending rule.** If Jules arrives and hands over the umbrella at or before that time, evaluate A's deadline predicate. The game does not end merely because this deadline fires.
+2. After every action, update Jules's location and source access before generating the next legal-action list. A station-only action cannot resolve while Jules is home. Do not retarget it or pretend travel happened without an explicit travel action.
+3. The group remains phone-accessible from either location. If Jules verified the closure, a source-citing text correction remains legal from home under the current action definition. The public correction has **no established cutoff** in this scenario. Its absence at 18:24 is a checkpoint fact, not proof that B permanently lost.
+4. A requested incident log remains pending until the seeded minimum delay expires. Its post-delay delivery/access channel is unspecified, so no paper branch may claim that Jules reads it at home without adding and reviewing that rule.
+5. The scene's **terminal horizon is still undefined**. Do not claim final objective wins or losses after Beat 3. For the bounded test, report only the state at 18:24 and list pending goals/effects explicitly.
+
+### 13.4 Revised continuation counterfactual
+
+The current scene contains a straightforward route that weakens the proposed rivalry:
+
+| Beat | Competing proposals | Resolved action | State at beat end |
+|---|---|---|---|
+| 1: 18:12–18:16 | Verify the closure vs go home and return umbrella | Ask the steward wins under the candidate route-verification priority | Jules remains at the interchange, now knows the closure; umbrella not returned. |
+| 2: 18:16–18:20 | Go home to return umbrella vs post a correction | Go home wins only if the candidate priorities are changed or the proposals are otherwise resolved in its favor; under the currently written correction priority, correction wins while a travel beat still remains. This is itself a conflict/priority choice, not a fixed result. | If correction wins, Jules can still return at Beat 3 exactly on time. If return wins, Jules reaches home at 18:20 with four minutes remaining and the verified route facts. |
+| 3: 18:20–18:24 | If Jules is home with the closure verified, post the source-citing correction vs a location-appropriate home action | The correction is legal from home and can be completed by 18:24 if selected. | Jules can meet A's promise by 18:20 and still post B's correction by 18:24. The current state/objective definitions impose no penalty for the exact return deadline or for this sequence. |
+
+The second-beat sentence above deliberately identifies a rule inconsistency: the earlier priority table ranks a correction above departure at 18:16, so the row cannot claim that departure wins under the currently written resolver. The valid deterministic outcome under those rules is **correction at Beat 2, then return at Beat 3**, while a return-first branch requires a different tested resolution. Do not write a counterfactual result that contradicts the current action priority merely to make a desired strategy appear.
+
+**Finding:** the location-aware continuation closes the false assumption that the scenario automatically ends at 18:24, but it exposes a deeper design failure: under the current action definitions, the public correction can be completed from home after Jules verifies the closure, and exact-deadline return still satisfies A. Thus the umbrella deadline does not reliably force a meaningful conflict with B's correction goal.
+
+**Next decision gate:** do not patch this with an arbitrary correction cutoff. Test whether a *naturally bounded* public event/source exists in the intended setting, with its time, audience and causal consequence established before play. If none does, replace or decouple the umbrella premise from the public-accountability scenario. Direct-action mode remains selected; no UI or resolver implementation should proceed on this scene until the premise/objective gate passes.
