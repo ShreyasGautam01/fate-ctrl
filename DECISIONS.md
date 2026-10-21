@@ -179,3 +179,14 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Cross-system effects:** Action validation, event resolution, protagonist agency, UI privacy, state meters, and scenario balancing.
 - **Revisit trigger:** A complete same-state test matrix and independent reconstruction demonstrate that a simpler alternative meets the same fairness and agency constraints.
 
+
+## D-019 — Do not rescue weak objective coupling with an ungrounded deadline
+
+- **Status:** Proposed — paper-test direction only; not a story-canon decision.
+- **Context:** The worked transit slice establishes that 18:24 is only Player A's umbrella promise deadline. The commuter group remains phone-accessible, B has no correction cutoff, the log's delivery channel is not defined, and the public audience's actions are unobserved. Inventing a public correction cutoff at the same time would manufacture objective conflict rather than derive it from the scene.
+- **Decision proposal:** Keep the Red Umbrella / transit slice as a documented probe, not the production opening. Before investing in the current premise, paper-test P2 in SCENARIO_CAUSALITY_REVIEW.md §14: a borrowed, unreliable venue radio whose prior fault warning, route communication, handover and incident attribution share one causal structure. The existing umbrella premise is not deleted; P2 is not accepted canon.
+- **Alternatives considered:** (a) add an arbitrary correction/report deadline to P0; (b) keep a mostly parallel personal deadline and public-accountability subplot; (c) test a more causally integrated object/communication premise before selecting a scenario.
+- **Rationale:** A time limit is fair only when it follows from a seeded operational constraint, and a player's objective should interact with actual events rather than rely on a symbolic object or a cutoff invented to force conflict.
+- **Cross-system effects:** scenario choice, evidence provenance, knowledge ownership, action legality by location, protagonist action arbitration, objective evaluation, Fate eligibility, and terminal conditions.
+- **Guardrails:** The radio fault must have deterministic behavior and an established source; Ren's prior knowledge must be evidenced by a message seeded before choices; Jules's actions and recipients' observed responses must be separate events; a transmission fault cannot alone prove who caused the crowd outcome. Direct-action mode remains selected.
+- **Revisit trigger:** The P2 paper trace fails an independent reconstruction, cannot provide three distinct viable causal routes/counterplay and a non-Fate ending, or needs unseeded audience belief or arbitrary deadlines to work. In that case, compare another premise rather than patch P0.
