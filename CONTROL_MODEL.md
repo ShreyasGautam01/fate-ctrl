@@ -176,9 +176,9 @@ Thus the path count is 3 × 3 × 1 = 9. This reconstruction explains the shape o
 
 An independent reviewer should reproduce this route from the fixture and policy, then answer whether the narrow public-disclosure trade-off is an intended strategic choice or an artifact of the current signal vocabulary and trust rule. The owner's preference currently favours direct intention for the next player-facing experiment, so no additional W mechanics should be added merely to enlarge this count.
 
-## 10. Open owner decisions and next gate
+## 10. Historical fixture questions and current validation gate
 
-The following are not silently accepted game canon:
+The following were open questions about this historical comparison fixture; they do not reopen the owner's selected direct-action control direction:
 
 1. Whether direct proposals should add additive support, whether unanimous proposals should strongly override Jules's preferences, and whether PASS is the right alternative to proposing an action.
 2. Whether Jules's default preference to return before presenting evidence is plausible.
@@ -187,15 +187,15 @@ The following are not silently accepted game canon:
 5. Whether three boundaries give enough space for meaningful strategic counterplay.
 6. Whether environmental influence should later include persistent world-state effects beyond the current context/privacy test.
 
-The deterministic enumerator and its current unit tests have been executed. Next, have an independent reviewer reconstruct the selected actions and objective paths from the JSON fixture, policy contract, and report. Correct any discrepancies before considering a local comparative prototype. Human teach-back is still required before declaring either model fun, fair, or selected for the game.
+The deterministic enumerator and its current unit tests have been executed, and the local comparison prototype already exists. The next independent audit should reconstruct selected actions and objective paths from the JSON fixture, policy contract, and report. Correct discrepancies in this historical harness, but do not infer that the comparison needs to be repeated before continuing with the owner's selected direct-action direction. Human teach-back is still required before claiming the selected experience is fun or fair.
 
 The offline deterministic enumerator exists at `tools/control_model_enumerator.py` and reads `scenarios/control_model_test_fixture.json`. Twelve standard-library unit tests pass on the current working copy. Aggregate results are recorded in `reports/control_model_enumerator_summary.json`. The counts are not probabilities or balance scores. The code is a test harness, not a UI, online backend, or production engine; an independent code/fixture audit and reconstruction are still required.
 
 ## 11. Authority and historical documents
 
-This is the active working reference for the control-model experiment while the consolidation PR is in review.
+This is the active reference for the historical control-model experiment, not a request to select between two player-facing modes again.
 
-- SPEC.md is the product-level draft; it does not settle this control-model decision.
+- SPEC.md is the product-level draft; it records direct-action as the selected control direction and leaves timing/arbitration unresolved.
 - scenarios/umbrella.json remains an unresolved scenario probe, not the source of truth for this test fixture.
 - INFORMATION_MODEL.md owns the vocabulary for fact, evidence, access, knowledge, belief, disclosure, visibility, and events.
 - MODULE_CONTRACTS.md and ARCHITECTURE.md define logical engineering responsibilities and the comparison-harness plan.
