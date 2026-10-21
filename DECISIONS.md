@@ -160,11 +160,22 @@ Statuses: **Proposed** = candidate, not binding; **Accepted** = approved for cur
 - **Trade-offs and risks:** Authored prose can repeat or flatten branches. The fixture does not yet support the intended Fate escalation. Binary progress bars can overstate precision, so labels and supporting text must explain what is actually tracked.
 - **Revisit trigger:** Uncoached sessions show whether choices are understandable, prose matches rules, meters improve comprehension, inference is possible, and pacing creates meaningful tension.
 
-## D-017 — Use direct intention as the lead player-facing candidate
-- **Status:** Accepted preference for the next experiment; production control model remains unselected.
-- **Context:** After experiencing both modes, the owner preferred the mode where players choose actions they want Jules to take over the mode where they select objective-related signals. The owner specifically valued having to reason about the possible consequences of an action.
-- **Decision:** Make direct-intention the default and primary path for the next narrative-first experiment. Keep environmental influence available only as an experimental comparator for now. Do not delete the alternative or claim a final model selection until the independent rules audit and broader playtest gates are reviewed.
-- **Alternatives:** Keep both modes equally prominent; drop environmental influence permanently now; implement a hybrid before a problem with either pure model has been demonstrated.
-- **Rationale:** Action-oriented choices are easier to reason about as moves in a story and put consequence prediction in the player's hands. The owner preference is meaningful qualitative direction, but it is not yet a broader playtest result.
-- **Cross-system effects:** Choice vocabulary, action resolution, hidden-intention inference, objective fairness, state meters, scenario design, and future UI prioritization.
-- **Revisit trigger:** A richer matched scenario and uncoached sessions show whether the action model produces clear, consequential, non-dominated choices without making Jules feel like a passive executor.
+## D-017 — Select direct action as the player-facing control mode
+- **Status:** Accepted — interaction direction selected; the resolution contract remains provisional.
+- **Context:** The owner tried both interaction modes and explicitly chose the mode in which players select concrete actions they want Jules to take. The value is consequence prediction and inference from observed events, rather than asking players to manipulate objective-related environmental signals.
+- **Decision:** Direct-action mode is the selected direction for the next game iteration. Each player privately proposes a concrete action for Jules. The player-facing experience should center on those actions, the resulting story, and a small set of causally grounded state indicators. Environmental influence remains available only as a historical comparison in the existing experiment; it is not a co-equal mode for new gameplay unless the owner explicitly reopens it.
+- **Boundaries:** This decides what players choose, not whether a proposal is a command, how simultaneous submissions arbitrate, which actions are legal, how initiative/economy works, or how invalid/conflicting proposals resolve. Those rules must still be tested and documented. It does not authorize a hybrid control model.
+- **Alternatives considered:** Keep both modes equally prominent; choose environmental influence; combine the two before a need is demonstrated.
+- **Rationale:** Direct action best supports the desired story-first loop and requires players to predict concrete consequences. This is an explicit product decision by the owner, not a claim that broader playtesting has validated it.
+- **Cross-system effects:** Action vocabulary, private-intention handling, protagonist agency, resolution fairness, story presentation, state meters, and future playtest/UI design.
+- **Revisit trigger:** The owner changes the direction, or actual playtests demonstrate a material failure of the direct-action experience that cannot be corrected through resolution design.
+
+## D-018 — Require counterfactual validation before implementing contested-action resolution
+- **Status:** Accepted process gate; no resolver algorithm is yet accepted.
+- **Context:** The worked O2 paper trace in `SCENARIO_CAUSALITY_REVIEW.md` demonstrates that a trace can be narratively reconstructable yet still leave meaningful influence under-tested. Direct-action mode is selected, but the way conflicting private proposals produce one observable protagonist action is not yet validated.
+- **Decision:** Before coding a new resolver, use a fixed-state counterfactual table to vary proposed action pairs, test consensus and disagreement, and separately test player-role swaps. A proposed resolver must be deterministic, grounded in Jules's acquired knowledge, fair under role swaps unless an explicit visible rule says otherwise, and responsive to action-pair changes in meaningful states. It must not reveal raw submissions, execute a silent third action when two legal proposals conflict, or depend on an opaque ranking tuple.
+- **Alternatives considered:** Copy the comparison fixture's ranking policy into the new scenario; use an unreviewed initiative winner; let narration select a result.
+- **Rationale:** Passing a prose walkthrough is not sufficient if the chosen actions do not have meaningful effects or if outcomes cannot be independently reconstructed.
+- **Cross-system effects:** Action validation, event resolution, protagonist agency, UI privacy, state meters, and scenario balancing.
+- **Revisit trigger:** A complete same-state test matrix and independent reconstruction demonstrate that a simpler alternative meets the same fairness and agency constraints.
+
