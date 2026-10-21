@@ -218,3 +218,142 @@ Use one worked round under O2, without coding:
 **Pass:** the reviewer can explain the event and indicators without being shown the hidden submissions; both player intentions remain inferable only from observed behavior; the scene creates a plausible next disagreement.
 
 **Fail:** the story reveals player inputs, the meter change is not grounded in the event, the protagonist acts on unknown information, or the resolution can only be justified by saying the selector chose it. In that case, fix the action contract before building a richer browser UI.
+
+
+## 10. Worked three-beat paper slice — direct-action mode
+
+**Status:** Authored desk test dated 2026-10-21. Direct-action mode is selected for the next narrative-first iteration at the owner's direction. The action-arbitration rule below is deliberately provisional and this trace is not independent review, human playtest evidence, or accepted story canon.
+
+This slice is intended to test whether direct actions produce a reconstructable story, preserve the boundary between player knowledge and Jules's knowledge, and change a few readable state indicators for defensible reasons. It also stress-tests a serious risk: two hidden intentions can conflict, yet the selector may choose the same action regardless of which player proposed what.
+
+### 10.1 Facts fixed before anyone chooses
+
+**World and timing**
+
+- It is 18:12. Heavy rain has already disrupted transit. Water ingress on the lower passage's steps is the physical reason the passage is closed; Jules did not cause the storm or the closure.
+- A wall display still says the lower passage is open. Its visible last-update time is 18:05.
+- The station steward has placed an official closure notice at the entrance to the lower passage at 18:11. A queue obscures it from Jules's starting position. The steward is at the nearby information point and can confirm the current route. Jules can discover the closure by asking; Jules does not yet know its cause or the notice's timestamp.
+- Before Jules arrives, a passenger posted “South passage open — the wall display says so” to the existing **North Interchange Riders** group. Jules is a member. The group has 42 members; the post's author and time are visible. A post becomes available to the whole group immediately, but availability does not mean every member has read or believed it.
+- An existing station camera records the entrance and wall display but has no audio. Its existence and limitations are known from the start; this slice does not require or claim that it captures a misleading gesture by Jules.
+- Jules is carrying the red umbrella, which was damaged before the loan and whose tear Jules later worsened. Jules promised to return it honestly by 18:24. The flatmate is leaving then. Jules's flat is four minutes away by the known upper-street route, which remains passable.
+- Each beat consumes four in-world minutes. The first starts at 18:12; the second at 18:16; the third at 18:20. The return deadline is therefore reachable only if Jules leaves no later than the start of the third beat.
+
+**Shared player-facing facts:** the rain disruption, the stale display, the existing group post, Jules's umbrella deadline, and the visible scene. Neither player is told a fact that Jules has not learned as if Jules already knows it.
+
+**Private objective cards**
+
+- **Player A:** Return the umbrella honestly and preserve the flatmate's trust. The deadline makes lingering costly, but the objective does not require Jules to lie about the transit situation.
+- **Player B:** Establish a sourced, proportionate account of the route confusion: distinguish the outdated display and water closure from any action Jules actually took. Do not “clear” Jules by hiding a real contribution if later evidence establishes one.
+- **Fate (candidate objective, not implemented in this slice):** Make Jules appear primarily responsible for the local routing confusion, despite the independent closure and stale display. Fate cannot edit the display, invent a recording, or change the actual cause.
+
+The two player goals can align on accurate information and still conflict over whether Jules should spend the remaining time at the interchange or go home.
+
+### 10.2 Resolution rule used for this paper test only
+
+Each player privately submits one **direct action** from the legal action menu for the current beat. Submissions are checked against the same beat-start state; they do not grant Jules knowledge. The normal story and timeline reveal only the action Jules actually performs, never the raw submissions or a selector trace.
+
+For this trace, the test resolver uses this plain rule:
+
+1. If both players nominate the same legal action, that action has two support marks and overrides a lower-priority alternative.
+2. If the proposals differ, each has one support mark. Jules follows a **prewritten situation priority**: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. An action's effects cannot exceed what Jules knows and what the scene makes available.
+3. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
+
+This rule is deliberately easy for a reviewer to reconstruct, not a proposed final game mechanic. It is used to expose a design issue, not to smuggle a selector decision into story prose.
+
+### 10.3 Beat 1 — The route is uncertain (18:12–18:16)
+
+**Jules knows at the start:** the wall display says the lower passage is open; it is raining heavily; staff are waving people away, but Jules has not heard or read a clear closure explanation. Jules does *not* know that the display is stale.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Leave for home by the upper street.**
+- B proposes: **Ask the steward to confirm the current route.**
+
+Both are legal. They conflict. Each receives one support mark, so the situation priority resolves the choice: Jules asks the steward. The player-facing explanation is “The route instruction is uncertain and safety-relevant, so Jules checks it before directing anyone or relaying the old display.” Neither input is shown in the normal UI.
+
+**Resolved event and knowledge update:** The steward points to the official closure notice, timestamped 18:11, and says water is running across the lower steps. Jules can now distinguish the current closure from the wall display's 18:05 information. This adds knowledge to Jules; it does not retroactively make that knowledge available at the moment of the earlier proposals.
+
+**Story shown to both players**
+
+> The steward turns the red notice toward Jules. It is dated 18:11: the lower passage is closed because water is running across the steps. Beside it, the wall display still says OPEN, last updated at 18:05.
+>
+> “That screen hasn't caught up,” the steward says. The storm is still squeezing the crowd into the entrance, but the source of this particular confusion is no mystery now: an old instruction is still visible beside a newer closure.
+
+**State indicators after Beat 1**
+
+- **Flatmate trust: 70/100 → 70/100.** Jules has neither broken the promise nor communicated a new commitment yet.
+- **Route evidence verified: 0/2 → 2/2 (0% → 100%).** The two explicitly tracked checks are now established: the current closure notice and the older display timestamp. This is evidence completeness for this scene, not a probability of being right.
+- **Correction available to the group: 0/42 → 0/42 (0% → 0%).** The earlier claim remains uncorrected. Jules has learned the current facts but has not posted them.
+
+### 10.4 Beat 2 — Correct the record or protect the deadline (18:16–18:20)
+
+**Jules knows at the start:** the lower passage is closed because of water on the steps; the notice is newer than the display; the existing group still contains the stale claim. Jules has eight minutes until the return deadline and needs four minutes to get home.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Leave for home now.**
+- B proposes: **Post a source-backed correction to North Interchange Riders.**
+
+The proposals conflict, one support mark each. The provisional situation priority selects the correction because the route facts are now verified and one travel block will still remain. The correction uses only the existing notice and the visible display timestamp.
+
+**Resolved event:** Jules posts: “Correction: the lower passage has been closed since 18:11 because of water on the steps. The wall display still says OPEN but its last update is 18:05. Follow the steward's current direction.” The old post is not deleted; both messages and their times remain visible for comparison.
+
+**Story shown to both players**
+
+> Jules photographs the red notice and the old display time, then posts a correction to the same group that carried the earlier claim. The new message names its source and explains exactly what it can establish: the passage is closed now, and the display is out of date.
+>
+> The first post does not disappear. Anyone reading the thread can compare the two timestamps instead of being asked to trust a bare assertion. Jules has spent another four minutes at the interchange, but has not claimed to cause the closure.
+
+**State indicators after Beat 2**
+
+- **Flatmate trust: 70/100 → 70/100.** No trust event has occurred yet; posting the correction is not treated as relationship progress.
+- **Route evidence verified: 2/2 → 2/2 (100% → 100%).** No new route fact was established.
+- **Correction available to the group: 0/42 → 42/42 (0% → 100%).** The correction is now available in the existing 42-member group. This measures availability only—not who has read it, accepted it, or changed their belief.
+
+### 10.5 Beat 3 — The deadline becomes immediate (18:20–18:24)
+
+**Jules knows at the start:** the route facts are verified and the correction is posted. Four minutes remain; the known journey home takes four minutes. A complete incident log exists as a station record, but requesting it now will not return it before this deadline. That limitation is part of the scene before the decision, not a surprise introduced afterward.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Leave for home now.**
+- B proposes: **Request the complete station incident log.**
+
+Again the intentions differ and receive one support mark each. The situation priority selects the trip home: this is the last travel block in which Jules can meet the promise. Requesting a record would be legal, but it cannot produce new evidence during this beat and would forfeit the known return window.
+
+**Resolved event and story shown to both players**
+
+> At 18:20, Jules closes the group thread and takes the upper street home. There is no dramatic confession to the crowd and no attempt to turn the storm into a personal defence. Four minutes later, Jules returns the red umbrella on time and admits to the tear they made worse. The flatmate can be annoyed about the damage without being asked to accept a false account of the transit closure.
+
+**State indicators after Beat 3**
+
+- **Flatmate trust: 70/100 → 80/100.** In this paper test only, on-time return plus explicit ownership of the later damage adds 10 points. The scale is a tracked relationship score, not win odds; the exact response remains an unapproved hypothesis.
+- **Route evidence verified: 2/2 → 2/2 (100% → 100%).** No additional route fact was established by returning the umbrella.
+- **Correction available to the group: 42/42 → 42/42 (100% → 100%).** Leaving does not retract the already-published correction.
+
+### 10.6 What this trace establishes—and what it fails
+
+**What can be reconstructed**
+
+- Jules never acts on B's private objective as if it were world knowledge. The steward interaction is the event that supplies the current closure facts.
+- The story describes resolved actions and sourced facts. It does not disclose which player proposed the selected action, mention the rejected proposal, or justify the outcome with hidden rank numbers.
+- Each meter change is traceable to a defined event. The audience meter measures message availability, not readership or persuasion.
+- A satisfying non-Fate path exists in miniature: the group receives a sourced correction, Jules returns the umbrella honestly, and the personal deadline is met.
+- Fate's candidate blame objective **fails on this trace**. Jules did not direct passengers into the lower passage or relay the stale claim; Jules verified the closure and then corrected the claim. Fate cannot manufacture a prior gesture, alter a record, or equate being present at the interchange with causing the closure.
+
+**Important failure: direct proposals do not yet have enough agency when they conflict.** In all three beats the proposals differ. Swapping which player submits each proposal leaves the resolved action unchanged because the situation-priority ladder—not the proposals—decides every conflict. Raw intentions stay hidden, but that privacy alone does not make the control mechanic good. Under this rule, direct intention has causal force mainly when both players agree. That may be a coordination mechanic, but it is not yet a convincing model of two players competing to steer one protagonist.
+
+This is an **action-arbitration failure, not a reason to reopen direct mode**. The owner has selected direct actions. The next design task is to retain action-shaped private proposals while finding a fair, deterministic way for conflicting proposals to have meaningful consequences without exposing raw inputs or letting player objectives become Jules's own motivation.
+
+**Gate result**
+
+| Test | Result | Reason |
+|---|---|---|
+| Scene facts are seeded before they matter | Pass for this slice | Notice, stale display, group size/timing, camera limits, travel time and deadline are fixed up front. |
+| Jules acts only on acquired knowledge | Pass for this slice | The closure facts enter Jules's knowledge after asking the steward. |
+| Story follows the resolved event | Pass for this slice | The three paragraphs narrate only the action and consequences selected by the paper rule. |
+| Meters have explicit meaning and causes | Provisional pass | Their definitions are explicit, but the trust response and meter presentation require review. |
+| Competing private actions meaningfully steer Jules | **Fail** | Exchanging the two proposals never changes a resolved action in this trace. |
+| Fate's local blame claim is earned | **Fail on this branch** | No blameworthy causal contribution by Jules occurs, and the correction is reachable by the bounded audience. Fate must lose this route, not overrule the evidence. |
+
+**Next required artifact:** an action-arbitration counterfactual table over the same fixed scene. Hold the world, objectives and timing constant; vary only the pair of private direct actions, then state which observable consequences should change and why. Reject any resolver for which exchanging the two players' proposals cannot change an outcome in at least some strategically meaningful states, or where it exposes raw inputs, makes Jules omniscient, or relies on an opaque ranking tuple. Do not code a new selector until that table has a clear, defensible pass.
