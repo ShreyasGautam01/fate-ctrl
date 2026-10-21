@@ -614,3 +614,88 @@ Write one three-beat paper trace with fixed times and location, then test at lea
 **Pass gate:** at least three materially different causal routes survive skeptical reconstruction; both players have meaningful actions in the same incident; facts/provenance/knowledge and audience response are explicit; at least one counterfactual defeats each route; the radio's behavior is deterministic; and a non-Fate terminal path is credible. If P2 needs a last-minute report cutoff, automatic audience belief, or Fate-created evidence to pass, reject it and test a different premise.
 
 **Decision boundary:** P0 is not approved; P1 is conditional; P2 is the recommended next paper test only. Direct-action mode remains selected. Do not change executable fixtures, implement a selector, or treat the radio premise as canon based on this outline.
+
+
+## 15. P2 working paper trace — The Borrowed Radio
+
+**Status:** First authored desk trace of the alternative in §14. It is a test fixture in prose, not accepted story canon or production rules. This deliberately uses a **local venue incident**, not a citywide emergency. It tests whether the personal deadline, equipment fault, information ownership and first incident record belong to one causal chain.
+
+### 15.1 Fixed facts before choices
+
+**Setting and timing**
+
+- The scene takes place at Riverside Community Hall during a heavy-rain disruption that already exists. Water has entered the East Passage steps; staff closed the passage at 18:11. Jules did not cause the weather or the closure.
+- The wall display still says “EAST PASSAGE OPEN”, last updated at 18:05. An official closure notice is posted at the East Passage threshold, but a queue obscures it from Jules's starting position. The venue steward at the information desk can confirm the current route.
+- Four attendees are scheduled to reach the East Passage threshold at 18:20. Mina, a volunteer posted there, cannot see the wall display from her station and follows route directions received from the operations radio. If no complete destination instruction arrives, she keeps the four attendees clear of the closed threshold until one is confirmed; the resulting queue is visible and recorded as a delay, not an injury.
+- Jules is assisting the venue team and is carrying **R4**, a handheld radio lent by flatmate Ren, the shift coordinator. Ren's shift and radio handover are scheduled for 18:24. Jules promised to return R4 by that handover.
+- The venue's existing Operations thread contains a message from Facilities at 18:02: “R4 transmit drops the second part of any instruction that runs beyond ten seconds. Do not use it for public routing until checked.” Ren replied at 18:04: “Acknowledged; I will replace it at handover.” Ren later lent R4 to Jules without relaying this warning. Jules has not opened this message at scene start; Player B knows the message exists, but that knowledge does not automatically transfer to Jules.
+- **Deterministic radio behavior:** a transmission has two fixed segments. R4 always sends Segment A and drops Segment B when both are sent as one instruction. The radio emits a double beep at release. A short instruction that fits entirely within Segment A is transmitted completely. This is not random and does not make every use of R4 fail.
+- The first incident note is drafted from Mina's queue record and the observable dispatch log and signed by Ren at the scheduled 18:24 handover. The Operations group of twelve volunteers receives that first version. Evidence attached before sign-off appears in the original; later evidence can be appended with its later timestamp but cannot rewrite the signed first version. This is a proposed operational procedure to test, not a fact accepted outside this paper scenario.
+- Each protagonist action consumes a four-minute beat: 18:12–18:16, 18:16–18:20, and 18:20–18:24. The 18:24 report sign-off and R4 handover are separate event checks at the end of the final beat. A late radio return is still possible, but misses A's stated handover objective. The scene does not automatically end at 18:24.
+
+**Private objectives**
+
+- **Player A:** return R4 by 18:24 and preserve Ren's trust. Jules may acknowledge their own transmission, but A prefers to handle Ren's prior warning privately rather than attach it to the first incident note.
+- **Player B:** ensure that the first signed incident note contains the existing Facilities warning and Ren's acknowledgement, while preserving the fact that Jules did transmit the incomplete instruction. B is not allowed to claim that the fault erases Jules's contribution.
+- **Fate (local milestone only):** make the first incident note single out Jules's transmitted instruction while the prior warning remains unattached. That advances a local scapegoating route; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
+
+### 15.2 Action contracts used in this trace
+
+| Direct action | Preconditions and outcome |
+|---|---|
+| **Ask the steward to confirm the route** | Legal at the information desk while Jules has not verified the current route. Jules learns the closure and its reason from the official notice. It does not reveal the Operations-thread warning. |
+| **Send the complete route instruction on R4** | Legal when Jules has a route instruction and R4 is available. Segment A transmits; Segment B is deterministically dropped. Mina hears the closure warning without the destination, so she holds the four attendees clear of the threshold until an unambiguous route arrives. Jules hears the double beep only after transmission. |
+| **Send the short route instruction on R4** | Legal when the destination is known and the short text fits wholly in Segment A. Mina receives the complete destination, preventing this particular queue. This is real counterplay to the fault; R4 is not a plot device that always fails. |
+| **Review the Operations thread and attach the relevant pre-handover message to the incident note** | Legal while Jules has phone access and the first note is still open. It is a request to search and attach, not a claim that Jules already knows the message. Resolution gives Jules the actual message and adds that existing source to the draft if found. It cannot invent a warning or change the message text. |
+| **Return R4 to Ren at handover** | Legal before or at 18:24 while Jules has R4 and can reach Ren. Completing it by 18:24 meets A's deadline. A late return remains a possible later action but does not retroactively satisfy the handover deadline. |
+| **WAIT (resolver fallback only)** | If neither proposal is legal, no protagonist state changes; time still advances and the report/handover event checks still occur. |
+
+### 15.3 Worked trace: verification followed by a failed long transmission
+
+This path shows a real, observable consequence without pretending the fault or closure was caused by Jules.
+
+**Beat 1 — 18:12 to 18:16**
+
+Jules sees the stale display but has not verified the route. The competing proposals are **Ask the steward to confirm the route** and **Send the complete route instruction on R4**. The candidate situation rule favors verification while a safety-relevant route remains uncertain. Jules asks the steward; the closure is confirmed and becomes part of Jules's knowledge.
+
+> The steward turns the notice toward Jules: the East Passage has been closed because water is running down the steps. The wall display still says OPEN. Across the hall, Mina is waiting for the next route instruction. Jules now has a confirmed destination to communicate, but has not checked the Operations thread or R4's warning.
+
+**State change:** `closure_verified: false → true`. No radio transmission or crowd queue has yet occurred. Ren's prior knowledge remains a player-visible evidence lead, not Jules's knowledge.
+
+**Beat 2 — 18:16 to 18:20**
+
+The next arrivals are due at 18:20. The competing proposals are **Send the complete route instruction on R4** and **Review the Operations thread and attach the relevant message**. The candidate scene priority favors sending an immediate route instruction before the known arrival, while the thread review can be pursued during the report window if time remains. This priority is a hypothesis to challenge, not universal protagonist behavior.
+
+Jules sends the full two-part instruction. R4 transmits Segment A (“East Passage closed; keep the next four arrivals clear of the threshold”) and drops Segment B (the destination, “send them to the West Main Hall entrance”). Mina receives no complete destination. At 18:20 the four attendees arrive; Mina keeps them clear of the barrier while asking for clarification, and a queue forms. The closure remains independently caused by water. Jules's instruction contributes to the delay, but Jules did not create the closure, and the known radio fault is a separate causal factor.
+
+> The radio gives two sharp beeps. “Did you get the West Main Hall?” Jules asks. Mina answers that she heard the warning to keep people away from the East Passage, but not where to send them. Four arrivals are waiting at the threshold. No one has been sent down the closed steps; the cost of the failed transmission is a growing queue and a missing destination.
+
+**State changes:** the record now contains a complete route-closure fact, an observed transmission event, a specific missing destination, and a four-person queue at the threshold. It does not contain proof that all attendees blame Jules. Jules has observed the radio's double beep, but has not yet learned that Ren was warned before lending it.
+
+**Beat 3 — 18:20 to 18:24**
+
+The report and radio handover are both due at the end of this beat. The competing proposals are **Review the Operations thread and attach the relevant pre-handover message** and **Return R4 to Ren at handover**. The proposed resolver gives priority to attaching material evidence before the first report is signed, because that initial report is not overwritten afterward; the radio can still be returned late, but A's on-time handover objective will be missed.
+
+Jules reviews the existing thread, finds the Facilities warning dated 18:02 and Ren's 18:04 acknowledgement, and attaches the messages to the draft incident note before sign-off. Jules learns the actual provenance only as this action resolves. The first note records the incomplete transmission, the four-person queue, the independent closure, and the pre-existing radio warning. It does not erase Jules's transmission or claim Ren caused the closure.
+
+> Ren reaches for the radio as the handover time approaches, but Jules is still adding the two dated messages to the incident note. The report now shows the fault was raised before R4 was lent, and that Jules's transmission failed to carry the destination. At 18:24 Ren signs the first version. The warning is part of the record; R4 is not returned on time.
+
+**Checkpoint outcomes at 18:24**
+
+- **Player A:** misses the on-time radio-return predicate. Preserving trust is unresolved; do not assign a numeric relationship penalty until the response rule is authored.
+- **Player B:** completes the evidence-inclusion milestone for the first incident note, while the record still acknowledges Jules's own transmission.
+- **Fate:** this specific “single out Jules while omitting prior warning” route fails. The report now records multiple contributors and the independent closure. Whether the group believes the account, and whether the event merits any stronger attribution, remains a separate state/question.
+
+### 15.4 Counterfactuals and limits
+
+| Change from the trace | Expected result under this paper contract | What it tests |
+|---|---|---|
+| In Beat 2 Jules sends the short, complete instruction instead of the long instruction | Mina receives the destination; this queue branch does not occur. The independent closure remains. | The radio is counterable and not a guaranteed failure device. |
+| In Beat 3 both players propose returning R4 | Consensus returns it once. The first note is signed without the warning attached; Fate may advance its local omission milestone, but primary blame is not proven just by the omission. | A and B can deliberately coordinate on A's goal, with a recorded cost to B's evidence milestone. |
+| In Beat 3 both propose reviewing and attaching the message | The evidence is attached once; R4 misses handover. | Consensus can knowingly sacrifice the personal deadline. |
+| Jules leaves before the Beat 2 transmission | No R4 route instruction by Jules occurs; the queue may still arise from another established cause, but cannot be attributed to a missing Jules action. | Fate cannot claim contribution from presence alone. |
+| The Facilities warning is absent from the actual thread | The review action finds no such warning and cannot attach it. B's intended milestone is not completed; the game must not invent the evidence. | Player B's private objective knowledge is a lead to investigate, not authority over world truth. |
+
+**Desk result:** P2 connects personal trust, the communication device, route instructions and incident evidence more directly than P0. It has one concrete consequence and a clear non-Fate counterfactual. It does **not** yet pass the scenario gate: the action-priority rule that favors transmission over thread review is only a hypothesis, the trust response is undefined, the initial-report audience has not been shown to believe anything, and three materially distinct Fate routes have not been demonstrated.
+
+**Next action:** build the same explicit counterfactual matrix for P2 across all legal Beat 1/2/3 action pairs, then independently reconstruct it. Only after that should the team decide whether P2 earns a wider route workshop. Keep the current scenario JSON and executable comparison fixture unchanged; this remains prose-only exploratory work.
