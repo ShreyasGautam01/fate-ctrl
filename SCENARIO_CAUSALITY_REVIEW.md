@@ -257,7 +257,7 @@ For this trace, the test resolver uses this plain rule:
 
 1. Validate each proposal against the same beat-start state and Jules's acquired knowledge. A private player objective is not a fact Jules has learned.
 2. If both valid proposals are the same action, execute it once by consensus. In this paper candidate, consensus may steer Jules away from a lower-priority action; it does not execute twice.
-3. If the proposals differ, compare **only those two proposed actions** using a prewritten situation priority: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. The resolver must not silently execute a third, unproposed action just because it has a higher general priority.
+3. If the proposals differ, compare **only those two proposed actions** using a prewritten situation priority: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time for a later go-home-and-return action; when only the travel block remains, take the go-home-and-return action. The resolver must not silently execute a third, unproposed action just because it has a higher general priority.
 4. If only one proposal is legal, execute the valid proposal. If neither is legal, use WAIT; the beat still advances. Hard preconditions cannot be bypassed by consensus. An action's effects cannot exceed what Jules knows and what the scene makes available.
 5. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
 
@@ -269,7 +269,7 @@ This rule is deliberately easy for a reviewer to reconstruct, not a proposed fin
 
 **Hidden direct intentions for the desk trace**
 
-- A proposes: **Leave for home by the upper street.**
+- A proposes: **Go home by the upper street and return the umbrella honestly.**
 - B proposes: **Ask the steward to confirm the current route.**
 
 Both are legal. They conflict. Each receives one support mark, so the situation priority resolves the choice: Jules asks the steward. The player-facing explanation is “The route instruction is uncertain and safety-relevant, so Jules checks it before directing anyone or relaying the old display.” Neither input is shown in the normal UI.
@@ -294,7 +294,7 @@ Both are legal. They conflict. Each receives one support mark, so the situation 
 
 **Hidden direct intentions for the desk trace**
 
-- A proposes: **Leave for home now.**
+- A proposes: **Go home now and return the umbrella honestly.**
 - B proposes: **Post a source-backed correction to North Interchange Riders.**
 
 The proposals conflict, one support mark each. The provisional situation priority selects the correction because the route facts are now verified and one travel block will still remain. The correction uses only the existing notice and the visible display timestamp.
@@ -377,16 +377,16 @@ Keep the selected interaction model: each player privately chooses a direct acti
 5. An action targeting something that becomes stale before resolution is treated as invalid under the same rules as step 1; do not silently retarget it. This paper slice validates both proposals against one beat-start snapshot before any mutation, so one proposal cannot alter the conditions under which the other is validated.
 6. Apply the selected action's effects, explicit knowledge updates, time cost, and event record atomically. Build the story and state-meter changes from that resolved event. Do not expose the raw proposal pair, support count, or priority diagnostics in the player-facing timeline.
 
-**Deadline boundary for this paper slice:** each selected action consumes its four-minute beat, and deadline checks occur after that cost. A return completed at or before 18:24 meets the promise; a return completed after 18:24 does not. Leaving in the 18:20 beat means arrival at exactly 18:24 and counts as on time. If less than four minutes remain before the latest feasible departure, leaving can no longer prevent a miss, although it may still be a legal choice that sacrifices the objective. An incident-log request is filed at action completion; its nine-minute minimum retrieval time starts then, so none of the requests in S2 or S3 returns before the deadline.
+**Deadline boundary for this paper slice:** each selected action consumes its four-minute beat, and deadline checks occur after that cost. A handover completed at or before 18:24 meets the promise; a handover completed after 18:24 does not. Choosing **Go home to return the umbrella honestly** in the 18:20 beat means arrival and handover at exactly 18:24, which counts as on time. If less than four minutes remain before the latest feasible departure, leaving can no longer prevent a miss, although it may still be a legal choice that sacrifices the objective. An incident-log request is filed at action completion; its nine-minute minimum retrieval time starts then, so none of the requests in S2 or S3 returns before the deadline.
 
 The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
 
 1. Prevent a known, immediate physical danger.
-2. Leave for home when departing in this beat is the last opportunity to arrive by the 18:24 deadline.
+2. Take the go-home-and-return action when starting it in this beat is the last opportunity to complete the handover by the 18:24 deadline.
 3. Verify a safety-relevant route while its status remains uncertain.
 4. Correct a verified, still-active false route claim. This remains a higher priority than filing a deferred record request; if departure is the last feasible travel action, priority 2 still takes precedence.
 5. Preserve a later route to an official record by filing a request when at least one subsequent travel action can still meet the deadline.
-6. Begin the journey early when none of the higher priorities applies.
+6. Take the go-home-and-return action early when none of the higher priorities applies.
 7. Forward route advice without current confirmation while Jules has not verified the route and the verification source is available.
 
 **How to read this priority list:** read from highest to lowest. A conditional item applies only when its stated condition is true in the beat-start state and the proposed action would produce the named effect. If one of two conflicting proposals is favored by the highest applicable item, choose it. If a log request would consume the last feasible travel block, priority 5 no longer applies: treat the deferred request as the lowest-ranked legal action in this scene, below an immediately useful correction. If neither action has an applicable priority, or both have the same highest applicable priority, the candidate resolver is **undefined for that pair**; do not guess, reveal a submission, or let narration decide. Resolve that tie with a deterministic scene rule before implementation. Consensus bypasses this disagreement ladder after hard preconditions pass.
@@ -402,7 +402,7 @@ In this table, each row starts from the named state; proposals are simultaneous 
 | Action | Precondition at beat start | Effect when selected |
 |---|---|---|
 | **Ask the steward** | Jules is still at the information point; the current route is not yet verified. | At the end of the beat, the steward points out the closure notice and explains that water on the steps closed the lower passage. Jules learns those facts. |
-| **Leave for home** | Jules is still at the interchange and the upper-street route remains passable. | Travel starts at beat start and arrival is at the end of the four-minute beat. The beat's four minutes **include the trip**; do not add a second four-minute travel cost. No further interchange action can be taken in that beat. |
+| **Go home to return the umbrella honestly** | Jules is still at the interchange, the upper-street route remains passable, and the flatmate has not left. | Travel starts at beat start. Arrival, handing over the umbrella, and acknowledging the tear Jules worsened are all part of this one end-to-end action; they are not free follow-up actions. The four-minute beat **includes the trip and handover**. Apply the trust consequence from this action before evaluating an arrival exactly at 18:24 as on time. No further interchange action can be taken in that beat. |
 | **Forward the displayed route without a caveat** | Jules can access the display and group, and has not yet verified the current route. Once Jules learns the current closure, this uninformed-forward action is no longer legal; deliberate misrepresentation would need a separate action definition. | At beat end, Jules posts a photo showing the display's “OPEN” state and visible 18:05 update time, without a current-route caveat. The post becomes available to the group's 42 members. This can mislead, but does not change the actual closure. |
 | **Post a sourced correction** | Jules has learned the current closure, can access the group, and the earlier route claim remains uncorrected. | At beat end, Jules posts the 18:11 notice's closure information and the 18:05 display timestamp to the same group. Both posts remain visible. This changes correction availability, not what every member believes. |
 | **Request the incident log** | Jules remains at the information point and has access to the pre-existing request process shown on the notice. | At beat end, the request is filed. The complete log is released no earlier than nine minutes after filing; filing itself reveals no log content and does not change verified-route evidence. The log can support later review, but it cannot be used as instant proof in these rows. |
@@ -414,7 +414,7 @@ The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if
 
 | Fixed state | Player A proposes | Player B proposes | Candidate result | What this tests |
 |---|---|---|---|---|
-| **S1 — 18:12, route uncertain; 12 minutes until deadline** | Leave for home | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
+| **S1 — 18:12, route uncertain; 12 minutes until deadline** | Go home to return the umbrella honestly | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
 | S1, same state | Leave for home | Forward a photo of the old display to the group without current confirmation | **Leave for home** | Changing B's proposal can change the result; the resolver does not invent an unproposed verification action. The policy prefers not to relay an unverified safety instruction. |
 | S1, same state | Ask steward | Leave for home | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
 | S1, same state | Ask steward | Ask steward | **Ask steward once** | Agreement can give the same action two support marks but never execute it twice. |
