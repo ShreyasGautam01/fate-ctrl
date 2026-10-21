@@ -387,9 +387,11 @@ The candidate situation priority for this scene is qualitative and state-conditi
 4. Correct a verified, still-active false route claim when one travel block can remain afterward.
 5. Preserve a later route to an official record by filing a request when the deadline remains feasible afterward.
 6. Begin the journey early when none of the higher priorities applies.
-7. Forward route advice without current confirmation when the verification source is already available.
+7. Forward route advice without current confirmation while Jules has not verified the route and the verification source is available.
 
-These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet.
+**How to read this priority list:** read from highest to lowest. A conditional item applies only when its stated condition is true in the beat-start state and the proposed action would produce the named effect. If one of two conflicting proposals is favored by the highest applicable item, choose it. If neither action has an applicable priority, or both have the same highest applicable priority, the candidate resolver is **undefined for that pair**; do not guess, reveal a submission, or let narration decide. Resolve that tie with a deterministic scene rule before implementation. Consensus bypasses this disagreement ladder after hard preconditions pass.
+
+These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet. The last-feasible-departure priority applies at 18:20, when a four-minute travel action arrives at 18:24; at 18:16, one more four-minute action still leaves the 18:20–18:24 travel block available.
 
 ### 11.2 Same-state counterfactuals
 
@@ -434,7 +436,9 @@ The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if
 | **S3 — 18:20, only four minutes remain; route verified** | Leave for home | Request the incident log | **Leave for home** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
 | S3, same state, correction still absent | Leave for home | Post a sourced correction | **Leave for home** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
 | S3, same state, correction still absent | Leave for home | Leave for home | **Leave for home** | Consensus selects the travel action; Jules arrives at exactly 18:24 and meets the deadline. |
-| S3, same state, correction still absent | Request the incident log | Request the incident log | **Request log once** | Consensus can knowingly sacrifice the deadline; the request is filed at 18:24 and the log arrives no earlier than 18:33. || S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the proposal-count rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
+| S3, same state, correction still absent | Request the incident log | Request the incident log | **Request log once** | Consensus can knowingly sacrifice the deadline; the request is filed at 18:24 and the log arrives no earlier than 18:33. |
+| S3, same state, correction still absent | Post a sourced correction | Request the incident log | **UNRESOLVED — tie rule missing** | Neither conditional priority applies after the deadline becomes impossible to meet with another four-minute action. Do not invent a preference for this pair. |
+| S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the consensus rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
 
 This table is **not proof of balance**. It is a local coherence check of the candidate rule. The highest-risk rows are S1's “forward old display” choice and S3's consensus correction: reviewers must judge whether the action labels, consequences and priorities are natural rather than tuned merely to make the table pass.
 
