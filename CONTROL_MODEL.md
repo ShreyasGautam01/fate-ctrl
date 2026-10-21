@@ -5,6 +5,10 @@
 **Evidence class:** Sonnet 5.5 audit plus an executed deterministic enumerator and automated tests. No independent human playtest is claimed.  
 **Scope:** This file defines the historical direct-intention/environmental-influence comparison fixture. It does not mean both are still co-equal choices for the next game iteration. Do not treat its mechanics or rankings as story canon.
 
+**Owner direction (2026-10-21):** Direct-action mode is selected for FATE/CTRL's next game iteration. Environmental influence remains in the old comparison experiment as a historical comparator, not as a co-equal mode in new gameplay unless the owner explicitly reopens it.
+
+**Resolver caution:** The fixture's direct-support ranking is not an approved production resolver. See `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 for the current O2 paper trace and proposal-constrained counterfactual candidate. Its priority policy, equal-priority ties, invalid-action fallback and edge cases still need review before implementation.
+
 ## 1. Decision and architecture boundary
 
 FATE/CTRL is a proposed two-player narrative strategy game. Both players influence one protagonist, Jules, while pursuing partly conflicting goals. A bounded Fate system may later add pressure through supported causal events. The test here excludes Fate because the citywide-emergency finale is not causally established.
@@ -30,10 +34,6 @@ The proposed logical pipeline is:
 10. Advance the boundary and build visibility-filtered explanations.
 
 The enumerator is a local rules test, not a playable game or production architecture.
-
-**Owner direction (2026-10-21):** Direct-action mode is selected for FATE/CTRL's next game iteration. Environmental influence remains in the old comparison experiment as a historical comparator, not as a co-equal mode in new gameplay unless the owner explicitly reopens it.
-
-**Resolver caution:** The fixture's direct-support ranking is not an approved production resolver. See `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 for the current O2 paper trace and proposal-constrained counterfactual candidate. Its priority policy, equal-priority ties, invalid-action fallback and edge cases still need review before implementation.
 
 
 ## 2. Hard constraints for both models
