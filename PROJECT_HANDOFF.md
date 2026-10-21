@@ -82,7 +82,7 @@ Historical simulations preserve design reasoning but do not outrank the active c
 ## Immediate next steps
 
 1. Obtain an uncoached reconstruction of the borrowed-radio trace in `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.7. Check the fixed facts, radio behavior, prior-warning provenance, initial-report attachment, event ordering and counterfactuals.
-2. Extend the matrix to cover the route-paddle actions against radio/thread/handover actions. Review hard action preconditions and location/knowledge changes; a route paddle choice is currently not fully cross-tested.
+2. The matrix has now been expanded with selected route-paddle pairs. Independently reconstruct those rows and close the remaining pair/role-swap gaps. R3 is not yet a valid route to Fate's current milestone because the first-report contract has no explicit camera-footage retrieval/attachment action; don't count it toward three routes until the evidence path is specified and tested.
 3. Have the reviewer independently classify R1–R3. R1 is conditional, R2 is an incident mechanism but a weak blame route, and R3 may duplicate R1's causal hinge. Do not declare three viable routes unless the distinctions survive skeptical reconstruction.
 4. Keep the umbrella/transit scene and executable fixtures unchanged. If P2 relies on arbitrary audience belief/deadlines, or cannot support three distinct routes and a credible non-Fate ending, compare another premise rather than implementing Fate.
 5. Separately verify main-branch CI/browser checks and complete the historical enumerator audit; those are useful but do not substitute for the current scenario gate.
