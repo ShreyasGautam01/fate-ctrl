@@ -417,6 +417,8 @@ The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if
 | S1, same state | Ask steward | Leave for home | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
 | S1, same state | Ask steward | Ask steward | **Ask steward once** | Agreement can give the same action two support marks but never execute it twice. |
 | S1, same state | Leave for home | Leave for home | **Leave for home** | Agreement can deliberately choose personal urgency over information gathering; the rule should permit costly player choices. |
+| S1, same state | Post a sourced correction before route verification (invalid) | Ask steward for current route (valid) | **Ask steward** | The single valid proposal is executed; the intention does not grant Jules the facts needed to post a sourced correction. |
+| S1, same state | Post a sourced correction before route verification (invalid) | Same invalid correction proposal | **WAIT** | Both-invalid fallback creates no correction and no new knowledge; the four-minute beat and deadline clock still advance. |
 | **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Leave for home | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
 | S2, same state | Leave for home | Request the complete station incident log | **Request log** | Further documentation can be worth one beat while the deadline remains feasible afterward; the log itself is not conjured or returned instantly. |
 | S2, same state | Post correction | Post correction | **Post correction once** | Shared direct intention can decisively select a move both players support. |
@@ -436,7 +438,7 @@ This table is **not proof of balance**. It is a local coherence check of the can
 - **Counterplay and cost:** Both consensus and disagreement need viable consequences. Agreeing cannot always be optimal; disagreement cannot make player proposals irrelevant in every state.
 - **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
 
-**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The equal-priority tie-break remains deliberately open. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary and the invalid-action fallback. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
+**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The equal-priority tie-break remains deliberately open. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary, single-valid-proposal behavior, both-invalid fallback and its deadline consequence. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
 
 ### 11.4 Author desk reconstruction — status and defects
 
