@@ -2,15 +2,15 @@
 
 FATE/CTRL is a proposed two-player narrative strategy game about competing intentions, shared influence over one protagonist, and a Fate system pursuing a dramatic outcome.
 
-**Phase:** concept validation with bounded, owner-authorized browser experiments. **Production gameplay:** not started; no control model is selected.
+**Phase:** story-first design validation; direct-action mode is selected. **Production gameplay:** not started; the contested-action resolver and story canon remain unapproved.
 
 ## Current sources of truth
 
 - SPEC.md — product thesis, scope, candidate rules, and design gates.
-- CONTROL_MODEL.md — provisional control-model comparison contract.
+- CONTROL_MODEL.md — historical control-model comparison fixture and audit reference; not the production resolver.
 - scenarios/control_model_test_fixture.json — machine-readable fixture for the current experiment; not story canon.
 - tools/control_model_enumerator.py and tests/test_control_model_enumerator.py — deterministic comparison harness and tests.
-- prototype/ — local browser experiment. The story-first iteration defaults to direct intention, keeps raw submissions out of the normal UI, and shows simple state-condition meters.
+- prototype/ — local browser comparison experiment. Direct intention is the default path in that experiment; new game design proceeds with direct-action mode, while raw submissions remain hidden from the normal UI.
 - prototype/rules.mjs — fixture-driven browser resolution rules.
 - prototype/story.mjs — deterministic narrative presentation and meter calculations; it does not select outcomes.
 - reports/control_model_enumerator_summary.json — aggregate output and interpretation limits; path counts are not probabilities.
@@ -40,4 +40,4 @@ Historical traces preserve the reasoning behind current questions. They are supp
 
 ## Current milestone
 
-The first experimental control-model comparison prototype has merged. The narrative-first iteration is based on the owner's initial feedback: choices were hard to understand, the UI was too mechanical, resolution lacked an unfolding story, and raw inputs were exposed after resolution. The owner also preferred direct-action intention over environmental signals because it places more consequence-inference on the player. That preference leads the next experiment but is not a final production-model selection. See prototype/README.md for running the experiment and its validation limits.
+The first experimental control-model comparison prototype has merged. The owner's feedback was that choices were hard to understand, the UI was too mechanical, resolution lacked an unfolding story, and raw inputs were exposed after resolution. The owner has now selected direct-action mode for the game's direction because it makes players predict consequences of concrete actions. The existing comparison prototype remains a historical experiment—not the production game—and its support-count resolver is not automatically accepted for the next iteration. See DECISIONS.md and PROJECT_HANDOFF.md for the active decision and next gate.
