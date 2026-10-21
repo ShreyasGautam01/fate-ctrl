@@ -127,10 +127,10 @@ These are counts of paths under different state-dependent input sets, **not prob
 ## 6. Recommended next sequence
 
 1. Verify the combined main-branch CI/browser workflow after PR #8 and PR #10 were merged; treat their earlier branch runs as useful evidence, not a substitute for integration review.
-2. Complete the independent enumerator/fixture/contract audit and uncoached reconstruction of `PRIORITY_TABLE_REPLAY_01.md`; they are separate review tasks.
-3. Use Stage -1B in `PLAYTEST_PLAN.md` for an uncoached reconstruction of the three Target 1 mechanisms and the O1/O2 objective slice. Record each route as viable, conditional or reject; do not coach the reviewer toward three passes. The three-route gate is not passed.
-4. If fewer than three credible routes survive—or the local target lacks the intended scale—compare replacement premises rather than implementing Fate.
-5. The next focused gate is an independent reconstruction of `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Vary action pairs at identical states, separate action-pair responsiveness from role-symmetry, and close equal-priority/invalid-action edge cases before coding a new selector.
+2. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Test fixed-state action-pair changes separately from player-role swaps, and close equal-priority, invalid-proposal, stale-action and deadline-boundary behavior before implementing a new selector.
+3. Complete the independent enumerator/fixture/contract audit and uncoached reconstruction of `PRIORITY_TABLE_REPLAY_01.md`; these remain separate review tasks and should not be conflated with the new scenario.
+4. Use Stage -1B in `PLAYTEST_PLAN.md` for an uncoached reconstruction of the three Target 1 mechanisms and the O1/O2 objective slice. Record each route as viable, conditional or reject; do not coach the reviewer toward three passes. The three-route gate is not passed.
+5. If fewer than three credible routes survive—or the local target lacks the intended scale—compare replacement premises rather than implementing Fate.
 6. Only after the resolver and a coherent scenario pass review, build a richer narrative slice with direct-action choices, consequential trade-offs, observable state changes and bounded/counterable Fate pressure.
 7. Run uncoached think-aloud sessions on that richer slice. Revise until story, rules, inference and pacing work together.
 8. Only after those gates, decide whether online multiplayer is necessary and design server-authoritative views, persistence and operations accordingly.
