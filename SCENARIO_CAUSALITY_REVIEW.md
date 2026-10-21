@@ -319,7 +319,7 @@ The proposals conflict, one support mark each. The provisional situation priorit
 
 **Hidden direct intentions for the desk trace**
 
-- A proposes: **Leave for home now.**
+- A proposes: **Go home now and return the umbrella honestly.**
 - B proposes: **Request the complete station incident log.**
 
 Again the intentions differ and receive one support mark each. The situation priority selects the trip home: this is the last travel block in which Jules can meet the promise. Requesting a record would be legal, but it cannot produce new evidence during this beat and would forfeit the known return window.
@@ -408,34 +408,34 @@ In this table, each row starts from the named state; proposals are simultaneous 
 | **Request the incident log** | Jules remains at the information point and has access to the pre-existing request process shown on the notice. | At beat end, the request is filed. The complete log is released no earlier than nine minutes after filing; filing itself reveals no log content and does not change verified-route evidence. The log can support later review, but it cannot be used as instant proof in these rows. |
 | **WAIT (resolver fallback, not player-selectable here)** | Both submitted proposals are invalid. | No protagonist state change; the four-minute beat and deadline checks still occur. |
 
-The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if it is the **Leave for home** action, whose four-minute cost includes arrival. A request filed at the end of an 18:16 beat is filed at 18:20 and cannot yield the log before 18:29; requesting it does not magically deliver evidence during the beat.
+The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if it is the **Go home to return the umbrella honestly** action, whose four-minute cost includes arrival. A request filed at the end of an 18:16 beat is filed at 18:20 and cannot yield the log before 18:29; requesting it does not magically deliver evidence during the beat.
 
 
 
 | Fixed state | Player A proposes | Player B proposes | Candidate result | What this tests |
 |---|---|---|---|---|
 | **S1 — 18:12, route uncertain; 12 minutes until deadline** | Go home to return the umbrella honestly | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
-| S1, same state | Leave for home | Forward a photo of the old display to the group without current confirmation | **Leave for home** | Changing B's proposal can change the result; the resolver does not invent an unproposed verification action. The policy prefers not to relay an unverified safety instruction. |
-| S1, same state | Ask steward | Leave for home | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
+| S1, same state | Go home to return the umbrella honestly | Forward a photo of the old display to the group without current confirmation | **Go home to return the umbrella honestly** | Changing B's proposal can change the result; the resolver does not invent an unproposed verification action. The policy prefers not to relay an unverified safety instruction. |
+| S1, same state | Ask steward | Go home to return the umbrella honestly | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
 | S1, same state | Ask steward | Ask steward | **Ask steward once** | Agreement can give the same action two support marks but never execute it twice. |
-| S1, same state | Leave for home | Request the incident log | **Request log** | Filing the request preserves a later record route and still leaves the next beat for the four-minute trip home; no log evidence arrives now. |
+| S1, same state | Go home to return the umbrella honestly | Request the incident log | **Request log** | Filing the request preserves a later record route and still leaves the next beat for the four-minute trip home; no log evidence arrives now. |
 | S1, same state | Ask steward | Forward the displayed route without a caveat | **Ask steward** | Current route verification outranks forwarding an unverified display. |
 | S1, same state | Ask steward | Request the incident log | **Ask steward** | Route verification outranks the deferred record request. |
 | S1, same state | Forward the displayed route without a caveat | Request the incident log | **Request log** | The later-record request outranks the unverified relay in this candidate priority. |
 | S1, same state | Request the incident log | Request the incident log | **Request log once** | Consensus files one request; it does not produce the record immediately. |
-| S1, same state | Leave for home | Leave for home | **Leave for home** | Agreement can deliberately choose personal urgency over information gathering; the rule should permit costly player choices. |
+| S1, same state | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Agreement can deliberately choose personal urgency over information gathering; the rule should permit costly player choices. |
 | S1, same state | Forward the displayed route without a caveat | Same action | **Forward the displayed route once** | Consensus can choose a risky but legal act. The group can now see Jules's added post; the actual closure is unchanged and no downstream crowd effect may be assumed without another event. |
 | S1, same state | Post a sourced correction before route verification (invalid) | Ask steward for current route (valid) | **Ask steward** | The single valid proposal is executed; the intention does not grant Jules the facts needed to post a sourced correction. |
 | S1, same state | Post a sourced correction before route verification (invalid) | Same invalid correction proposal | **WAIT** | Both-invalid fallback creates no correction and no new knowledge; the four-minute beat and deadline clock still advance. |
-| **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Leave for home | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
-| S2, same state | Leave for home | Request the complete station incident log | **Request log** | Filing preserves a later accountability route while the return is still feasible; it adds no evidence now and the log is not conjured or returned instantly. |
+| **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Go home to return the umbrella honestly | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
+| S2, same state | Go home to return the umbrella honestly | Request the complete station incident log | **Request log** | Filing preserves a later accountability route while the return is still feasible; it adds no evidence now and the log is not conjured or returned instantly. |
 | S2, same state | Post a sourced correction | Request the incident log | **Post correction** | The active false claim can be corrected now; the log request would only preserve a later route to documentation. |
-| S2, same state | Leave for home | Leave for home | **Leave for home** | Consensus selects one departure action; arrival is 18:20 and meets the deadline. |
+| S2, same state | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Consensus selects one departure action; arrival is 18:20 and meets the deadline. |
 | S2, same state | Request the incident log | Request the incident log | **Request log once** | The request is filed at 18:20, can arrive no earlier than 18:29, and still permits departure in the next beat at 18:20. |
 | S2, same state | Post correction | Post correction | **Post correction once** | Shared direct intention can decisively select a move both players support. |
-| **S3 — 18:20, only four minutes remain; route verified** | Leave for home | Request the incident log | **Leave for home** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
-| S3, same state, correction still absent | Leave for home | Post a sourced correction | **Leave for home** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
-| S3, same state, correction still absent | Leave for home | Leave for home | **Leave for home** | Consensus selects the travel action; Jules arrives at exactly 18:24 and meets the deadline. |
+| **S3 — 18:20, only four minutes remain; route verified** | Go home to return the umbrella honestly | Request the incident log | **Go home to return the umbrella honestly** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
+| S3, same state, correction still absent | Go home to return the umbrella honestly | Post a sourced correction | **Go home to return the umbrella honestly** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
+| S3, same state, correction still absent | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Consensus selects the travel action; Jules arrives at exactly 18:24 and meets the deadline. |
 | S3, same state, correction still absent | Request the incident log | Request the incident log | **Request log once** | Consensus can knowingly sacrifice the deadline; the request is filed at 18:24 and the log arrives no earlier than 18:33. |
 | S3, same state, correction still absent | Post a sourced correction | Request the incident log | **Post correction** | The deadline is no longer recoverable by either action. An immediate correction outranks a deferred record request, whose conditional priority no longer applies. |
 | S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the consensus rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
