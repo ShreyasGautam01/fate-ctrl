@@ -698,6 +698,41 @@ Jules reviews the existing thread, finds the Facilities warning dated 18:02 and 
 | Jules relays the stale display in Beat 1 instead of asking the steward | The short stale instruction is transmitted completely; Mina directs arrivals toward the East Passage entrance and the group queues at the barrier. This is a different contribution path from the later incomplete-correction path caused by R4's segmented transmission. | The public display relay and the equipment fault are distinct causal routes; the report must distinguish them. |
 | The Facilities warning is absent from the actual thread | The review action finds no such warning and cannot attach it. B's intended milestone is not completed; the game must not invent the evidence. | Player B's private objective knowledge is a lead to investigate, not authority over world truth. |
 
+
+
+### 15.5 Same-state direct-action counterfactual matrix
+
+**Status:** Author desk enumeration of priority-relevant pairs, not proof of balance. For these states, use the following provisional total order for *different* legal proposals; if the proposals are identical and valid, consensus executes that action once and bypasses the order (hard preconditions still apply).
+
+- **S1 — route unverified, 18:12:** Ask steward > review/attach existing warning > return R4 early > relay the stale display.
+- **S2 — route verified, next four arrivals due by 18:20:** send a short complete instruction > send a long instruction if Jules does not know the fault > review/attach warning > return R4.
+- **S3 — four-person queue already waiting, first report and handover due at 18:24:** send a short complete instruction to clear the queue > review/attach warning before first sign-off > return R4 to Ren at handover.
+- A long instruction on R4 is invalid once Jules has learned the ten-second cutoff. If only one proposal is valid, it resolves; if neither is valid, WAIT consumes the beat. A relay of the stale display is invalid after Jules has verified the closure unless a separately authored deliberate-misinformation action is added.
+
+The priorities are purposely context-conditioned: route verification is strongest while route truth is unknown; once verified, an imminent incomplete communication is more urgent than researching attribution; at the final beat, an unresolved queue is more urgent than the initial-report attachment, and that attachment is more urgent than an equipment handover that can be recovered later but not on time. This is an authored protagonist policy hypothesis, not a universal moral ranking.
+
+| Beat-start state | Player A proposes | Player B proposes | Candidate result | Consequence / check |
+|---|---|---|---|---|
+| **S1 — route unverified** | Ask the steward | Relay the stale display on R4 | **Ask the steward** | Prevents the stale display being relayed; Jules learns the current closure. |
+| S1 | Ask the steward | Review/attach the Operations warning | **Ask the steward** | Current route truth is needed before the 18:20 arrival; warning research can still occur in a later beat. |
+| S1 | Review/attach warning | Relay stale display | **Review/attach warning** | Avoids propagating unverified route information; Jules learns the radio fault and includes the source if present. |
+| S1 | Return R4 early | Relay stale display | **Return R4** | An early personal handover beats sending a known-stale display message; the venue queue is not caused by a Jules relay in this branch. |
+| S1 | Return R4 early | Review/attach warning | **Review/attach warning** | Preserves the still-open evidence window; the radio can be returned in Beat 2 or 3, but A's privacy preference is at risk. |
+| S1 | Relay stale display | Same action | **Relay once** | Mina directs arrivals toward the closed East Passage; the group queues at the barrier. A local causal contribution exists, but the closure remains independent. |
+| S1 | Return R4 early | Same action | **Return once** | Jules no longer controls R4; no later route transmission may be attributed to Jules using this device. |
+| **S2 — route verified, radio fault not yet known, arrivals due** | Send complete instruction on R4 | Review/attach warning | **Send complete instruction** | R4 drops the destination segment; Mina holds the four arrivals at East Intake. This is the worked trace branch. |
+| S2 | Send short instruction on R4 | Review/attach warning | **Send short instruction** | The message fits in Segment A, so Mina receives the destination and the queue branch is avoided. |
+| S2 | Send complete instruction on R4 | Send short instruction on R4 | **Send short instruction** | A compact complete message is preferred over a longer one when both are legal. |
+| S2 | Review/attach warning | Return R4 early | **Review/attach warning** | The report remains open and the handover is still two beats away; evidence can be attached now, return later. |
+| S2 | Send complete instruction on R4 | Return R4 early | **Send complete instruction** | The next arrivals are imminent; a route instruction is prioritized over early equipment return. |
+| **S3 — queue waiting, four minutes to sign-off** | Review/attach warning | Return R4 to Ren | **Review/attach warning** | The warning enters the first report; the on-time direct handover is missed. |
+| S3 | Send short instruction on R4 | Review/attach warning | **Send short instruction** | Resolves the active queue before the report closes; the prior-warning evidence can only be appended later. |
+| S3 | Send short instruction on R4 | Return R4 to Ren | **Send short instruction** | The live route delay is addressed first; R4 handover is missed. |
+| S3 | Review/attach warning | Same action | **Review/attach once** | B's evidence milestone is achieved; A's on-time return predicate fails. |
+| S3 | Return R4 to Ren | Same action | **Return once** | A's handover predicate is achieved; the first report is signed without the attached warning. Fate advances an omission milestone only; primary blame is not proven by omission alone. |
+
+**Coverage limit:** this is a targeted matrix, not every possible action-pair permutation or every post-deadline state. It covers the choices that distinguish the worked story: stale relay vs source-check, long vs short communication, warning attachment vs handover, and consensus. It does not establish that the total order is fair or that the priorities feel natural. An independent reviewer must reconstruct these rows and challenge the high-risk assumptions—especially why a detailed message is proposed when a shorter one would work, and why Ren's report-sign-off process is credible.
+
 **Desk result:** P2 connects personal trust, the communication device, route instructions and incident evidence more directly than P0. It has one concrete consequence and a clear non-Fate counterfactual. It does **not** yet pass the scenario gate: the action-priority rule that favors transmission over thread review is only a hypothesis, the trust response is undefined, the initial-report audience has not been shown to believe anything, and three materially distinct Fate routes have not been demonstrated.
 
 **Next action:** build the same explicit counterfactual matrix for P2 across all legal Beat 1/2/3 action pairs, then independently reconstruct it. Only after that should the team decide whether P2 earns a wider route workshop. Keep the current scenario JSON and executable comparison fixture unchanged; this remains prose-only exploratory work.
