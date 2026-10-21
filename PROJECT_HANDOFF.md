@@ -3,8 +3,8 @@
 **Last reconciled:** 2026-10-21  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Current phase:** Concept validation with a bounded, story-first browser experiment  
-**Production gameplay:** Not started; neither control model is selected  
+**Current phase:** Direct-action mode selected; validate story causality and contested-action resolution before implementation  
+**Production gameplay:** Not started; direct-action mode is selected, but the resolver and complete rules are not  
 **Story canon:** Unresolved; the literal citywide-emergency route is not established  
 **Merge authority:** The project owner reviews and merges pull requests; open-branch work is not yet part of main.
 
@@ -12,7 +12,7 @@
 
 FATE/CTRL is intended to be a two-player narrative strategy game: both players influence one relatable protagonist, Jules, while pursuing competing objectives. An eventual Fate system applies its own bounded pressure and can give players reasons to cooperate temporarily. The intended session is short, text-first, tense and increasingly consequential.
 
-The first prototype was too mechanical to reveal much of that experience. The owner's supported feedback is that choices were hard to understand, the UI exposed too much mechanics detail, and resolutions reported objective results instead of telling a story. The owner preferred direct-action/intention mode because players must infer consequences themselves. The next experiment should therefore be story-led, use understandable actions, hide submitted intentions and input-derived ranking diagnostics, and show only a few grounded state indicators.
+The first prototype was too mechanical to reveal much of that experience. The owner's supported feedback is that choices were hard to understand, the UI exposed too much mechanics detail, and resolutions reported objective results instead of telling a story. The owner has selected direct-action mode because players must infer consequences from concrete actions. The next iteration should be story-led, use understandable action choices, hide raw submissions and input-derived ranking diagnostics, and show only a few grounded state indicators.
 
 ## Owner feedback and current direction
 
@@ -20,7 +20,7 @@ The first prototype was too mechanical to reveal much of that experience. The ow
 - **Story:** The game should narrate scenes and consequences as the story unfolds. Objective/state results are secondary explanation, not the main experience.
 - **Inference and privacy:** Players observe what Jules does and how the world responds; they should not automatically see the opponent's submission or ranking signals derived from private submissions.
 - **State display:** A small number of bars/percentages may make changes legible, but each must correspond to an explicit tracked condition and show the change caused by the moment. They are not success probabilities; current coarse percentages still need UX validation.
-- **Preferred model:** Direct intention is the lead candidate because it preserves consequence inference. Environmental influence remains a comparison setting until both mechanics and player experience are understood.
+- **Selected model:** Direct action is the chosen player-facing control mode. Environmental influence remains only as a historical comparison setting in the existing experiment, not a co-equal mode for new gameplay unless the owner explicitly reopens it.
 - **Quality bar:** A better visual style cannot compensate for weak causal logic, unmeaningful choices or a flat story.
 
 These are design inputs from one owner session, not comparative playtest evidence or proof of fairness. **No formal or uncoached human playtest of the improved narrative-first build has been conducted.**
@@ -56,7 +56,7 @@ The current desk conclusion is deliberately provisional: Route A is plausible bu
 
 **It is:** a deterministic, fixture-driven local experiment for testing natural-language direct actions, observable consequences, hidden-intention inference, story presentation, state-condition meters and a comparison mode.
 
-**It is not:** the full 10–15-minute game; accepted story canon; a selected control model; a Fate implementation; secure hidden-information multiplayer; or proof that the game is fun or balanced.
+**It is not:** the full 10–15-minute game; accepted story canon; a finalized action-arbitration contract; a Fate implementation; secure hidden-information multiplayer; or proof that the game is fun or balanced.
 
 Current story prose is authored and deterministic. It may describe only events and state established by the rules. It must never choose an action, invent evidence, silently disclose private information, or alter authoritative state. Core gameplay should not require a paid LLM API.
 
@@ -81,11 +81,11 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 ## Immediate next steps
 
-1. Verify the combined main-branch tests and browser-smoke workflow after PR #8 and PR #10 merged; separate branch results are useful evidence but not a substitute for integration checks.
-2. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`; separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
-3. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
-4. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
-5. Direct-action mode is selected. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 and pressure-test the proposal-constrained resolver using same-state action-pair variations. Role-symmetry and action responsiveness are separate checks. Close priority ties, invalid/stale actions and deadline boundaries before coding.
+1. Independently reconstruct `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Test fixed-state action-pair changes separately from role-swaps; review the priorities, consensus, invalid actions and deadline boundaries. Do not code a new selector until the candidate rule passes.
+2. Verify combined main-branch CI/browser checks after PR #8 and PR #10 merged; their earlier branch runs are useful evidence but not a substitute for integration checks.
+3. Independently audit the enumerator, fixture and `CONTROL_MODEL.md`, and separately reconstruct `PRIORITY_TABLE_REPLAY_01.md` without coaching. Do not interpret path counts as probabilities or balance scores.
+4. Use Stage -1B in `PLAYTEST_PLAN.md` to reconstruct PR #9's three local-blame mechanisms and O1/O2 objective slice without coaching. Record route classifications and unresolved evidence gaps; reject weak routes rather than forcing three to pass.
+5. If fewer than three credible routes survive, or the local target cannot deliver the intended dramatic scale, compare replacement premises instead of implementing Fate.
 
 ## Constraints to preserve
 
