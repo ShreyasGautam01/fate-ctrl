@@ -470,3 +470,16 @@ This is an author self-check against the action contracts and priority order abo
 **Desk result:** every resolved row in this table can be reconstructed from the current candidate rules and seeded facts. This is only a local consistency result. It does not establish that the priorities are the right characterization of Jules, that the action set is balanced, that the umbrella/public-incident objectives are naturally coupled, that the untested safety priority works, or that a player would enjoy the loop. O2 remains provisional, the three-route gate has not passed, and no selector implementation should start from this author check alone.
 
 
+
+
+### 11.5 Strategic objective-coupling check
+
+The action table is locally reconstructable, but that is not the same as proving a compelling competitive loop.
+
+- In the worked path, the route-check action resolves in Beat 1, the correction resolves in Beat 2, and the go-home-and-return action resolves in Beat 3. Player A's promise is met exactly at 18:24 and Player B's public-correction criterion is already satisfied. The correction costs A their time buffer, but **the current A objective does not reward buffer or penalize an exact-deadline return**. This path demonstrates compatible objectives, not an actual objective trade-off.
+- The conflict at 18:20 is meaningful only when the correction is still absent: going home preserves A's promise but leaves B without the correction; correcting the claim sacrifices the deadline. However, under the current B brief, B can avoid this conflict by posting the correction at 18:16 and still finish with its stated objective met. The paper brief gives B no specific objective reason to delay correction in favor of the incident-log request.
+- Consequently, the `Request the incident log` proposal is currently a plausible extra action, but not yet a validated strategic alternative for Player B. The log arrives after the deadline and does not fulfill the present public-correction criterion. The action should not be credited as meaningful objective progress without a grounded objective condition that values later attribution evidence.
+
+**Finding:** Direct-action resolution has a coherent, concrete action loop in the slice, but this paper test does **not yet demonstrate strong, sustained competition between A and B**. Do not claim otherwise from the existence of conflicting proposals alone.
+
+**Next design gate:** make a small action-sequence/objective matrix for the fixed scene and compare (a) A returns early; (b) B verifies and corrects; (c) B files the log request instead of correcting; and (d) both players agree on an action that sacrifices an objective. Write the terminal/partial result for each player and Fate separately. Either identify a natural, evidence-grounded reason for B to pursue the later record, or revise the objective/premise. Do not bolt on an arbitrary report cutoff or penalty just to manufacture conflict. Direct-action mode stays selected; this is about objective coupling and resolution consequences, not reopening the control-mode decision.
