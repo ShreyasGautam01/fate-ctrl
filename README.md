@@ -16,6 +16,7 @@ FATE/CTRL is a proposed two-player narrative strategy game about competing inten
 - reports/control_model_enumerator_summary.json — aggregate output and interpretation limits; path counts are not probabilities.
 - scenarios/umbrella.json — unresolved scenario probe, not executable story truth.
 - CAUSAL_ROUTE_TRACE_01.md — concrete causal-route test that does not establish a credible route to the literal citywide-emergency ending.
+- CANDIDATE_CAUSAL_ROUTES.md and SCENARIO_CAUSALITY_REVIEW.md — provisional local-blame hypotheses, O1/O2 objective comparison, and a paper test of direct-action arbitration; not accepted story canon or production rules.
 - INFORMATION_MODEL.md — vocabulary for facts, evidence, access, knowledge, belief, disclosure, and visibility.
 - MODULE_CONTRACTS.md and ARCHITECTURE.md — logical ownership boundaries and comparison-harness architecture, not a production-stack commitment.
 - DECISIONS.md — decision status and rationale.
