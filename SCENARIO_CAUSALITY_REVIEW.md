@@ -635,9 +635,9 @@ Write one three-beat paper trace with fixed times and location, then test at lea
 
 **Private objectives**
 
-- **Player A:** return R4 by 18:24 and preserve Ren's trust. Jules may acknowledge their own transmission, but A prefers to handle Ren's prior warning privately rather than attach it to the first incident note.
+- **Player A:** meet two separately tracked aims: (1) hand R4 directly to Ren by 18:24; and (2) keep the pre-existing Facilities warning out of the first incident note so the issue can be handled privately with Ren. A may acknowledge Jules's own transmission and may not fabricate or deny facts. A's relationship/trust outcome is not assigned a numeric change until a response rule is tested.
 - **Player B:** ensure that the first signed incident note contains the existing Facilities warning and Ren's acknowledgement, while preserving the fact that Jules did transmit the incomplete instruction. B is not allowed to claim that the fault erases Jules's contribution.
-- **Fate (local milestone only):** make the first incident note single out Jules's transmitted instruction while the prior warning remains unattached. That advances a local scapegoating route; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
+- **Fate (local milestone only):** make Jules's transmission the only named human operator action in the first incident note while the prior warning remains unattached. That creates a vulnerability for disproportionate local attribution; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
 
 ### 15.2 Action contracts used in this trace
 
@@ -683,7 +683,7 @@ Jules reviews the existing thread, finds the Facilities warning dated 18:02 and 
 
 **Checkpoint outcomes at 18:24**
 
-- **Player A:** misses the on-time radio-return predicate. Preserving trust is unresolved; do not assign a numeric relationship penalty until the response rule is authored.
+- **Player A:** misses the on-time radio-return predicate and the first-note privacy preference. These are separate objective components; the relationship/trust result remains unresolved until its response rule is authored.
 - **Player B:** completes the evidence-inclusion milestone for the first incident note, while the record still acknowledges Jules's own transmission.
 - **Fate:** this specific “single out Jules while omitting prior warning” route fails. The report now records multiple contributors and the independent closure. Whether the group believes the account, and whether the event merits any stronger attribution, remains a separate state/question.
 
