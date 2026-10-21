@@ -1,6 +1,7 @@
 # FATE/CTRL — Game Specification
 
 **Status:** Draft 0.1 — working hypothesis, not a locked specification.  
+**Control direction:** Direct-action mode is selected for FATE/CTRL. Timing, contested-action resolution, action economy, scenario causality and Fate rules remain open.  
 **Implementation:** Not started.
 
 ## 1. Product thesis
@@ -30,7 +31,7 @@ A 15–25 minute session is only a hypothesis. The idea of an explosive final 10
 ## 4. Initial scope
 Initial target is two people playing one short scenario in a browser, possibly on separate devices. Whether first play is local/pass-and-play or online is unresolved. Single-player, matchmaking, accounts, cosmetics, campaigns, monetization, and user-generated scenarios are out of scope until the core loop proves fun.
 
-Mobile usability, accessibility, and readable text are important, but detailed requirements follow selection of the interaction model.
+Mobile usability, accessibility and readable text are important. Details should be tested in the selected direct-action experience.
 
 ## 5. Scenario probe: The Red Umbrella
 Jules borrowed a red umbrella from a flatmate, damaged it, and must return it before the flatmate leaves. Player A wants Jules to return it without losing trust. Player B wants the flatmate's responsibility for lending an already-damaged umbrella exposed. Fate wants Jules to become the public face of a citywide emergency during a live broadcast, holding the red umbrella and being blamed for the crisis.
@@ -53,16 +54,19 @@ Scenario requirements:
 
 **Fate:** a system-controlled opponent with a scenario goal, explicit intervention limits, and legal actions. It cannot invent facts, cancel actions without a rule, or force an ending before prerequisites are met. How much of Fate's plan is visible remains unresolved.
 
-## 7. Core-loop candidates
-The action timing model is unresolved. Compare these options:
+## 7. Direct-action control and timing
 
-**A — Simultaneous commitment:** both players secretly choose legal actions, then reveal and resolve under deterministic conflict rules. This supports bluffing but complicates conflicts, targeting, and explanation.
+**Direct-action control is selected.** Players choose concrete actions they want Jules to take; the game does not ask them to adjust environmental signals tied directly to objective features. The existing comparison prototype remains a historical experiment and does not set the next game's resolver.
 
-**B — Alternating influence and response:** one player acts, the other reacts or interferes, then the world and Fate resolve. This is easier to teach but may privilege the second mover and invite direct cancellation.
+The **timing model** is still unresolved:
 
-A hybrid is acceptable only if it solves a demonstrated problem without adding needless cognitive load.
+**A — Simultaneous hidden proposals:** both players privately choose legal actions from the same scene state, then one protagonist action is resolved under deterministic conflict rules. This supports bluffing and inference, but contested proposals require fair, comprehensible arbitration.
 
-The chosen loop must define when players see state and commit, whether commitments can change, how illegal/stale actions are handled, how conflicts resolve, when deadlines and delayed effects trigger, when Fate acts and pays, how outcomes are explained, and how timeouts/disconnects work if online play is selected. CONTROL_MODEL.md now contains a test-only comparison contract for direct intention versus environmental influence; neither model nor its fixture assumptions are accepted game rules.
+**B — Alternating direct action and response:** one player submits a direct action, the other gets a disclosed response or contest opportunity, then the world resolves. This may be easier to teach but risks privileging the second mover and making counters too obvious.
+
+Do not conflate this timing choice with the now-selected direct-action control mode. A hybrid is acceptable only if it solves a demonstrated problem without needless cognitive load.
+
+The chosen loop must define when players see state and commit, whether commitments can change, how illegal/stale actions are handled, how conflicts resolve, when deadlines and delayed effects trigger, when Fate acts and pays, how outcomes are explained, and how timeouts/disconnects work if online play is selected. CONTROL_MODEL.md is a historical test-only comparison fixture; its semantics do not define the production rules. DECISIONS.md records the owner's selection of direct-action mode. The candidate resolver in SCENARIO_CAUSALITY_REVIEW.md §§10–11 remains unapproved.
 
 ## 8. Candidate action families
 Potential actions: influence the protagonist; interfere with another influence; protect an eligible fact/object/relationship; delay a consequence; reveal a hidden fact; suppress an object's availability or an effect; swap or redirect eligible resources/targets/consequences.
