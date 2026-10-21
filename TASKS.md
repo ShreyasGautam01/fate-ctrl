@@ -87,7 +87,7 @@ These are counts of paths under different state-dependent input sets, **not prob
 
 ### P0-02 — Define protagonist response and agency
 **Status:** Direct-action mode is selected by owner direction. The comparison fixture's support-count selector is experiment-specific; the O2 paper slice and candidate rule in `SCENARIO_CAUSALITY_REVIEW.md` §§10–11 are not accepted production mechanics.  
-**Next:** Independently reconstruct the same-state counterfactuals, then specify equal-priority ties, invalid proposals, stale actions and deadline collisions. Test different action pairs separately from player-role swaps.  
+**Next:** Obtain an uncoached reconstruction of the current candidate in `SCENARIO_CAUSALITY_REVIEW.md` §§10–11. Review the now-explicit action preconditions, consensus behavior, single-/both-invalid fallbacks, log delay and exact-deadline handling. The equal-priority conflict tie-break remains open; the table's action pairs do not exercise it. Keep stale-target behavior limited to the documented invalidation rule here, and define its broader event-order contract before production implementation. Test changed action pairs separately from player-role swaps.  
 **Exit:** The resolver is deterministic and reconstructable; both legal proposals have meaningful effects in some states; role swaps are fair; no raw intentions leak; Jules acts only on acquired knowledge; and narration cannot choose outcomes.
 
 ### P0-03 — Define objectives and outcome semantics
