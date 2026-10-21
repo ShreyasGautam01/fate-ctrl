@@ -285,7 +285,7 @@ Both are legal. They conflict. Each receives one support mark, so the situation 
 **State indicators after Beat 1**
 
 - **Flatmate trust: 70/100 → 70/100.** Jules has neither broken the promise nor communicated a new commitment yet.
-- **Route evidence verified: 0/2 → 2/2 (0% → 100%).** The two explicitly tracked checks are now established: the current closure notice and the older display timestamp. This is evidence completeness for this scene, not a probability of being right.
+- **Route evidence checks complete: 0/2 → 2/2 (0% → 100%).** The two tracked checks are (1) confirmation of the current closure from the steward/official notice and (2) comparison against the display's 18:05 update time. The timestamp was visible from the start; the cross-check against current route status was not complete until Jules asked. This is evidence-check completeness for this scene, not a probability of being right.
 - **Correction available to the group: 0/42 → 0/42 (0% → 0%).** The earlier claim remains uncorrected. Jules has learned the current facts but has not posted them.
 
 ### 10.4 Beat 2 — Correct the record or protect the deadline (18:16–18:20)
@@ -310,7 +310,7 @@ The proposals conflict, one support mark each. The provisional situation priorit
 **State indicators after Beat 2**
 
 - **Flatmate trust: 70/100 → 70/100.** No trust event has occurred yet; posting the correction is not treated as relationship progress.
-- **Route evidence verified: 2/2 → 2/2 (100% → 100%).** No new route fact was established.
+- **Route evidence checks complete: 2/2 → 2/2 (100% → 100%).** No new route fact was established.
 - **Correction available to the group: 0/42 → 42/42 (0% → 100%).** The correction is now available in the existing 42-member group. This measures availability only—not who has read it, accepted it, or changed their belief.
 
 ### 10.5 Beat 3 — The deadline becomes immediate (18:20–18:24)
@@ -331,7 +331,7 @@ Again the intentions differ and receive one support mark each. The situation pri
 **State indicators after Beat 3**
 
 - **Flatmate trust: 70/100 → 80/100.** In this paper test only, on-time return plus explicit ownership of the later damage adds 10 points. The scale is a tracked relationship score, not win odds; the exact response remains an unapproved hypothesis.
-- **Route evidence verified: 2/2 → 2/2 (100% → 100%).** No additional route fact was established by returning the umbrella.
+- **Route evidence checks complete: 2/2 → 2/2 (100% → 100%).** No additional route fact was established by returning the umbrella.
 - **Correction available to the group: 42/42 → 42/42 (100% → 100%).** Leaving does not retract the already-published correction.
 
 ### 10.6 What this trace establishes—and what it fails
@@ -385,7 +385,7 @@ The candidate situation priority for this scene is qualitative and state-conditi
 2. Prevent an irreversible deadline miss when this is the last feasible travel block.
 3. Verify a safety-relevant route while its status remains uncertain.
 4. Correct a verified, still-active false route claim when one travel block can remain afterward.
-5. Obtain additional, non-urgent official documentation while the deadline remains feasible afterward.
+5. Preserve a later route to an official record by filing a request when the deadline remains feasible afterward.
 6. Begin the journey early when none of the higher priorities applies.
 7. Forward route advice without current confirmation when the verification source is already available.
 
@@ -421,7 +421,7 @@ The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if
 | S1, same state | Post a sourced correction before route verification (invalid) | Ask steward for current route (valid) | **Ask steward** | The single valid proposal is executed; the intention does not grant Jules the facts needed to post a sourced correction. |
 | S1, same state | Post a sourced correction before route verification (invalid) | Same invalid correction proposal | **WAIT** | Both-invalid fallback creates no correction and no new knowledge; the four-minute beat and deadline clock still advance. |
 | **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Leave for home | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
-| S2, same state | Leave for home | Request the complete station incident log | **Request log** | Further documentation can be worth one beat while the deadline remains feasible afterward; the log itself is not conjured or returned instantly. |
+| S2, same state | Leave for home | Request the complete station incident log | **Request log** | Filing preserves a later accountability route while the return is still feasible; it adds no evidence now and the log is not conjured or returned instantly. |
 | S2, same state | Post correction | Post correction | **Post correction once** | Shared direct intention can decisively select a move both players support. |
 | **S3 — 18:20, only four minutes remain; route verified** | Leave for home | Request the incident log | **Leave for home** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
 | S3, same state, correction still absent | Leave for home | Post a sourced correction | **Leave for home** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
