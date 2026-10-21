@@ -638,7 +638,7 @@ Write one three-beat paper trace with fixed times and location, then test at lea
 
 - **Player A:** meet two separately tracked aims: (1) hand R4 directly to Ren by 18:24; and (2) keep the pre-existing Facilities warning out of the first incident note so the issue can be handled privately with Ren. A may acknowledge Jules's own transmission and may not fabricate or deny facts. A's relationship/trust outcome is not assigned a numeric change until a response rule is tested.
 - **Player B:** ensure that the first signed incident note contains the existing Facilities warning and Ren's acknowledgement, while preserving the fact that Jules did transmit the incomplete instruction. B is not allowed to claim that the fault erases Jules's contribution.
-- **Fate (local milestone only):** make Jules's transmission the only named human operator action in the first incident note while the prior warning remains unattached. That creates a vulnerability for disproportionate local attribution; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
+- **Fate (local milestone only):** make Jules's transmission the only documented operator action explicitly linked to the queue in the first incident note while the prior warning remains unattached. This creates a vulnerability for disproportionate local attribution; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
 
 ### 15.2 Action contracts used in this trace
 
@@ -651,7 +651,7 @@ Write one three-beat paper trace with fixed times and location, then test at lea
 | **Send the complete verified closure instruction on R4** | Legal only after Jules has verified the closure, R4 is available, and Jules has not learned the ten-second cutoff. If Jules knows about the cutoff, this long instruction is invalid; use the short instruction or an independently available channel instead. Segment A transmits (“East Passage closed; keep the next four arrivals clear of the threshold”); Segment B, containing the destination (“send them to West Main Hall”), is deterministically dropped. Mina holds the four attendees at the East Intake desk until an unambiguous destination arrives. Jules hears the double beep only after transmission. |
 | **Send the short route instruction on R4** | Legal when the destination is known and the short text fits wholly in Segment A. Mina receives the complete destination, preventing this particular queue. This is real counterplay to the fault; R4 is not a plot device that always fails. |
 | **Review the Operations thread and attach the relevant pre-handover message to the incident note** | Legal while Jules has phone access and the first note is still open. It is a request to search and attach, not a claim that Jules already knows the message. Resolution gives Jules the actual message and adds that existing source to the draft if found. It cannot invent a warning or change the message text. |
-| **Return R4 to Ren at handover** | Legal before or at 18:24 while Jules has R4 and can reach Ren. Completing it by 18:24 meets A's deadline. If the handover is missed, the seeded equipment rack can recover the device later, but that does not satisfy A's direct-handover predicate. |
+| **Return R4 to Ren before the 18:24 handover** | Legal while Jules has R4 and can reach Ren before the deadline. Completing it by 18:24 meets A's deadline. If the handover is missed, the seeded equipment rack can recover the device later, but that does not satisfy A's direct-handover predicate. |
 | **WAIT (resolver fallback only)** | If neither proposal is legal, no protagonist state changes; time still advances and the report/handover event checks still occur. |
 
 ### 15.3 Worked trace: verification followed by a failed long transmission
@@ -678,7 +678,7 @@ Jules sends the full two-part instruction. R4 transmits Segment A (“East Passa
 
 **Beat 3 — 18:20 to 18:24**
 
-The report and radio handover are both due at the end of this beat. The competing proposals are **Review the Operations thread and attach the relevant pre-handover message** and **Return R4 to Ren at handover**. The proposed resolver gives priority to attaching material evidence before the first report is signed, because that initial report is not overwritten afterward; the radio can still be returned late, but A's on-time handover objective will be missed.
+The report and radio handover are both due at the end of this beat. The competing proposals are **Review the Operations thread and attach the relevant pre-handover message** and **Return R4 to Ren before the handover**. The proposed resolver gives priority to attaching material evidence before the first report is signed, because that initial report is not overwritten afterward; the radio can still be returned late, but A's on-time handover objective will be missed.
 
 Jules reviews the existing thread, finds the Facilities warning dated 18:02 and Ren's 18:04 acknowledgement, and attaches the messages to the draft incident note before sign-off. Jules learns the actual provenance only as this action resolves. The first note records the incomplete transmission, the four-person queue, the independent closure, and the pre-existing radio warning. Because the warning is attached before sign-off, it also establishes that Ren had prior notice; it does not erase Jules's transmission or claim Ren caused the closure.
 
@@ -709,7 +709,7 @@ Jules reviews the existing thread, finds the Facilities warning dated 18:02 and 
 
 - **S1 — route unverified, 18:12:** Ask steward > review/attach existing warning > return R4 early > relay the stale display.
 - **S2 — route verified, next four arrivals due by 18:20:** send a short complete instruction > send a long instruction if Jules does not know the fault > review/attach warning > return R4.
-- **S3 — four-person queue already waiting, first report and handover due at 18:24:** send a short complete instruction to clear the queue > review/attach warning before first sign-off > return R4 to Ren at handover.
+- **S3 — four-person queue already waiting, first report and handover due at 18:24:** send a short complete instruction to clear the queue > review/attach warning before first sign-off > return R4 to Ren before the handover.
 - A long instruction on R4 is invalid once Jules has learned the ten-second cutoff. If only one proposal is valid, it resolves; if neither is valid, WAIT consumes the beat. A relay of the stale display is invalid after Jules has verified the closure unless a separately authored deliberate-misinformation action is added.
 
 The priorities are purposely context-conditioned: route verification is strongest while route truth is unknown; once verified, an imminent incomplete communication is more urgent than researching attribution; at the final beat, an unresolved queue is more urgent than the initial-report attachment, and that attachment is more urgent than an equipment handover that can be recovered later but not on time. This is an authored protagonist policy hypothesis, not a universal moral ranking.
@@ -719,7 +719,7 @@ The priorities are purposely context-conditioned: route verification is stronges
 | **S1 — route unverified** | Ask the steward | Relay the stale display on R4 | **Ask the steward** | Prevents the stale display being relayed; Jules learns the current closure. |
 | S1 | Ask the steward | Review/attach the Operations warning | **Ask the steward** | Current route truth is needed before the 18:20 arrival; warning research can still occur in a later beat. |
 | S1 | Review/attach warning | Relay stale display | **Review/attach warning** | Avoids propagating unverified route information; Jules learns the radio fault and includes the source if present. |
-| S1 | Return R4 early | Relay stale display | **Return R4** | An early personal handover beats sending a known-stale display message; the venue queue is not caused by a Jules relay in this branch. |
+| S1 | Return R4 before handover | Relay stale display | **Return R4** | An early personal handover beats sending a known-stale display message; the venue queue is not caused by a Jules relay in this branch. |
 | S1 | Return R4 early | Review/attach warning | **Review/attach warning** | Preserves the still-open evidence window; the radio can be returned in Beat 2 or 3, but A's privacy preference is at risk. |
 | S1 | Relay stale display | Same action | **Relay once** | Mina directs arrivals toward the closed East Passage; the group queues at the barrier. A local causal contribution exists, but the closure remains independent. |
 | S1 | Return R4 early | Same action | **Return once** | Jules no longer controls R4; no later route transmission may be attributed to Jules using this device. |
