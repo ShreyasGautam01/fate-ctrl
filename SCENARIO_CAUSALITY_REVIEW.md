@@ -255,7 +255,7 @@ Each player privately submits one **direct action** from the legal action menu f
 For this trace, the test resolver uses this plain rule:
 
 1. If both players nominate the same legal action, that action has two support marks and overrides a lower-priority alternative.
-2. If the proposals differ, each has one support mark. Jules follows a **prewritten situation priority**: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. An action's effects cannot exceed what Jules knows and what the scene makes available.
+2. If the proposals differ, each has one support mark. Jules applies a **prewritten situation priority only to those two proposed actions**: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time to travel home; when only the travel block remains, leave for home. The resolver must not silently execute a third, unproposed action just because it has a higher general priority. An action's effects cannot exceed what Jules knows and what the scene makes available.
 3. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
 
 This rule is deliberately easy for a reviewer to reconstruct, not a proposed final game mechanic. It is used to expose a design issue, not to smuggle a selector decision into story prose.
@@ -341,9 +341,9 @@ Again the intentions differ and receive one support mark each. The situation pri
 - A satisfying non-Fate path exists in miniature: the group receives a sourced correction, Jules returns the umbrella honestly, and the personal deadline is met.
 - Fate's candidate blame objective **fails on this trace**. Jules did not direct passengers into the lower passage or relay the stale claim; Jules verified the closure and then corrected the claim. Fate cannot manufacture a prior gesture, alter a record, or equate being present at the interchange with causing the closure.
 
-**Important failure: direct proposals do not yet have enough agency when they conflict.** In all three beats the proposals differ. Swapping which player submits each proposal leaves the resolved action unchanged because the situation-priority ladder—not the proposals—decides every conflict. Raw intentions stay hidden, but that privacy alone does not make the control mechanic good. Under this rule, direct intention has causal force mainly when both players agree. That may be a coordination mechanic, but it is not yet a convincing model of two players competing to steer one protagonist.
+**Unresolved risk: agency in conflict cases needs a proper counterfactual test.** The three proposals differ, and the scene-priority ladder picks among them. Swapping which player submits each action leaves the output unchanged; that symmetry is normally desirable because the rules should not favor Player A or Player B merely by identity. It does not, by itself, prove low agency. The correct test holds the world state constant and varies the **action pair**: do different legal proposals sometimes produce different resolved actions, while the result remains understandable and fair? The trace does not yet establish that systematically.
 
-This is an **action-arbitration failure, not a reason to reopen direct mode**. The owner has selected direct actions. The next design task is to retain action-shaped private proposals while finding a fair, deterministic way for conflicting proposals to have meaningful consequences without exposing raw inputs or letting player objectives become Jules's own motivation.
+This is an **action-arbitration question, not a reason to reopen direct mode**. The owner has selected direct actions. The next design task is to test a proposal-constrained resolver: only the two legal proposed actions compete; a simple, predeclared situation rule resolves conflicts; and raw submissions remain hidden. The resolver must let action content matter in at least some conflict states without letting player objectives become Jules's own motivation.
 
 **Gate result**
 
@@ -356,4 +356,62 @@ This is an **action-arbitration failure, not a reason to reopen direct mode**. T
 | Competing private actions meaningfully steer Jules | **Fail** | Exchanging the two proposals never changes a resolved action in this trace. |
 | Fate's local blame claim is earned | **Fail on this branch** | No blameworthy causal contribution by Jules occurs, and the correction is reachable by the bounded audience. Fate must lose this route, not overrule the evidence. |
 
-**Next required artifact:** an action-arbitration counterfactual table over the same fixed scene. Hold the world, objectives and timing constant; vary only the pair of private direct actions, then state which observable consequences should change and why. Reject any resolver for which exchanging the two players' proposals cannot change an outcome in at least some strategically meaningful states, or where it exposes raw inputs, makes Jules omniscient, or relies on an opaque ranking tuple. Do not code a new selector until that table has a clear, defensible pass.
+**Next required artifact:** an action-arbitration counterfactual table over the same fixed scene. Hold the world, objectives and timing constant; vary the proposed action pair, and separately test role-swaps. The outcome should usually be invariant to role-swapping unless asymmetry is a declared rule, but it must respond to action-pair changes in strategically meaningful states. Do not code a new selector until that table has a clear, defensible pass.
+
+
+## 11. Counterfactual table — a proposal-constrained direct-action resolver
+
+**Status:** Design hypothesis for review, not accepted rules. This section corrects an important evaluation distinction: role-symmetry is desirable; responsiveness to different proposed actions is what must be tested.
+
+### 11.1 Candidate rule to pressure-test
+
+Keep the selected interaction model: each player privately chooses a direct action for Jules. For this candidate only:
+
+1. Validate both actions against the same beat-start state and Jules's acquired knowledge.
+2. If both legal proposals are identical, execute that action once. This is consensus, not two actions.
+3. If the proposals differ, compare **only those two proposed actions** using a short, predeclared situation-priority rule. Never silently replace them with an unproposed “best” action.
+4. If only one proposal is legal, execute the valid proposal. The behavior when neither is legal, and exact ties between equal-priority actions, remain open and must be specified before coding.
+5. Apply the selected action's effects, knowledge updates, story and meter changes. Do not expose the raw proposal pair or priority diagnostics in the player-facing timeline.
+
+The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
+
+1. Prevent a known, immediate physical danger.
+2. Prevent an irreversible deadline miss when this is the last feasible travel block.
+3. Verify a safety-relevant route while its status remains uncertain.
+4. Correct a verified, still-active false route claim when one travel block can remain afterward.
+5. Obtain additional, non-urgent official documentation while the deadline remains feasible afterward.
+6. Begin the journey early when none of the higher priorities applies.
+
+These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet.
+
+### 11.2 Same-state counterfactuals
+
+In this table, each row starts from the named state; proposals are simultaneous and hidden. “Chosen” means the action Jules actually performs, not the action submitted by a named player.
+
+| Fixed state | Player A proposes | Player B proposes | Candidate result | What this tests |
+|---|---|---|---|---|
+| **S1 — 18:12, route uncertain; 12 minutes until deadline** | Leave for home | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
+| S1, same state | Leave for home | Forward a photo of the old display to the group without current confirmation | **Leave for home** | Changing B's proposal can change the result; the resolver does not invent an unproposed verification action. The policy prefers not to relay an unverified safety instruction. |
+| S1, same state | Ask steward | Leave for home | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
+| S1, same state | Ask steward | Ask steward | **Ask steward once** | Agreement can give the same action two support marks but never execute it twice. |
+| S1, same state | Leave for home | Leave for home | **Leave for home** | Agreement can deliberately choose personal urgency over information gathering; the rule should permit costly player choices. |
+| **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Leave for home | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
+| S2, same state | Leave for home | Request the complete station incident log | **Request log** | Further documentation can be worth one beat while the deadline remains feasible afterward; the log itself is not conjured or returned instantly. |
+| S2, same state | Post correction | Post correction | **Post correction once** | Shared direct intention can decisively select a move both players support. |
+| **S3 — 18:20, only four minutes remain; route verified** | Leave for home | Request the incident log | **Leave for home** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
+| S3, same state, correction still absent | Leave for home | Post a sourced correction | **Leave for home** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
+| S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the proposal-count rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
+
+This table is **not proof of balance**. It is a local coherence check of the candidate rule. The highest-risk rows are S1's “forward old display” choice and S3's consensus correction: reviewers must judge whether the action labels, consequences and priorities are natural rather than tuned merely to make the table pass.
+
+### 11.3 Acceptance checks before any implementation
+
+- **Action responsiveness:** At the same state, at least one change to a legal proposal must change the selected action and therefore a grounded observable consequence. The S1 and S2 pairs above are explicit test cases.
+- **Role-symmetry:** Swapping A/B ownership of the same action pair must not change the result unless a visible initiative advantage is intentionally part of the rules.
+- **No ghost action:** With two legal, different proposals, the resolver must choose one of them. A third action may occur only through a separately specified invalid-input/safety fallback.
+- **Knowledge legality:** A private objective or player-only fact cannot make an action legal or make Jules know the result before the action executes.
+- **No input leak in the UI:** The player-facing story describes the chosen action and observed consequences; no private proposal label, vote count or ranking reason is shown.
+- **Counterplay and cost:** Both consensus and disagreement need viable consequences. Agreeing cannot always be optimal; disagreement cannot make player proposals irrelevant in every state.
+- **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
+
+**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. Have a reviewer reconstruct every row from this section alone. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
