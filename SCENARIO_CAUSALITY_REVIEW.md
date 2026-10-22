@@ -643,6 +643,20 @@ Write one three-beat paper trace with fixed times and location, then test at lea
 
 ### 15.2 Action contracts used in this trace
 
+**Deterministic route-cue resolution**
+
+The state is tracked for the four-attendee group-window. `latest_complete_radio_destination` begins as `NONE`; `paddle_direction` begins as `HOLD`.
+
+| Latest complete radio destination | Paddle direction | Cue Mina follows |
+|---|---|---|
+| `NONE` | `HOLD` | Hold attendees at East Intake for a destination. |
+| `NONE` | `EAST` | Direct attendees toward the East Passage entrance. |
+| `NONE` | `WEST MAIN HALL` | Direct attendees to West Main Hall. |
+| `EAST` | Any paddle state | Follow the complete EAST radio destination. |
+| `WEST MAIN HALL` | Any paddle state | Follow the complete WEST MAIN HALL radio destination. |
+
+A complete radio message replaces `latest_complete_radio_destination`, even if the new destination conflicts with the earlier message. A truncated message that contains no destination leaves the field unchanged. A paddle action changes only `paddle_direction`; it cannot override a complete radio destination. When the active cue changes, Mina redirects attendees who remain stopped outside the closed passage; that clears the active queue but never erases the recorded delay. This rule determines the cue Mina follows, not what the audience believes about the operator or the incident.
+
 | Direct action | Preconditions and outcome |
 |---|---|
 | **Ask the steward to confirm the route** | Legal if Jules can reach the information desk within the four-minute action and has not verified the current route. The action includes travel and the question; Jules ends at the information desk and learns the closure and approved alternate from the steward. It does not reveal the Operations-thread warning. |
