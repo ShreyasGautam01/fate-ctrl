@@ -657,6 +657,21 @@ The state is tracked for the four-attendee group-window. `latest_complete_radio_
 
 A complete radio message replaces `latest_complete_radio_destination`, even if the new destination conflicts with the earlier message. A truncated message that contains no destination leaves the field unchanged. A paddle action changes only `paddle_direction`; it cannot override a complete radio destination. When the active cue changes, Mina redirects attendees who remain stopped outside the closed passage; that clears the active queue but never erases the recorded delay. This rule determines the cue Mina follows, not what the audience believes about the operator or the incident.
 
+**Action-to-state transition summary**
+
+| Action resolves | Route knowledge | Latest complete radio destination | Paddle | Evidence/resource | Queue effect |
+|---|---|---|---|---|---|
+| Ask steward | `route_verified = true`; approved West route is learned | Unchanged | Unchanged | No thread read/attachment; R4 unchanged | No correction occurs by this action alone. |
+| Confirm and relay short correction *(candidate)* | `route_verified = true` during the same action | Set to `WEST MAIN HALL` | Unchanged | No warning read/attachment; R4 remains held | Redirects people still stopped outside the closure; clears active queue, preserves delay. |
+| Set paddle EAST | Route remains unknown | Unchanged | Set to `EAST` | R4 unchanged | EAST is active only when latest complete radio destination is `NONE`; otherwise radio remains authoritative. |
+| Set paddle WEST | Route must already be verified | Unchanged | Set to `WEST MAIN HALL` | R4 unchanged | Redirects the group only when radio destination is `NONE`; cannot override radio EAST. |
+| Relay stale display on R4 | Route remains unknown | Set to `EAST` (complete message) | Unchanged | R4 remains held | EAST becomes authoritative; queue/delay may form at arrival. |
+| Send long verified correction | Route already verified; cutoff must be unknown | **Unchanged**, because Segment B destination is dropped | Unchanged | R4 remains held; double beep becomes observable after send | If no earlier destination exists and paddle is HOLD, hold at intake; if stale EAST already existed, EAST remains authoritative. |
+| Send short verified correction | Destination known; R4 usable and held | Set to `WEST MAIN HALL` | Unchanged | R4 remains held | Redirects waiting/stopped attendees; clears active queue but preserves delay. |
+| Review/attach Operations thread | Unchanged | Unchanged | Unchanged | If the actual warning exists, Jules learns it and attaches it to the open report | No route correction occurs. |
+| Return R4 to Ren | Unchanged | Unchanged | Unchanged | `R4_held = false`; direct return deadline met if completed by 18:24 | No route correction occurs; later radio actions become illegal. |
+| WAIT fallback | Unchanged | Unchanged | Unchanged | Unchanged | No action effect; scheduled arrival/sign-off events still resolve as timed. |
+
 | Direct action | Preconditions and outcome |
 |---|---|
 | **Ask the steward to confirm the route** | Legal if Jules can reach the information desk within the four-minute action and has not verified the current route. The action includes travel and the question; Jules ends at the information desk and learns the closure and approved alternate from the steward. It does not reveal the Operations-thread warning. |
