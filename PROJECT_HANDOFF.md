@@ -1,9 +1,9 @@
 # Project Handoff
 
-**Last reconciled:** 2026-10-21  
+**Last reconciled:** 2026-10-23  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Current phase:** Direct-action mode selected; validate story causality and contested-action resolution before implementation  
+**Current phase:** Direct-action mode selected; run an uncoached reconstruction of the P2 borrowed-radio trace before more scenario or gameplay work  
 **Production gameplay:** Not started; direct-action mode is selected, but the resolver and complete rules are not  
 **Story canon:** Unresolved; the literal citywide-emergency route is not established  
 **Merge authority:** The project owner reviews and merges pull requests; open-branch work is not yet part of main.
@@ -45,12 +45,12 @@ The normal gameplay interface no longer exposes ranking tuples/selector diagnost
 
 This is automated browser evidence from the PR branch, not proof of human comprehension, enjoyment, balance, full visual quality or secure multiplayer. The local browser still contains submissions in memory.
 
-### PR #9 — Draft causal-route challenge
+### Merged PR #9 — Causal-route challenge (merged 2026-10-22; still non-canon)
 https://github.com/ShreyasGautam01/fate-ctrl/pull/9
 
-**State:** Open, draft, not canon. The draft now compares three different public-blame mechanisms: a physical gesture captured without context; stale information relayed via an existing commuter channel; and post-incident attribution competing with access to a correction. It includes counterfactual mini-replays and explicit rejection criteria.
+**State:** The documentation changes are merged into main. Merge status is repository state, not design approval. The borrowed-radio P2 trace still does not pass independent reconstruction or the three-viable-route gate. No scenario, Fate target, priority policy, or production rule is canon.
 
-The current desk conclusion is deliberately provisional: Route A is plausible but unproven; Route B is conditional on a believable, bounded channel; Route C is weak and may need rejection. The scenario has **not** passed the three-viable-route gate. The original citywide-emergency scale and whether the personal umbrella objectives truly interact with the transit event also remain unresolved.
+The authored desk findings remain provisional: the radio/paddle trace has explicit event mechanics, but operator attribution, player-view projection, contested-action priorities, Ren's response/trust outcome, full terminal horizon, and a third materially distinct route remain unresolved. The original citywide-emergency scale is not established.
 
 ## What the current experiment is—and is not
 
@@ -81,11 +81,12 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 ## Immediate next steps
 
-1. Obtain an uncoached reconstruction of the borrowed-radio trace in `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.7. Check the fixed facts, radio behavior, prior-warning provenance, initial-report attachment, event ordering and counterfactuals.
-2. The matrix uses a deterministic cue model: latest complete radio destination wins; otherwise use the paddle; otherwise hold. It distinguishes S3-U-P/S3-U-R and S3-V-H/S3-V-P/S3-V-R; priorities remain provisional and independent reconstruction is outstanding. **The verify-and-relay compound action is rejected** under the one-task-per-four-minute-beat rule. T0's Jules-specific transmission target remains unsupported. §15.8 tests T2-F2: queue/delay recorded, first report omits the warning, Jules has not raised Ren's prior acknowledgement privately, and F2 actually intercepts a selected Review/attach attempt. Ren already knows the warning; Jules's candidate private counterplay is to ask him about the failed long transmission after the double beep. For S3-V-H, the preferred paper-test order is short instruction > West paddle > Ask Ren privately > Review/attach > Return R4; the evidence-first alternative remains a challenger, and role-swap/independent reconstruction are outstanding. F2 costs 1 provisional leverage unit, intercepts only a selected Review/attach attempt, never alters the source and earns no progress if unused or bypassed. The paper test now defines a proposed Beat 4 (18:24–18:28) recovery action, **Review/append an available Operations-thread item to a signed-record addendum**, a new generic one-task action after F2 expires that discovers the content rather than naming it in advance, appends any relevant existing source with its actual timestamp and cannot rewrite the first signed note. This is not a full-game terminal decision; if the follow-up action window is removed or 18:24 is terminal, reject F2. Player-view projection must not leak source text/private proposals. This local test does not pass the larger escalation/three-route gate. No objective or scenario is canon; keep executable fixtures unchanged.
-3. Have the reviewer independently classify R1–R3. R1 is conditional, R2 is an incident mechanism but a weak blame route, and R3 may duplicate R1's causal hinge. Do not declare three viable routes unless the distinctions survive skeptical reconstruction.
-4. Keep the umbrella/transit scene and executable fixtures unchanged. If P2 relies on arbitrary audience belief/deadlines, or cannot support three distinct routes and a credible non-Fate ending, compare another premise rather than implementing Fate.
-5. Separately verify main-branch CI/browser checks and complete the historical enumerator audit; those are useful but do not substitute for the current scenario gate.
+1. Run a first-pass, uncoached reconstruction with **[P2_RECONSTRUCTION_PACKET.md](P2_RECONSTRUCTION_PACKET.md)**. Give the reviewer that packet alone before they see the full scenario review; the full review contains the author's worked outputs and route classifications. Capture the reviewer's own legal-action table, selected actions, knowledge/evidence provenance, objective states, counterfactuals, and rule gaps.
+2. Compare the independent result against `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.8. Explicitly audit latest-complete-radio precedence, truncation preserving an earlier destination, stale/invalid actions, paddle/radio conflicts, role swaps, resource spend on unused Fate activation, Beat 3 conversation-versus-review priority, and the proposed Beat 4 addendum window.
+3. Have the reviewer classify the three protagonist-action mechanisms without being told the author's categories: relaying the stale display, transmitting the long verified instruction, and setting the physical paddle. Do not count variants that share the same causal hinge as distinct routes. Do not invent an operator log, certain witness, camera-retrieval action, or audience belief.
+4. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged. If no supported operator-attribution path and no three-route gate can be established, change the Fate target or reject P2 rather than adding evidence or arbitrary cutoffs.
+5. Separately complete the historical independent audit of the enumerator/fixture/contract and confirm the combined main-branch code workflows when code changes. Current code workflows passed on the PR #10 code commit; the subsequent PR #9 merge was documentation-only and had no new code workflow run.
+6. Only after the scenario and action contract pass review, build a narrow story-first direct-action slice with understandable choices, observable consequences, and a few causally grounded indicators. Then run uncoached human think-aloud sessions.
 
 ## Constraints to preserve
 
