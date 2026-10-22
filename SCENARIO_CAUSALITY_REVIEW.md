@@ -854,6 +854,14 @@ This table applies the route gate to the current seeded P2 facts. These classifi
 
 **Evidence-access caveat for R3:** the fixed camera records the paddle and visible handling but has no audio; the current first-report action set does not yet include a defined action to retrieve and attach its footage. Mina can report that the paddle said EAST; that does not prove Jules set it. Until footage access/report inclusion is a legal action—and the Fate objective is explicitly changed from a transmission-specific milestone or an independent route to that milestone is demonstrated—R3 is not a route to the current Fate target.
 
+#### Operator-attribution gate for R1/R2 (blocking; candidate path only)
+
+R1/R2 need to link a time-stamped cue to Jules as operator, not merely link the cue to radio R4. The current fixed facts do **not** establish a custody log or a legal action to retrieve one, so none may be assumed yet.
+
+One candidate to test—not canon—is an **existing radio custody/issue entry** in the venue's shift-handover records. For it to help, the record must be seeded before choices and identify who held R4 during the transmission window; an explicit action must retrieve and attach that entry before 18:24. The evidence would then need to correlate three distinct records: Mina's time-stamped statement for what destination/partial message she received, the dispatch event for R4 and its time, and the pre-existing custody entry for who held R4 at that time. The dispatch log alone still does not prove message content, and a custody entry alone does not prove a transmission occurred. Each record must add one missing link without being made to prove more than it says.
+
+**Decision test:** Is such a routine record natural for a community-hall shift, and can it be obtained and attached within the action economy without silently becoming part of the initial report? If yes, add the source and action contract explicitly and paper-test it against warning attachment and R4 return. If no, do not invent it to rescue Fate: change the Fate milestone away from identifying Jules as transmitter, or reject R1/R2 as routes to the current target. The story does not gain operator attribution just because the resolver privately knows who proposed an action.
+
 ### 15.7 P2 gate verdict
 
 - **Causal connection is improved:** the borrowed radio is used for the public-facing route instruction, its warning has a traceable prior source, and the handover/report choices share the same operational moment.
