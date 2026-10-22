@@ -114,6 +114,836 @@ Reject or revise a route if:
 
 ## 7. Current conclusion and next work
 
-Do not finalize the umbrella facts or write a milestone graph yet. First choose a coherent damage-history option, define the relationship and deadline in human terms, and generate at least three short causal-chain candidates. Compare them on plausibility, memorability, strategic branching, visibility, counterplay, objective interaction, and authoring cost.
+The umbrella/transit premise is **not ready for scenario implementation**. The existing causal trace supports one developed hypothesis for public blame over a local routing failure during an independently caused storm disruption. Candidate Target 1 mechanisms now distinguish physical direction, redistribution of stale information, and post-incident attribution racing against a correction. Their current desk verdict is one plausible-but-unproven mechanism, one conditional alternate, and one weak mechanism that may need rejection. Three viable routes have not been demonstrated.
 
-If no causal bridge survives those checks, replace the scenario or revise Fate's terminal goal. Protect the game's core fantasy rather than forcing a weak premise to survive.
+Keep three questions separate:
+
+1. **Causal target:** Is Fate making Jules the public scapegoat for a local failure, for worsening a wider response failure, or for causing a citywide emergency? These are materially different outcomes.
+2. **Route viability:** Does each proposed route have pre-existing facts, a plausible evidence chain, meaningful player intervention, a correction path, and a non-Fate ending?
+3. **Objective coupling:** Do the umbrella deadline and competing player goals materially affect choices within that incident, or do they form a separate domestic subplot that merely consumes time?
+
+The next paper exercise should compare the existing objective set against a version where Player B seeks a proportionate, evidence-backed account of the transit failure. Do not silently change `CONTROL_MODEL.md` or `scenarios/control_model_test_fixture.json`; those remain test references, not story canon. Use `CAUSAL_ROUTE_TRACE_01.md` for the detailed Target 1 trace and `CANDIDATE_CAUSAL_ROUTES.md` for alternate route mechanisms.
+
+If fewer than three materially different routes survive skeptical reconstruction—or if the local-blame target lacks the intended scale—compare replacement premises before writing a Fate milestone graph or implementing scenario mechanics.
+
+## 8. Objective coupling and a matched opening slice
+
+**Status:** O1/O2 comparison hypothesis; not an approved objective change.
+
+The current objectives may compete through time without interacting causally. That may be insufficient for a unified story. Compare these options on the same scenes and decision opportunities:
+
+| Option | Player A | Player B | Fate | Main benefit | Main risk |
+|---|---|---|---|---|---|
+| **O1 — Retain current objectives** | Return the umbrella honestly and preserve trust | Establish that the flatmate knew about the old damage and had not disclosed it | Make Jules the scapegoat for the transit failure | Preserves the original intimate conflict | The umbrella evidence may not affect the public incident at all; the two stories may run in parallel |
+| **O2 — Public accountability** | Return the umbrella honestly and preserve trust; may prefer a quick, private resolution | Establish an evidence-backed, proportionate account of the transit incident before the public narrative hardens | Make the public assign Jules primary responsibility while underweighting the independent causes | Shared sources, time and disclosure create direct strategic disagreement | Player B's original domestic objective is demoted or replaced |
+| **O3 — Replace premise** | A new personal goal naturally connected to the crisis | A genuinely conflicting objective in that same crisis | Exploit the causal failure | Can remove the artificial bridge entirely | Requires rebuilding and retesting the opening |
+
+### 8.1 Provisional candidate: O2
+
+O2 is the strongest option to test on paper because the three goals can disagree for understandable reasons:
+
+- **A values personal trust and keeping a promise.** A may try to avoid public exposure, yet support correction if Jules is unfairly blamed.
+- **B values a complete and proportionate public account.** B does not need to clear Jules at any cost; if Jules contributed to the confusion, an accurate account can acknowledge it while identifying the broader causes.
+- **Fate values scapegoating.** It wants the public to assign Jules primary responsibility while losing sight of the stale display, closure timing and other established contributors. It cannot change the actual cause of the incident.
+
+B and Fate may both seek public attention, but their reasons and desired account differ. A and B may cooperate on correction, then disagree if the evidence exposes Jules's own risky action. This is a more useful conflict than simply assigning each player a different meter.
+
+### 8.2 Matched first three moments
+
+Use the same opening and available scene facts for O1 and O2:
+
+**Opening:** Heavy rain is already delaying transit. The old display points toward a lower passage due to close because of water ingress. A staff instruction is difficult to hear. Jules is on an ordinary journey home with the damaged red umbrella; the flatmate expects it back before leaving in twelve minutes. Any phone recording, commuter channel, route timestamp and correction source must be shown or established before they matter.
+
+| Moment | Direct-action choices to test | Shared consequence to narrate | Where the objectives diverge |
+|---|---|---|---|
+| **1. Unclear route** | Ask the steward to repeat the current route; help riders using the visible display; head home and message the flatmate | State which instruction Jules actually learned, whether Jules stayed, and what the crowd did. A public gesture is recorded only if the pre-existing camera could see it. | O1 B has no clear reason to seek station information; O2 B has a reason to care about provenance. A's personal deadline competes with staying. |
+| **2. A source can be checked or relayed** | Photograph and forward the display; inspect its timestamp and look for the current notice; update the flatmate about the delay | Preserve whether Jules checked the timestamp, what source was shared, who received it, and how the passage closure affected people. Forwarding does not change the original source. | O1 may spend a moment on the separate umbrella message; O2 can use the same time to support an accurate public account. |
+| **3. Attribution begins** | Request the full recording or official log; send a sourced correction to the same audience; leave to meet the deadline | Show what the clip or message proves and omits, what correction is accessible, and the cost/cutoff. Fate may delay one eligible source-access opportunity, not suppress all correction. | O1 and O2 differ on whether B's evidence-gathering action advances a connected objective. O2 may expose Jules's conduct and conflict directly with A. |
+
+The three moments are a **paper design test**, not a locked turn order or production rules contract. Direct-action choices should describe intended acts, not promise their outcomes. Authoritative state and story must still be resolved separately.
+
+### 8.3 Acceptance gate
+
+O1 and O2 should be judged against the same questions:
+
+1. Can each player explain their goal in one plain sentence?
+2. Do the first three decisions affect both personal stakes and the public incident, rather than splitting into unrelated subplots?
+3. Can the players disagree without either acting irrationally?
+4. Can an accurate account implicate Jules partly while still defeating disproportionate scapegoating?
+5. Does the umbrella deadline create a real opportunity cost without forcing Jules into the incident?
+6. Can both a Fate-success and a non-Fate ending resolve the personal promise and public incident?
+7. Can an uncoached reader reconstruct the causal chain without author explanation, “then it goes viral,” or an unseeded source?
+
+**Pass:** at least two meaningful disagreements, clear evidence ownership, credible counterplay and a full non-Fate ending can be reconstructed.
+
+**Fail:** the umbrella is merely a decorative identifier, private umbrella evidence has no consequential relationship to the public incident, or Jules must remain at the interchange for the plot to work. Test O3 and replace the premise rather than coding around these failures.
+
+O2 is a candidate for the next paper iteration only. No objective change is approved, and no production mechanics should be implemented until the route and objective-coupling gates pass.
+
+## 9. Author desk adversarial pass — unresolved defects
+
+**Reviewer type:** authoring/assistant desk review of the current draft, 2026-10-21. This is not the independent Stage -1B review and does not pass the design gate.
+
+The O1/O2 paper slice improves the objective comparison, but the draft still has structural gaps that must be resolved before a human reviewer can fairly reconstruct it.
+
+| Defect | Why it matters | Required resolution |
+|---|---|---|
+| **The two-player action economy is underspecified** | The slice lists three Jules actions at each moment, but not what Player A and Player B each submit, how their proposals interact, or what makes one action win. The player objective may affect interpretation without affecting the decision. | For the next paper slice, specify only enough to test a round: each player privately proposes one legal direct intention; the protagonist has one resolved action; a fixed, visible-to-reviewers tie/selection rule resolves conflicts. Keep player submissions hidden from the other player and from player-facing narration. Do not tune the selector yet. |
+| **Private player knowledge can leak into Jules's action** | Player B may know an objective-relevant fact that Jules has not learned. If B can propose “check the timestamp,” that is a player suggestion, not proof Jules already knows the display is stale. | Track world facts, Jules-known facts, and each player's private objective separately. A proposed intention may request an investigation, but only the resolved event can grant its information. Never let private player knowledge silently become protagonist knowledge. |
+| **The umbrella is still mostly a deadline, not a causal bridge** | A time cost creates strategic opportunity cost, but does not by itself make the personal conflict part of the transit story. O2 can work as a shared action economy, yet the umbrella evidence no longer materially affects the public claim. | Test whether A's need to return the umbrella honestly creates a concrete choice about a relevant public disclosure—for example, leaving before obtaining a correction or disclosing that Jules forwarded the old display. Do not make the umbrella itself a cause of the transit failure. If this connection feels contrived, explicitly decouple the personal and public stories or replace the premise. |
+| **The audience is still a placeholder** | “Existing commuter channel” and “local report” do not yet define who receives a claim, how quickly, or why the public would treat it as credible. A correction only works if it can reach the relevant audience. | Choose one bounded audience for the first slice (e.g., passengers in the interchange's existing commuter group) and specify the source, posting delay, provenance, and correction reach. Avoid “the public” as a universal mind. |
+| **Fate's intervention is described but not yet a fair rule** | Delaying source access could feel like an arbitrary block unless the affected opportunity, cost, duration and visible counterplay are specified before use. | For paper testing only, write one candidate intervention contract: target one already-available official record; delay access by one decision beat; announce the access delay as an in-world obstruction; permit a competing source or later retry; never alter the record's contents. Treat this as a candidate, not accepted canon. |
+| **The intended scale remains unresolved** | The local target can plausibly create unfair blame for a local routing failure, but it does not justify the original citywide-emergency ending. | Compare terminal labels explicitly: (a) local scapegoating over crowd-routing confusion; (b) disproportionate blame for worsening a wider response; (c) blame for causing a citywide emergency. Do not use (c) unless a separate, credible causal chain earns it. |
+
+### 9.1 Current desk verdict by gate
+
+- **Causal distinction:** partially improved. T1-A and T1-B use different causal hinges; T1-C remains weak and may collapse into an attribution variant unless its source is concretely established.
+- **Objective coupling:** O2 is stronger than O1 as a shared action economy, but the umbrella currently supplies pressure more than causal connection. This is not yet a decisive win for O2.
+- **Direct-action preference:** retained as the leading interaction hypothesis. It is not yet a selected production control model.
+- **Story/UI requirements:** story-first narration, hidden intentions, and a small number of readable condition indicators remain requirements from owner feedback. They are not satisfied by this paper document.
+- **Implementation readiness:** **not ready**. The next useful artifact should be a compact, fully worked three-beat paper round that defines both player intentions, the resolved protagonist action, knowledge updates, the observable story paragraph, and only the state indicators changed by that event.
+
+### 9.2 Next paper-round acceptance test
+
+Use one worked round under O2, without coding:
+
+1. Show the same public scene to both players, then provide distinct private objectives.
+2. Have each player submit one direct intention without seeing the other's submission.
+3. Resolve to one protagonist action using a rule that can be reconstructed from the fixture, not a narrative judgment.
+4. Write the story paragraph from the resolved event and facts actually known to Jules.
+5. Update at most three visible state indicators, each with a one-line causal explanation.
+6. Reveal only the observable action and consequence—not either player's submitted intention or the hidden selection diagnostics.
+7. Ask a reviewer what happened, what Jules knew, what changed, why the indicators moved, and what each player might try next.
+
+**Pass:** the reviewer can explain the event and indicators without being shown the hidden submissions; both player intentions remain inferable only from observed behavior; the scene creates a plausible next disagreement.
+
+**Fail:** the story reveals player inputs, the meter change is not grounded in the event, the protagonist acts on unknown information, or the resolution can only be justified by saying the selector chose it. In that case, fix the action contract before building a richer browser UI.
+
+
+## 10. Worked three-beat paper slice — direct-action mode
+
+**Status:** Authored desk test dated 2026-10-21. Direct-action mode is selected for the next narrative-first iteration at the owner's direction. The action-arbitration rule below is deliberately provisional and this trace is not independent review, human playtest evidence, or accepted story canon.
+
+This slice is intended to test whether direct actions produce a reconstructable story, preserve the boundary between player knowledge and Jules's knowledge, and change a few readable state indicators for defensible reasons. It also stress-tests a serious risk: two hidden intentions can conflict, yet the selector may choose the same action regardless of which player proposed what.
+
+### 10.1 Facts fixed before anyone chooses
+
+**World and timing**
+
+- It is 18:12. Heavy rain has already disrupted transit. Water ingress on the lower passage's steps is the physical reason the passage is closed; Jules did not cause the storm or the closure.
+- A wall display still says the lower passage is open. Its visible last-update time is 18:05.
+- The station steward has placed an official closure notice at the entrance to the lower passage at 18:11. A queue obscures it from Jules's starting position. The steward is at the nearby information point and can confirm the current route. Jules can discover the closure by asking; Jules does not yet know its cause or the notice's timestamp.
+- Before Jules arrives, a passenger posted “South passage open — the wall display says so” to the existing **North Interchange Riders** group. Jules is a member, and the post appears in Jules's phone notifications at the start of the slice. Jules can read its wording, author and time, but has not yet verified whether the route is currently open. The group has 42 members. A post becomes available to the whole group immediately, but availability does not mean every member has read or believed it.
+- An existing station camera records the entrance and wall display but has no audio. Its existence and limitations are known from the start; this slice does not require or claim that it captures a misleading gesture by Jules.
+- A notice at the information point states that the station keeps a complete incident log and accepts retrieval requests, but delivery takes at least nine minutes from the time a request is filed. Filing the request preserves a later route to the record; it does not reveal its contents. The notice, access method and turnaround are visible before any choice, not introduced only when an action needs them.
+- Jules is carrying the red umbrella, which was damaged before the loan and whose tear Jules later worsened. Jules promised to return it honestly by 18:24. The flatmate is leaving then. Jules's flat is four minutes away by the known upper-street route, which remains passable.
+- Each beat consumes four in-world minutes. The chosen action resolves at the end of its beat; its time cost is charged before deadline checks, and any incident-log request is filed at that resolution point. The first beat starts at 18:12; the second at 18:16; the third at 18:20. A return after 18:24 misses the promise; arrival exactly at 18:24 is on time. Leaving in the third beat therefore meets the deadline exactly, without a travel buffer.
+
+**Shared player-facing facts:** the rain disruption, the stale display, the existing group post, Jules's umbrella deadline, and the visible scene. Neither player is told a fact that Jules has not learned as if Jules already knows it.
+
+**Private objective cards**
+
+- **Player A:** Return the umbrella honestly and preserve the flatmate's trust. The deadline makes lingering costly, but the objective does not require Jules to lie about the transit situation.
+- **Player B:** Establish a sourced, proportionate account of the route confusion: distinguish the outdated display and water closure from any action Jules actually took. Do not “clear” Jules by hiding a real contribution if later evidence establishes one.
+- **Fate (candidate objective, not implemented in this slice):** Make Jules appear primarily responsible for the local routing confusion, despite the independent closure and stale display. Fate cannot edit the display, invent a recording, or change the actual cause.
+
+The two player goals can align on accurate information and still conflict over whether Jules should spend the remaining time at the interchange or go home.
+
+### 10.2 Resolution rule used for this paper test only
+
+Each player privately submits one **direct action** from the legal action menu for the current beat. Submissions are checked against the same beat-start state; they do not grant Jules knowledge. The normal story and timeline reveal only the action Jules actually performs, never the raw submissions or a selector trace.
+
+For this trace, the test resolver uses this plain rule:
+
+1. Validate each proposal against the same beat-start state and Jules's acquired knowledge. A private player objective is not a fact Jules has learned.
+2. If both valid proposals are the same action, execute it once by consensus. In this paper candidate, consensus may steer Jules away from a lower-priority action; it does not execute twice.
+3. If the proposals differ, compare **only those two proposed actions** using a prewritten situation priority: verify a safety-relevant route while it is uncertain; once verified, correct the active false group post if the deadline still leaves enough time for a later go-home-and-return action; when only the travel block remains, take the go-home-and-return action. The resolver must not silently execute a third, unproposed action just because it has a higher general priority.
+4. If only one proposal is legal, execute the valid proposal. If neither is legal, use WAIT; the beat still advances. Hard preconditions cannot be bypassed by consensus. An action's effects cannot exceed what Jules knows and what the scene makes available.
+5. An action not selected has no hidden effect. The world state and story advance only from the resolved action.
+
+This rule is deliberately easy for a reviewer to reconstruct, not a proposed final game mechanic. It is used to expose a design issue, not to smuggle a selector decision into story prose.
+
+### 10.3 Beat 1 — The route is uncertain (18:12–18:16)
+
+**Jules knows at the start:** the wall display says the lower passage is open; it is raining heavily; staff are waving people away, but Jules has not heard or read a clear closure explanation. Jules has also seen the existing group post repeating the display's route claim. Jules does *not* know that the display is stale or why staff are waving people away.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Go home by the upper street and return the umbrella honestly.**
+- B proposes: **Ask the steward to confirm the current route.**
+
+Both are legal. They conflict. Each receives one support mark, so the situation priority resolves the choice: Jules asks the steward. The player-facing explanation is “The route instruction is uncertain and safety-relevant, so Jules checks it before directing anyone or relaying the old display.” Neither input is shown in the normal UI.
+
+**Resolved event and knowledge update:** The steward points to the official closure notice, timestamped 18:11, and says water is running across the lower steps. Jules can now distinguish the current closure from the wall display's 18:05 information. This adds knowledge to Jules; it does not retroactively make that knowledge available at the moment of the earlier proposals.
+
+**Story shown to both players**
+
+> The steward turns the red notice toward Jules. It is dated 18:11: the lower passage is closed because water is running across the steps. Beside it, the wall display still says OPEN, last updated at 18:05.
+>
+> “That screen hasn't caught up,” the steward says. The storm is still squeezing the crowd into the entrance, but the source of this particular confusion is no mystery now: an old instruction is still visible beside a newer closure.
+
+**State indicators after Beat 1**
+
+- **Flatmate trust: 70/100 → 70/100.** Jules has neither broken the promise nor communicated a new commitment yet.
+- **Route evidence checks complete: 0/2 → 2/2 (0% → 100%).** The two tracked checks are (1) confirmation of the current closure from the steward/official notice and (2) comparison against the display's 18:05 update time. The timestamp was visible from the start; the cross-check against current route status was not complete until Jules asked. This is evidence-check completeness for this scene, not a probability of being right.
+- **Correction available to the group: 0/42 → 0/42 (0% → 0%).** The earlier claim remains uncorrected. Jules has learned the current facts but has not posted them.
+
+### 10.4 Beat 2 — Correct the record or protect the deadline (18:16–18:20)
+
+**Jules knows at the start:** the lower passage is closed because of water on the steps; the notice is newer than the display; the existing group still contains the stale claim. Jules has eight minutes until the return deadline and needs four minutes to get home.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Go home now and return the umbrella honestly.**
+- B proposes: **Post a source-backed correction to North Interchange Riders.**
+
+The proposals conflict, one support mark each. The provisional situation priority selects the correction because the route facts are now verified and one travel block will still remain. The correction uses only the existing notice and the visible display timestamp.
+
+**Resolved event:** Jules posts: “Correction: the lower passage has been closed since 18:11 because of water on the steps. The wall display still says OPEN but its last update is 18:05. Follow the steward's current direction.” The old post is not deleted; both messages and their times remain visible for comparison.
+
+**Story shown to both players**
+
+> Jules photographs the red notice and the old display time, then posts a correction to the same group that carried the earlier claim. The new message names its source and explains exactly what it can establish: the passage is closed now, and the display is out of date.
+>
+> The first post does not disappear. Anyone reading the thread can compare the two timestamps instead of being asked to trust a bare assertion. Jules has spent another four minutes at the interchange, but has not claimed to cause the closure.
+
+**State indicators after Beat 2**
+
+- **Flatmate trust: 70/100 → 70/100.** No trust event has occurred yet; posting the correction is not treated as relationship progress.
+- **Route evidence checks complete: 2/2 → 2/2 (100% → 100%).** No new route fact was established.
+- **Correction available to the group: 0/42 → 42/42 (0% → 100%).** The correction is now available in the existing 42-member group. This measures availability only—not who has read it, accepted it, or changed their belief.
+
+### 10.5 Beat 3 — The deadline becomes immediate (18:20–18:24)
+
+**Jules knows at the start:** the route facts are verified and the correction is posted. Four minutes remain; the known journey home takes four minutes. The information-point notice already established the incident-log retrieval process: any request filed now will arrive after 18:24. That limitation is known before the decision, not introduced afterward.
+
+**Hidden direct intentions for the desk trace**
+
+- A proposes: **Go home now and return the umbrella honestly.**
+- B proposes: **Request the complete station incident log.**
+
+Again the intentions differ and receive one support mark each. The situation priority selects the trip home: this is the last travel block in which Jules can meet the promise. Requesting a record would be legal, but it cannot produce new evidence during this beat and would forfeit the known return window.
+
+**Resolved event and story shown to both players**
+
+> At 18:20, Jules closes the group thread and takes the upper street home. There is no dramatic confession to the crowd and no attempt to turn the storm into a personal defence. Four minutes later, Jules returns the red umbrella on time and admits to the tear they made worse. The flatmate can be annoyed about the damage without being asked to accept a false account of the transit closure.
+
+**State indicators after Beat 3**
+
+- **Flatmate trust: 70/100 → 80/100.** In this paper test only, on-time return plus explicit ownership of the later damage adds 10 points. The scale is a tracked relationship score, not win odds; the exact response remains an unapproved hypothesis.
+- **Route evidence checks complete: 2/2 → 2/2 (100% → 100%).** No additional route fact was established by returning the umbrella.
+- **Correction available to the group: 42/42 → 42/42 (100% → 100%).** Leaving does not retract the already-published correction.
+
+### 10.6 What this trace establishes—and what it fails
+
+**What can be reconstructed**
+
+- Jules never acts on B's private objective as if it were world knowledge. The steward interaction is the event that supplies the current closure facts.
+- The story describes resolved actions and sourced facts. It does not disclose which player proposed the selected action, mention the rejected proposal, or justify the outcome with hidden rank numbers.
+- Each meter change is traceable to a defined event. The audience meter measures message availability, not readership or persuasion.
+- A satisfying non-Fate path exists in miniature: the group receives a sourced correction, Jules returns the umbrella honestly, and the personal deadline is met.
+- Fate's candidate blame objective **fails on this trace**. Jules did not direct passengers into the lower passage or relay the stale claim; Jules verified the closure and then corrected the claim. Fate cannot manufacture a prior gesture, alter a record, or equate being present at the interchange with causing the closure.
+
+**Unresolved risk: agency in conflict cases needs a proper counterfactual test.** The three proposals differ, and the scene-priority ladder picks among them. Swapping which player submits each action leaves the output unchanged; that symmetry is normally desirable because the rules should not favor Player A or Player B merely by identity. It does not, by itself, prove low agency. The correct test holds the world state constant and varies the **action pair**: do different legal proposals sometimes produce different resolved actions, while the result remains understandable and fair? The trace does not yet establish that systematically.
+
+This is an **action-arbitration question, not a reason to reopen direct mode**. The owner has selected direct actions. The next design task is to test a proposal-constrained resolver: only the two legal proposed actions compete; a simple, predeclared situation rule resolves conflicts; and raw submissions remain hidden. The resolver must let action content matter in at least some conflict states without letting player objectives become Jules's own motivation.
+
+**Gate result**
+
+| Test | Result | Reason |
+|---|---|---|
+| Scene facts are seeded before they matter | Pass for this slice | Notice, stale display, group size/timing, camera limits, travel time and deadline are fixed up front. |
+| Jules acts only on acquired knowledge | Pass for this slice | The closure facts enter Jules's knowledge after asking the steward. |
+| Story follows the resolved event | Pass for this slice | The three paragraphs narrate only the action and consequences selected by the paper rule. |
+| Meters have explicit meaning and causes | Provisional pass | Their definitions are explicit, but the trust response and meter presentation require review. |
+| Competing private actions meaningfully steer Jules | **Not established by this trace alone** | The trace illustrates three conflicts but does not hold state constant while varying the action pair. Role-symmetry alone is expected. Section 11 provides the needed counterfactual table. |
+| Fate's local blame claim is earned | **Fail on this branch** | No blameworthy causal contribution by Jules occurs, and the correction is reachable by the bounded audience. Fate must lose this route, not overrule the evidence. |
+
+**Next required step:** independently reconstruct §11 from the fixed facts and candidate rule. Check whether every outcome follows the stated priority, whether the proposed-action pair changes the result in meaningful states, and whether role-swaps remain fair. Fill in equal-priority, invalid-proposal and stale-action behavior before implementation. Section 11 remains a design hypothesis—not accepted rules—and the selector must not be coded until the test passes.
+
+
+## 11. Counterfactual table — a proposal-constrained direct-action resolver
+
+**Status:** Design hypothesis for review, not accepted rules. This section corrects an important evaluation distinction: role-symmetry is desirable; responsiveness to different proposed actions is what must be tested.
+
+### 11.1 Candidate rule to pressure-test
+
+Keep the selected interaction model: each player privately chooses a direct action for Jules. For this candidate only:
+
+1. Validate both submissions against the same beat-start state and Jules's acquired knowledge. A player-only fact cannot make an action legal for Jules. An action based on an understandable mistake may remain legal; it is not silently corrected using hidden world knowledge. Hard action preconditions are checked before consensus or priorities.
+2. If both proposals are invalid, resolve to the defined `WAIT` fallback: no protagonist effect, the four-minute beat still elapses, and normal deadline triggers still run. If exactly one proposal is valid, execute the valid proposal. Do not expose which submission failed or the internal reason in the normal player UI.
+3. If both valid proposals are identical, execute that action once. **Consensus bypasses the situation-priority ladder**: it represents both players steering toward the same direct action and may deliberately sacrifice a deadline or other opportunity. It still cannot bypass a hard precondition or make an unavailable action possible. This is an intentional property of the candidate model, not an accepted production rule.
+4. If the proposals differ, compare **only those two legal proposed actions** using the predeclared scene-priority rule below. Never silently replace them with an unproposed “best” action. The priority ladder resolves disagreement; it is not a universal obligation for Jules to always perform the highest-priority action when both players agree on a different legal move. If priorities are exactly tied, the rule is not yet complete: do not code until a public, deterministic tie-break is selected and independently reconstructed.
+5. An action targeting something that becomes stale before resolution is treated as invalid under the same rules as step 1; do not silently retarget it. This paper slice validates both proposals against one beat-start snapshot before any mutation, so one proposal cannot alter the conditions under which the other is validated.
+6. Apply the selected action's effects, explicit knowledge updates, time cost, and event record atomically. Build the story and state-meter changes from that resolved event. Do not expose the raw proposal pair, support count, or priority diagnostics in the player-facing timeline.
+
+**Deadline boundary for this paper slice:** each selected action consumes its four-minute beat, and deadline checks occur after that cost. A handover completed at or before 18:24 meets the promise; a handover completed after 18:24 does not. Choosing **Go home to return the umbrella honestly** in the 18:20 beat means arrival and handover at exactly 18:24, which counts as on time. If less than four minutes remain before the latest feasible departure, leaving can no longer prevent a miss, although it may still be a legal choice that sacrifices the objective. An incident-log request is filed at action completion; its nine-minute minimum retrieval time starts then, so none of the requests in S2 or S3 returns before the deadline.
+
+The candidate situation priority for this scene is qualitative and state-conditioned—not an opaque numeric tuple:
+
+1. Prevent a known, immediate physical danger.
+2. Take the go-home-and-return action when starting it in this beat is the last opportunity to complete the handover by the 18:24 deadline.
+3. Verify a safety-relevant route while its status remains uncertain.
+4. Correct a verified, still-active false route claim. This remains a higher priority than filing a deferred record request; if departure is the last feasible travel action, priority 2 still takes precedence.
+5. Preserve a later route to an official record by filing a request when at least one subsequent travel action can still meet the deadline.
+6. Take the go-home-and-return action early when none of the higher priorities applies.
+7. Forward route advice without current confirmation while Jules has not verified the route and the verification source is available.
+
+**How to read this priority list:** read from highest to lowest. A conditional item applies only when its stated condition is true in the beat-start state and the proposed action would produce the named effect. If one of two conflicting proposals is favored by the highest applicable item, choose it. If a log request would consume the last feasible travel block, priority 5 no longer applies: treat the deferred request as the lowest-ranked legal action in this scene, below an immediately useful correction. If neither action has an applicable priority, or both have the same highest applicable priority, the candidate resolver is **undefined for that pair**; do not guess, reveal a submission, or let narration decide. Resolve that tie with a deterministic scene rule before implementation. Consensus bypasses this disagreement ladder after hard preconditions pass.
+
+These are scene rules to challenge, not universal truths about Jules. The notice, route facts, group, access delay, travel time, deadline and each action's cost must be fixed before the choices. In particular, “known danger” cannot depend on a fact that Jules has not learned yet. The last-feasible-departure priority applies at 18:20, when a four-minute travel action arrives at 18:24; at 18:16, one more four-minute action still leaves the 18:20–18:24 travel block available.
+
+### 11.2 Same-state counterfactuals
+
+In this table, each row starts from the named state; proposals are simultaneous and hidden. “Chosen” means the action Jules actually performs, not the action submitted by a named player.
+
+**Action contracts for the rows below** — all actions consume one four-minute beat. These definitions are part of this paper candidate only.
+
+| Action | Precondition at beat start | Effect when selected |
+|---|---|---|
+| **Ask the steward** | Jules is still at the information point; the current route is not yet verified. | At the end of the beat, the steward points out the closure notice and explains that water on the steps closed the lower passage. Jules learns those facts. |
+| **Go home to return the umbrella honestly** | Jules is still at the interchange, the upper-street route remains passable, and the flatmate has not left. | Travel starts at beat start. Arrival, handing over the umbrella, and acknowledging the tear Jules worsened are all part of this one end-to-end action; they are not free follow-up actions. The four-minute beat **includes the trip and handover**. Apply the trust consequence from this action before evaluating an arrival exactly at 18:24 as on time. No further interchange action can be taken in that beat. |
+| **Forward the displayed route without a caveat** | Jules can access the display and group, and has not yet verified the current route. Once Jules learns the current closure, this uninformed-forward action is no longer legal; deliberate misrepresentation would need a separate action definition. | At beat end, Jules posts a photo showing the display's “OPEN” state and visible 18:05 update time, without a current-route caveat. The post becomes available to the group's 42 members. This can mislead, but does not change the actual closure. |
+| **Post a sourced correction** | Jules has learned the current closure, can access the group, and the earlier route claim remains uncorrected. | At beat end, Jules posts the 18:11 notice's closure information and the 18:05 display timestamp to the same group. Both posts remain visible. This changes correction availability, not what every member believes. |
+| **Request the incident log** | Jules remains at the information point and has access to the pre-existing request process shown on the notice. | At beat end, the request is filed. The complete log is released no earlier than nine minutes after filing; filing itself reveals no log content and does not change verified-route evidence. The log can support later review, but it cannot be used as instant proof in these rows. |
+| **WAIT (resolver fallback, not player-selectable here)** | Both submitted proposals are invalid. | No protagonist state change; the four-minute beat and deadline checks still occur. |
+
+The deadline is 18:24. An action that ends at 18:24 leaves Jules on time only if it is the **Go home to return the umbrella honestly** action, whose four-minute cost includes arrival. A request filed at the end of an 18:16 beat is filed at 18:20 and cannot yield the log before 18:29; requesting it does not magically deliver evidence during the beat.
+
+
+
+| Fixed state | Player A proposes | Player B proposes | Candidate result | What this tests |
+|---|---|---|---|---|
+| **S1 — 18:12, route uncertain; 12 minutes until deadline** | Go home to return the umbrella honestly | Ask steward for current route | **Ask steward** | Safety-relevant uncertainty outranks leaving early when the deadline remains reachable. |
+| S1, same state | Go home to return the umbrella honestly | Forward a photo of the old display to the group without current confirmation | **Go home to return the umbrella honestly** | Changing B's proposal can change the result; the resolver does not invent an unproposed verification action. The policy prefers not to relay an unverified safety instruction. |
+| S1, same state | Ask steward | Go home to return the umbrella honestly | **Ask steward** | Swapping proposer identities leaves the result unchanged. This is expected role-symmetry, not an agency defect. |
+| S1, same state | Ask steward | Ask steward | **Ask steward once** | Agreement can give the same action two support marks but never execute it twice. |
+| S1, same state | Go home to return the umbrella honestly | Request the incident log | **Request log** | Filing the request preserves a later record route and still leaves the next beat for the four-minute trip home; no log evidence arrives now. |
+| S1, same state | Ask steward | Forward the displayed route without a caveat | **Ask steward** | Current route verification outranks forwarding an unverified display. |
+| S1, same state | Ask steward | Request the incident log | **Ask steward** | Route verification outranks the deferred record request. |
+| S1, same state | Forward the displayed route without a caveat | Request the incident log | **Request log** | The later-record request outranks the unverified relay in this candidate priority. |
+| S1, same state | Request the incident log | Request the incident log | **Request log once** | Consensus files one request; it does not produce the record immediately. |
+| S1, same state | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Agreement can deliberately choose personal urgency over information gathering; the rule should permit costly player choices. |
+| S1, same state | Forward the displayed route without a caveat | Same action | **Forward the displayed route once** | Consensus can choose a risky but legal act. The group can now see Jules's added post; the actual closure is unchanged and no downstream crowd effect may be assumed without another event. |
+| S1, same state | Post a sourced correction before route verification (invalid) | Ask steward for current route (valid) | **Ask steward** | The single valid proposal is executed; the intention does not grant Jules the facts needed to post a sourced correction. |
+| S1, same state | Post a sourced correction before route verification (invalid) | Same invalid correction proposal | **WAIT** | Both-invalid fallback creates no correction and no new knowledge; the four-minute beat and deadline clock still advance. |
+| **S2 — 18:16, closure verified; stale group post remains; 8 minutes until deadline** | Go home to return the umbrella honestly | Post a sourced correction to the existing group | **Post correction** | Correction is actionable, and one travel block still remains after the correction. |
+| S2, same state | Go home to return the umbrella honestly | Request the complete station incident log | **Request log** | Filing preserves a later accountability route while the return is still feasible; it adds no evidence now and the log is not conjured or returned instantly. |
+| S2, same state | Post a sourced correction | Request the incident log | **Post correction** | The active false claim can be corrected now; the log request would only preserve a later route to documentation. |
+| S2, same state | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Consensus selects one departure action; arrival is 18:20 and meets the deadline. |
+| S2, same state | Request the incident log | Request the incident log | **Request log once** | The request is filed at 18:20, can arrive no earlier than 18:29, and still permits departure in the next beat at 18:20. |
+| S2, same state | Post correction | Post correction | **Post correction once** | Shared direct intention can decisively select a move both players support. |
+| **S3 — 18:20, only four minutes remain; route verified** | Go home to return the umbrella honestly | Request the incident log | **Go home to return the umbrella honestly** | The log will not arrive within this beat, and taking another action makes the return deadline impossible. |
+| S3, same state, correction still absent | Go home to return the umbrella honestly | Post a sourced correction | **Go home to return the umbrella honestly** | A real conflict remains: preserve the personal promise or correct the public record. The deadline priority wins in this pair. |
+| S3, same state, correction still absent | Go home to return the umbrella honestly | Go home to return the umbrella honestly | **Go home to return the umbrella honestly** | Consensus selects the travel action; Jules arrives at exactly 18:24 and meets the deadline. |
+| S3, same state, correction still absent | Request the incident log | Request the incident log | **Request log once** | Consensus can knowingly sacrifice the deadline; the request is filed at 18:24 and the log arrives no earlier than 18:33. |
+| S3, same state, correction still absent | Post a sourced correction | Request the incident log | **Post correction** | The deadline is no longer recoverable by either action. An immediate correction outranks a deferred record request, whose conditional priority no longer applies. |
+| S3, same state, correction still absent | Post a sourced correction | Post a sourced correction | **Post correction once** under the consensus rule | Consensus may knowingly sacrifice the personal deadline; that cost must appear in the post-game explanation, not be hidden by the resolver. |
+
+This table is **not proof of balance**. It is a local coherence check of the candidate rule. The highest-risk rows are S1's “forward old display” choice and S3's consensus correction: reviewers must judge whether the action labels, consequences and priorities are natural rather than tuned merely to make the table pass.
+
+### 11.3 Acceptance checks before any implementation
+
+- **Action responsiveness:** At the same state, at least one change to a legal proposal must change the selected action and therefore a grounded observable consequence. The S1 and S2 pairs above are explicit test cases.
+- **Role-symmetry:** Swapping A/B ownership of the same action pair must not change the result unless a visible initiative advantage is intentionally part of the rules.
+- **No ghost action:** With two legal, different proposals, the resolver must choose one of them. A third action may occur only through a separately specified invalid-input/safety fallback.
+- **Knowledge legality:** A private objective or player-only fact cannot make an action legal or make Jules know the result before the action executes.
+- **No input leak in the UI:** The player-facing story describes the chosen action and observed consequences; no private proposal label, vote count or ranking reason is shown.
+- **Counterplay and cost:** Both consensus and disagreement need viable consequences. Agreeing cannot always be optimal; disagreement cannot make player proposals irrelevant in every state.
+- **Complete edge handling:** Specify equal-priority ties, one-invalid-proposal, both-invalid-proposals, action preconditions becoming stale, and deadline-boundary collisions before implementation.
+
+**Gate:** This candidate has enough structure for an independent paper review, but it is not ready for production code. The listed actions have a distinct effective priority in the states shown; no general tie-break is defined for future action families. Have a reviewer reconstruct every row from this section alone, including the four-minute deadline boundary, single-valid-proposal behavior, both-invalid fallback and its deadline consequence. If a row depends on an implied fact, an opaque priority, or a different interpretation of an action, revise the contract before building.
+
+### 11.4 Author desk reconstruction — status and defects
+
+This is an author self-check against the action contracts and priority order above; it is **not** an independent review.
+
+- **S1 — uncertain route:** Ask beats early leave (priority 3 vs 6); Leave beats an unverified forward (6 vs 7); Request log beats Leave only because the later record can be requested without preventing a timely trip in the next beat (5 vs 6). Ask also beats both Forward and Request. Request beats Forward. Reassigning the same action pair to the opposite players leaves the result unchanged.
+- **S1 — consensus:** Ask, Leave, Request and Forward each execute once when both players propose them. The Forward consensus can amplify the stale display, but this table does not infer that anyone reads the post or takes a downstream route.
+- **S1 — invalid proposals:** A correction before route verification is invalid. Against a valid Ask proposal, Ask executes. If both propose that invalid correction, WAIT occurs, the four-minute beat elapses and the deadline clock continues. WAIT is a resolver fallback, not a player-selectable action in this slice.
+- **S2 — closure verified, claim active:** Correction outranks Request log (4 vs 5) and Leave (4 vs 6) because a timely travel action can still follow. Request log outranks Leave (5 vs 6): the request is filed at 18:20, due no earlier than 18:29, and the trip can still happen in the next beat from 18:20 to 18:24. That gives no log evidence before the deadline; it only preserves a later evidence path.
+- **S3 — last feasible travel block:** Leave beats both Request log and Correction (priority 2 vs 8 or 4). Leave arrives at 18:24 exactly. Correction beats Request log when the correction is still absent: the correction is useful now, while the log request no longer meets its condition for the higher request priority and falls to the bottom of this scene's legal-action order.
+- **Consensus is an intentional override:** a shared Correction or Request proposal can sacrifice the deadline. The cost is a canonical consequence and must be explained after resolution; consensus cannot bypass action preconditions or create knowledge/access.
+- **Unevaluated priority:** the generic “prevent known, immediate physical danger” priority is not exercised because this menu contains no action that directly confronts a newly known immediate hazard. Do not claim that this safety case has been validated by this table.
+- **Tie coverage:** each resolved action pair shown has a unique effective priority. A future scenario that introduces overlapping priorities needs its own deterministic tie rule and counterfactual tests; this paper menu does not solve that general problem.
+
+**Desk result:** every resolved row in this table can be reconstructed from the current candidate rules and seeded facts. This is only a local consistency result. It does not establish that the priorities are the right characterization of Jules, that the action set is balanced, that the umbrella/public-incident objectives are naturally coupled, that the untested safety priority works, or that a player would enjoy the loop. O2 remains provisional, the three-route gate has not passed, and no selector implementation should start from this author check alone.
+
+
+
+
+### 11.5 Strategic objective-coupling check
+
+The action table is locally reconstructable, but that is not the same as proving a compelling competitive loop.
+
+- In the worked path, the route-check action resolves in Beat 1, the correction resolves in Beat 2, and the go-home-and-return action resolves in Beat 3. Player A's promise is met exactly at 18:24 and Player B's public-correction criterion is already satisfied. The correction costs A their time buffer, but **the current A objective does not reward buffer or penalize an exact-deadline return**. This path demonstrates compatible objectives, not an actual objective trade-off.
+- The conflict at 18:20 is meaningful only when the correction is still absent: going home preserves A's promise but leaves B without the correction; correcting the claim sacrifices the deadline. However, under the current B brief, B can avoid this conflict by posting the correction at 18:16 and still finish with its stated objective met. The paper brief gives B no specific objective reason to delay correction in favor of the incident-log request.
+- Consequently, the `Request the incident log` proposal is currently a plausible extra action, but not yet a validated strategic alternative for Player B. The log arrives after the deadline and does not fulfill the present public-correction criterion. The action should not be credited as meaningful objective progress without a grounded objective condition that values later attribution evidence.
+
+**Finding:** Direct-action resolution has a coherent, concrete action loop in the slice, but this paper test does **not yet demonstrate strong, sustained competition between A and B**. Do not claim otherwise from the existence of conflicting proposals alone.
+
+**Next design gate:** make a small action-sequence/objective matrix for the fixed scene and compare (a) A returns early; (b) B verifies and corrects; (c) B files the log request instead of correcting; and (d) both players agree on an action that sacrifices an objective. Write the terminal/partial result for each player and Fate separately. Either identify a natural, evidence-grounded reason for B to pursue the later record, or revise the objective/premise. Do not bolt on an arbitrary report cutoff or penalty just to manufacture conflict. Direct-action mode stays selected; this is about objective coupling and resolution consequences, not reopening the control-mode decision.
+
+
+## 12. Objective-coupling counterfactual matrix
+
+**Status:** Author desk analysis; O2 remains a candidate. This matrix reports each objective's state at the **18:24 umbrella deadline checkpoint**, not final scenario victory. The current draft defines A's deadline but does not state that the entire game ends at 18:24 or give B a correction deadline. Therefore "not corrected by 18:24" is not automatically "B has lost." Jules's location and remaining legal actions must carry forward after each selected action; the present three-beat menu does not yet define every return-to-station or post-deadline continuation action.
+
+| Sequence from the fixed scene | Player A: honest umbrella return | Player B: sourced public correction | Fate: primary blame for the route confusion | Design reading |
+|---|---|---|---|---|
+| **A. Return early:** both propose the go-home-and-return action in Beat 1. | Meets the promise early. | **Undetermined at 18:24 and afterward:** Jules leaves before verifying the closure, and the current action set does not define how Jules can reacquire station knowledge after going home. | Not supported by current evidence: Jules did not relay the false route claim. | This is not a valid completed trajectory yet. It reveals a location/continuation gap; do not mark B as a terminal loss. |
+| **B. Verify → correct → return:** Beat 1 Ask wins against return; Beat 2 correction wins against return; Beat 3 return wins against record request. | Succeeds exactly at 18:24; there is no objective penalty for losing the earlier time buffer in the current trust rule. | Succeeds: the correction is posted with the closure notice and display timestamp. | Fails on this trace: Jules verified and corrected the claim. | Both player objectives succeed in the intended showcase path. That demonstrates compatibility, not strong rivalry. |
+| **C. Verify → request record → return:** Beat 1 Ask; Beat 2 request log; Beat 3 return wins over a proposed correction. | Meets the promise at 18:24. | **Not completed by 18:24, not a proven terminal loss:** the log is pending and the active claim remains. Because the group is phone-accessible and B's correction has no stated cutoff, Jules may still be able to post from home after the deadline. | Not supported by Jules's conduct alone; Jules has not originated or amplified the stale claim. | This sequence does not prove that B lost. It proves only that the correction was not posted by the umbrella deadline; the game's terminal evaluation and post-deadline objective rules are missing. |
+| **D. Verify → shared request → shared correction at the last beat:** after Ask wins in Beat 1, both players propose Request log in Beat 2, then both propose Correction in Beat 3. | Fails the deadline: the correction consumes the last four-minute beat and Jules arrives after 18:24. | Meets the current correction criterion; the log remains pending. | Not supported by available evidence. | This is a valid but strategically odd consensus branch. It proves the action system can permit A to sacrifice the promise, not that the current objective wording gives A a reason to do so. |
+| **E. Forward display → verify → attempt late correction:** both forward the display in Beat 1; Ask beats return in Beat 2; return beats correction in Beat 3. | Meets the promise at 18:24. | **Not completed by 18:24:** after the handover, the group remains accessible by phone and the correction has no stated cutoff, so a later correction appears legal under the current contract. | **Conditional, not established.** Jules did amplify a stale display, but the fixed facts do not establish that members read it, acted on it, or that this action made Jules primarily responsible for an actual routing outcome. | The contribution is observable, but its consequence and the timing of the correction remain underspecified. Do not infer crowd behavior or a terminal B loss from post availability alone. |
+
+### 12.1 Current objective verdict
+
+- The present O2 brief makes the public correction the only explicit completion criterion for B but gives it no deadline. The delayed log request is a possible future investment, not yet a required or scored objective step. The paper cannot count it as progress toward B's win condition without revising that criterion.
+- The action-economy conflict is real at the last feasible travel beat, but the worked showcase path lets A and B both meet their current stated goals by 18:24. That may be a legitimate cooperative branch; it does not by itself meet the game's competitive promise. The scenario also lacks a terminal-horizon rule, so some rows measure deadline status rather than final objective results.
+- The most credible candidate for Fate pressure remains the branch where Jules forwards the stale display before verifying it. The scene still lacks evidence of downstream exposure and effect, so primary public blame remains unearned. Fate cannot simply make the group read the message or invent a crowd movement.
+
+**Next gate:** first close the scene's continuation contract: does the scenario end at 18:24, or is that only A's personal deadline? Track Jules's location after each action and list legal actions available from home versus at the station. Do not score B as failing simply because the correction is absent at 18:24 when no correction deadline exists. Then test a narrowly revised B objective with two candidate milestones—correct the active route claim and preserve/obtain official evidence for later accountability—against the same branches. Keep both objectives provisional; don't add a new report cutoff or crowd reaction unless the scenario establishes its source, timing, audience and observable consequence in advance. If the milestones require arbitrary constraints, replace the premise rather than hiding the gap.
+
+
+## 13. Scene continuation contract — test location, not a terminal rule
+
+**Status:** Author desk proposal for making the current slice reconstructable. It does **not** set the overall game horizon or establish final wins. The four-minute beat timing and the 18:24 umbrella promise remain scenario-local. This section explicitly separates action availability from objective completion.
+
+### 13.1 Minimal world-state fields
+
+For every resolution, retain at least these fields:
+
+- `time`: beginning and end of the four-minute beat;
+- `location`: `interchange` or `home`;
+- `closure_verified`: whether Jules learned the current closure from the steward/official notice;
+- `notice_photo_on_phone`: whether Jules actually captured the notice (not assumed just because it was visible);
+- `stale_group_claim_exists` and `correction_posted`;
+- `incident_log_request_time` and `incident_log_available_time`, if a request was actually filed;
+- `umbrella_returned`, `damage_acknowledged`, `trust`, and the flatmate's `departed` state;
+- the audience-facing message availability/provenance separately from any evidence that people read, believed, or acted on it.
+
+Location, source access and knowledge are separate state. Returning the umbrella does not delete the group post or travel the station record to Jules. Posting a correction does not imply that any recipient has read it.
+
+### 13.2 Candidate action availability after each location change
+
+| Action | At interchange | At home | Rule / unresolved edge |
+|---|---|---|---|
+| Ask the steward about the closure | Legal if the route is not verified and the steward is present | Not legal | Jules must be physically at the information point. |
+| Photograph the official closure notice | Legal if Jules can reach the notice | Not legal unless a photo was already captured | Seeing/being told about a notice is not the same as possessing a copy. |
+| Forward a photo of the stale display without a caveat | Legal only while Jules can capture/access the displayed claim | Only if Jules already has a suitable photo saved | This action redistributes a representation of the display; it does not alter the closure. If Jules already knows the closure is false, a deliberate misleading forward would require a separate, explicitly authored action and intent. |
+| Post a sourced text correction to the group | Legal if the closure is verified and the group is accessible | Legal if the closure is verified and the group is accessible | The current action definition needs only a source-citing correction, not an attachment. If the design intends to require the primary notice image, change the precondition and test that version separately. A post proves availability, not audience uptake. |
+| Request the station incident log | Legal at the information point under the seeded request process | Not yet defined as legal | The request notice exists at the station. The delivery/access mechanism after nine minutes is still undefined; do not assume Jules receives or can inspect the log from home until that is specified. |
+| Go home to return the umbrella honestly | Legal if the flatmate has not departed and the upper-street route is passable | Not applicable once the umbrella is returned | The four-minute journey includes handover and honest acknowledgement. Arrival at 18:24 is on time; after 18:24 is late. |
+| Return to the interchange | Not needed | Candidate legal action if the scenario continues and the upper-street route is passable | For this desk test only, assume the return trip also takes four minutes. This reciprocal travel-time assumption needs confirmation before it can become executable scenario data. |
+| Wait / review the phone | Legal | Legal | Must still consume a beat if selected as a protagonist action. If neither submitted proposal is valid, the resolver's `WAIT` fallback advances time; it is not a free pause. |
+
+### 13.3 Continuation rule used to interpret the matrix
+
+1. **18:24 is Player A's deadline, not a game-ending rule.** If Jules arrives and hands over the umbrella at or before that time, evaluate A's deadline predicate. The game does not end merely because this deadline fires.
+2. After every action, update Jules's location and source access before generating the next legal-action list. A station-only action cannot resolve while Jules is home. Do not retarget it or pretend travel happened without an explicit travel action.
+3. The group remains phone-accessible from either location. If Jules verified the closure, a source-citing text correction remains legal from home under the current action definition. The public correction has **no established cutoff** in this scenario. Its absence at 18:24 is a checkpoint fact, not proof that B permanently lost.
+4. A requested incident log remains pending until the seeded minimum delay expires. Its post-delay delivery/access channel is unspecified, so no paper branch may claim that Jules reads it at home without adding and reviewing that rule.
+5. The scene's **terminal horizon is still undefined**. Do not claim final objective wins or losses after Beat 3. For the bounded test, report only the state at 18:24 and list pending goals/effects explicitly.
+
+### 13.4 Revised continuation counterfactual
+
+The current scene contains a straightforward route that weakens the proposed rivalry:
+
+| Beat | Competing proposals | Resolved action | State at beat end |
+|---|---|---|---|
+| 1: 18:12–18:16 | Verify the closure vs go home and return umbrella | Ask the steward wins under the candidate route-verification priority | Jules remains at the interchange, now knows the closure; umbrella not returned. |
+| 2: 18:16–18:20 | Go home to return umbrella vs post a correction | **Post the correction** under the current priority order: the closure is verified, the false claim remains active, and a four-minute return can still follow. | Jules remains at the interchange; B's correction is posted; A's umbrella is not yet returned. |
+| 3: 18:20–18:24 | Go home to return umbrella vs request the incident log | **Go home to return the umbrella honestly** wins because this is the last feasible travel block. | Jules hands over the umbrella at exactly 18:24. A meets the stated deadline and B's correction is already posted. Both current objectives are achieved at the checkpoint. |
+
+A second, distinct consensus path exposes the same weakness: after closure verification in Beat 1, if **both players** propose returning the umbrella in Beat 2, consensus returns Jules home by 18:20. Because the group remains accessible by phone and Jules already knows the source facts, B can propose and resolve a sourced correction in Beat 3. A returns on time and B corrects the claim by 18:24. The candidate resolver intentionally lets consensus bypass the disagreement priority, but in this scene that means the two objectives can both be completed without a real opportunity-cost penalty. This is not a rule contradiction; it is evidence that the current objectives are too compatible for the intended adversarial experience.
+
+**Finding:** the location-aware continuation closes the false assumption that the scenario automatically ends at 18:24, but it exposes a deeper design failure: under the current action definitions, the public correction can be completed from home after Jules verifies the closure, and exact-deadline return still satisfies A. Thus the umbrella deadline does not reliably force a meaningful conflict with B's correction goal.
+
+**Next decision gate:** do not patch this with an arbitrary correction cutoff. Test whether a *naturally bounded* public event/source exists in the intended setting, with its time, audience and causal consequence established before play. If none does, replace or decouple the umbrella premise from the public-accountability scenario. Direct-action mode remains selected; no UI or resolver implementation should proceed on this scene until the premise/objective gate passes.
+
+
+## 14. Premise decision gate — test a causal replacement, do not invent a cutoff
+
+**Status:** Comparative desk recommendation, not canon. Sections 10–13 reveal that the current umbrella/transit variant can be made locally deterministic, but its dramatic pressure is not grounded strongly enough to justify locking it.
+
+### 14.1 Audit of naturally bounded opportunities in the current premise
+
+| Existing fact or opportunity | What it legitimately supports | What it does not support |
+|---|---|---|
+| Jules must return the umbrella by 18:24 | A deadline for Player A's personal objective; missing it may affect trust if an explicit response rule says so | A deadline for public correction, the end of the game, or a reason the public account becomes irreversible |
+| A 42-member commuter group exists and is phone-accessible | A correction can be published to a bounded audience; the earlier claim and correction can be compared by timestamp | Proof that anyone read, believed, or acted on either post |
+| The steward and official closure notice are at the interchange | Jules can learn the true route and identify a source while physically present | A continuing station-only restriction on correcting a claim by phone once Jules has learned the source facts |
+| A log-request process exists and takes at least nine minutes | A request can create a delayed evidence path | A deadline at 18:24, remote delivery, a hard cutoff, or a public report that automatically locks at that time |
+| The storm and lower-passage closure pre-exist Jules's action | A credible independent cause of a local routing problem | Proof that Jules's action caused a bottleneck, made it worse, or led to a wider emergency |
+
+**Finding:** no current fact creates a natural cutoff for Player B's correction. The 18:24 umbrella deadline is the only established deadline, and using it as a public-report deadline would be a causal mismatch. A scheduled staff handover, bulletin cutoff or irreversible crowd event could be authored as a new fact, but unless it has a plausible operational reason and observable consequence, it would be an artificial constraint designed only to force competition. Do not add one by default.
+
+### 14.2 Three scenario paths forward
+
+| Candidate | What stays / changes | Objective coupling | Causal and evidence strength | Main risk | Desk recommendation |
+|---|---|---|---|---|---|
+| **P0 — Keep umbrella + transit correction** | Keep current premise and O2; add no new cutoff | Low under present rules: after Jules verifies the closure, a phone correction and an on-time handover can both occur | Weak: stale post availability is established, but audience uptake and a consequence are not | Players can satisfy both goals; Fate's target is not earned | **Do not implement yet.** Retain as a failed/partial probe and only continue if an organic bounded source or consequence can be justified. |
+| **P1 — Add a procedural handover deadline** | Keep premise, add a pre-existing station-staff handover at a stated time that limits when a witness statement can enter the official log | Potentially moderate if evidence acquisition and the umbrella return consume distinct action opportunities before handover | Could be stronger for official attribution, but does not by itself prove the group acted on Jules's post | Easy to make a contrived deadline; an official record may be submitted later through another channel | **Conditional, not preferred.** Only test if the fiction makes the handover procedure, cutoff, audience and later appeal route explicit before choices. |
+| **P2 — Replace the borrowed object with a working communication prop** | New provisional premise: Jules borrows a handheld venue radio from a flatmate who is also a volunteer/shift coordinator at a crowded community venue during an already-established storm disruption. The radio is unreliable; evidence that the lender knew about its fault exists in a pre-existing message thread, but Jules does not automatically know it. | Higher potential: return/handover, trust, disclosure of the known equipment fault, and a route instruction that Jules actually relays can all be parts of the same causal chain | A specific radio transmission or an observable physical direction can create a plausible *contribution* to local crowd confusion; actual causes and the independent closure remain separate | More setup; must not make the radio failure random or imply that a faulty device proves who caused the crowd outcome | **Best next paper candidate.** It integrates the personal obligation with the communication/evidence problem without needing the umbrella to act as a symbolic causal bridge. Keep it provisional until a full trace survives review. |
+
+### 14.3 P2 — integrated premise outline for a paper test only
+
+This is a candidate for testing, not a scenario rewrite or approval.
+
+- **Opening:** Jules is helping at a community venue during a storm disruption that already exists for independently established reasons. Jules has borrowed a handheld radio from flatmate Ren, who is finishing a volunteer shift and expects the radio back at the scheduled handover. Jules needs to return it honestly to preserve Ren's trust.
+- **Shared technical fact:** the radio has a known, reproducible transmit dropout after a defined period of use. The fault is an authored pre-existing property, not a random malfunction triggered whenever the plot needs it. The rule must define exactly what fails, when it fails, and what Jules can observe.
+- **Evidence split:** a message already exists in an accessible thread showing Ren was warned about the dropout before lending the radio. Player B knows the message exists; Jules does not know its content until an explicit inspection action resolves. The message proves prior warning/knowledge only if its sender, time and wording are seeded and credible.
+- **Player A's provisional goal:** return the radio by handover, honestly acknowledge Jules's own actions, and preserve trust with Ren. A is not automatically required to lie or hide a safety-relevant fact.
+- **Player B's provisional goal:** establish a proportionate record of the radio fault and prior warning, while retaining evidence of any incorrect instruction Jules actually relayed. B should not be rewarded for falsely exonerating Jules.
+- **Fate's provisional local target:** make Jules appear primarily responsible for the crowd-routing confusion even when the equipment fault and the independent storm/closure are material contributors. Fate cannot create a transmission, invent an eyewitness, alter the radio's known behavior or guarantee that every attendee believes the accusation.
+- **Initial action families to test:** inspect the message thread; test or use the radio; repeat/verify a route instruction with a named source; move a visible divider/point people only when the state supports it; document the incident; return the radio. Each needs explicit timing, location, information preconditions and observable effects.
+
+P2 is only a more tightly coupled *starting hypothesis*. This outline does not yet demonstrate three materially distinct blame routes, meaningful counterplay, a satisfying non-Fate terminal state, or fun. The communication fault itself must not become an all-purpose explanation: a fault, a bad instruction, a crowd response, and a later attribution are separate events requiring separate evidence.
+
+### 14.4 Comparative acceptance test before choosing P2
+
+Write one three-beat paper trace with fixed times and location, then test at least these branches:
+
+1. Jules verifies the route through an independent source before transmitting; no unsupported blame should arise from the radio alone.
+2. Jules knowingly or carelessly relays a stale instruction while the fault or its warning is relevant; record the exact message, actual recipients and observed consequence.
+3. Jules inspects the thread and learns Ren had prior warning; show how disclosure affects A's trust objective without treating prior knowledge as proof of every downstream outcome.
+4. Jules leaves/returns the radio without taking part in the routing event; Fate must lose any route that requires Jules to have performed the missing action.
+5. Fate's proposed blame intervention is absent; derive a credible non-Fate ending from the same world facts.
+
+**Pass gate:** at least three materially different causal routes survive skeptical reconstruction; both players have meaningful actions in the same incident; facts/provenance/knowledge and audience response are explicit; at least one counterfactual defeats each route; the radio's behavior is deterministic; and a non-Fate terminal path is credible. If P2 needs a last-minute report cutoff, automatic audience belief, or Fate-created evidence to pass, reject it and test a different premise.
+
+**Decision boundary:** P0 is not approved; P1 is conditional; P2 is the recommended next paper test only. Direct-action mode remains selected. Do not change executable fixtures, implement a selector, or treat the radio premise as canon based on this outline.
+
+
+## 15. P2 working paper trace — The Borrowed Radio
+
+**Status:** First authored desk trace of the alternative in §14. It is a test fixture in prose, not accepted story canon or production rules. This deliberately uses a **local venue incident**, not a citywide emergency. It tests whether the personal deadline, equipment fault, information ownership and first incident record belong to one causal chain.
+
+### 15.1 Fixed facts before choices
+
+**Setting and timing**
+
+- The scene takes place at Riverside Community Hall during a heavy-rain disruption that already exists. Water has entered the East Passage steps; staff closed the passage at 18:11. Jules did not cause the weather or the closure.
+- The wall display still says “EAST PASSAGE OPEN”, last updated at 18:05. An official closure notice is posted at the East Passage threshold, but a queue obscures it from Jules's starting position. The venue steward at the information desk can confirm the current route and the approved alternate: the passable West Main Hall entrance.
+- Four attendees are scheduled to reach the East Intake desk at 18:20. Mina, a volunteer posted around a blind corner from the wall display and closure notice, cannot see either source from her station. Her deterministic routing rule for this group is: follow the **latest complete radio destination** received; if none has been received, follow an explicit EAST/WEST MAIN HALL paddle direction; if neither exists, hold the attendees at East Intake until a destination is confirmed. A radio transmission missing its destination does not replace or erase an older complete radio destination. Thus a paddle can guide the group only while there is no complete radio destination for this group-window; a later complete radio destination supersedes the paddle, and a later complete radio correction supersedes an earlier radio destination. A staffed barrier stops anyone directed toward the closed East Passage; Mina can redirect attendees still outside the closed steps when an authoritative cue changes. A correction can clear the active queue, but it never erases the recorded delay; no attendee enters the closed passage or is injured.
+- **Provisional movement abstraction for this paper test:** Jules starts at the Main Hall junction beside the wall display; the queue obscures the separate closure notice at the East Passage threshold. The information desk, East Intake/paddle, and operations desk each lie within a one-minute walk of the Main Hall junction, using open interior routes; moving between any two of those three destinations therefore takes at most two minutes via the junction. Each interaction takes less than one minute. A scene action lasts four minutes **including** movement and one declared task. Even the display-to-paddle action is reachable within four minutes from any scene node (at most one minute to the junction, one minute to the paddle, and under one minute to read/set); returning R4 or asking the steward likewise fits from any node. Phone/thread/report access is available at any scene location, and a handheld-radio transmission can be made from any location while Jules holds R4. The wall-display relay is performed at the display; setting a paddle ends at East Intake; asking the steward ends at the information desk; returning R4 ends at the operations desk. The East Passage closure blocks that route only; it does not close the open interior routes. Each action may include the travel needed to execute its declared task, but it cannot perform a second independent task; there are no travel-only actions. This compact map is a simplifying test assumption, not locked venue canon. All named destinations are deliberately reachable within one action, so this test does not measure strategic route-planning or differentiated travel costs.
+- A portable route paddle at the East Intake is initially set to “HOLD FOR CONFIRMATION”. Jules can rotate it to “EAST” or “WEST MAIN HALL”. Mina can read its public-facing direction from her station, but the operator-side handle is hidden behind the intake screen, so seeing “EAST” does not tell her who changed it. A fixed camera records the public face and operator-side handling without audio; it may identify the person who moved the paddle, but its footage is not automatically attached to the incident note. The paddle provides a physical-direction channel only when no complete radio destination has been received for this group-window.
+- Jules is assisting the venue team and is carrying **R4**, a handheld radio lent by flatmate Ren, the outgoing shift coordinator. Ren remains at the operations desk until the 18:24 shift handover. Jules promised to return R4 directly to Ren by that handover. A secured equipment rack remains available later; placing R4 there after 18:24 recovers the equipment but does not satisfy the promised direct handover.
+- The venue's existing Operations thread contains a message from Facilities at 18:02: “R4 drops the second part of any instruction that runs beyond ten seconds. Do not use it for multi-part public routing until checked.” Ren replied at 18:04: “Acknowledged; I will replace it at handover.” Ren later lent R4 to Jules without relaying this warning. Jules has not opened this message at scene start; Player B knows the message exists, but that knowledge does not automatically transfer to Jules. Initialize `jules_knows_r4_warning = false` and `private_followup_raised = false`; Ren's prior knowledge is a world fact and must not be mistaken for Jules having addressed it.
+- **Fault-wording boundary for this paper test:** Facilities warns against *multi-part* public routing, not every public use. This matches the deterministic contract below: the long two-part instruction is invalid once Jules knows the warning, while a short instruction contained wholly in Segment A is legal and transmits completely. No separate “radio test” action is implied by these rules.
+- **Deterministic radio behavior:** a transmission has two fixed segments. R4 always sends Segment A and drops Segment B when both are sent as one instruction. The radio emits a double beep at release. A short instruction that fits entirely within Segment A is transmitted completely. This is not random and does not make every use of R4 fail. If Jules has learned the cutoff, the long-instruction action becomes invalid for this scene; the short instruction remains legal.
+- A preliminary incident record is opened when staff log the closure at 18:11. It is seeded to record the route closure, dispatch events and Mina's queue report; it does **not** automatically import Operations chat history or camera footage. Mina's queue report records the routing cue she personally received or observed and her response: the complete radio destination if received, the part heard if a transmission was truncated, or the paddle direction she followed. It does not identify the radio operator or the person who turned the paddle by itself. The dispatch log records radio time/device but not message content; camera footage has no audio. Relevant messages or footage must be retrieved and attached explicitly. Under the proposed outgoing-shift checklist, the open incident note and loaned equipment are both reviewed at the 18:24 handover; this is the shared operational checkpoint, not two unrelated deadlines coincidentally set to the same minute. Ren signs the first incident note as outgoing coordinator, and the Operations group of twelve volunteers receives that first version. Because Ren acknowledged the earlier warning and lent R4 anyway, this creates a potential conflict of interest; the paper test does not assume Ren intentionally conceals anything. Evidence attached before sign-off appears in the original; later evidence can be appended with its later timestamp but cannot rewrite the signed first version. This procedure is a proposed scenario fact to test, not accepted real-world canon.
+- Each protagonist action consumes a four-minute beat: 18:12–18:16, 18:16–18:20, and 18:20–18:24. Resolve the selected action's state changes first; then, at the same timestamp, process any scheduled attendee arrival and finally the 18:24 report sign-off/handover checks. Thus a report-attachment action finishing at 18:24 is included before sign-off, while a radio-return action finishing at 18:24 counts as on time. If R4 is not handed to Ren by 18:24, A's handover predicate fails. This paper slice does not define the recovery channel for a late radio return or the overall game-ending time.
+
+**Private objectives**
+
+- **Player A:** meet two separately tracked aims: (1) hand R4 directly to Ren by 18:24; and (2) after Jules hears the radio's observable double beep, ask Ren privately whether he knew of a transmit fault before lending R4, while keeping the Facilities message out of the first incident note. This means explicitly raising the issue with Ren, not merely omitting it from the report. A may acknowledge Jules's own actions and may not fabricate or deny facts. A's relationship/trust outcome is not assigned a numeric change until a response rule is tested.
+- **Player B:** ensure that the first signed incident note contains the existing Facilities warning and Ren's acknowledgement, while preserving the fact that Jules did transmit the incomplete instruction. B is not allowed to claim that the fault erases Jules's contribution.
+- **Fate (local milestone only):** make Jules's transmission the only documented operator action explicitly linked to the queue in the first incident note while the prior warning remains unattached. This creates a vulnerability for disproportionate local attribution; it does not by itself prove that every volunteer believes Jules caused the closure or a wider emergency.
+
+### 15.2 Action contracts used in this trace
+
+**Deterministic route-cue resolution**
+
+The state is tracked for the four-attendee group-window. `latest_complete_radio_destination` begins as `NONE`; `paddle_direction` begins as `HOLD`.
+
+| Latest complete radio destination | Paddle direction | Cue Mina follows |
+|---|---|---|
+| `NONE` | `HOLD` | Hold attendees at East Intake for a destination. |
+| `NONE` | `EAST` | Direct attendees toward the East Passage entrance. |
+| `NONE` | `WEST MAIN HALL` | Direct attendees to West Main Hall. |
+| `EAST` | Any paddle state | Follow the complete EAST radio destination. |
+| `WEST MAIN HALL` | Any paddle state | Follow the complete WEST MAIN HALL radio destination. |
+
+A complete radio message replaces `latest_complete_radio_destination`, even if the new destination conflicts with the earlier message. A truncated message that contains no destination leaves the field unchanged. A paddle action changes only `paddle_direction`; it cannot override a complete radio destination. When the active cue changes, Mina redirects attendees who remain stopped outside the closed passage; that clears the active queue but never erases the recorded delay. This rule determines the cue Mina follows, not what the audience believes about the operator or the incident.
+
+**Action-economy ruling (desk result, not canon):** The fixed map permits travel plus one declared task per four-minute action. Asking the steward to verify a route and transmitting a correction are two independent tasks, so **“Confirm the route and immediately relay a short correction” is not a legal action under the current contract**. Keep “Ask the steward” and “Send the short route instruction” as separate actions; learning the destination does not itself correct the queue. Do not add a convenience cost or trust penalty to compensate for a bundled action that should not exist.
+
+**Action-to-state transition summary**
+
+| Action resolves | Route knowledge | Latest complete radio destination | Paddle | Evidence/resource | Queue effect |
+|---|---|---|---|---|---|
+| Ask steward | `route_verified = true`; approved West route is learned | Unchanged | Unchanged | No thread read/attachment; R4 unchanged | No correction occurs by this action alone. |
+| Set paddle EAST | Route remains unknown | Unchanged | Set to `EAST` | R4 unchanged | EAST is active only when latest complete radio destination is `NONE`; otherwise radio remains authoritative. |
+| Set paddle WEST | Route must already be verified | Unchanged | Set to `WEST MAIN HALL` | R4 unchanged | Redirects the group only when radio destination is `NONE`; cannot override radio EAST. |
+| Relay stale display on R4 | Route remains unknown | Set to `EAST` (complete message) | Unchanged | R4 remains held | EAST becomes authoritative; queue/delay may form at arrival. |
+| Send long verified correction | Route already verified; cutoff must be unknown | **Unchanged**, because Segment B destination is dropped | Unchanged | R4 remains held; double beep becomes observable after send | Re-evaluate the cue from the unchanged prior radio/paddle state: keep following the prior complete radio destination if one exists; otherwise follow the paddle; otherwise hold at intake. |
+| Send short verified correction | Destination known; R4 usable and held | Set to `WEST MAIN HALL` | Unchanged | R4 remains held | Redirects waiting/stopped attendees; clears active queue but preserves delay. |
+| Ask Ren privately about R4's reliability (T2 counterplay candidate) | Legal in the worked branch only after Jules sent the long verified instruction, heard the double beep and observed that no complete destination arrived / the group is being held. Jules asks whether Ren knew about the transmit fault before lending R4; the candidate honest-response rule sets `private_followup_raised = true`. | Unchanged | Unchanged | No source attachment; R4 remains held | No route correction occurs; Ren's response/trust consequence remains undefined. |
+| Review/attach Operations thread | Unchanged | Unchanged | Unchanged | If the warning exists and F2 does not intercept, Jules learns it and attaches it to the open first report. If F2 intercepts, no content is returned and no attachment occurs. | No route correction occurs. |
+| Review/append Operations-thread warning to signed-record addendum (Beat 4 candidate) | If unread, Jules learns the existing warning | Unchanged | Unchanged | After F2 expiry, the source is appended to the signed-record addendum with its actual append timestamp; the first note is unchanged and R4 remains held. | No route correction occurs; Ren's private-conversation window has passed. |
+| Return R4 to Ren | Unchanged | Unchanged | Unchanged | `R4_held = false`; direct return deadline met if completed by 18:24 | No route correction occurs; later radio actions become illegal. |
+| WAIT fallback | Unchanged | Unchanged | Unchanged | Unchanged | No action effect; scheduled arrival/sign-off events still resolve as timed. |
+
+| Direct action | Preconditions and outcome |
+|---|---|
+| **Ask the steward to confirm the route** | Legal if Jules can reach the information desk within the four-minute action and has not verified the current route. The action includes travel and the question; Jules ends at the information desk and learns the closure and approved alternate from the steward. It does not reveal the Operations-thread warning. |
+| **Set the route paddle to EAST using the display** | Legal only while Jules has not verified the current closure, the paddle is at HOLD FOR CONFIRMATION, and the action's route to the wall display and East Intake fits within four minutes. The action includes reading the displayed route, moving to East Intake, and setting the paddle; Jules ends at East Intake. If no complete radio destination exists for this group-window, Mina follows the EAST paddle and directs arrivals toward the East Passage entrance. If a complete radio destination already exists, the paddle does not override it. |
+| **Set the route paddle to WEST MAIN HALL** | Legal only after Jules has verified that this is the approved alternate route and can reach East Intake within the action. Jules ends at East Intake. Mina follows the new paddle direction only if no complete radio destination has been received for this group-window; otherwise the latest complete radio destination remains authoritative. When the paddle is the active cue, Mina can redirect attendees still stopped outside the closed steps; the active queue clears but the recorded delay remains. This changes a visible sign; it does not prove the audience accepted or acted on a radio message. |
+| **Relay the route shown on the display over R4** | Legal only while Jules has not verified the current closure, can reach the display within four minutes, and holds usable R4. Once Jules knows the closure, knowingly relaying the stale route would require a separately authored deliberate-misinformation action. The current display message (“East Passage open; direct arrivals to East Passage”) fits within Segment A and transmits completely, setting the latest complete radio destination to EAST. The action ends at the display. Mina directs arrivals toward the closed entrance; they stop at the barrier and queue. The radio fault is not needed for this branch. |
+| **Send the complete verified closure instruction on R4** | Legal only after Jules has verified the closure, holds usable R4, and has not learned the ten-second cutoff. If Jules knows about the cutoff, this long instruction is invalid; use the short instruction or an independently available channel instead. Radio use is location-independent in this paper map and does not move Jules. Segment A transmits (“East Passage closed; keep the next four arrivals clear of the threshold”); Segment B, containing the destination (“send them to West Main Hall”), is deterministically dropped. This action does not change the latest complete radio destination. If no complete radio destination previously existed and the paddle remains at HOLD, Mina holds the four attendees at East Intake; if an older complete destination existed, it remains authoritative. Jules hears the double beep only after transmission. |
+| **Send the short route instruction on R4** | Legal only when the destination is known, R4 remains in Jules's possession and is usable, and the short text fits wholly in Segment A. Radio use is location-independent in this paper map and does not move Jules. The complete WEST MAIN HALL destination becomes the latest complete radio destination, superseding any prior radio destination or paddle; Mina redirects attendees waiting at intake or stopped at the barrier, clearing the active queue while preserving the recorded delay. This is real counterplay to the fault; R4 is not a plot device that always fails. |
+| **Review/attach the Operations-thread warning** | Legal while Jules has phone access, the first report is still open and the seeded thread is accessible. The one declared goal is to find and add the existing Facilities warning to the first report. If F2 is active, eligible and this action resolves in Beat 3, F2 intercepts the access attempt: Jules receives no message content and no attachment occurs, but time still advances. If F2 is not eligible/active, the existing message is returned to Jules and attached; absence of the message must never be replaced with invented evidence. |
+| **Review/append an available Operations-thread item to the signed-record addendum (Beat 4 candidate)** | Legal only after the first note is signed at 18:24 and during the proposed Beat 4 late-evidence window, with phone/thread access available. F2 has expired. This is a fresh, generic one-task evidence-search action; it does not presuppose that the source contains a warning. If the existing Facilities message is found, Jules learns its contents and it is appended to the signed record with its actual later timestamp. This cannot rewrite the first note, retroactively satisfy B's first-note objective, or reopen the private conversation with Ren. If no relevant item exists, nothing is invented or appended. |
+| **Ask Ren privately about R4's reliability (T2 counterplay candidate)** | Legal in the worked branch only after Jules sent the long verified instruction, heard the double beep, observed that the destination was not delivered and saw the group held at East Intake, with Ren still reachable before 18:24. Jules asks whether Ren knew about a transmit fault before lending R4. As an explicit paper-test response rule, Ren answers honestly that Facilities warned him and he acknowledged it before lending the radio. This reuses seeded facts rather than inventing a new message or official source. It sets `private_followup_raised = true`, does not attach the Facilities message to the report, does not return R4, and does not assume a trust change. If reviewers find Ren's admission too convenient, reject the action rather than asserting the admission as canon. |
+| **Return R4 to Ren before the 18:24 handover** | Legal while Jules has R4 and can reach the operations desk within the four-minute action. The action includes travel and direct handover; Jules ends at the operations desk. Completing it by 18:24 meets A's deadline. If the handover is missed, the seeded equipment rack can recover the device later, but that does not satisfy A's direct-handover predicate. |
+| **WAIT (resolver fallback only)** | If neither proposal is legal, no protagonist state changes; time still advances and the report/handover event checks still occur. |
+
+### 15.3 Worked trace: verification followed by a failed long transmission
+
+This path shows a real, observable consequence without pretending the fault or closure was caused by Jules.
+
+**Beat 1 — 18:12 to 18:16**
+
+Jules sees the stale display but has not verified the route. The competing proposals are **Ask the steward to confirm the route** and **Relay the route shown on the display over R4**. The candidate situation rule favors verification while a safety-relevant route remains uncertain. Jules asks the steward; the closure is confirmed and becomes part of Jules's knowledge. The radio is not used in this beat.
+
+> The steward turns the notice toward Jules: the East Passage has been closed because water is running down the steps. The wall display still says OPEN. The steward points out the passable West Main Hall entrance as the approved alternate. Across the hall, Mina is waiting for the next route instruction. Jules now has a confirmed destination to communicate, but has not checked the Operations thread or R4's warning.
+
+**State change:** `closure_verified: false → true`. No radio transmission or crowd queue has yet occurred. Ren's prior knowledge remains a player-visible evidence lead, not Jules's knowledge.
+
+**Beat 2 — 18:16 to 18:20**
+
+The next arrivals are due at 18:20. The competing proposals are **Send the complete verified closure instruction on R4** and **Review the Operations thread and attach the relevant message**. The candidate scene priority favors sending an immediate route instruction before the known arrival, while the thread review can be pursued during the report window if time remains. This priority is a hypothesis to challenge, not universal protagonist behavior.
+
+Jules sends the full two-part instruction. R4 transmits Segment A (“East Passage closed; keep the next four arrivals clear of the threshold”) and drops Segment B (the destination, “send them to the West Main Hall entrance”). Mina receives no complete destination. At 18:20 the four attendees arrive at the East Intake desk; Mina keeps them there while asking for clarification, and a queue forms. The closure remains independently caused by water. Jules's instruction contributes to the delay, but Jules did not create the closure, and the known radio fault is a separate causal factor.
+
+> Two sharp beeps follow the transmission. Only the first segment is heard over the Operations channel: “East Passage closed; keep the next four arrivals clear of the threshold.” No complete destination arrives. At 18:20 the four attendees reach East Intake, and Mina holds them there as her procedure requires. The queue is visible; no one has been sent down the closed steps. The failed communication has created a delay and a missing destination, but this observable scene does not establish who operated R4 or why Segment B failed.
+
+**State changes:** the record now contains a complete route-closure fact, an observed transmission event, a specific missing destination, and a four-person queue at the threshold. It does not contain proof that all attendees blame Jules. Jules has observed the radio's double beep, but has not yet learned that Ren was warned before lending it.
+
+**Beat 3 — 18:20 to 18:24**
+
+The report and radio handover are both due at the end of this beat. The competing proposals are **Review the Operations thread and attach the relevant pre-handover message** and **Return R4 to Ren before the handover**. The proposed resolver gives priority to attaching material evidence before the first report is signed, because that initial report is not overwritten afterward; the radio can still be returned late, but A's on-time handover objective will be missed.
+
+Jules reviews the existing thread, finds the Facilities warning dated 18:02 and Ren's 18:04 acknowledgement, and attaches the messages to the draft incident note before sign-off. Jules learns the actual provenance only as this action resolves. The first note records the incomplete transmission, the four-person queue, the independent closure, and the pre-existing radio warning. Because the warning is attached before sign-off, it also establishes that Ren had prior notice; it does not erase Jules's transmission or claim Ren caused the closure.
+
+> Ren reaches for the radio as the handover time approaches, but Jules is still adding the two dated messages to the incident note. The report now shows the fault was raised before R4 was lent, and that Jules's transmission failed to carry the destination. At 18:24 Ren signs the first version. The warning is part of the record; R4 is not returned on time.
+
+**Checkpoint outcomes at 18:24**
+
+- **Player A:** misses the on-time radio-return predicate and the first-note privacy preference. These are separate objective components; the relationship/trust result remains unresolved until its response rule is authored.
+- **Player B:** completes the evidence-inclusion milestone for the first incident note, while the record still acknowledges Jules's own transmission.
+- **Fate:** this specific “single out Jules while omitting prior warning” route fails. The report now records multiple contributors and the independent closure. Whether the group believes the account, and whether the event merits any stronger attribution, remains a separate state/question.
+
+### 15.4 Counterfactuals and limits
+
+| Change from the trace | Expected result under this paper contract | What it tests |
+|---|---|---|
+| In Beat 2 Jules sends the short, complete instruction instead of the long instruction | Mina receives the destination; this queue branch does not occur. The independent closure remains. | The radio is counterable and not a guaranteed failure device. |
+| Jules learns the ten-second cutoff during Beat 1 and the long instruction is proposed in Beat 2 | The long action is invalid under its explicit knowledge precondition. A valid short instruction may still resolve; if both proposals are invalid, WAIT advances the beat without a radio message. | Character knowledge changes action legality; the player cannot knowingly force Jules into a failure mode that the rules mark as unavailable. |
+| In Beat 3 both players propose returning R4 | Consensus returns it once. The first note is signed without the warning attached; **F2 does not trigger** because no access action is selected, so Fate earns no T2-F2 progress from omission alone. | A and B can deliberately coordinate on A's goal, with a recorded cost to B's evidence milestone; it also denies Fate credit for an unused intervention. |
+| In Beat 3 both propose reviewing and attaching the message | The evidence is attached once; R4 misses handover. | Consensus can knowingly sacrifice the personal deadline. |
+| Jules relays the stale display in Beat 1 instead of asking the steward | The short stale instruction is transmitted completely; Mina directs arrivals toward the East Passage entrance and the group queues at the barrier. This is a different contribution path from the later incomplete-correction path caused by R4's segmented transmission. | The public display relay and the equipment fault are distinct causal routes; the report must distinguish them. |
+| The Facilities warning is absent from the actual thread | The review action finds no such warning and cannot attach it. B's intended milestone is not completed; the game must not invent the evidence. | Player B's private objective knowledge is a lead to investigate, not authority over world truth. |
+
+
+
+### 15.5 Same-state direct-action counterfactual matrix
+
+**Status:** Author desk enumeration of selected action pairs, not proof of balance or a complete production resolver. The route-paddle pairs are included, but this is still a targeted matrix, not the full Cartesian product. If proposals are identical and valid, consensus executes that action once and bypasses the disagreement order; hard preconditions still apply. S3-V means route truth is known; S3-U means it is not. Route-cue state is tracked separately: latest complete radio destination is NONE, EAST or WEST, and the paddle is HOLD, EAST or WEST. S3-V-H (NONE/HOLD) is the worked branch covered by the candidate priority order; S3-V-P (NONE/EAST) and S3-V-R (EAST/HOLD) are distinct branches with provisional orders stated below, but incomplete pair coverage and no independent validation.
+
+- **S1 — route unverified, 18:12:** Ask steward > review/attach existing warning > return R4 before handover > relay stale display on R4 > set paddle EAST using the unverified display. The last two are both risky unverified route signals; when paired, prefer the radio relay because Mina's seeded procedure treats a complete radio destination as primary and the paddle as fallback. This candidate ordering predates the new compound verify-and-relay action; do not apply it to that action until its dominance risk is resolved.
+- **S2 — route verified, radio fault not yet known, arrivals due by 18:20:** send the short complete radio instruction > send the long verified instruction (if Jules does not know the fault) > set the paddle to WEST MAIN HALL > review/attach warning > return R4. Mina uses a complete radio destination first and the paddle when no complete destination arrives.
+- **S3-V-H — route verified, no complete radio destination received, paddle still HOLD; attendees waiting at East Intake:** candidate T2-F2 extension for this paper test is **send the short complete instruction > set paddle to WEST MAIN HALL > ask Ren privately about R4's reliability > review/attach warning > return R4**, omitting any action whose preconditions are false. The private-conversation priority is provisional: Ren leaves at 18:24, while a later report addendum remains possible, though it cannot rewrite the first signed note. A reviewer must compare the conversation-first and evidence-first orders; do not treat this as an accepted resolver rule.
+- **S3-V-P — route verified, no complete radio destination received, paddle already EAST:** this can occur if the paddle was changed while the route was unverified and Jules verifies the route only at the 18:20 checkpoint. The group follows the paddle toward the barrier. **Provisional candidate order:** short verified radio instruction > set paddle WEST MAIN HALL > review/attach warning > return R4. This matches S3-V-H because no complete radio destination exists and both route actions update the active cue; it still needs a separate replay to confirm the sign update redirects the already-stopped group before sign-off.
+- **S3-V-R — route verified, latest complete radio destination is stale EAST, paddle HOLD:** this can occur if Jules relays the stale display in an earlier beat and only later verifies the closure. The group follows the stale destination to the barrier. A short verified radio instruction can replace EAST with WEST if R4 remains available; changing the paddle alone cannot override an existing complete radio destination. **Provisional candidate order for the four-attendee slice:** send the short correction > review/attach warning > return R4 > set paddle WEST. The paddle does not change the current group's authoritative radio destination; its possible value for later groups is outside this paper slice. This order remains a hypothesis, not a production rule.
+- A long instruction on R4 is invalid once Jules has learned the ten-second cutoff. If only one proposal is valid, it resolves; if neither is valid, WAIT consumes the beat. A relay of the stale display is invalid after Jules has verified the closure unless a separately authored deliberate-misinformation action is added. Setting the paddle to EAST is also invalid after route verification; setting it to WEST MAIN HALL requires that Jules has learned it is the approved alternate.
+
+**S3-U is a family of states, not one resolver state.** The queue can form at 18:20 while Jules still has not verified the route, but the legal actions differ by the causal history:
+- **S3-U-P — paddle-origin:** route is unverified, latest complete radio destination is NONE, and the paddle is EAST. The four attendees follow the paddle toward the closed entrance. Setting EAST again is invalid because the paddle is no longer at HOLD; setting WEST is invalid because Jules has not verified that destination. The short verified instruction is also invalid until Jules knows the destination. Reviewing the Operations thread or returning R4 remains conditional on the normal phone/radio, location and handover preconditions. Asking the steward is legal only if Jules can reach the information desk under the current location rules. Relaying the stale display remains legal only if R4 and the display are available, but it repeats the bad destination rather than correcting it.
+- **S3-U-R — stale-radio-origin:** route is unverified, latest complete radio destination is stale EAST, and the paddle remains at HOLD. The four attendees follow the radio destination toward the closed entrance. The same knowledge restrictions apply. Setting the paddle to EAST may be legal, but it does not countermand the already-received radio destination because Mina treats a complete radio instruction as primary and the paddle as fallback. Relaying the stale display again repeats the bad destination. Review/attach, return R4, or ask the steward may be legal only under their ordinary preconditions.
+
+**Reachable history checks (desk-derived, not independent validation):** S3-U-P can follow Beat 1 `Set paddle EAST` plus Beat 2 WAIT when `Set paddle EAST` again and a verified-route instruction are both invalid; S3-U-R can follow Beat 1 `Relay stale display` plus Beat 2 WAIT when the proposed west-paddle and verified-route actions are both invalid. S3-V-P can follow `Set paddle EAST` then `Ask steward`; S3-V-R can follow `Relay stale display` then `Ask steward`; S3-V-H is the worked `Ask steward` then truncated long-instruction path. In the first two WAIT traces, the route remains unverified at 18:20. These example sequences establish that the state labels are reachable under the stated action contracts, but do not establish good priority rules.
+- In both variants, the queue/delay is already recorded at 18:20. A Beat 3 action resolves at 18:24 before first-note sign-off; it cannot erase the event that has already occurred. Asking the steward updates Jules's knowledge but does not, by itself, send a follow-up instruction or attach a source to the report. The action contract must not silently bundle verification, correction and evidence attachment into one action. The paper-test map now bounds reachability within each four-minute action, but it intentionally removes differentiated travel costs and therefore does not test route-planning strategy. The matrix is still not executable-ready: the S3-V-P and S3-V-R branches need separate replay, and early radio-return variants remain uncovered.
+
+#### Action-economy closure: reject the verify-and-relay compound
+
+The candidate **Confirm the route and immediately relay a short correction** is **rejected under the current one-task-per-action contract**, not because the scene needs an invented downside. Asking the steward acquires route knowledge; transmitting a complete correction is a separate task with its own observable effect. The movement allowance may be included in either action, but it does not authorize both independent tasks in one beat.
+
+Consequences for all traces and tables:
+
+- “Ask the steward” only verifies the route; it does not update the radio destination, change the paddle, clear the queue, or attach evidence.
+- “Send the short route instruction” remains legal only after the destination is known and while Jules holds usable R4.
+- If the queue is already active when Jules first learns the route, a correction requires a later action. The recorded delay remains even after a later correction.
+- No resolver priority can make an invalid compound action legal. Any future proposal to bundle these tasks would require an explicit change to the one-task contract and a fresh counterfactual audit; it is not part of the present candidate.
+
+#### S3-U unresolved pair probes (not priority rulings)
+
+These examples make the open decision concrete. Each pair is meaningful only if **both** proposed actions satisfy their current reachability and resource preconditions at beat start. The S3-U pairs are unresolved; S3-V-P and S3-V-R have tentative candidate orders and selected test rows, but they still need fuller state-specific replay.
+
+| Beat-start substate | Player A proposes | Player B proposes | Status | Why no priority is assigned yet |
+|---|---|---|---|---|
+| **S3-U-P:** paddle EAST; route unknown; no complete radio destination received | Ask the steward | Review/attach the Operations warning | **OPEN — priority test** | Asking establishes the verified West destination for a later action but leaves paddle EAST active now. Review attaches the warning but leaves the route unknown and EAST active. This is a real route-knowledge versus evidence-inclusion choice; no priority is approved. |
+| **S3-U-R:** stale EAST radio destination already received; paddle HOLD; route unknown | Ask the steward | Review/attach the Operations warning | **OPEN — priority test** | Asking establishes the verified West destination for a later action but does not replace the active stale EAST radio destination this beat. Review attaches the warning but leaves EAST active and the route unverified. No priority is approved. |
+| **Either S3-U state; R4 held and Ren reachable** | Ask the steward | Return R4 to Ren | **OPEN — objective-conflict test** | Asking gains route knowledge for a later correction but misses direct handover; returning R4 satisfies A's deadline but removes Jules's radio counterplay. Neither action clears the queue this beat. No priority is approved. |
+| **Either S3-U substate, with R4 still held and Ren reachable** | Return R4 to Ren | Review/attach the Operations warning | **OPEN — no order approved** | This is the on-time handover versus evidence-inclusion conflict. S3-V-H's candidate order cannot be copied automatically into S3-U: the verified route, current queue, and possible later correction differ. Objective scoring, trust response, and the terminal horizon are still open. |
+| **S3-V-P:** route verified; latest complete radio destination NONE; paddle EAST; group at barrier | Set paddle to WEST MAIN HALL | Review/attach the Operations warning | **TENTATIVE — replay required** | Candidate result is the WEST paddle update because it changes the active cue and can redirect the stopped group; the delay remains recorded. Replay separately because the arrivals followed an earlier paddle cue rather than waiting at East Intake. |
+| **S3-V-R:** route verified; latest complete radio destination stale EAST; paddle HOLD; R4 held | Send the short verified radio instruction | Review/attach the Operations warning | **TENTATIVE — replay required** | Candidate result is the short instruction because it replaces the active stale destination; review attaches evidence but leaves EAST active and the queue unresolved. Check the route-correction-versus-first-note trade-off in this separate state. |
+
+#### 18:24 checkpoint consequence ledger (facts, not action priorities)
+
+**Scope:** Each row assumes the warning exists in the thread, the incident note is still open, phone access is available, and the stated action is legal from the current scene node. In the ask-versus-review rows, neither proposal returns R4. These are checkpoint observations only; the scenario does not yet define what happens to the waiting attendees after sign-off.
+
+| State and selected action | Route / queue at sign-off | A's two explicit predicates | B's first-note predicate | Fate's current transmission milestone |
+|---|---|---|---|---|
+| **S3-U-P — Ask steward** | Jules learns the closure and approved alternate, but sends no correction in this action. The queue/delay already recorded at 18:20 remains the checkpoint state. | Direct return missed; warning remains out of first note. | Not met: warning is not attached. | Not applicable to a paddle-only cause under the current target, which specifically requires Jules's transmission to be the documented operator action. |
+| **S3-U-P — Review/attach** | Route remains unverified; the queue/delay remains at sign-off. | Direct return missed; privacy preference missed because warning is attached. | Met if the existing warning and Ren acknowledgement are found and attached. | Not applicable to a paddle-only cause under the current target. |
+| **S3-U-R — Ask steward** | Jules learns the closure and approved alternate, but sends no correction in this action. The queue/delay remains at sign-off; the stale destination is not revoked by asking. | Direct return missed; warning remains out of first note. | Not met: warning is not attached. | **Conditional, not automatic:** Mina's report records the stale destination and response, but the source contract does not yet establish how the first note attributes the R4 transmission to Jules rather than to the device alone. No audience-belief conclusion follows. |
+| **S3-U-R — Review/attach** | Route remains unverified; the queue/delay remains at sign-off. | Direct return missed; privacy preference missed because warning is attached. | Met if the existing warning and Ren acknowledgement are found and attached. | Omission route fails because the prior warning is attached; no public belief or primary blame follows automatically. Operator attribution remains a separate evidence question. |
+| **Either S3-U state — Return R4 selected over review/attach** | The queue/delay remains at sign-off; no route correction or warning attachment occurs in this action. | Direct return met; warning remains out of first note. | Not met: warning is not attached. | S3-U-P does not fit the transmission target. S3-U-R remains conditional on the same missing evidence-link rule described above. |
+
+The ledger shows which objective components follow directly from the actions without resolving the disputed priority. It does **not** treat keeping the warning out of the note as proof of trust, nor does it treat a Fate milestone as proof that the twelve-person audience believes Jules is primarily responsible. The current end-of-beat event order still stands: action effects first, then any scheduled arrival, then sign-off/handover. Since no new attendee arrival is scheduled at 18:24, the action cannot erase the queue that was recorded at 18:20.
+
+These rows are intentionally unresolved, not missing result values to be filled by intuition. To rank them, specify the objective/terminal consequences and preserve the one-task-per-action rule: verification can inform a later correction but cannot include the transmission in the same beat. Until then, S3-U, S3-V-P and S3-V-R remain blocking design gates.
+
+These are scene-specific priority hypotheses, not universal moral rankings. S3-V-H has a provisional order; S3-V-P and S3-V-R now have tentative candidate orders, but none is approved as a production rule and **no S3-U priority order is approved**. Before assigning one, the matrix must test these histories separately, including whether R4 remains available, whether the warning is already known/attached, and whether Jules can still reach the steward. Most importantly, the action economy must explicitly decide whether the verified route can be communicated before the same 18:24 sign-off or only in a later action. Do not imply that late verification has already corrected the queue.
+
+| Beat-start state | Player A proposes | Player B proposes | Candidate result | Consequence / check |
+|---|---|---|---|---|
+| **S1 — route unverified** | Ask the steward | Relay the stale display on R4 | **Ask the steward** | Prevents the stale display being relayed; Jules learns the current closure. |
+| S1 | Ask the steward | Return R4 early | **OPEN — objective trade-off** | Route knowledge is gained for a later action, while early handover protects A's promise but removes R4 from later play. Neither proposal is invalid; no priority is assigned in this row. |
+| S1 | Ask the steward | Review/attach the Operations warning | **Ask the steward** | Current route truth is needed before the 18:20 arrival; warning research can still occur in a later beat. |
+| S1 | Review/attach warning | Relay stale display | **Review/attach warning** | Avoids propagating unverified route information; Jules learns the radio fault and includes the source if present. |
+| S1 | Return R4 before handover | Relay stale display | **Return R4** | An early personal handover beats sending a known-stale display message; the venue queue is not caused by a Jules relay in this branch. |
+| S1 | Ask the steward | Set paddle EAST using display | **Ask the steward** | Route truth is checked before a public-facing paddle direction is changed. |
+| S1 | Review/attach warning | Set paddle EAST using display | **Review/attach warning** | The existing fault warning is attached while the report is open; the paddle remains at HOLD FOR CONFIRMATION. This priority needs reviewer challenge because it delays route action. |
+| S1 | Return R4 before handover | Set paddle EAST using display | **Return R4** | The personal handover is chosen over acting on the stale display; the paddle remains at HOLD FOR CONFIRMATION. |
+| S1 | Set paddle EAST using display | Relay stale display on R4 | **Relay stale display on R4** | Candidate channel tie-break: a complete radio route message is Mina's primary instruction; the paddle is the fallback when no complete radio destination arrives. The actual closure is unchanged. |
+| S1 | Set paddle WEST MAIN HALL (invalid: route not verified) | Set paddle EAST using display (valid) | **Set paddle EAST using display** | A single-valid-proposal fallback must not use Jules's unacquired route knowledge to make the west-paddle proposal legal. |
+| S1 | Return R4 early | Review/attach warning | **Review/attach warning** | Preserves the still-open evidence window; the radio can be returned in Beat 2 or 3, but A's privacy preference is at risk. |
+| S1 | Relay stale display | Same action | **Relay once** | Mina directs arrivals toward the closed East Passage; the group queues at the barrier. A local causal contribution exists, but the closure remains independent. |
+| S1 | Return R4 early | Same action | **Return once** | Jules no longer controls R4; no later route transmission may be attributed to Jules using this device. |
+| **S2 — route verified, radio fault not yet known, arrivals due** | Send complete instruction on R4 | Review/attach warning | **Send complete instruction** | R4 drops the destination segment; Mina holds the four arrivals at East Intake. This is the worked trace branch. |
+| S2 | Send short instruction on R4 | Review/attach warning | **Send short instruction** | The message fits in Segment A, so Mina receives the destination and the queue branch is avoided. |
+| S2 | Send complete instruction on R4 | Send short instruction on R4 | **Send short instruction** | A compact complete message is preferred over a longer one when both are legal. |
+| S2 | Review/attach warning | Return R4 early | **Review/attach warning** | The report remains open and the handover is still two beats away; evidence can be attached now, return later. |
+| S2 | Send complete instruction on R4 | Return R4 early | **Send complete instruction** | The next arrivals are imminent; a route instruction is prioritized over early equipment return. |
+| S2 | Send complete instruction on R4 | Set paddle WEST MAIN HALL | **Send complete instruction on R4** | Mina follows a complete radio destination as the primary channel; because Jules does not yet know the cutoff in this state, the proposed long message is selected but can still be truncated. |
+| S2 | Send short instruction on R4 | Set paddle WEST MAIN HALL | **Send short instruction on R4** | A complete radio destination is the primary routing instruction; the paddle remains a fallback. |
+| S2 | Set paddle WEST MAIN HALL | Review/attach warning | **Set paddle WEST MAIN HALL** | The four arrivals are due at 18:20; update the visible destination before spending the beat researching evidence. |
+| S2 | Set paddle WEST MAIN HALL | Return R4 before handover | **Set paddle WEST MAIN HALL** | The immediate route cue is prioritized over early equipment handover. |
+| S2 | Relay stale display on R4 (invalid after route verification) | Send short instruction on R4 (valid) | **Send short instruction on R4** | A stale-route relay is not silently treated as a legal alternative after Jules learns the closure. |
+| S2 | Relay stale display on R4 (invalid after route verification) | Relay stale display on R4 (invalid after route verification) | **WAIT fallback** | Both proposals are invalid; no stale message or third action executes. The beat advances to 18:20, and the four arrivals reach East Intake while the paddle remains at HOLD FOR CONFIRMATION. |
+| **S3-V-H — queue waiting after verified route / no complete radio destination received / paddle HOLD, four minutes to sign-off** | Review/attach warning | Return R4 to Ren | **Review/attach warning** | The warning enters the first report; the on-time direct handover is missed. |
+| S3-V-H | Send short instruction on R4 | Review/attach warning | **Send short instruction** | Resolves the active queue before the report closes; the prior-warning evidence can only be appended later. |
+| S3-V-H | Send short instruction on R4 | Return R4 to Ren | **Send short instruction** | The live route delay is addressed first; R4 handover is missed. |
+| S3-V-H | Review/attach warning | Same action | **Review/attach once** | B's evidence milestone is achieved; A's on-time return predicate fails. |
+| S3-V-H | Return R4 to Ren | Same action | **Return once** | A's handover predicate is achieved; the first report is signed without the attached warning. Unless F2 actually intercepts an eligible access attempt in this state, omission alone gives Fate no progress; primary blame is not proven. |
+| S3-V-H | Send short instruction on R4 | Set paddle WEST MAIN HALL | **Send short instruction on R4** | A complete radio destination is the primary routing instruction; the paddle is a fallback if no complete destination arrives. |
+| S3-V-H | Set paddle WEST MAIN HALL | Send short instruction on R4 | **Send short instruction on R4** | Role-swap check: the same action pair has the same result; the resolver does not favor Player A or B by identity. |
+| S3-V-H | Set paddle WEST MAIN HALL | Review/attach warning | **Set paddle WEST MAIN HALL** | The active queue is resolved before the historical warning is added to the first note; the warning can only be appended after the sign-off. |
+| S3-V-H | Set paddle WEST MAIN HALL | Return R4 to Ren | **Set paddle WEST MAIN HALL** | Clear the queue before the equipment handover; A's on-time handover predicate fails. |
+| S3-V-P | Send short instruction on R4 | Set paddle WEST MAIN HALL | **Send short instruction on R4** | Both update the active cue; the complete radio destination is the primary channel and can redirect attendees stopped at the barrier. The recorded delay remains. |
+| S3-V-R | Send short instruction on R4 | Set paddle WEST MAIN HALL | **Send short instruction on R4** | The stale EAST destination is already authoritative. A later paddle direction alone cannot replace it; a complete WEST radio instruction does. |
+| S3-V-R | Review/attach warning | Return R4 to Ren | **Review/attach warning** | Under the current candidate order, the prior warning enters the first report; A's on-time handover is missed and the stale route remains unresolved. |
+| S3-V-R | Return R4 to Ren | Set paddle WEST MAIN HALL | **Return R4 to Ren** | The paddle cannot override the active radio destination for this group. Direct handover achieves A's deadline; current-group routing remains unresolved. |
+
+**Coverage limit:** this is a targeted matrix, not every possible action-pair permutation or every post-deadline state. It now tests selected paddle-vs-radio/research/handover pairs, includes one both-invalid fallback and a representative role-swap check, but it does not enumerate every stale/invalid action pair, every route-paddle state, or the full state transitions after the report signs. It does not establish that the order is fair or that the priorities feel natural. An independent reviewer must reconstruct these rows and challenge the high-risk assumptions—especially why a detailed message is proposed when a shorter one would work, and why Ren's report-sign-off process is credible.
+
+**Desk result:** P2 connects personal trust, the communication device, route instructions and incident evidence more directly than P0. It has one concrete consequence and a clear non-Fate counterfactual. It does **not** yet pass the scenario gate: the action-priority rule that favors transmission over thread review is only a hypothesis, the trust response is undefined, the initial-report audience has not been shown to believe anything, and three materially distinct Fate routes have not been demonstrated.
+
+**Next action:** expand the targeted matrix for S3-U-P/S3-U-R and S3-V-P/S3-V-R, including prior-destination preservation after a truncated message, R4-return variants, and the evidence path that can or cannot attribute an R4 transmission to Jules. Then independently reconstruct the state/action results. Only after that should the team decide whether P2 earns a wider route workshop. Keep the current scenario JSON and executable comparison fixture unchanged; this remains prose-only exploratory work.
+
+
+### 15.6 Causal-route screen for P2
+
+This table applies the route gate to the current seeded P2 facts. These classifications are the author's desk judgment, not independent validation; route variants that share the same causal hinge must not be counted twice.
+
+| Candidate route | Required player action and observable consequence | Evidence chain | Counterplay | Desk classification |
+|---|---|---|---|---|
+| **R1 — relay the stale display** | Before verifying the closure, Jules relays “East Passage open” over R4. The short message is transmitted fully; Mina follows the message and directs arrivals toward the closed entrance, producing a queue. | The board's stale timestamp, radio dispatch time/device, Mina's event statement and the observed queue can establish the stale cue and queue. They do **not** establish that Jules sent that content: the dispatch log has no message content or operator identity, and Mina's report records the cue received but does not identify its sender. | Ask the steward before relaying; use a verified West destination; later attach a sourced correction. | **Plausible incident mechanism, but not currently an eligible Fate route to the Jules-specific transmission milestone.** A pre-existing, credible operator-attribution path is missing; do not infer identity from R4/time alone. |
+| **R2 — the correction is truncated** | After the closure is verified, Jules sends the long instruction. R4 transmits “keep clear” but drops the destination. Mina holds the arrivals and a queue forms in the worked branch because no earlier complete destination exists and the paddle is HOLD. | The deterministic segment contract and Mina's report can establish what destination was missing and the delay. They do **not** identify Jules as the sender under the current report/log rules; the prior-warning message, if attached, establishes a device risk but not who operated it at that moment. | Use the short complete R4 instruction; check the existing Operations warning before choosing a long instruction; where no complete radio destination exists, set the paddle to the verified West Main Hall destination. A paddle change cannot override an older complete radio destination. | **Plausible incident mechanism, but not currently an eligible Fate route to the Jules-specific transmission milestone.** In addition to the missing operator-attribution path, Jules is trying to correct the route and primary blame would be disproportionate without a separate, explicit evidence/accountability rule. |
+| **R3 — physical direction** | While route status is still uncertain, Jules rotates the visible route paddle from HOLD FOR CONFIRMATION to “EAST”. Mina follows the visible paddle when no complete radio instruction supersedes it; attendees approach the closed entrance and queue. | The paddle state before/after, camera footage that may identify the person who operated the handle (no audio), Mina's statement about what she followed, and the closure record. Footage is not in the first report by default and has no explicit retrieval/attachment action yet. | Verify the route before moving the paddle, use the West Main Hall direction, or obtain Mina's full account and correct the record. | **Not eligible for Fate's current transmission-specific milestone, even if the local mechanism is plausible.** It is a physical cue rather than a radio-transmission route, may share R1's stale-direction hinge, and the evidence-access step remains undefined. Include it only after an explicit, reviewed change to the Fate target or as a separately scored objective. |
+
+**Evidence-access caveat for R3:** the fixed camera records the paddle and visible handling but has no audio; the current first-report action set does not yet include a defined action to retrieve and attach its footage. Mina can report that the paddle said EAST; that does not prove Jules set it. Even if footage is retrieved, a physical paddle action does not satisfy the current transmission-specific Fate milestone. Count R3 only under a separately reviewed target that permits physical-cue routes, with a legal footage-retrieval/attachment action and counterplay defined.
+
+#### Operator-attribution gate for R1/R2 (blocking; candidate path only)
+
+R1/R2 need to link a time-stamped cue to Jules as operator, not merely link the cue to radio R4. The current fixed facts do **not** establish a custody log or a legal action to retrieve one, so none may be assumed yet.
+
+One candidate to test—not canon—is an **existing radio custody/issue entry** in the venue's shift-handover records. For it to help, the record must be seeded before choices and identify who held R4 during the transmission window; an explicit action must retrieve and attach that entry before 18:24. The evidence would then need to correlate three distinct records: Mina's time-stamped statement for what destination/partial message she received, the dispatch event for R4 and its time, and the pre-existing custody entry for who held R4 at that time. The dispatch log alone still does not prove message content, and a custody entry alone does not prove a transmission occurred. Each record must add one missing link without being made to prove more than it says.
+
+**Decision test:** Is such a routine record natural for a community-hall shift, and can it be obtained and attached within the action economy without silently becoming part of the initial report? If yes, add the source and action contract explicitly and paper-test it against warning attachment and R4 return. If no, do not invent it to rescue Fate: change the Fate milestone away from identifying Jules as transmitter, or reject R1/R2 as routes to the current target. The story does not gain operator attribution just because the resolver privately knows who proposed an action.
+
+### 15.7 P2 gate verdict
+
+- **Causal connection is improved:** the borrowed radio is used for the public-facing route instruction, its warning has a traceable prior source, and the handover/report choices share the same operational moment.
+- **Direct-action mode is exercised:** “ask”, “relay the display”, “send a complete instruction”, “send a short instruction”, “review and attach the warning”, “move the route paddle”, and “return R4” express concrete protagonist acts. A private proposal still does not give Jules knowledge until the relevant action resolves.
+- **Objective conflict is clearer but not fully validated:** A has an on-time handover predicate and a privacy preference; B needs the prior warning attached to the first report. These goals conflict at sign-off, but trust consequences, partial wins and terminal end conditions remain undefined.
+- **Fate has not earned a Jules-specific attribution route:** R1 and R2 can create real, local queue mechanisms, but the current first-report evidence contract records a route cue/device event without establishing who operated R4. The worked trace now reports the partial message and resulting hold without adding a receipt-confirmation dialogue. A more explicit witness/confirmation event would need a legal action contract and a defined effect on the incident record; it cannot be silently supplied by narration. The twelve-person Operations audience is not proof that anyone believes Jules is primarily responsible, and a local queue does not establish a wider emergency.
+- **Three-route gate remains open and no current route qualifies for Fate's stated milestone.** R1/R2 lack a credible pre-existing path linking the message to Jules; R2 is additionally an attempted correction impaired by the device. R3 lacks a camera-footage retrieval/attachment action and does not match the current transmission-specific target. Before counting any route, either specify and test a credible source that links the content/event to Jules as operator using already-grounded scenario facts, or explicitly reconsider the Fate milestone. Do not silently add a convenient log, witness certainty or audience belief to make the route pass.
+
+**Next gate:** ask an uncoached reviewer to classify R1–R3 without being told the intended categories, then compare their causal-hinge descriptions. If they reject R3 as a variant, do not split it into more gesture/display variants. Either develop a genuinely different third route—such as a later source-attribution race with its own pre-existing source and correction mechanism—or reject P2 and compare a different scenario. No route or premise is canon until this gate passes.
+
+
+### 15.8 Fate-target redesign screen (paper-only; no target accepted)
+
+The current Fate target remains blocked: **make Jules's transmission the only documented operator action linked to the queue while the prior R4 warning is absent from the first note**. Under the seeded evidence rules, R1/R2 do not identify the transmitter and R3 is a physical action with a separate missing evidence-access step. Do not add a custody log, authenticated call-sign system, or certain witness just to satisfy this wording.
+
+| Target candidate | What the outcome would actually establish | Strength | Blocking risk | Status |
+|---|---|---|---|---|
+| **T0 — Jules-specific transmission blame** (current wording) | The signed note names Jules as the operator of a queue-linked radio cue while omitting the warning. | Specific and legible if the source chain exists. | The source chain is not established; the resolver's private knowledge cannot become public evidence. R3 does not qualify. | **Blocked; not earned by current facts.** |
+| **T1 — incomplete first report** | The first note records the queue and the observed routing cue, but the prior Facilities warning is absent. It makes no claim about who transmitted the cue or what the audience believes. | Directly measurable from existing report state; requires no fabricated attribution. | It substantially duplicates A's current preference to keep the warning out of the first note. Alone, it is not a sufficiently distinct Fate objective and does not justify describing the scene as Jules being blamed. | **Valid report-state predicate, weak as Fate's standalone goal.** |
+| **T2-F2 — delayed thread access leaves no private follow-up or first-note record** (paper-test candidate) | At 18:24 the queue/delay is recorded, the first signed report omits the Facilities warning, Jules has not raised Ren's acknowledged prior warning with Ren privately, **and F2 actually intercepts an eligible Beat 3 Review/attach attempt**. Ren already knows the warning from the seeded 18:04 acknowledgement; this target measures Jules's follow-up, not Ren's awareness. Omission without interception earns no Fate progress. No audience-belief claim follows. | Ties Fate's progress to a visible, bounded intervention event plus the queue/report checkpoint; earlier report review, a direct conversation with Ren, or a route action during the signalled beat can defeat it. | The relevant actions are **Ask Ren privately about R4's reliability**, **Review/attach the Operations-thread warning**, and **Send short verified instruction** or **Return R4** as alternatives. The action pair is still under review. | **Candidate only; counterplay, fairness and causal distinctness need validation.** |
+
+**T2-F2 matched probe (candidate only; not an accepted story trace):**
+
+1. **Beat 1 (18:12–18:16):** Jules asks the steward to verify the route. Route knowledge becomes true; Mina has not received a complete destination and the paddle remains HOLD. The Operations thread remains unread and unattached.
+2. **Beat 2 (18:16–18:20):** The competing proposals are **Send the complete verified closure instruction on R4** and **Review/attach the Operations thread**. The current scene-priority hypothesis favours immediate route communication before the known arrival. Jules sends the long instruction while unaware of the cutoff: Segment A is transmitted, Segment B (the destination) is dropped. At 18:20 the four attendees arrive; Mina holds them at East Intake, and the queue/delay is recorded. The water closure is independent; Jules's transmission contributes to the delay but does not cause the closure. The prior Facilities warning remains unread and absent from the first report. The priority is still provisional; if review/attach wins this pair, the warning can enter the report earlier and this Fate route is defeated.
+3. **Beat 3 (18:20–18:24):** The candidate **F2 source-access delay** is announced with a generic, public Fate signal before proposals. If **Review/attach the Operations thread** is selected while Jules remains unaware of the warning, F2 intercepts that access attempt: the beat is consumed, no source content is returned and nothing is attached. A visible Fate event says an eligible source-access attempt is delayed until just after the 18:24 sign-off boundary; a fresh access action may be submitted in the next beat, with no automatic retry. The first report signs with the queue/delay recorded and the warning absent. **Fate earns its local milestone only if the attempt was actually intercepted and all sign-off predicates hold.** Asking Ren privately about the observed double beep is an alternative disclosure path and does not trigger F2; if it resolves, `private_followup_raised = true` and Fate fails the target. If a route-correction/return action resolves, F2 expires unused and earns no progress. If Jules learned the warning or raised it with Ren earlier, F2 is ineligible. No blame claim follows.
+
+**Visibility gate:** Player B's private knowledge that a Facilities message exists does not give Jules the message text. Jules may learn it through thread access or learn a spoken account through Ren's separate private response; those events must not be conflated. Each player's view remains a separate projection. The Operations group does not hear the private Ren conversation; the game-client transcript/summary visibility of that exchange is still an explicit policy question and must not be guessed. The Fate signal must not name the source, show its contents, reveal a private proposal, or disclose protected information through action menus/errors. If these boundaries cannot be implemented without leakage, F2 fails this gate.
+
+#### F2 — one-beat unread-source access delay (preferred candidate; not approved)
+
+This reuses the *shape* of the previously documented Fate limit in `CANDIDATE_CAUSAL_ROUTES.md` §T1-C—temporarily delay one eligible source-access opportunity with a visible event and later counteraction. That reference is itself a story-design hypothesis, **not** an accepted global Fate rule. F2 is a better fit than the alternative report-attachment hold, because it delays access to an existing source rather than changing the report-writing mechanism.
+
+| Field | Candidate rule | Rejection test |
+|---|---|---|
+| Eligibility | A queue/delay is already recorded; the first report is open and not signed; the seeded Facilities message exists and is absent from the first note; Jules has not learned the warning through the thread or Ren; sign-off occurs at the end of the current beat; and Fate has unused leverage. | Reject if the source/queue is absent, Jules already knows the warning or has raised it with Ren, the first note already contains it, the checkpoint has passed, or the effect is retroactive. |
+| Cost | Spend 1 Fate-leverage unit when the generic cue is announced. The global resource budget is unset. If no eligible access attempt is selected, the unit remains spent, the hold expires unused, and Fate earns **no progress**; it never secretly retargets another source. This makes counterplay capable of forcing Fate to spend without achieving the milestone. | Reject if the cost is hidden or Fate can repeat/retarget indefinitely, or if Fate earns progress without intercepting the access attempt. |
+| Effect | Only if the selected protagonist action is **Review/attach the unread Operations-thread source**, that attempt returns no source content and creates no report attachment. The intervention is recorded as a visible Fate event; the source is unchanged and no automatic retry/action occurs. The separate **Ask Ren privately about R4's reliability** action is not blocked. If another action is selected, F2 expires unused. F2 earns progress only if an actual thread-access attempt is intercepted and the T2-F2 sign-off predicates hold. | Reject if the effect erases evidence, mutates the source, executes a ghost action, blocks all future access, or counts ordinary inaction as Fate's intervention. |
+| Duration and expiry | One beat, released immediately after the 18:24 sign-off event. If the paper test includes Beat 4, the new **Review/append an available Operations-thread item to the signed-record addendum** action is legal then and can add a timestamped late-evidence item. Beat 4 is a provisional recovery window, not an accepted full-game terminal horizon. Late evidence cannot rewrite the first signed note. | Reject F2 if 18:24 is terminal, if the follow-up beat is never scheduled, if the expiry boundary is ambiguous, or if a later retry is not actually available. A delay with no possible retry is a permanent block in practice, not a bounded intervention. |
+| Visibility | Before Beat 3 submissions, both players see a generic Fate signal: one unread-source access opportunity is being held until after the next sign-off boundary. It does not identify the Operations thread or reveal source text/private proposals. If access is attempted, the resolved event states that no content was obtained this beat and a later retry is available. | Reject if the signal itself reveals hidden source content or the intervention only becomes visible after the player is committed. |
+| Counterplay | Choose **Review/attach** in Beat 2 rather than the long routing instruction; ask Ren privately about R4 after hearing the double beep; or choose a route-correction/return action instead of source access during the signalled beat. These paths either defeat F2 eligibility or make it expire without progress. F2 never blocks the private conversation and never makes the thread permanently inaccessible. | Reject if there is no believable early-access path, if the source delay blocks all meaningful counteraction, or if the contested action policy makes counterplay impossible in every role assignment. |
+
+#### F1 — direct report-attachment hold (rejected as the default)
+
+The earlier F1 proposal delayed the attachment effect itself. That adds a new Fate power over report processing without precedent in the current candidate limit; it risks looking like an arbitrary veto of the accountability action. Do **not** use F1 in the current trace. Reopen it only through an explicit Fate-rules decision and independent counterplay review—not as a shortcut when F2 fails.
+
+**Matched action-outcome probes (authored desk work; no priority verdict):**
+
+| State/paired proposals | Resolved action or effect | T2-F2 consequence | What remains open |
+|---|---|---|---|
+| Beat 2: **Send long verified instruction** vs **Review/attach Operations thread** | Under the current provisional scene priority, the long instruction wins; Segment B is dropped and the queue is recorded. The thread remains unread. | F2 may become eligible for Beat 3. | Role-swap the proposals and verify why routing outranks evidence acquisition; this priority is not approved. |
+| Beat 2: both propose **Review/attach Operations thread** | Consensus executes once and adds the warning to the open report before sign-off; Mina still holds attendees because there is no complete destination. | T2 fails because the warning is in the first report; F2 is ineligible. | Confirms early evidence capture is real counterplay, although it trades against routing. |
+| Beat 2, role-swapped: Player A proposes **Review/attach Operations thread** and Player B proposes **Send the complete verified closure instruction on R4** | **Expected invariant check:** the same candidate scene priority should select the long instruction regardless of proposer identity. Segment B is dropped; Mina holds the attendees and records the queue/delay; the warning remains unread. | F2 may become eligible for Beat 3 only if all other predicates hold. | Authored prediction only. Independently reconstruct both proposer orders; if proposer identity changes the result, reject the resolver rule or document an explicit visible asymmetric mechanic. |
+| Beat 3 with F2 signalled: both propose **Ask Ren privately about R4's reliability** | The conversation resolves; Ren discloses the seeded warning/acknowledgement under the candidate honest-response rule, and `private_followup_raised = true`. The thread remains unread and no formal source is attached. | F2 does not trigger and T2-F2 fails because the private-follow-up predicate is met. | Challenge whether Ren's admission is natural and define the trust/response outcome; the exchange must remain private. |
+| Beat 3 with F2 active: both propose **Review/attach Operations thread** | F2 intercepts the selected access attempt; the beat is consumed but no content is returned and nothing is attached to the first report. A new access action is available after sign-off if Beat 4 is included. | T2-F2 is met at 18:24 only if the queue/delay is recorded, the warning remains out of the first note, Jules has not raised Ren's prior acknowledgement privately, and this access attempt was actually intercepted. | Verify exact expiry/event ordering and later retry. |
+| Beat 3, S3-V-H (warning unread; F2 signalled): **Review/attach Operations thread** vs **Return R4 to Ren** | Under the existing *provisional* S3-V-H scene priority, review/attach wins over equipment return; F2 then intercepts the access attempt. | T2-F2 is met only if all predicates hold and this intervention actually triggers. | This imports a provisional priority into the F2 test, not an accepted rule. Independently challenge why evidence review outranks the promised handover here. |
+| Same S3-V-H state, role-swapped: **Return R4 to Ren** vs **Review/attach Operations thread** | **Expected invariant check:** the same action should win regardless of which player proposed it. The candidate priority predicts review/attach, followed by F2 interception. | Same T2-F2 condition as the preceding row; if proposer identity changes the selected action, the resolver fails the symmetry check. | Desk prediction only. Role-swap execution/reconstruction is outstanding; do not record this as passed. |
+| Beat 3 after Jules has already raised the fault with Ren: **Review/attach Operations thread** vs **Return R4 to Ren** | F2 is ineligible because Jules already knows the warning from Ren. The normal protagonist resolver selects under the applicable scene priority; F2 does not affect the action. | T2-F2 fails because the private-follow-up predicate is already true, whether or not the warning reaches the first report. | Define the report-versus-return priority and Ren's response/trust rule; role swaps remain open. |
+
+**Late-retry window candidate (Beat 4, 18:24–18:28; not full-game canon):** To make F2's expiry real rather than nominal, this paper test includes a proposed post-sign-off action beat. The new **Review/append an available Operations-thread item to the signed-record addendum** action can retrieve the existing source and append it with the actual later timestamp; it does not automatically retry the intercepted Beat 3 action and cannot rewrite the signed first note. This recovery beat gives a real later correction path, but it does **not** reopen the completed 18:24 private-follow-up opportunity: Ren's shift ended at handover, and no text/message contact action is established here. Do not invent such contact. If the project will not include a post-sign-off action, or the 18:24 sign-off is chosen as terminal, reject F2—the supposed one-beat hold would otherwise function as a permanent block on the only defined access attempt.
+
+**Additional same-state counterfactuals (author desk work; no priority approval):**
+
+| Beat-start state and paired proposals | Candidate resolution | F2 result | Open check |
+|---|---|---|---|
+| S3-V-H, F2 signalled: **Send short verified instruction** vs **Review/attach Operations thread** | Existing provisional S3-V-H order favours the short instruction over review/attach. The active queue clears; recorded delay stays. | F2 does not intercept an access attempt; its unit is spent but it earns no progress. | Confirm the short instruction is legal, the action result is proposer-symmetric, and the report remains open. |
+| S3-V-H, F2 signalled: **Review/attach Operations thread** vs **Return R4 to Ren** | Existing provisional S3-V-H order favours review/attach over return. F2 then intercepts the selected access attempt. | F2 can meet its conditional milestone if all T2-F2 predicates hold at sign-off. | Role-swap must yield the same action/result. The underlying priority remains provisional and must be justified. |
+| S3-V-H, F2 signalled: **Ask Ren privately about R4's reliability** vs **Return R4 to Ren** | **Candidate order: ask Ren privately wins** because Ren leaves at 18:24, whereas the first report can receive a later timestamped addendum. This is an authored priority hypothesis, not an accepted resolver rule. | F2 does not trigger; the private-follow-up predicate is met, so T2-F2 fails. | Role-swap and reviewer challenge required; if this priority feels forced, keep it OPEN. |
+| S3-V-H, F2 signalled: **Ask Ren privately about R4's reliability** vs **Review/attach Operations thread** | **Preferred paper-test order: Ask Ren privately wins** because Ren leaves at 18:24; a later timestamped report addendum remains possible though it cannot rewrite the first note. This conversation-first priority is provisional, not accepted. | F2 does not trigger; `private_followup_raised = true`, so T2-F2 fails even though the first report remains without the warning. | The evidence-first alternative is the challenger. Independently review the priority rationale, private response, report addendum trade-off and role symmetry before accepting either order. |
+| Beat 4 after F2 intercepted Review/attach: both propose **Review/append an available Operations-thread item to the signed-record addendum** | The new Beat 4 action retrieves the existing source and appends it with its actual timestamp. F2 has expired; no automatic retry occurs. | The 18:24 T2-F2 checkpoint is not reversed: the original signed note still omits the warning. | Confirm this action is legal and Beat 4 exists. If no real retry window follows sign-off, reject F2. |
+| Same S3-V-H pair, role-swapped: Player A proposes **Review/attach Operations thread** and Player B proposes **Ask Ren privately about R4's reliability** | Under the preferred candidate order, **Ask Ren privately wins** regardless of proposer identity. The private follow-up is recorded; no report attachment occurs in this beat. | F2 does not trigger and T2-F2 fails. | Authored symmetry prediction only. Reconstruct the result without coaching; if the outcome changes with proposer identity, reject the resolver rule. |
+
+**Beat 3 source action versus route correction:** Under the existing provisional S3-V-H order, **Send short verified instruction** beats **Review/attach**; the queue clears but the recorded delay remains. F2 expires unused and earns no progress because no access attempt was selected. This is explicit counterplay, not a Fate-selected substitute action.
+
+These are conditional state/result branches, **not** proof that F2 passes review.
+
+**Route-fit caveat:** this trace now has a real local causal route: the known-but-unread warning concerns R4, the long R4 instruction is truncated, and the missing destination creates the queue while the independent closure remains in place. That does not identify Jules as the operator in the report, nor does it establish public blame. The action priority and access-delay rule remain hypotheses, not findings.
+
+**Post-sign-off/production-scope guardrail:** 18:24 is the shared report/equipment checkpoint, **not an approved terminal horizon**. F2 is admissible only if a real later beat allows a new access action; if the game ends at sign-off, reject F2 rather than claim that a retry exists. T2 is only a local handover/evidence micro-test. Even if its action and Fate mechanics pass, that does not satisfy the intended 10–15-minute escalation, over-the-top finish, a complete non-Fate ending, or the three-materially-distinct-routes gate. Do not relabel the unresolved-warning objective as the full game's ending or silently replace the original ambition with this venue-scale incident.
+
+**Guardrail:** an unresolved official report is an evidentiary state, not evidence that an audience blames Jules. Public attribution, audience belief, and a wider emergency remain unproven until their own sources and observable consequences are specified.

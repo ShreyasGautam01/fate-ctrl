@@ -62,6 +62,40 @@ Do not silently coach the reviewer to the intended answer. If a reasonable reade
 
 **Fail condition:** Any outcome requires the author to explain what they meant. Fix that ambiguity before human playtesting.
 
+## Stage -1B — Independent causal-route and objective reconstruction
+
+**Purpose:** Test whether the proposed transit-interchange scenario can be reconstructed without author coaching before executable scenario rules are written. This is an independent desk review, not a human playtest and not evidence of fun.
+
+**Documents to provide, without verbal explanation:**
+- `CAUSAL_ROUTE_TRACE_01.md` — one detailed Target 1 trace and its candidate direct-action vocabulary;
+- `CANDIDATE_CAUSAL_ROUTES.md` — original large-scale causal architectures plus the three narrower local-blame mechanisms;
+- `SCENARIO_CAUSALITY_REVIEW.md` — the premise, target-scale and objective-coupling comparison.
+
+The reviewer should be asked to reconstruct, not improve or rescue, the design. They should be explicitly allowed to reject a route.
+
+### Reconstruction questions
+
+For each route retained as a candidate, have the reviewer record:
+
+1. **Pre-existing facts:** What must already be true before the relevant player choice? Which fact, device, witness, institution, message channel, log or audience would be an unfair late introduction if not established?
+2. **Knowledge and legality:** What does Jules know, what does each player know, and what does each witness know at every choice? Which direct actions are legal from that knowledge?
+3. **Cause vs. contribution vs. attribution:** What actually causes the operational failure? How, if at all, can Jules's action contribute? What evidence supports the public claim, and what does that evidence fail to prove?
+4. **Public reach and provenance:** Who saw the clip/message, why would they see it, how is the source traced, and how could a correction reach the same audience? Reject unbounded claims such as “it goes viral” unless distribution is specified.
+5. **Fate legality:** Which already-eligible opportunity does Fate exploit? State its cost, duration, visible event, counterplay and expiry. Identify any step that requires Fate to invent evidence, force belief, or suppress all correction.
+6. **Counterfactuals:** Describe one legal action that advances the blame route and one that breaks it. State what remains true if Jules leaves before the public incident.
+7. **Objective coupling:** Compare O1 and O2 in the matched first three moments. Do personal trust, the deadline, public evidence and Fate's target produce real disagreements, or do they remain parallel subplots?
+8. **Terminal outcomes:** Write the conditions for Fate success and a satisfying non-Fate ending. Distinguish the actual cause, Jules's contribution, the public's belief, and personal-objective results.
+
+### Classification and pass/fail
+
+The reviewer must label each proposed route **viable**, **conditional**, or **reject**, with the missing evidence or rule cited. Do not require all three to pass simply because the design asks for three. Route variants that use the same causal hinge do not count as materially distinct.
+
+**Pass:** A reviewer independently reconstructs at least three materially different viable routes, including the evidence chain and a counterfactual that can defeat each route; the objective coupling is clear; a non-Fate ending is credible; and the intended scale is explicitly chosen rather than implied.
+
+**Fail:** Any outcome depends on author explanation, an unknown source, a forced rendezvous, an invented public audience, a character's unacquired knowledge, or Fate deciding the story by fiat. If fewer than three routes pass, reject weak candidates and reconsider the premise or target before scenario code is written.
+
+Record the reviewer, date, document versions, their independent classifications and any disagreements. Keep the author's desk assessment separate. Do not label this stage complete merely because the author performs a self-review.
+
 ## Current test gate
 
-The priority-table replay is an authored desk simulation. No independent reconstruction and no human playtest are recorded yet. The next action is to obtain a reviewer reconstruction; after ambiguity defects are fixed, run a small, counterbalanced comparison of direct intentions and environmental influence. Do not report qualitative observations as statistical proof.
+The priority-table replay and §§10–15 of SCENARIO_CAUSALITY_REVIEW.md are authored desk work. No independent reconstruction of the direct-action scenario and no uncoached human playtest are recorded. The owner selected direct-action mode; repeating the environmental-influence comparison is not the next gate. First reconstruct the P2 trace and targeted matrix, then compare T0 with T2-F2 in §15.8. Cue precedence remains latest complete radio destination > paddle if no complete destination exists > hold if neither exists; a truncated message preserves an earlier complete destination. Priority rows and several late states remain provisional. The compound verify-and-relay action is rejected under the one-task-per-action rule. The candidate **Ask Ren privately about R4's reliability** action is legal only after Jules observes the failed long transmission and queue; Ren's honest response to this inquiry is a paper-test assumption that must be challenged for convenience. In S3-V-H the preferred paper-test order is short instruction > West paddle > Ask Ren privately > Review/attach > Return R4; the competing evidence-first ordering remains a challenger, and role-swap reconstruction is outstanding. F2 spends 1 provisional leverage unit to delay a selected Review/attach attempt for one beat only after the queue/delay is recorded, while the report remains open and Jules has not learned the warning through any channel. If no eligible access attempt is intercepted, F2 earns no progress even though the unit was spent. The private conversation or a route action can defeat the target; the generic Fate cue cannot identify the source or reveal private proposals. A local Beat 4 (18:24–18:28) retry window is proposed solely for the paper test. The distinct **Review/append an available Operations-thread item to a signed-record addendum** action checks the available thread content after F2 expires and appends any relevant source with its actual timestamp; it is a new one-task action, not an automatic retry, and cannot rewrite the first signed note. If the game ends at 18:24 or Beat 4 is not a real legal phase, F2 must be rejected. Matched action-pair/role-swap checks, player-view projection audit, Ren's response/trust rule, and independent reconstruction remain outstanding. Even if T2-F2 passes, it is only a local mechanics probe—not the full 10–15-minute escalation, ending, or three-route gate.
