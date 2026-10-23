@@ -77,19 +77,19 @@ Current story prose is authored and deterministic. It may describe only events a
 - `PLAYTEST_PLAN.md`: independent-reconstruction and human-playtest protocol.
 - `P2_RECONSTRUCTION_PACKET.md`: standalone first-pass reconstruction task.
 - `P2_RECONSTRUCTION_REVIEW_01.md`: Claude AI first-pass outcome, finding register F-01–F-25, and recommended design triage; disclosed possible priming, not human playtest evidence.
+- `P2_TARGET_VIABILITY_SCREEN_01.md`: comparison of the current Fate targets and next-step options after the failed/partial reconstruction; no target or premise is accepted.
 - `scenarios/umbrella.json`, `CAUSAL_ROUTE_TRACE_01.md` and causal-route workshop docs: scenario probes, not accepted canon.
 
 Historical simulations preserve design reasoning but do not outrank the active contract, current executable fixture or explicit decision status.
 
 ## Immediate next steps
 
-1. Read `P2_RECONSTRUCTION_REVIEW_01.md`. The first-pass reconstruction by Claude (AI) is complete and **failed/partially reproduced** the packet. The reviewer disclosed possible priming from the Stage -1C protocol; this is not a human independent reconstruction or a playtest.
-2. Make the Fate-target decision before adding more rules. The current seeded sources do not establish Jules as the R4 operator; T0 is unsupported. Do not invent a custody log, authenticated speaker, certain witness or audience belief merely to save the target. T1 is weak by itself, and T2-F2's proposed Beat 4 counterplay occurs after the 18:24 first-note/Fate evaluation boundary.
-3. Rework the objective relationship and time horizon. If A1 (direct handover) and A2 (private follow-up) are a joint objective, they are infeasible within three single-task beats. Clarify whether they are alternatives or a deliberate sacrifice trade-off; define B's source/record predicates, what happens at 18:24, and whether Beat 4 is truly legal.
-4. Only if P2 remains a viable candidate, specify a complete direct-action selector contract and player-view projection: legal pair/state outcomes, invalid and duplicate actions, observation acquisition, source reads versus attachments, Fate activation/cost/progress/expiry, and information leakage by elimination.
-5. Version a corrected reconstruction packet and seek a new first pass. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged until the design gate passes. Do not treat the present paper trace or successful prototype CI as evidence of scenario quality.
+1. Read `P2_RECONSTRUCTION_REVIEW_01.md` and `P2_TARGET_VIABILITY_SCREEN_01.md`. The first-pass by Claude (AI) failed/partially reproduced P2 and disclosed possible priming; this is not human independent reconstruction or a playtest.
+2. Reassess the Fate target before adding more rules. The current sources cannot establish Jules as the R4 operator. T0 is unsupported; T1 is weak alone; T2-F2's proposed recovery is too late for the 18:24 first-note target under the existing evaluation boundary.
+3. Decide whether P2 should remain only as a small mechanics test. T3 (pre-correction operational delay without a blame claim) is a candidate, not a validated target; it still needs distinct causal routes and meaningful objective coupling. If it fails those tests, return to premise discovery rather than patching the evidence model.
+4. Clarify whether A1/A2 are competing subgoals or a conjunction, define B's exact record predicates, and settle the sign-off/terminal horizon. Only after those decisions should the selector and information projection be redesigned.
+5. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged until a revised packet passes reconstruction. Do not implement production gameplay from this draft review.
 6. Separately continue the historical enumerator/fixture/contract audit. The current prototype-test and browser-smoke results apply to the PR #10 code merge commit; PR #9 was documentation-only and had no new code workflow run.
-7. Only after the revised scenario and action contract pass reconstruction, build a narrow story-first direct-action slice and conduct uncoached human think-aloud sessions.
 
 ## Constraints to preserve
 
