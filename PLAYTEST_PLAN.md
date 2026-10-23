@@ -114,6 +114,8 @@ Record the reviewer, date, document versions, their independent classifications 
 
 **Result:** **FAIL / PARTIAL RECONSTRUCTION.** See `P2_RECONSTRUCTION_REVIEW_01.md` for Cases A–I, the F-01–F-25 register, tested invariants, and the proposed triage. Role-swap invariance held on the tested rows, and the route cue model was deterministic; completeness of the action selector, objective feasibility, terminal timing, target attribution, and Fate visibility/counterplay did not pass.
 
+**Follow-on target screen:** `P2_TARGET_VIABILITY_SCREEN_01.md` compares T0 (unsupported operator attribution), T1 (weak standalone omission predicate), T2-F2 (timing/visibility failure), T3 (possible local operational-delay micro-target), and T4 (new premise). It is a comparison, not a target selection.
+
 **Evidence boundary:** This completes one AI desk first pass only. It does not complete a human independent reconstruction, a human playtest, the three-route gate, or a production design gate. Do not mark Stage -1C as passed.
 
 ## Current test gate
