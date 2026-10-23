@@ -3,7 +3,7 @@
 **Last reconciled:** 2026-10-23  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Current phase:** Direct-action mode selected; run an uncoached reconstruction of the P2 borrowed-radio trace before more scenario or gameplay work  
+**Current phase:** Direct-action mode selected; triage the failed/partial P2 first-pass reconstruction before further scenario or gameplay work  
 **Production gameplay:** Not started; direct-action mode is selected, but the resolver and complete rules are not  
 **Story canon:** Unresolved; the literal citywide-emergency route is not established  
 **Merge authority:** The project owner reviews and merges pull requests; open-branch work is not yet part of main.
@@ -75,18 +75,21 @@ Current story prose is authored and deterministic. It may describe only events a
 - `DECISIONS.md`: rationale and statuses of major choices.
 - `TASKS.md`: canonical task ledger, blockers and exit criteria.
 - `PLAYTEST_PLAN.md`: independent-reconstruction and human-playtest protocol.
+- `P2_RECONSTRUCTION_PACKET.md`: standalone first-pass reconstruction task.
+- `P2_RECONSTRUCTION_REVIEW_01.md`: Claude AI first-pass outcome, finding register F-01–F-25, and recommended design triage; disclosed possible priming, not human playtest evidence.
 - `scenarios/umbrella.json`, `CAUSAL_ROUTE_TRACE_01.md` and causal-route workshop docs: scenario probes, not accepted canon.
 
 Historical simulations preserve design reasoning but do not outrank the active contract, current executable fixture or explicit decision status.
 
 ## Immediate next steps
 
-1. Run a first-pass, uncoached reconstruction with **[P2_RECONSTRUCTION_PACKET.md](P2_RECONSTRUCTION_PACKET.md)**. Give the reviewer that packet alone before they see the full scenario review; the full review contains the author's worked outputs and route classifications. Capture the reviewer's own legal-action table, selected actions, knowledge/evidence provenance, objective states, counterfactuals, and rule gaps.
-2. Compare the independent result against `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.8. Explicitly audit latest-complete-radio precedence, truncation preserving an earlier destination, stale/invalid actions, paddle/radio conflicts, role swaps, resource spend on unused Fate activation, Beat 3 conversation-versus-review priority, and the proposed Beat 4 addendum window.
-3. Have the reviewer classify the three protagonist-action mechanisms without being told the author's categories: relaying the stale display, transmitting the long verified instruction, and setting the physical paddle. Do not count variants that share the same causal hinge as distinct routes. Do not invent an operator log, certain witness, camera-retrieval action, or audience belief.
-4. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged. If no supported operator-attribution path and no three-route gate can be established, change the Fate target or reject P2 rather than adding evidence or arbitrary cutoffs.
-5. Separately complete the historical independent audit of the enumerator/fixture/contract and confirm the combined main-branch code workflows when code changes. Current code workflows passed on the PR #10 code commit; the subsequent PR #9 merge was documentation-only and had no new code workflow run.
-6. Only after the scenario and action contract pass review, build a narrow story-first direct-action slice with understandable choices, observable consequences, and a few causally grounded indicators. Then run uncoached human think-aloud sessions.
+1. Read `P2_RECONSTRUCTION_REVIEW_01.md`. The first-pass reconstruction by Claude (AI) is complete and **failed/partially reproduced** the packet. The reviewer disclosed possible priming from the Stage -1C protocol; this is not a human independent reconstruction or a playtest.
+2. Make the Fate-target decision before adding more rules. The current seeded sources do not establish Jules as the R4 operator; T0 is unsupported. Do not invent a custody log, authenticated speaker, certain witness or audience belief merely to save the target. T1 is weak by itself, and T2-F2's proposed Beat 4 counterplay occurs after the 18:24 first-note/Fate evaluation boundary.
+3. Rework the objective relationship and time horizon. If A1 (direct handover) and A2 (private follow-up) are a joint objective, they are infeasible within three single-task beats. Clarify whether they are alternatives or a deliberate sacrifice trade-off; define B's source/record predicates, what happens at 18:24, and whether Beat 4 is truly legal.
+4. Only if P2 remains a viable candidate, specify a complete direct-action selector contract and player-view projection: legal pair/state outcomes, invalid and duplicate actions, observation acquisition, source reads versus attachments, Fate activation/cost/progress/expiry, and information leakage by elimination.
+5. Version a corrected reconstruction packet and seek a new first pass. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged until the design gate passes. Do not treat the present paper trace or successful prototype CI as evidence of scenario quality.
+6. Separately continue the historical enumerator/fixture/contract audit. The current prototype-test and browser-smoke results apply to the PR #10 code merge commit; PR #9 was documentation-only and had no new code workflow run.
+7. Only after the revised scenario and action contract pass reconstruction, build a narrow story-first direct-action slice and conduct uncoached human think-aloud sessions.
 
 ## Constraints to preserve
 
