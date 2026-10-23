@@ -1,9 +1,9 @@
 # Project Handoff
 
-**Last reconciled:** 2026-10-21  
+**Last reconciled:** 2026-10-23  
 **Repository:** https://github.com/ShreyasGautam01/fate-ctrl  
 **Default branch:** main  
-**Current phase:** Direct-action mode selected; validate story causality and contested-action resolution before implementation  
+**Current phase:** Direct-action mode selected; premise discovery after the failed/partial P2 first-pass reconstruction; no replacement premise or production rules selected  
 **Production gameplay:** Not started; direct-action mode is selected, but the resolver and complete rules are not  
 **Story canon:** Unresolved; the literal citywide-emergency route is not established  
 **Merge authority:** The project owner reviews and merges pull requests; open-branch work is not yet part of main.
@@ -45,12 +45,12 @@ The normal gameplay interface no longer exposes ranking tuples/selector diagnost
 
 This is automated browser evidence from the PR branch, not proof of human comprehension, enjoyment, balance, full visual quality or secure multiplayer. The local browser still contains submissions in memory.
 
-### PR #9 — Draft causal-route challenge
+### Merged PR #9 — Causal-route challenge (merged 2026-10-22; still non-canon)
 https://github.com/ShreyasGautam01/fate-ctrl/pull/9
 
-**State:** Open, draft, not canon. The draft now compares three different public-blame mechanisms: a physical gesture captured without context; stale information relayed via an existing commuter channel; and post-incident attribution competing with access to a correction. It includes counterfactual mini-replays and explicit rejection criteria.
+**State:** The documentation changes are merged into main. Merge status is repository state, not design approval. The borrowed-radio P2 trace still does not pass independent reconstruction or the three-viable-route gate. No scenario, Fate target, priority policy, or production rule is canon.
 
-The current desk conclusion is deliberately provisional: Route A is plausible but unproven; Route B is conditional on a believable, bounded channel; Route C is weak and may need rejection. The scenario has **not** passed the three-viable-route gate. The original citywide-emergency scale and whether the personal umbrella objectives truly interact with the transit event also remain unresolved.
+The authored desk findings remain provisional: the radio/paddle trace has explicit event mechanics, but operator attribution, player-view projection, contested-action priorities, Ren's response/trust outcome, full terminal horizon, and a third materially distinct route remain unresolved. The original citywide-emergency scale is not established.
 
 ## What the current experiment is—and is not
 
@@ -75,17 +75,23 @@ Current story prose is authored and deterministic. It may describe only events a
 - `DECISIONS.md`: rationale and statuses of major choices.
 - `TASKS.md`: canonical task ledger, blockers and exit criteria.
 - `PLAYTEST_PLAN.md`: independent-reconstruction and human-playtest protocol.
+- `P2_RECONSTRUCTION_PACKET.md`: standalone first-pass reconstruction task.
+- `P2_RECONSTRUCTION_REVIEW_01.md`: Claude AI first-pass outcome, finding register F-01–F-25, and recommended design triage; disclosed possible priming, not human playtest evidence.
+- `P2_TARGET_VIABILITY_SCREEN_01.md`: comparison of the current Fate targets and next-step options after the failed/partial reconstruction; no target or premise is accepted.
+- `PREMISE_DISCOVERY_SCREEN_01.md`: exploratory comparison of replacement premises and next acceptance gates; Campus Fest is only the leading investigation candidate, not canon.
+- `CAMPUS_FEST_CAUSAL_SKELETON_01.md`: exploratory one-page causal skeleton; its third route and crowd-response assumptions have not passed independent reconstruction.
 - `scenarios/umbrella.json`, `CAUSAL_ROUTE_TRACE_01.md` and causal-route workshop docs: scenario probes, not accepted canon.
 
 Historical simulations preserve design reasoning but do not outrank the active contract, current executable fixture or explicit decision status.
 
 ## Immediate next steps
 
-1. Obtain an uncoached reconstruction of the borrowed-radio trace in `SCENARIO_CAUSALITY_REVIEW.md` §§15.1–15.7. Check the fixed facts, radio behavior, prior-warning provenance, initial-report attachment, event ordering and counterfactuals.
-2. The matrix uses a deterministic cue model: latest complete radio destination wins; otherwise use the paddle; otherwise hold. It distinguishes S3-U-P/S3-U-R and S3-V-H/S3-V-P/S3-V-R; priorities remain provisional and independent reconstruction is outstanding. **The verify-and-relay compound action is rejected** under the one-task-per-four-minute-beat rule. T0's Jules-specific transmission target remains unsupported. §15.8 tests T2-F2: queue/delay recorded, first report omits the warning, Jules has not raised Ren's prior acknowledgement privately, and F2 actually intercepts a selected Review/attach attempt. Ren already knows the warning; Jules's candidate private counterplay is to ask him about the failed long transmission after the double beep. For S3-V-H, the preferred paper-test order is short instruction > West paddle > Ask Ren privately > Review/attach > Return R4; the evidence-first alternative remains a challenger, and role-swap/independent reconstruction are outstanding. F2 costs 1 provisional leverage unit, intercepts only a selected Review/attach attempt, never alters the source and earns no progress if unused or bypassed. The paper test now defines a proposed Beat 4 (18:24–18:28) recovery action, **Review/append an available Operations-thread item to a signed-record addendum**, a new generic one-task action after F2 expires that discovers the content rather than naming it in advance, appends any relevant existing source with its actual timestamp and cannot rewrite the first signed note. This is not a full-game terminal decision; if the follow-up action window is removed or 18:24 is terminal, reject F2. Player-view projection must not leak source text/private proposals. This local test does not pass the larger escalation/three-route gate. No objective or scenario is canon; keep executable fixtures unchanged.
-3. Have the reviewer independently classify R1–R3. R1 is conditional, R2 is an incident mechanism but a weak blame route, and R3 may duplicate R1's causal hinge. Do not declare three viable routes unless the distinctions survive skeptical reconstruction.
-4. Keep the umbrella/transit scene and executable fixtures unchanged. If P2 relies on arbitrary audience belief/deadlines, or cannot support three distinct routes and a credible non-Fate ending, compare another premise rather than implementing Fate.
-5. Separately verify main-branch CI/browser checks and complete the historical enumerator audit; those are useful but do not substitute for the current scenario gate.
+1. Read `P2_RECONSTRUCTION_REVIEW_01.md` and `P2_TARGET_VIABILITY_SCREEN_01.md`. The first-pass by Claude (AI) failed/partially reproduced P2 and disclosed possible priming; this is not human independent reconstruction or a playtest.
+2. Reassess the Fate target before adding more rules. The current sources cannot establish Jules as the R4 operator. T0 is unsupported; T1 is weak alone; T2-F2's proposed recovery is too late for the 18:24 first-note target under the existing evaluation boundary.
+3. The Campus Fest one-page skeleton is now in `CAMPUS_FEST_CAUSAL_SKELETON_01.md`. Its three-route gate has **not passed**: the physical-microphone route may collapse into the schedule or announcement route, and audience response needs explicit reconstruction. Run a blinded, route-isolated first pass and challenge the counterplay claims before writing a full packet. Community Fair remains the fallback.
+4. Keep P2 only if useful as a bounded mechanics stress test. Do not add more priority rows or invent evidence to rescue its attribution target. Any AI review remains desk-review evidence, not a human playtest; disclose potential priming.
+5. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged. No production gameplay implementation or canonical premise change follows from this work.
+6. Separately continue the historical enumerator/fixture/contract audit. The current prototype-test and browser-smoke results apply to the PR #10 code merge commit; PR #9 was documentation-only and had no new code workflow run.
 
 ## Constraints to preserve
 
