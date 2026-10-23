@@ -111,7 +111,7 @@ Then run a blinded first-pass reconstruction on that skeleton before implementin
 
 ## 6. Recommendation and decision boundary
 
-**Recommended next experiment:** develop Candidate A into a one-page causal skeleton, with Candidate B as the fallback. This is a selection for *further investigation only*, not a canon or production-premise decision.
+**Recommended next experiment:** Candidate A has been expanded into the exploratory `CAMPUS_FEST_CAUSAL_SKELETON_01.md`. It is still a selection for *further investigation only*, not a canon or production-premise decision. The skeleton's schedule-collision and public-announcement routes are distinguishable hypotheses; its shared-microphone route may collapse into one of them, so the three-route gate is explicitly **not passed yet**. The next step is a blinded reconstruction of the skeleton, with an attempt to defeat each route and counterplay claim. Candidate B remains the fallback.
 
 Keep P2 as a possible mechanics probe; do not add more P2 priority rows, evidence sources or Fate mechanics while the premise decision is open. Keep `scenarios/umbrella.json`, `scenarios/control_model_test_fixture.json`, and production UI/code unchanged. The existing prototype can later test the experience, but it cannot validate the candidate premise before the causal design is coherent.
 
