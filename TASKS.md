@@ -1,7 +1,7 @@
 # Project Plan and Task Ledger
 
 **Last reconciled:** 2026-10-23  
-**Current phase:** Direct-action mode selected; triage the failed/partial P2 first-pass reconstruction before making further scenario or gameplay changes.  
+**Current phase:** Direct-action mode selected; premise discovery after the failed/partial P2 reconstruction; no replacement premise or production rules selected.  
 **Production gameplay:** Not started. Direct-action mode is selected; the scenario, action-arbitration rule, Fate and full-game rules remain unapproved.  
 **Merge policy:** The project owner reviews and merges pull requests. Open-branch work is not part of `main` until merged.
 
@@ -17,6 +17,7 @@ This ledger tracks completion and decision gates. A document, passing test, simu
 | Input-derived UI diagnostics | **Merged — PR #10** | Ranking diagnostics are removed from the player UI; the PR's 17 Node tests and 390 × 844 Chromium smoke passed before merge. Human playtesting remains outstanding. |
 | Story premise / Fate ending | **Merged design work — PR #9** | The borrowed-radio trace is merged as provisional documentation. Independent reconstruction, a credible Fate target, and the three-viable-route gate remain open. Nothing is canon. |
 | P2 first-pass reconstruction | **AI desk review complete — fail/partial** | Claude's 2026-10-23 first-pass response is recorded in `P2_RECONSTRUCTION_REVIEW_01.md`. It disclosed possible priming and is not a human review or playtest. Core target, objective, priority and terminal issues remain. |
+| Replacement premise screen | **Exploratory analysis drafted** | `PREMISE_DISCOVERY_SCREEN_01.md` compares three new premise candidates with retaining P2 as a mechanics test. Campus Fest is the leading investigation candidate only; no premise is canon and no playtest has validated the ratings. |
 | Human playtesting | **Not done** | The owner gave useful but limited first-prototype feedback. There has been no uncoached session of the improved narrative-first experience. |
 | Production engine, online play and persistence | **Not started / not approved** | No production architecture or full-game rules should be inferred from the local prototype. |
 
@@ -111,8 +112,8 @@ These are counts of paths under different state-dependent input sets, **not prob
 **Exit:** A scenario-defined goal/milestone system has legal bounded interventions, readable pressure, counterplay, multiple routes and a credible non-Fate ending. Resisting Fate must not trigger arbitrary punishment.
 
 ### P0-06 — Validate the scenario and ending
-**Status:** The AI first-pass reconstruction failed/partially reproduced P2; findings are recorded in `P2_RECONSTRUCTION_REVIEW_01.md`. Use `P2_TARGET_VIABILITY_SCREEN_01.md` to reassess target viability. The current evidence cannot establish that Jules operated R4 during the transmission; T0 is rejected under the current source contract. T1 (warning absent from the first note) is weak as a standalone Fate goal. T2-F2 has an evaluation-time mismatch and a hidden-action leakage risk. A1 + A2 are infeasible together within three single-task beats if they are conjunctive. The current routes do not satisfy the three-materially-distinct-route gate. No route or premise is canon.
-**Next:** Do not add more priority rows or invent sources yet. Compare T0/T1/T2-F2/T3/T4 in `P2_TARGET_VIABILITY_SCREEN_01.md`. Test T3 only as a local operational-delay micro-scenario if it can support meaningful objective coupling and three distinct causal routes without implying unsupported blame. Otherwise demote P2 to a mechanics stress test and reopen premise discovery. Define A's objective relationship, B's exact record predicates, the 18:24 evaluation boundary and the real terminal/phase contract before any revised paper trace. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged.
+**Status:** The AI first-pass reconstruction failed/partially reproduced P2; findings are recorded in `P2_RECONSTRUCTION_REVIEW_01.md`. `P2_TARGET_VIABILITY_SCREEN_01.md` records why T0 is unsupported, T1 is weak alone, T2-F2 misses its evaluation window, and T3 is only a possible local mechanics target. The current routes do not pass the three-materially-distinct-route gate. No route or premise is canon.
+**Next:** The initial P2 target comparison is complete. Use `PREMISE_DISCOVERY_SCREEN_01.md` to develop Candidate A (Campus Fest Countdown) into a one-page causal skeleton, keeping Candidate B (Community Fair Finale) as fallback. This is an investigation priority, not premise approval. Do not add more P2 priority rows, invent evidence, or change production code. P2 may remain a mechanics stress test if it can isolate a bounded rule question. Before any candidate becomes a full paper trace, define feasible A/B outcomes, a measurable Fate predicate, three materially distinct routes, at least two credible counterplay paths, information boundaries and an explicit terminal horizon. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged.
 **Exit:** The chosen target is measurable and evidence-supported; facts, knowledge, timing, causes, counterplay, objective feasibility and terminal states form a coherent trace; three materially distinct routes survive independent reconstruction; and a credible non-Fate ending exists.
 
 ### P0-07 — Define visibility and information fairness
@@ -135,10 +136,10 @@ These are counts of paths under different state-dependent input sets, **not prob
 ## 6. Recommended next sequence
 
 1. Review `P2_RECONSTRUCTION_REVIEW_01.md` and `P2_TARGET_VIABILITY_SCREEN_01.md`. The AI first pass failed/partially reproduced the packet; its disclosed possible priming and non-human-review status remain part of the evidence record.
-2. Decide whether the borrowed-radio trace is worth retaining beyond a mechanics micro-test. T0 is unsupported by the current sources; T1 is too weak alone; T2-F2 does not currently provide counterplay before target evaluation. T3 is only a local-delay candidate, not a selected target. T4 is the alternative of returning to premise discovery.
-3. Before rewriting the trace, define whether A1/A2 are separate competing subgoals or a conjunction, formalize B's record predicates, and settle the 18:24 sign-off/evaluation and terminal-phase contract.
-4. If P2 remains a candidate, define the full proposer-blind resolver and player-view projection only after the target/objectives/timeline are coherent. Cover every legal proposal pair, invalid/no-op/duplicate actions, observation acquisition, source read versus attachment, Fate activation/budget/progress/expiry, and feedback leakage.
-5. Create a revised, versioned reconstruction packet and obtain a fresh first-pass review. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged until the design gate passes.
+2. The first premise screen is in `PREMISE_DISCOVERY_SCREEN_01.md`. Investigate Candidate A (Campus Fest Countdown) first and Candidate B (Community Fair Finale) second, but do not treat the desk ratings as evidence or accept either as canon. Keep P2 only if needed as a bounded mechanics test.
+3. Before writing the candidate's full packet, build a one-page causal skeleton: opening facts, feasible A/B objectives and partial outcomes, one measurable Fate target, three distinct route cards, two counterplay paths, information ownership, Fate budget/signal/expiry, terminal timing and a credible non-Fate ending.
+4. Run a blinded first-pass reconstruction of that skeleton before implementation; record possible priming and distinguish AI desk review from human playtesting. Revise or reject the premise if any causal route, hidden-information boundary, or objective is not reconstructable.
+5. Only after a candidate passes the reconstruction gate, define a complete proposer-blind resolver/player-view contract and implement a narrow story-first slice. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged until the design gate passes.
 6. Separately continue the historical enumerator/fixture/contract audit. The latest prototype-test and browser-smoke runs passed on PR #10's code merge commit; PR #9 was documentation-only and had no new code workflow run.
 7. Only after a revised design passes reconstruction should the team build a narrow story-first direct-action slice and conduct uncoached human think-aloud sessions.
 
