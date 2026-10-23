@@ -26,6 +26,7 @@ FATE/CTRL is a proposed two-player narrative strategy game about competing inten
 - P2_RECONSTRUCTION_REVIEW_01.md — AI first-pass finding register (FAIL / PARTIAL); records unresolved target, objective, resolver, visibility and terminal-rule blockers.
 - P2_TARGET_VIABILITY_SCREEN_01.md — comparison of T0/T1/T2-F2 and candidate alternatives after the failed/partial reconstruction; design analysis only, not an accepted target.
 - PREMISE_DISCOVERY_SCREEN_01.md — exploratory replacement-premise comparison after the P2 reconstruction failure; candidate ratings are desk analysis only, and no premise is accepted.
+- CAMPUS_FEST_CAUSAL_SKELETON_01.md — exploratory candidate skeleton; its third causal route and audience-response assumptions have not passed independent reconstruction.
 - AGENTS.md — instructions for AI coding agents.
 - PROJECT_HANDOFF.md — current repository state and next action.
 
