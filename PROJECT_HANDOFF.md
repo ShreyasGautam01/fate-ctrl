@@ -79,6 +79,7 @@ Current story prose is authored and deterministic. It may describe only events a
 - `P2_RECONSTRUCTION_REVIEW_01.md`: Claude AI first-pass outcome, finding register F-01–F-25, and recommended design triage; disclosed possible priming, not human playtest evidence.
 - `P2_TARGET_VIABILITY_SCREEN_01.md`: comparison of the current Fate targets and next-step options after the failed/partial reconstruction; no target or premise is accepted.
 - `PREMISE_DISCOVERY_SCREEN_01.md`: exploratory comparison of replacement premises and next acceptance gates; Campus Fest is only the leading investigation candidate, not canon.
+- `CAMPUS_FEST_CAUSAL_SKELETON_01.md`: exploratory one-page causal skeleton; its third route and crowd-response assumptions have not passed independent reconstruction.
 - `scenarios/umbrella.json`, `CAUSAL_ROUTE_TRACE_01.md` and causal-route workshop docs: scenario probes, not accepted canon.
 
 Historical simulations preserve design reasoning but do not outrank the active contract, current executable fixture or explicit decision status.
@@ -87,9 +88,9 @@ Historical simulations preserve design reasoning but do not outrank the active c
 
 1. Read `P2_RECONSTRUCTION_REVIEW_01.md` and `P2_TARGET_VIABILITY_SCREEN_01.md`. The first-pass by Claude (AI) failed/partially reproduced P2 and disclosed possible priming; this is not human independent reconstruction or a playtest.
 2. Reassess the Fate target before adding more rules. The current sources cannot establish Jules as the R4 operator. T0 is unsupported; T1 is weak alone; T2-F2's proposed recovery is too late for the 18:24 first-note target under the existing evaluation boundary.
-3. Use `PREMISE_DISCOVERY_SCREEN_01.md` to develop Candidate A (Campus Fest Countdown) into a one-page causal skeleton; Candidate B (Community Fair Finale) is the fallback. These are exploration priorities, not accepted canon. Test the objective tension, measurable Fate target, three genuinely distinct routes, two counterplay paths and a credible non-Fate ending before expanding the candidate.
-4. Keep P2 only if useful as a bounded mechanics stress test. Do not add more priority rows or invent evidence to rescue its attribution target. If a new candidate proceeds, run a blinded first-pass reconstruction before implementation, disclose any priming risk, and do not treat an AI review as human playtesting.
-5. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged. No production gameplay implementation or canonical premise change follows from this screen.
+3. The Campus Fest one-page skeleton is now in `CAMPUS_FEST_CAUSAL_SKELETON_01.md`. Its three-route gate has **not passed**: the physical-microphone route may collapse into the schedule or announcement route, and audience response needs explicit reconstruction. Run a blinded, route-isolated first pass and challenge the counterplay claims before writing a full packet. Community Fair remains the fallback.
+4. Keep P2 only if useful as a bounded mechanics stress test. Do not add more priority rows or invent evidence to rescue its attribution target. Any AI review remains desk-review evidence, not a human playtest; disclose potential priming.
+5. Keep `scenarios/umbrella.json` and `scenarios/control_model_test_fixture.json` unchanged. No production gameplay implementation or canonical premise change follows from this work.
 6. Separately continue the historical enumerator/fixture/contract audit. The current prototype-test and browser-smoke results apply to the PR #10 code merge commit; PR #9 was documentation-only and had no new code workflow run.
 
 ## Constraints to preserve
