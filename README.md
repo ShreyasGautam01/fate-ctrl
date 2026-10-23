@@ -22,6 +22,8 @@ FATE/CTRL is a proposed two-player narrative strategy game about competing inten
 - DECISIONS.md — decision status and rationale.
 - TASKS.md — current gates, blockers and exit criteria.
 - PLAYTEST_PLAN.md — proposed playtest protocol; broader comparative human playtesting remains outstanding.
+- P2_RECONSTRUCTION_PACKET.md — standalone first-pass paper-test cases for the borrowed-radio candidate; not scenario canon.
+- P2_RECONSTRUCTION_REVIEW_01.md — AI first-pass finding register (FAIL / PARTIAL); records unresolved target, objective, resolver, visibility and terminal-rule blockers.
 - AGENTS.md — instructions for AI coding agents.
 - PROJECT_HANDOFF.md — current repository state and next action.
 
